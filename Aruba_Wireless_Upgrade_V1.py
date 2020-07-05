@@ -185,7 +185,7 @@ class Aruba_upgrade():
 			return None,None
 
 		except Exception:
-			logger.exception("Login error: ".format(str(host)))
+			logger.exception("Login error: ".format(str(host_ip)))
 			return None,None
 
 	def logout(self,session,host_ip):
@@ -814,7 +814,7 @@ class Aruba_upgrade():
 				url = self.controller_save_reload.format(host_ip,UIDARUBA)
 				res = session.post(url,data = {},verify=False)
 				#print(res.content)
-				print("==> Reloading {}".format(host_ip))
+				print("==> Reloading {}: {} - {}".format(host_type,host_name,host_ip))
 				time.sleep(3)
 
 				reload_completed = False
@@ -839,7 +839,7 @@ class Aruba_upgrade():
 						except Exception:
 							reachability_failed = True
 							print("({}) {} {} => Request timeout...".format(host_type,host_name,host_ip))
-							logger.exception("Ping Timeout")
+							#logger.exception("Ping Timeout")
 
 						print(" "*80+"Press Ctl+c to skip this validation")
 						time.sleep(3)
@@ -862,31 +862,34 @@ class Aruba_upgrade():
 
 			if validate_image != False:
 				# Validate the new image in controller
-				print("=> Validating New Image on Host")
+				
 				for host in upgrade_hosts:
 					host_name = host.get("hostname")
 					host_ip = host.get("host")
 					disk = host.get("disk")
 					image_build = host.get("image_build")
 					image_version = host.get("image_version")
+					print("=>{}-{} : Validating New Image....".format(host_name,host_ip))
 					if self.validate_image_upload(host_ip,disk,image_version,image_build) != True:
 						image_valid = False
 
-			print("=> Validating Sync on Host")
+			
 			for host in upgrade_hosts:
 				host_ip = host.get("host")
+				host_name = host.get("hostname")
+				print("=>{}-{} : Validating switch sync...".format(host_name,host_ip))
 				if self.validate_all_sync(host_ip,validate_sync,validate_up) != True:
 					confid_valid = False
 
 			if validate_image != False:
 				if image_valid == False:
-					print("\n======= Terminating : Image Validation failed ==========\n\n")
-					exit(0)
+					print("\n** ==> Image Validation failed \n\n")
+					#exit(0)
 			
 			if validate_sync != False or validate_up != False:
 				if confid_valid == False:
-					print("\n======= Terminating : Validation switches status failed ==========\n\n")
-					exit(0)
+					print("\n** ==> Validation switches status failed\n\n")
+					#exit(0)
 
 			for host in upgrade_hosts:
 				host_name = host.get("hostname")
