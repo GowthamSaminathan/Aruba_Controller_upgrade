@@ -1,0 +1,19 @@
+Value Hostname (.*)
+Value time (.*)
+Value version (.*)
+Value build (.*)
+Value uptime (.*)
+Value confid (.*)
+Value Partition (.*)
+Value ConfChange (.*)
+
+Start
+ ^Hostname is\s*${Hostname}
+ ^.*Version\s${version}
+ ^System Time:${time}
+ ^.*build\s*${build}\)
+ ^Switch uptime is\s*${uptime}
+ ^Config ID:\s*${confid}
+ ^Boot Partition:\s*${Partition}
+ ^Configuration\s*${ConfChange}
+ 
