@@ -6,24 +6,20 @@ Upgrade:
     #image_file_name: ArubaOS_MM_8.6.0.5-FIPS_75980
     image_file_name: ArubaOS_MM_8.7.0.0-FIPS_75916
     image_version: 8.7.0.0
-    #image_build: 75468
-    #image_build: 75980
     image_build: 75916
     host: 10.17.84.220:4343
     #disk: 0
-    upload_type: tftp
+    upload_type: local
   - hostname: NaaS-VMC-1
     type: MD
     #image_file_name: ArubaOS_VMC_8.5.0.9-FIPS_75468
     #image_file_name: ArubaOS_VMC_8.6.0.5-FIPS_75980
-    image_file_name: ArubaOS_VMC_8.7.0.0-FIPS_75916
-    image_version: 8.7.0.0
-    #image_build: 75468
-    #image_build: 75980
-    image_build: 75916
+    image_file_name: ArubaOS_VMC_8.5.0.10-FIPS_76207
+    image_version: 8.5.0.10
+    image_build: 76207
     host: 10.17.84.221:4343
     #disk: 0
-    upload_type: tftp
+    upload_type: local
 
 CheckList_MM:
   - show: show clock

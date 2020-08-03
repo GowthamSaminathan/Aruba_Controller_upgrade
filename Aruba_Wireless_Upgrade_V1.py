@@ -162,11 +162,15 @@ class Aruba_upgrade():
 		try:
 			login_url = "https://{}/v1/api/login".format(host_ip)
 
-			login_post = data = {"username":"admin" ,"password": "Aruba@123$"}
+			auth = self.config.get("Authentication")
+			username = auth.get("username")
+			password = auth.get("password")
+
+			login_post = {"username":username ,"password": password}
 			print(" "*120+">Trying Login => {}".format(host_ip))
 
 			r_session = requests.Session()
-			res = r_session.post(login_url,data = login_post,verify=False)
+			res = r_session.post(login_url, data = login_post,verify=False)
 			res = res.json()
 			login_status = res.get("_global_result").get("status")
 			login_msg = res.get("_global_result").get("status_str")
@@ -654,12 +658,12 @@ class Aruba_upgrade():
 							if response != None:
 								if response.get("_result").get("status") == 0:
 									p = response.get("_result").get("status_str")
-									print("==> Pre-load Success:{}-{} => {}".format(host_name,host_ip,p))
+									print("==> AP Pre-load Success:{}-{} => {}".format(host_name,host_ip,p))
 									valid_state = True
 									self.logout(session,host_ip)
 								else:
 									p = response.get("_result").get("status_str")
-									print("** ==> Pre-load Failed:{}-{} => {}".format(host_name,host_ip,p))
+									print("** ==> AP Pre-load Failed:{}-{} => {}".format(host_name,host_ip,p))
 							else:
 								raise TypeError("Response not having 'ap_image_preload' field")
 				except TypeError:
@@ -1038,6 +1042,7 @@ if __name__ == '__main__':
 			if not os.path.exists(pre_chk):
 				os.makedirs(pre_chk)
 			script_type = "PreCheck"
+			print(pre_chk)
 			au.Pre_Post_check(script_type,pre_chk)
 		
 		elif int(inp) == 2:
