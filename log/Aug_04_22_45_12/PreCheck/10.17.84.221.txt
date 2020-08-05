@@ -1,22 +1,22 @@
 
 
 ============================================================>show clock
-{'_data': ['Sun Aug  2 19:00:52 PDT 2020']}
+{'_data': ['Tue Aug  4 09:46:00 PDT 2020']}
 
 ============================================================>show version
 {   '_data': [   'Aruba Operating System Software.\n'
-                 'ArubaOS (MODEL: ArubaMC-VA-US), Version 8.5.0.9-FIPS\n'
+                 'ArubaOS (MODEL: ArubaMC-VA-US), Version 8.6.0.5\n'
                  'Website: http://www.arubanetworks.com\n'
                  '(c) Copyright 2020 Hewlett Packard Enterprise Development '
                  'LP.\n'
-                 'Compiled on 2020-05-13 at 23:08:14 UTC (build 75468) by '
+                 'Compiled on 2020-06-25 at 03:11:37 UTC (build 75979) by '
                  'p4build\n'
                  '\n'
                  'BIOS Version: Phoenix Technologies LTD, 6.00\n'
                  'Built: 12/12/2018\n'
                  '\n'
-                 'Switch uptime is 4 days 8 hours 55 minutes 54 seconds\n'
-                 'Reboot Cause: Master Initiated Reboot (Intent:cause: 86:50)\n'
+                 'Switch uptime is 2 hours 6 minutes 18 seconds\n'
+                 'Reboot Cause: User reboot (Intent:cause: 86:50)\n'
                  'Supervisor Card\n'
                  'Processor(s):\n'
                  'Total CPUs :       3,    Sockets : 1,    Cores Per CPU :  3\n'
@@ -27,36 +27,36 @@
 ============================================================>show image version
 {   '_data': [   '----------------------------------\n'
                  'Partition       : 0:0 (/mnt/disk1) **Default boot**\n'
-                 'Software Version: ArubaOS 8.5.0.9-FIPS (Digitally Signed '
+                 'Software Version: ArubaOS 8.6.0.5 (Digitally Signed '
                  'SHA1/SHA256 - Production Build)\n'
-                 'Build number    : 75468\n'
-                 'Label           : 75468\n'
-                 'Built on        : Wed May 13 23:08:14 UTC 2020\n'
+                 'Build number    : 75979\n'
+                 'Label           : 75979\n'
+                 'Built on        : Thu Jun 25 03:11:37 UTC 2020\n'
                  '----------------------------------\n'
                  'Partition       : 0:1 (/mnt/disk2)\n'
-                 'Software Version: ArubaOS 8.5.0.9-FIPS (Digitally Signed '
+                 'Software Version: ArubaOS 8.5.0.10-FIPS (Digitally Signed '
                  'SHA1/SHA256 - Production Build)\n'
-                 'Build number    : 75468\n'
-                 'Label           : 75468\n'
-                 'Built on        : Wed May 13 23:08:14 UTC 2020']}
+                 'Build number    : 76207\n'
+                 'Label           : 76207\n'
+                 'Built on        : Sat Jul 11 09:26:16 UTC 2020']}
 
 ============================================================>show storage
 {   '_data': [   'Filesystem                Size      Used Available Use% '
                  'Mounted on\n'
-                 'none                    500.0M     22.7M    477.3M   5% '
+                 'none                    500.0M     11.0M    489.0M   2% '
                  '/tmp\n'
-                 '/dev/sdb1                 5.8G    402.3M      5.1G   7% '
+                 '/dev/sdb1                 5.8G    420.2M      5.1G   7% '
                  '/flash\n'
-                 '/dev/sda5                 1.4G    271.8M      1.1G  19% '
+                 '/dev/sda5                 1.4G    287.2M      1.1G  20% '
                  '/mnt/disk1\n'
-                 '/dev/sda6                 1.4G    271.8M      1.1G  19% '
+                 '/dev/sda6                 1.4G    272.0M      1.1G  19% '
                  '/mnt/disk2']}
 
 ============================================================>show cpuload
-{'_data': ['user 0.9%, system 0.9%, idle 98.2%']}
+{'_data': ['user 0.5%, system 0.6%, idle 99.0%']}
 
 ============================================================>show memory
-{'_data': ['Memory (Kb): total: 3776360, used: 2144636, free: 1631724']}
+{'_data': ['Memory (Kb): total: 3776360, used: 2040080, free: 1736280']}
 
 ============================================================>show boot
 {'_data': ['Config ID: 99\n\n\nBoot Partition: PARTITION 0']}
@@ -64,7 +64,7 @@
 ============================================================>show switches
 {   'All Switches': [   {   'Config ID': '99',
                             'Config Sync Time (sec)': '0',
-                            'Configuration State': 'CONFIG ROLLBACK',
+                            'Configuration State': 'CONFIG DISASTER RECOVERY',
                             'IP Address': '10.17.84.221',
                             'IPv6 Address': 'None',
                             'Location': 'Building1.floor1',
@@ -72,7 +72,7 @@
                             'Name': 'Naas-VMC-1',
                             'Status': 'up',
                             'Type': 'MD',
-                            'Version': '8.5.0.9-FIPS_75468'}],
+                            'Version': '8.6.0.5_75979'}],
     '_data': ['1'],
     '_meta': [   'IP Address',
                  'IPv6 Address',
@@ -89,22 +89,22 @@
 ============================================================>show switchinfo
 {   '_data': [   'Hostname is Naas-VMC-1\n'
                  '\n'
-                 'Location not configured\n'
-                 'System Time:Sun Aug  2 19:00:58 PDT 2020\n'
+                 'Building1.floor1\n'
+                 'System Time:Tue Aug  4 09:46:06 PDT 2020\n'
                  '\n'
                  'Aruba Operating System Software.\n'
-                 'ArubaOS (MODEL: ArubaMC-VA-US), Version 8.5.0.9-FIPS\n'
+                 'ArubaOS (MODEL: ArubaMC-VA-US), Version 8.6.0.5\n'
                  'Website: http://www.arubanetworks.com\n'
                  '(c) Copyright 2020 Hewlett Packard Enterprise Development '
                  'LP.\n'
-                 'Compiled on 2020-05-13 at 23:08:14 UTC (build 75468) by '
+                 'Compiled on 2020-06-25 at 03:11:37 UTC (build 75979) by '
                  'p4build\n'
                  '\n'
                  'BIOS Version: Phoenix Technologies LTD, 6.00\n'
                  'Built: 12/12/2018\n'
                  '\n'
-                 'Switch uptime is 4 days 8 hours 56 minutes\n'
-                 'Reboot Cause: Master Initiated Reboot (Intent:cause: 86:50)\n'
+                 'Switch uptime is 2 hours 6 minutes 23 seconds\n'
+                 'Reboot Cause: User reboot (Intent:cause: 86:50)\n'
                  'Supervisor Card\n'
                  'Processor(s):\n'
                  'Total CPUs :       3,    Sockets : 1,    Cores Per CPU :  3\n'
@@ -133,18 +133,18 @@
                  'ProxyARP disabled Suppress ARP enable\n'
                  'Encapsulation 802, loopback not set\n'
                  'MTU 1500 bytes\n'
-                 'Last clearing of "show interface" counters 4 day 8 hr 56 min '
-                 '0 sec \n'
-                 'link status last changed 4 day 8 hr 51 min 55 sec \n'
+                 'Last clearing of "show interface" counters 0 day 2 hr 6 min '
+                 '23 sec \n'
+                 'link status last changed 0 day 2 hr 4 min 53 sec \n'
                  'Proxy Arp is disabled for the Interface\n'
                  '\n'
                  'switchrole:MD\n'
                  'masterip:10.17.84.220\n'
-                 'IKE PSK: 7237b558be6948cd23cc81f581d0352d0254b23983b2a7de\n'
+                 'IKE PSK: bcf0e78bcbc5bf605e4196037cbba5a44972069de9521642\n'
                  'Configuration unchanged since last save\n'
                  'No AP crash information available.\n'
                  'No controller crash information available.\n'
-                 'Reboot Cause: Master Initiated Reboot (Intent:cause: 86:50)']}
+                 'Reboot Cause: User reboot (Intent:cause: 86:50)']}
 
 ============================================================>show boot history
 {   '_data': [   'Reboot History Table\n'
@@ -156,204 +156,204 @@
                  '-----------                                                            '
                  '----    ----  --              ---------\n'
                  '1   Reboot Cause: Master Initiated Reboot (Intent:cause: '
-                 '86:50)            system   -    -               Fri Jun  5 '
-                 '00:26:56 2020\n'
-                 '\n'
-                 '2   Reboot Cause: Master Initiated Reboot (Intent:cause: '
-                 '86:50)            system   -    -               Mon Jun  8 '
-                 '05:30:27 2020\n'
-                 '\n'
-                 '3   Reboot Cause: Master Initiated Reboot (Intent:cause: '
-                 '86:50)            system   -    -               Mon Jun  8 '
-                 '05:39:52 2020\n'
-                 '\n'
-                 '4   Reboot Cause: Master Initiated Reboot (Intent:cause: '
-                 '86:50)            system   -    -               Tue Jun  9 '
-                 '06:59:13 2020\n'
-                 '\n'
-                 '5   Reboot Cause: Master Initiated Reboot (Intent:cause: '
-                 '86:50)            system   -    -               Tue Jun  9 '
-                 '09:06:20 2020\n'
-                 '\n'
-                 '6   Controller Reboot '
-                 'initiated.                                           admin   '
-                 'root  10.20.14.251    Sun Jun 28 07:58:32 2020\n'
-                 '\n'
-                 '7   Reboot Cause: User reboot (Intent:cause: '
-                 '86:50)                        system   -    -               '
-                 'Sun Jun 28 07:59:43 2020\n'
-                 '\n'
-                 '8   Reboot Cause: Master Initiated Reboot (Intent:cause: '
-                 '86:50)            system   -    -               Sun Jun 28 '
-                 '08:10:14 2020\n'
-                 '\n'
-                 '9   Upgrade through Web-UI to 8.5.0.9-FIPS on partition 0 '
-                 'Successful.      admin   root  10.20.15.113    Mon Jun 29 '
-                 '06:37:04 2020\n'
-                 '\n'
-                 '10  Upgrade through Web-UI to 8.5.0.9-FIPS on partition 1 '
-                 'Successful.      admin   root  10.20.15.102    Mon Jun 29 '
-                 '16:55:26 2020\n'
-                 '\n'
-                 '11  Boot partition is changed from 1 to '
-                 '1                                  admin   root  '
-                 'serial-console  Tue Jun 30 22:12:55 2020\n'
-                 '\n'
-                 '12  Controller Reboot '
-                 'initiated.                                           admin   '
-                 'root  10.20.12.105    Tue Jun 30 23:23:39 2020\n'
-                 '\n'
-                 '13  Reboot Cause: User reboot (Intent:cause: '
-                 '86:50)                        system   -    -               '
-                 'Tue Jun 30 23:24:54 2020\n'
-                 '\n'
-                 '14  Reboot Cause: Master Initiated Reboot (Intent:cause: '
-                 '86:50)            system   -    -               Tue Jun 30 '
-                 '23:30:29 2020\n'
-                 '\n'
-                 '15  Reboot Cause: Master Initiated Reboot (Intent:cause: '
-                 '86:50)            system   -    -               Tue Jun 30 '
-                 '23:39:59 2020\n'
-                 '\n'
-                 '16  Controller Reboot '
-                 'initiated.                                           admin   '
-                 'root  10.20.13.157    Wed Jul  1 06:15:52 2020\n'
-                 '\n'
-                 '17  Reboot Cause: User reboot (Intent:cause: '
-                 '86:50)                        system   -    -               '
-                 'Wed Jul  1 06:17:05 2020\n'
-                 '\n'
-                 '18  Reboot Cause: Master Initiated Reboot (Intent:cause: '
-                 '86:50)            system   -    -               Wed Jul  1 '
-                 '06:31:23 2020\n'
-                 '\n'
-                 '19  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Wed Jul  1 '
                  '06:40:56 2020\n'
                  '\n'
-                 '20  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '2   Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Wed Jul  1 '
                  '06:57:12 2020\n'
                  '\n'
-                 '21  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '3   Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Wed Jul  1 '
                  '07:06:44 2020\n'
                  '\n'
-                 '22  Controller Reboot '
+                 '4   Controller Reboot '
                  'initiated.                                           admin   '
                  'root  10.20.13.157    Wed Jul  1 09:02:17 2020\n'
                  '\n'
-                 '23  Reboot Cause: User reboot (Intent:cause: '
+                 '5   Reboot Cause: User reboot (Intent:cause: '
                  '86:50)                        system   -    -               '
                  'Wed Jul  1 09:03:28 2020\n'
                  '\n'
-                 '24  Controller Reboot '
+                 '6   Controller Reboot '
                  'initiated.                                           admin   '
                  'root  10.20.13.79     Thu Jul  2 02:25:16 2020\n'
                  '\n'
-                 '25  Reboot Cause: User reboot (Intent:cause: '
+                 '7   Reboot Cause: User reboot (Intent:cause: '
                  '86:50)                        system   -    -               '
                  'Thu Jul  2 02:26:27 2020\n'
                  '\n'
-                 '26  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '8   Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Thu Jul  2 '
                  '02:50:55 2020\n'
                  '\n'
-                 '27  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '9   Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Thu Jul  2 '
                  '03:00:26 2020\n'
                  '\n'
-                 '28  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '10  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Thu Jul  2 '
                  '03:08:11 2020\n'
                  '\n'
-                 '29  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '11  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Thu Jul  2 '
                  '03:13:49 2020\n'
                  '\n'
-                 '30  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '12  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Thu Jul  2 '
                  '03:23:18 2020\n'
                  '\n'
-                 '31  Upgrade Failed:while downloading '
+                 '13  Upgrade Failed:while downloading '
                  'image:ArubaOS_MM_8.7.0.0-FIPS_75916   admin   root  '
                  '10.20.15.164    Thu Jul  2 22:34:19 2020\n'
                  '\n'
-                 '32  Boot partition is changed from 1 to '
+                 '14  Boot partition is changed from 1 to '
                  '0                                  admin   root  '
                  '10.20.12.202    Fri Jul  3 17:37:13 2020\n'
                  '\n'
-                 '33  Boot partition is changed from 0 to '
+                 '15  Boot partition is changed from 0 to '
                  '1                                  admin   root  '
                  '10.20.15.82     Sun Jul  5 04:27:41 2020\n'
                  '\n'
-                 '34  Boot partition is changed from 1 to '
+                 '16  Boot partition is changed from 1 to '
                  '0                                  admin   root  '
                  '10.20.15.82     Sun Jul  5 04:27:55 2020\n'
                  '\n'
-                 '35  Upgrade Failed:while downloading '
+                 '17  Upgrade Failed:while downloading '
                  'image:ArubaOS_VMC_8.7.0.0-FIPS_75916  admin   root  '
                  '10.20.15.82     Sun Jul  5 06:17:52 2020\n'
                  '\n'
-                 '36  Upgrade Failed:while downloading '
+                 '18  Upgrade Failed:while downloading '
                  'image:ArubaOS_VMC_8.7.0.0-FIPS_75916  admin   root  '
                  '10.20.15.82     Sun Jul  5 06:19:51 2020\n'
                  '\n'
-                 '37  Upgrade to 8.7.0.0-FIPS_75916 on partition 1 '
+                 '19  Upgrade to 8.7.0.0-FIPS_75916 on partition 1 '
                  'Failed.                   admin   root  10.20.15.82     Sun '
                  'Jul  5 06:33:16 2020\n'
                  '\n'
-                 '38  Controller Reboot '
+                 '20  Controller Reboot '
                  'initiated.                                           admin   '
                  'root  10.20.15.82     Sun Jul  5 06:46:26 2020\n'
                  '\n'
-                 '39  Reboot Cause: User reboot (Intent:cause: '
+                 '21  Reboot Cause: User reboot (Intent:cause: '
                  '86:50)                        system   -    -               '
                  'Sun Jul  5 06:47:38 2020\n'
                  '\n'
-                 '40  Upgrade to 8.7.0.0-FIPS_75916 on partition 1 '
+                 '22  Upgrade to 8.7.0.0-FIPS_75916 on partition 1 '
                  'Failed.                   admin   root  10.20.15.82     Sun '
                  'Jul  5 07:03:41 2020\n'
                  '\n'
-                 '41  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '23  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Mon Jul 13 '
                  '21:29:02 2020\n'
                  '\n'
-                 '42  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '24  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Mon Jul 13 '
                  '21:38:34 2020\n'
                  '\n'
-                 '43  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '25  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Mon Jul 13 '
                  '21:45:57 2020\n'
                  '\n'
-                 '44  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '26  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Mon Jul 13 '
                  '22:00:10 2020\n'
                  '\n'
-                 '45  Reboot Cause: Guest tools Shutdown (Intent:cause: '
+                 '27  Reboot Cause: Guest tools Shutdown (Intent:cause: '
                  '86:50)               system   -    -               Tue Jul '
                  '28 18:18:26 2020\n'
                  '\n'
-                 '46  Reboot Cause: Power Cycle (Intent:cause: '
+                 '28  Reboot Cause: Power Cycle (Intent:cause: '
                  '86:50)                        system   -    -               '
                  'Wed Jul 29 06:23:55 2020\n'
                  '\n'
-                 '47  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '29  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Wed Jul 29 '
                  '09:38:41 2020\n'
                  '\n'
-                 '48  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '30  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Wed Jul 29 '
                  '09:48:14 2020\n'
                  '\n'
-                 '49  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '31  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Wed Jul 29 '
                  '09:55:39 2020\n'
                  '\n'
-                 '50  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '32  Reboot Cause: Master Initiated Reboot (Intent:cause: '
                  '86:50)            system   -    -               Wed Jul 29 '
-                 '10:05:14 2020']}
+                 '10:05:14 2020\n'
+                 '\n'
+                 '33  Upgrade Failed:while downloading '
+                 'image:ArubaOS_VMC_8.7.0.0-FIPS_75916  admin   root  '
+                 '10.240.120.137  Sun Aug  2 19:02:28 2020\n'
+                 '\n'
+                 '34  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '86:50)            system   -    -               Sun Aug  2 '
+                 '20:02:29 2020\n'
+                 '\n'
+                 '35  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '86:50)            system   -    -               Sun Aug  2 '
+                 '20:12:06 2020\n'
+                 '\n'
+                 '36  Controller Reboot '
+                 'initiated.                                           admin   '
+                 'root  10.240.121.127  Sun Aug  2 22:43:13 2020\n'
+                 '\n'
+                 '37  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                        system   -    -               '
+                 'Sun Aug  2 22:44:27 2020\n'
+                 '\n'
+                 '38  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '86:50)            system   -    -               Sun Aug  2 '
+                 '23:12:28 2020\n'
+                 '\n'
+                 '39  Reboot Cause: Master Initiated Reboot (Intent:cause: '
+                 '86:50)            system   -    -               Sun Aug  2 '
+                 '23:22:10 2020\n'
+                 '\n'
+                 '40  Upgrade to 8.7.0.0-FIPS_75916 on partition 1 '
+                 'Failed.                   admin   root  10.240.123.79   Mon '
+                 'Aug  3 05:07:25 2020\n'
+                 '\n'
+                 '41  Upgrade through Web-UI to 8.5.0.10-FIPS on partition 1 '
+                 'Successful.     admin   root  10.17.84.225    Mon Aug  3 '
+                 '11:59:16 2020\n'
+                 '\n'
+                 '42  Boot partition is changed from 1 to '
+                 '0                                  admin   root  '
+                 '10.240.126.75   Mon Aug  3 12:04:01 2020\n'
+                 '\n'
+                 '43  Boot partition is changed from 0 to '
+                 '1                                  admin   root  '
+                 '10.240.126.75   Mon Aug  3 12:23:18 2020\n'
+                 '\n'
+                 '44  Controller Reboot '
+                 'initiated.                                           admin   '
+                 'root  10.240.126.75   Mon Aug  3 12:23:35 2020\n'
+                 '\n'
+                 '45  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                        system   -    -               '
+                 'Mon Aug  3 12:24:50 2020\n'
+                 '\n'
+                 '46  Upgrade to ArubaOS_VMC_8.6.0.5_75979 on partition 0 '
+                 'Successful.        admin   root  10.240.126.75   Mon Aug  3 '
+                 '13:37:32 2020\n'
+                 '\n'
+                 '47  Controller Reboot '
+                 'initiated.                                           admin   '
+                 'root  10.240.126.75   Mon Aug  3 13:50:29 2020\n'
+                 '\n'
+                 '48  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                        system   -    -               '
+                 'Mon Aug  3 13:51:43 2020\n'
+                 '\n'
+                 '49  Controller Reboot '
+                 'initiated.                                           admin   '
+                 'root  10.240.124.251  Tue Aug  4 07:38:49 2020\n'
+                 '\n'
+                 '50  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                        system   -    -               '
+                 'Tue Aug  4 07:39:57 2020']}
 
 ============================================================>show user
 {   '_data': [   'This operation can take a while depending on number of '
@@ -362,7 +362,7 @@
 ============================================================>show ap database long
 {   'AP Database': [   {   'AP Type': '514',
                            'FQLN': 'N/A',
-                           'Flags': '2ILf',
+                           'Flags': 'ILf',
                            'Group': 'default',
                            'IP Address': '10.17.86.96',
                            'Name': 'HTS-LAB-CAP-AP06',
@@ -370,13 +370,13 @@
                            'Port': 'N/A',
                            'Serial #': 'CNH8KD01H1',
                            'Standby IP': '0.0.0.0',
-                           'Status': 'Up 6m:0s',
+                           'Status': 'Up 9m:34s',
                            'Switch IP': '10.17.84.221',
                            'User': None,
                            'Wired MAC Address': '9c:8c:d8:c9:c6:d0'},
                        {   'AP Type': '105',
                            'FQLN': 'N/A',
-                           'Flags': '2IL',
+                           'Flags': 'IL',
                            'Group': 'default',
                            'IP Address': '10.17.86.89',
                            'Name': 'NaaS_Demo_AP105',
@@ -384,7 +384,7 @@
                            'Port': 'N/A',
                            'Serial #': 'AL0268198',
                            'Standby IP': '0.0.0.0',
-                           'Status': 'Up 10m:29s',
+                           'Status': 'Up 3m:38s',
                            'Switch IP': '10.17.84.221',
                            'User': None,
                            'Wired MAC Address': 'd8:c7:c8:c1:40:33'}],
@@ -407,6 +407,7 @@
                  'RAP; z = Datazone AP',
                  'p = In deep-sleep status',
                  '4 = WiFi Uplink',
+                 'r = Power Restricted; T = Thermal ShutDown',
                  '2'],
     '_meta': [   'Name',
                  'Group',
@@ -437,8 +438,12 @@
                  '0',
                  '0',
                  'K = 802.11K Enabled; W = 802.11W Enabled; 3 = WPA3 BSS; O = '
-                 'OWE Transition mode OWE BSS; o = OWE Transition mode Open '
-                 'BSS; M = WPA3-SAE mixed mode BSS; I = Imminent VAP Down'],
+                 'Enhanced-open BSS with transition mode; o = Enhanced-open '
+                 'transition mode open BSS; M = WPA3-SAE mixed mode BSS; E = '
+                 'Enhanced-open BSS without transition mode; m = Agile '
+                 'Multiband (MBO) BSS; c = MBO Cellular Data Capable BSS; I = '
+                 'Imminent VAP Down; T = Individual TWT Enabled; t = Broadcast '
+                 'TWT Enabled; D = VLAN Discovered;'],
     '_meta': [   'bss',
                  'ess',
                  'port',
@@ -469,7 +474,7 @@
 ============================================================>show ap debug counters
 {   'AP Counters': [   {   'AP Boots Acked': '0',
                            'AP Boots Sent': '0',
-                           'Bootstraps (Total)': '2          (1430 )',
+                           'Bootstraps (Total)': '1          (1    )',
                            'Configs Acked': '0',
                            'Configs Sent': '0',
                            'Crash': 'N',
@@ -479,10 +484,10 @@
                            'Group': 'default',
                            'IP Address': '10.17.86.96',
                            'Name': 'HTS-LAB-CAP-AP06',
-                           'Reboots': '1428'},
+                           'Reboots': '863'},
                        {   'AP Boots Acked': '0',
                            'AP Boots Sent': '0',
-                           'Bootstraps (Total)': '2          (6403 )',
+                           'Bootstraps (Total)': '1          (2    )',
                            'Configs Acked': '0',
                            'Configs Sent': '0',
                            'Crash': 'N',
@@ -492,7 +497,7 @@
                            'Group': 'default',
                            'IP Address': '10.17.86.89',
                            'Name': 'NaaS_Demo_AP105',
-                           'Reboots': '6398'}],
+                           'Reboots': '476'}],
     '_data': [   'Increment/Decrement/Active-Increment/Active-Decrement/Standby-Increment/Standby-Decrement',
                  'G-Increment/G-Decrement/G-Active-Increment/G-Active-Decrement/G-Standby-Increment/G-Standby-Decrement',
                  'AP-Flags/HA-Flags/AP-Flag-Standby/HA-Flag-Standby',
@@ -517,7 +522,7 @@
 ============================================================>show switches
 {   'All Switches': [   {   'Config ID': '99',
                             'Config Sync Time (sec)': '0',
-                            'Configuration State': 'CONFIG ROLLBACK',
+                            'Configuration State': 'CONFIG DISASTER RECOVERY',
                             'IP Address': '10.17.84.221',
                             'IPv6 Address': 'None',
                             'Location': 'Building1.floor1',
@@ -525,7 +530,7 @@
                             'Name': 'Naas-VMC-1',
                             'Status': 'up',
                             'Type': 'MD',
-                            'Version': '8.5.0.9-FIPS_75468'}],
+                            'Version': '8.6.0.5_75979'}],
     '_data': ['1'],
     '_meta': [   'IP Address',
                  'IPv6 Address',
@@ -544,7 +549,7 @@
     '_data': [   'License Entries: 0',
                  'Flags: A - auto-generated; E - enabled; S - Subscription; R '
                  '- reboot/activation key required to activate; D - Not '
-                 'enabled on license client',
+                 'enabled on license client; M - Master Token generated',
                  'Note: Time under &#39;Installed&#39; for Subscription '
                  'licenses is the license generation time.'],
     '_meta': [   'Key',
@@ -556,7 +561,7 @@
 ============================================================>show running-config
 {   '_data': [   'Building Configuration...\n'
                  ' \n'
-                 'version 8.5\n'
+                 'version 8.6\n'
                  'hostname "Naas-VMC-1"\n'
                  'clock timezone America/Los_Angeles -07 00\n'
                  '!\n'
@@ -1193,6 +1198,7 @@
                  '!\n'
                  '\n'
                  'crypto isakmp policy 20\n'
+                 '    encryption aes256\n'
                  '    authentication pre-share\n'
                  '!\n'
                  '\n'
@@ -1201,34 +1207,41 @@
                  '!\n'
                  '\n'
                  'crypto isakmp policy 10002\n'
+                 '    encryption aes256\n'
                  '    authentication rsa-sig\n'
                  '!\n'
                  '\n'
                  'crypto isakmp policy 10003\n'
+                 '    encryption aes256\n'
                  '    authentication pre-share\n'
                  '!\n'
                  '\n'
                  'crypto isakmp policy 10004\n'
                  '    version v2\n'
+                 '    encryption aes256\n'
                  '    authentication rsa-sig\n'
                  '!\n'
                  '\n'
                  'crypto isakmp policy 10005\n'
+                 '    encryption aes256\n'
                  '    authentication pre-share\n'
                  '!\n'
                  '\n'
                  'crypto isakmp policy 10006\n'
                  '    version v2\n'
+                 '    encryption aes128\n'
                  '    authentication rsa-sig\n'
                  '!\n'
                  '\n'
                  'crypto isakmp policy 10007\n'
                  '    version v2\n'
+                 '    encryption aes128\n'
                  '    authentication pre-share\n'
                  '!\n'
                  '\n'
                  'crypto isakmp policy 10008\n'
                  '    version v2\n'
+                 '    encryption aes128\n'
                  '    hash sha2-256-128\n'
                  '    group 19\n'
                  '    authentication ecdsa-256\n'
@@ -1237,6 +1250,7 @@
                  '\n'
                  'crypto isakmp policy 10009\n'
                  '    version v2\n'
+                 '    encryption aes256\n'
                  '    hash sha2-384-192\n'
                  '    group 20\n'
                  '    authentication ecdsa-384\n'
@@ -1245,16 +1259,20 @@
                  '\n'
                  'crypto isakmp policy 10012\n'
                  '    version v2\n'
+                 '    encryption aes256\n'
                  '    authentication rsa-sig\n'
                  '!\n'
                  '\n'
                  'crypto isakmp policy 10013\n'
+                 '    encryption aes256\n'
                  '    authentication pre-share\n'
                  '!\n'
                  '\n'
                  'crypto isakmp policy 10014\n'
                  '    version v2\n'
+                 '    encryption aes256\n'
                  '    hash sha2-256-128\n'
+                 '    group 14\n'
                  '    authentication pre-share\n'
                  '    prf prf-hmac-sha256\n'
                  '!\n'
@@ -1274,7 +1292,17 @@
                  'crypto dynamic-map default-rap-ipsecmap 10001\n'
                  '    version v2\n'
                  '    set transform-set "default-gcm256" "default-gcm128" '
-                 '"default-3rd-ikev2-transform" "default-rap-transform"\n'
+                 '"default-rap-transform" \n'
+                 '!\n'
+                 '\n'
+                 'crypto dynamic-map default-rap-ipsecmap-gcm 10001\n'
+                 '    version v2\n'
+                 '    set transform-set "default-gcm256" "default-gcm128" \n'
+                 '!\n'
+                 '\n'
+                 'crypto dynamic-map default-rap-ipsecmap-aes 10001\n'
+                 '    version v2\n'
+                 '    set transform-set "default-rap-transform" \n'
                  '!\n'
                  '\n'
                  'crypto dynamic-map default-dynamicmap 10000\n'
@@ -1329,7 +1357,7 @@
                  'default-controller transport udp \n'
                  '\n'
                  '\n'
-                 'stm mon-update-queue 2226\n'
+                 'stm mon-update-queue 2566\n'
                  '\n'
                  'ssh mgmt-auth public-key\n'
                  'ssh mgmt-auth username/password\n'
@@ -1369,6 +1397,7 @@
                  '    cp-bandwidth-contract l2-other 976\n'
                  '    cp-bandwidth-contract auth 976\n'
                  '    cp-bandwidth-contract ike 1953\n'
+                 '    cp-bandwidth-contract ippkt-err 128\n'
                  '    amsdu\n'
                  '    dpi\n'
                  'firewall wireless-bridge-aging\n'
@@ -1428,7 +1457,7 @@
                  '!\n'
                  'aaa authentication-server radius "CPPM"\n'
                  '    host "10.17.84.223"\n'
-                 '    key 09bbdc6840e7bd417b1bdbd1a7763bf756c1c7609f633954\n'
+                 '    key 4f0cf5418a52c374e7247ff04fd930bccd3c1be870669b0b\n'
                  '!\n'
                  'aaa authentication-server radius "NaaS-CPPM-1"\n'
                  '    host "10.17.84.223"\n'
@@ -1588,6 +1617,7 @@
                  'aaa password-policy mgmt\n'
                  '!\n'
                  'control-plane-security\n'
+                 '    no cpsec-enable\n'
                  '    auto-cert-prov\n'
                  '!\n'
                  'ids management-profile\n'
@@ -1607,6 +1637,10 @@
                  'file syncing profile\n'
                  '!\n'
                  'ucc skype4b\n'
+                 '!\n'
+                 'ucc webrtc\n'
+                 '!\n'
+                 'ucc custom-sip\n'
                  '!\n'
                  'ucc rtpa-config\n'
                  '!\n'
@@ -1733,11 +1767,11 @@
                  '!\n'
                  'ap system-profile "default"\n'
                  '    ap-console-password '
-                 '96e7f3d7c21cd0d9137792c5eb9be8d5a1eabf2ae3cf7a26\n'
+                 '030a8775e2c7a014629bcc6b13d1e050d23225f7b7eff9c1\n'
                  '!\n'
                  'ap system-profile "NoAuthApSystem"\n'
                  '    ap-console-password '
-                 'df3752dc6a76ab9d4411fadea52c3fd8c93bd52b42ac0db5\n'
+                 'e8c861b71e2ae20fb0944a1c8618b40d86c50ab5cb1ef920\n'
                  '!\n'
                  'ap lldp profile "default"\n'
                  '!\n'
@@ -1950,7 +1984,7 @@
                  'wlan ssid-profile "WAU-TEST_1_ssid_prof"\n'
                  '    essid "WAU-TEST_1"\n'
                  '    wpa-passphrase '
-                 '69712eac2371705184dd127965c352a3b737e5be5d87f753\n'
+                 'e57bfb76ef56bbcfeb3138695921f536ad184a3acfb0fb96\n'
                  '    opmode wpa2-psk-aes\n'
                  '!\n'
                  'wlan hotspot advertisement-profile "default"\n'
@@ -2268,6 +2302,7 @@
                  'snmp-server trap disable wlsxNWebCCLicenseEnforcement\n'
                  'snmp-server trap disable wlsxOutOfRangeTemperature\n'
                  'snmp-server trap disable wlsxOutOfRangeVoltage\n'
+                 'snmp-server trap disable wlsxPhonyBSSIDDetected\n'
                  'snmp-server trap disable wlsxPowerSupplyFailure\n'
                  'snmp-server trap disable wlsxPowerSupplyMissing\n'
                  'snmp-server trap disable wlsxProcessDied\n'
@@ -2279,6 +2314,7 @@
                  'snmp-server trap disable wlsxStationRemovedFromBlackList\n'
                  'snmp-server trap disable wlsxSwitchIPChanged\n'
                  'snmp-server trap disable wlsxSwitchRoleChange\n'
+                 'snmp-server trap disable wlsxTHERMALSHUTDOWN\n'
                  'snmp-server trap disable wlsxUserAuthenticationFailed\n'
                  'snmp-server trap disable wlsxUserEntryAuthenticated\n'
                  'snmp-server trap disable wlsxUserEntryChanged\n'
@@ -2319,6 +2355,7 @@
                  '    tracking master-up-time 30 add 20\n'
                  '    no shutdown\n'
                  '!\n'
+                 '\n'
                  'end']}
 
 ============================================================>show boot
@@ -2326,18 +2363,18 @@
 
 ============================================================>show version
 {   '_data': [   'Aruba Operating System Software.\n'
-                 'ArubaOS (MODEL: ArubaMC-VA-US), Version 8.5.0.9-FIPS\n'
+                 'ArubaOS (MODEL: ArubaMC-VA-US), Version 8.6.0.5\n'
                  'Website: http://www.arubanetworks.com\n'
                  '(c) Copyright 2020 Hewlett Packard Enterprise Development '
                  'LP.\n'
-                 'Compiled on 2020-05-13 at 23:08:14 UTC (build 75468) by '
+                 'Compiled on 2020-06-25 at 03:11:37 UTC (build 75979) by '
                  'p4build\n'
                  '\n'
                  'BIOS Version: Phoenix Technologies LTD, 6.00\n'
                  'Built: 12/12/2018\n'
                  '\n'
-                 'Switch uptime is 4 days 8 hours 56 minutes 9 seconds\n'
-                 'Reboot Cause: Master Initiated Reboot (Intent:cause: 86:50)\n'
+                 'Switch uptime is 2 hours 6 minutes 36 seconds\n'
+                 'Reboot Cause: User reboot (Intent:cause: 86:50)\n'
                  'Supervisor Card\n'
                  'Processor(s):\n'
                  'Total CPUs :       3,    Sockets : 1,    Cores Per CPU :  3\n'
