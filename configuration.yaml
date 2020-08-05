@@ -11,7 +11,7 @@ Upgrade:
     #image_build: 76207
     host: 10.17.84.220:4343
     #disk: 0
-    upload_type: tftp
+    upload_type: ftp
   - hostname: NaaS-VMC-1
     type: MD
     image_file_name: ArubaOS_VMC_8.6.0.5_75979
@@ -23,7 +23,7 @@ Upgrade:
     #image_build: 76207
     host: 10.17.84.221:4343
     #disk: 0
-    upload_type: tftp
+    upload_type: ftp
 
 CheckList_MM:
   - show: show clock
@@ -82,6 +82,10 @@ Validate controller sync before upgrade: True
 Validate controller up before upgrade: True
 
 tftp: 10.17.84.225
+
+ftp: 10.17.84.225
+ftp_username: admin
+ftp_password: admin123456
 
 Pre_image_AP: True
 max_ap_image_load: 10
