@@ -21,8 +21,10 @@ import textfsm
 from colorama import init
 from colorama import Fore, Back, Style
 
+# Init color screen
 init()
 
+# Defining cli color codes
 _info = Back.BLACK+Fore.WHITE+Style.BRIGHT
 _warning = Back.BLACK+Fore.YELLOW+Style.DIM
 _error = Back.RED+Fore.WHITE+Style.BRIGHT
@@ -82,6 +84,7 @@ class Aruba_upgrade():
 		self.copy_tftp_system = "https://{}/v1/configuration/object/copy_tftp_system?UIDARUBA={}"
 		self.copy_tftp_system_web = "https://{}/screens/cmnutil/ncftp.html"
 		self.print = pprint.PrettyPrinter(indent=4)
+		self.login_sessions = dict()
 
 	def yes_no(self,msg="=> Do you want to continue (Y/N)"):
 		while True:
@@ -171,8 +174,31 @@ class Aruba_upgrade():
 		finally:
 			print(_info+"=> YAML validation {}".format(v_status))
 
-	def login(self,host_ip):
+	def get_session(self,host_ip,new_session=False):
 		try:
+
+			try:
+				# Try to use previous session
+				if new_session == False:
+					session = self.login_sessions.get(host_ip)
+					if session == None:
+						# Session not there for host_ip
+						pass;
+					else:
+						# Session already present
+						# Validating session live status
+						if session[0] == True:
+							r_session = session[1]
+							UIDARUBA = session[2]
+							get_clock = self.api_show_cmd.format(host_ip,"show clock",UIDARUBA)
+							res = r_session.get(get_clock,verify=False)
+							if res.status_code == 200:
+								# Session valid
+								print(_normal+" "*120+_success+"=> Session Valid : {}".format(host_ip))
+								return True,r_session,UIDARUBA
+			except Exception:
+				logger.exception("get_session:")
+
 			login_url = "https://{}/v1/api/login".format(host_ip)
 
 			auth = self.config.get("Authentication")
@@ -195,6 +221,8 @@ class Aruba_upgrade():
 				print(_failed+" "*120+"=> Login Failed : {} => {}".format(host_ip,login_msg))
 				return False,login_status
 
+
+			self.login_sessions.update({host_ip:[True,r_session,UIDARUBA]})
 			return True,r_session,UIDARUBA
 		
 		except requests.exceptions.ConnectTimeout:
@@ -244,7 +272,7 @@ class Aruba_upgrade():
 		# Copy flash file to tftp server
 		try:
 			jdata = {"srcfilename":src_file,"destfilename":dst_file,"tftphost":tftphost}
-			login_status = self.login(host_ip)
+			login_status = self.get_session(host_ip)
 			session = None
 			if login_status[0] == True:
 				session = login_status[1]
@@ -272,7 +300,8 @@ class Aruba_upgrade():
 		except Exception:
 			logger.exception("flash_copy_flash_tftp: ")
 		finally:
-			self.logout(session,host_ip)
+			pass;
+			#self.logout(session,host_ip)
 
 	def validating_pre_check(self,single_host,host_output,xlw):
 		# 1) Validate current image version
@@ -402,7 +431,7 @@ class Aruba_upgrade():
 				pyobj_file = open(os.path.join(log_file_path,_host+".pyobj"),"wb")
 				
 				session = None
-				login_status = self.login(host)
+				login_status = self.get_session(host)
 
 				if login_status[0] == True:
 					session = login_status[1]
@@ -452,7 +481,7 @@ class Aruba_upgrade():
 					print(_failed+"Precheck failed for => {}:{}".format(hostname,host))
 					if self.yes_no() == False: exit(0)
 
-				self.logout(session,host)
+				#self.logout(session,host)
 				log_file.close()
 				pyobj_file.close()
 
@@ -468,7 +497,7 @@ class Aruba_upgrade():
 	def upload_image_tftp_old(self,hostname,host_ip,img_file,disk,tftp_ip):
 		# Copy file using TFTP , API method
 		try:
-			login_status = self.login(host_ip)
+			login_status = self.get_session(host_ip)
 			
 			if login_status[0] == True:
 				session = login_status[1]
@@ -503,7 +532,7 @@ class Aruba_upgrade():
 	def upload_image_from_server(self,hostname,host_ip,img_file,disk,server_ip,server_type):
 		# Copy file using TFTP , webUI API method
 		try:
-			login_status = self.login(host_ip)
+			login_status = self.get_session(host_ip)
 			
 			if login_status[0] == True:
 				session = login_status[1]
@@ -553,7 +582,7 @@ class Aruba_upgrade():
 
 	def upload_image_http(self,host_ip,img_file,disk):
 		try:
-			login_status = self.login(host_ip)
+			login_status = self.get_session(host_ip)
 
 			headers = {}
 
@@ -584,14 +613,14 @@ class Aruba_upgrade():
 				print(res.content)
 				print(_success+"=> Completed Upload image file to MD: {} AOS: {}".format(host_ip,img_file))
 				
-				self.logout(session,host_ip)
+				#self.logout(session,host_ip)
 		except Exception:
 			logger.exception("upload_image_http: ")
 
 	def execute_cmd(self,host_ip,cmds):
 		try:
 			out_cmd = {}
-			login_status = self.login(host_ip)
+			login_status = self.get_session(host_ip)
 			if login_status[0] == True:
 				session = login_status[1]
 				UIDARUBA = login_status[2]
@@ -608,7 +637,7 @@ class Aruba_upgrade():
 						res_json = res.json()
 						out_cmd.update({cmd:res_json})
 
-				self.logout(session,host_ip)
+				#self.logout(session,host_ip)
 				return out_cmd
 		except Exception:
 			logger.exception("get_image_details: ")
@@ -710,7 +739,7 @@ class Aruba_upgrade():
 			while last_skip == False and valid_state == False:
 				try:
 					upload_not_required = True
-					login_status = self.login(host_ip)
+					login_status = self.get_session(host_ip)
 					if login_status[0] == True:
 						session = login_status[1]
 						UIDARUBA = login_status[2]
@@ -731,19 +760,19 @@ class Aruba_upgrade():
 									p = response.get("_result").get("status_str")
 									print(_success+"=> AP Pre-load Success:{}-{} => {}".format(host_name,host_ip,p))
 									valid_state = True
-									self.logout(session,host_ip)
+									#self.logout(session,host_ip)
 								else:
 									p = response.get("_result").get("status_str")
 									print(_failed+"**=> AP Pre-load Failed:{}-{} => {}".format(host_name,host_ip,p))
 							else:
 								raise TypeError("Response not having 'ap_image_preload' field")
 				except TypeError:
-					self.logout(session,host_ip)
+					#self.logout(session,host_ip)
 					print(_failed+"**=> Failed")
 					logger.exception("AP_IMAGE_PRELOAD:")
 
 				except Exception:
-					self.logout(session,host_ip)
+					#self.logout(session,host_ip)
 					print(_failed+"**=> Failed")
 					logger.exception("AP_IMAGE_PRELOAD POST: ")
 				finally:
@@ -894,7 +923,7 @@ class Aruba_upgrade():
 		try:
 			global last_skip
 			rebooted = False
-			login_status = self.login(host_ip)
+			login_status = self.get_session(host_ip)
 			if login_status[0] == True:
 				session = login_status[1]
 				UIDARUBA = login_status[2]
