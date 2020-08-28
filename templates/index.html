@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Aruba Airwave Summary</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous">
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="static/DataTables/datatables.min.css"/>
+ 
+  <script type="text/javascript" src="static/DataTables/datatables.min.js"></script>
+
+
+</head>
+
+<body overflow-x: hidden;>
+
+
+<style>
+
+.row_selected td {
+    background-color: black !important; /* Add !important to make sure override datables base styles */
+ }
+
+</style>
+
+
+<nav class="navbar navbar-expand-md navbar-light bg-light border-dark">
+    <a href="#" class="navbar-brand">
+        <img src="static/title.png" height="28" alt="CoolBrand">
+    </a>
+    
+    <h6 style="margin-top: 6px;"><span class="badge badge-light" style="margin-top: 8px; color: #21252994;">Aruba Wireless Upgrade</span></h6>
+
+    <!--<h6 style="margin-top: 12px;"><span class="badge badge-info" id="total_clients">Total Clients : 5</span></h6>-->
+    
+     <ul class="navbar-nav">
+    <li class="nav-item">
+       <button type="button" class="btn btn-outline-primary active" id="upgrade" onclick="upgrade()" >Upgrade</button>
+    </li>
+    <li class="nav-item">
+      <button type="button" class="btn btn-outline-secondary" id="new_execution" onclick="new_execution()">Create Execution</button>
+    </li>
+    <li class="nav-item">
+      <button type="button" class="btn btn-outline-success" id="history" onclick="show_history()">Execution history</button>
+    </li>
+    </ul>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+       
+        <div class="navbar-nav ml-auto">
+            <span class="badge badge-danger" id="load-status">Loading...</span>
+        </div>
+    </div>
+</nav>
+
+<br>
+
+
+
+<!-- Select upgrade file -  Modal -->
+  <div class="modal fade" id="select_upgrade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid monitor-col" id="monitor-1">
+
+
+<div class="row" style="margin-right: 0px"> 
+
+<div class="col-sm-6" id="table_1" style="background-color:#f8f9fa">
+
+<button class="btn btn-light" style="width:90%">
+  <span class="spinner-border spinner-border-sm"></span>
+  Upgrading Controllers 123456 asdasd asdasdasd
+</button>
+
+</div>
+
+<div class="col-sm-6" id="table_1" style="background-color:#f8f9fa">
+<button type="button" class="btn btn-warning btn-sm">Pause Upgrade</button>
+<button type="button" class="btn btn-danger btn-sm">Stop Upgrade</button>
+</div>
+
+</div>
+
+</br>
+
+<!-- Table -->
+<div class="row" style="margin-right: 0px">
+      
+      <div class="col-sm-8" id="table_1">
+        <table id="execution_table" class="display compact" cellspacing="0"> 
+        <tbody id="execution_body"></tbody>
+        </table>
+      </div>
+      
+      <div class="col-sm-4">
+      <table id="execution_events_table" class="display compact hover" cellspacing="0"> </table>
+      </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+<script>
+
+  
+var dataSet = [
+    [ 2,"Tiger Nixon", "System Architect", "Edinburgh", "5421", "Pending" ],
+    [ 1,"Garrett Winters", "Accountant", "Tokyo", "8422", "Completed"],
+    [ 3,"Ashton Cox", "Junior Technical Author", "San Francisco", "1562", "Running"],
+    [ 5,"Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "6224", "Completed"],
+    [ 4,"Airi Satou", "Accountant", "Tokyo", "5407", "Completed"],
+    [ 6,"Brielle Williamson", "Integration Specialist", "New York", "4804", "Completed"],
+    [ 7,"Herrod Chandler", "Sales Assistant", "San Francisco", "9608", "Pending"],
+    [ 8,"Rhona Davidson", "Integration Specialist", "Tokyo", "6200", "Completed"],
+    [ 9,"Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "Paused" ],
+    [ 10,"Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "Pending" ],
+    [ 12,"Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "Paused" ],
+    [ 11,"Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "Failed"]
+    
+];
+
+
+
+// Adding action on creating new row in exection_table
+function new_row_action( row, data, dataIndex){
+try{
+
+if( data[5] ==  "Running"){
+$(row).children('td').slice(5, 6).addClass('bg-primary text-white');
+}
+
+if( data[5] ==  "Completed"){
+$(row).children('td').slice(5, 6).addClass('bg-success text-white');
+}
+
+if( data[5] ==  "Pending"){
+$(row).children('td').slice(5, 6).addClass('bg-secondary text-white');
+}
+
+if( data[5] ==  "Paused"){
+$(row).children('td').slice(5, 6).addClass('bg-warning text-white');
+}
+
+if( data[5] ==  "Failed"){
+//$(row).addClass('bg-danger text-white');
+}
+
+}catch(e){console.log(e);}
+}
+
+
+
+
+$(document).ready(function() {
+    $('#execution_table').DataTable( {
+        "responsive": true,
+        "select": true,
+        "data": dataSet,
+        "columns": [
+            { title: "SNo"},
+            { title: "Type" },
+            { title: "Host" },
+            { title: "Version" },
+            { title: "Status" },
+            { title: "Action" }
+        ],
+        "columnDefs": [{ "width": "1%", "targets": 0 }
+        ],
+        "scrollY":        "300px",
+        "scrollCollapse": true,
+        "paging":         false,
+        "createdRow" : new_row_action
+
+
+
+} );
+});
+
+
+event_data = [["SSSSSS"]]
+
+$(document).ready(function() {
+    $('#execution_events_table').DataTable( {
+        data: event_data,
+        columns: [
+            { title: "Events" }
+        ],
+        "scrollY":        "400px",
+        "scrollCollapse": true,
+        "paging":         false,
+        "order": [[ 0, "desc" ]]
+      
+      });
+
+} );
+
+//Set error in badge-danger
+function server_live_error(xhr, ajaxOptions, thrownError){
+
+$("#load-status").attr('class', 'badge badge-danger');
+$("#load-status").text("Server Connection Error");
+$("#load-status").fadeOut("fast").fadeIn("fast");
+
+
+}
+
+
+//Set Live
+function server_live(xhr, ajaxOptions, thrownError){
+
+$("#load-status").attr('class', 'badge badge-success');
+$("#load-status").text("Online");
+$("#load-status").fadeOut("fast").fadeIn("fast");
+
+}
+
+// Get the server live status
+function get_server_status(){
+
+try{
+
+console.log("Getting server Live status")
+
+$.ajax({
+    type: 'GET',url: '/portal/status',contentType: false,cache: false,processData:false,
+    success: server_live,error: server_live_error})
+
+}catch(err){console.log("** ==>Error get_server_status: "+err);}}
+
+
+// Upgrade function
+function upgrade(){
+
+$("#select_upgrade").modal({backdrop: "static"})
+$("#upgrade").attr('class', 'btn btn-outline-primary active');
+$("#new_execution").attr('class', 'btn btn-outline-primary');
+$("#history").attr('class', 'btn btn-outline-primary');
+
+
+
+}
+
+
+// Creating new execution 
+function new_execution(){
+
+$("#upgrade").attr('class', 'btn btn-outline-primary');
+$("#new_execution").attr('class', 'btn btn-outline-primary active');
+$("#history").attr('class', 'btn btn-outline-primary');
+
+
+
+}
+
+
+// Get update execution from server
+function get_execution_status(){
+
+
+update_execution(dataSet);
+
+}
+
+
+function equalArray(a, b) {
+    try{
+    //console.log(a)
+    //console.log(b)
+    return JSON.stringify(a) == JSON.stringify(b);
+  }catch(e){console.log(e);}
+}
+
+
+//Update the execution table
+function update_execution(device_data){
+
+
+ if(jQuery.isEmptyObject(device_data) == false){
+
+  var ex_table = $('#execution_table').dataTable();
+  
+  old_update = equalArray(ex_table.fnGetData(),device_data);
+  if(old_update != true) {
+    console.log("New execution update from server....")
+    ex_table.fnClearTable();
+    ex_table.dataTable().fnAddData(device_data);
+
+  }else
+  {
+    // No new update from server
+    console.log("No new execution update from server")
+
+  }
+  
+}
+}
+
+
+// Action on selected execution table
+function action_select(){
+
+var ex_table = $('#execution_table').dataTable();
+selected_data = ex_table.rows('.selected').data();
+console.log(selected_data);
+
+}
+
+
+// Displaing execution history
+function show_history(){
+
+$("#upgrade").attr('class', 'btn btn-outline-primary');
+$("#new_execution").attr('class', 'btn btn-outline-primary');
+$("#history").attr('class', 'btn btn-outline-primary active');
+
+
+
+}
+
+function execute_list(odd_even,t_data){
+  sno = t_data[0];
+  h_type = t_data[1];
+  host_name = t_data[2];
+  host_ip = t_data[3];
+  version = t_data[4];
+  status = t_data[5];
+
+  host = host_name +" "+ host_ip
+
+  make_table = (odd_even,t_data) =>
+    `
+    <tr role="row" class="${odd_even}">
+    <td class="sorting_1 dtr-control" id="sno_${sno}">${sno}</td>
+    <td id="dtype_${sno}"${h_type}</td>
+    <td id="host_${sno}">${host}</td>
+    <td id="version_${sno}">${version}</td>
+    <td id="status_${sno}">${status}</td>
+    <td id="act_${sno}">
+    <button class="badge badge-secondary" onclick="exe_action('${sno}')" id="action_${sno}">
+    <i class="fas fa-pause"></i>
+    </button>
+    </td>
+    </tr>
+    `
+  return make_table(odd_even,t_data)
+}
+
+
+setInterval(get_server_status,3000)
+setInterval(get_execution_status,3000)
+</script>
+
+
+
+</body>
+</html>
+

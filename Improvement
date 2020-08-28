@@ -1,0 +1,28 @@
+Pre-Check Baseline
+Auto-Validation for Pre-Check & POST-Check.
+Standardize Pre-check report.
+TFTP reachability to be checked in Pre-Check.
+Add the server reachability (AAA, NTP, Airwave).
+Include L3-redundance validation in MM, show c-cluster vlan probe status on MDs as part of Pre & POST check. 
+
+1.	Can you create a questionnaire rather than filling in the file, using the questionnaire you can create the file for upgrade. Question can have the data that you have filled in the file
+
+	a.	How many MM
+	b.	How many MD
+	c.	MM IP
+	d.	MD IP 
+	e.	Number of AP
+	f.	Upgrade method, FTP or TFTP
+	g.	If FTP enter FTP credentials
+	h.	TFTP server IP/FTP server IP 
+	i.	Upgrade image name
+
+2.	Can we include the logic to break the MM upgrade, for example if I have 2 cluster, can I upgrade only one cluster
+
+3.	Can you capture the below data also as part of the pre-checks
+	a.	Show log
+	b.	Show run
+
+4.	I hope we can always stop the script as & when required
+
+===========

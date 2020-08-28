@@ -1,141 +1,16 @@
-2020-08-06 05:04:56,819 > INFO > Starting Aruba Upgrade....
-2020-08-06 05:08:21,629 > INFO > Starting Aruba Upgrade....
-2020-08-06 05:22:25,058 > INFO > Starting Aruba Upgrade....
-2020-08-06 05:25:35,010 > INFO > Starting Aruba Upgrade....
-2020-08-06 05:25:41,799 > INFO > Starting Aruba Upgrade....
-2020-08-06 05:50:21,145 > INFO > Starting Aruba Upgrade....
-2020-08-07 02:21:57,319 > INFO > Starting Aruba Upgrade....
-2020-08-07 02:35:29,831 > INFO > Starting Aruba Upgrade....
-2020-08-07 02:48:21,285 > INFO > Starting Aruba Upgrade....
-2020-08-07 03:13:11,104 > INFO > Starting Aruba Upgrade....
-2020-08-07 03:16:49,976 > INFO > Starting Aruba Upgrade....
-2020-08-07 03:28:56,629 > INFO > Starting Aruba Upgrade....
-2020-08-07 03:32:59,495 > INFO > Starting Aruba Upgrade....
-2020-08-07 03:35:54,869 > INFO > Starting Aruba Upgrade....
-2020-08-07 03:53:47,848 > INFO > Starting Aruba Upgrade....
-2020-08-07 03:57:45,971 > INFO > Starting Aruba Upgrade....
-2020-08-07 03:59:08,256 > INFO > Starting Aruba Upgrade....
-2020-08-07 04:18:22,870 > INFO > Starting Aruba Upgrade....
-2020-08-07 06:36:00,945 > INFO > Starting Aruba Upgrade....
-2020-08-07 06:36:31,934 > ERROR > Login error:10.17.84.220:4343 
-Traceback (most recent call last):
-  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
-    (self._dns_host, self.port), self.timeout, **extra_kw
-  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
-    raise err
-  File "d:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
-    sock.connect(sa)
-TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
-    chunked=chunked,
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
-    self._validate_conn(conn)
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
-    conn.connect()
-  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
-    conn = self._new_conn()
-  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
-    self, "Failed to establish a new connection: %s" % e
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000020BA1770FD0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
-    timeout=timeout
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
-    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
-  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
-    raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000020BA1770FD0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "Aruba_Wireless_Upgrade_V1.2.py", line 212, in get_session
-    res = r_session.post(login_url, data = login_post,verify=False)
-  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
-  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
-    resp = self.send(prep, **send_kwargs)
-  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
-    r = adapter.send(request, **kwargs)
-  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
-    raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000020BA1770FD0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
-2020-08-07 06:37:48,079 > INFO > Starting Aruba Upgrade....
-2020-08-07 06:41:13,959 > ERROR > upload_image_tftp
+2020-08-07 15:05:08,467 > INFO > Starting Aruba Upgrade....
+2020-08-07 16:07:33,067 > INFO > Starting Aruba Upgrade....
+2020-08-07 16:17:41,482 > ERROR > upload_image_tftp
 Traceback (most recent call last):
   File "Aruba_Wireless_Upgrade_V1.2.py", line 664, in upload_image_from_server
     if response.find("SUCCESS") != -1:
 TypeError: argument should be integer or bytes-like object, not 'str'
-2020-08-07 06:43:00,925 > ERROR > upload_image_tftp
+2020-08-07 16:20:54,040 > ERROR > upload_image_tftp
 Traceback (most recent call last):
   File "Aruba_Wireless_Upgrade_V1.2.py", line 664, in upload_image_from_server
     if response.find("SUCCESS") != -1:
 TypeError: argument should be integer or bytes-like object, not 'str'
-2020-08-07 06:53:22,372 > ERROR > Login error:10.17.84.220:4343 
-Traceback (most recent call last):
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
-    chunked=chunked,
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
-    six.raise_from(e, None)
-  File "<string>", line 3, in raise_from
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
-    httplib_response = conn.getresponse()
-  File "d:\scripts\py\lib\http\client.py", line 1321, in getresponse
-    response.begin()
-  File "d:\scripts\py\lib\http\client.py", line 296, in begin
-    version, status, reason = self._read_status()
-  File "d:\scripts\py\lib\http\client.py", line 265, in _read_status
-    raise RemoteDisconnected("Remote end closed connection without"
-http.client.RemoteDisconnected: Remote end closed connection without response
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
-    timeout=timeout
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
-    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
-  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
-    raise six.reraise(type(error), error, _stacktrace)
-  File "d:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
-    raise value.with_traceback(tb)
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
-    chunked=chunked,
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
-    six.raise_from(e, None)
-  File "<string>", line 3, in raise_from
-  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
-    httplib_response = conn.getresponse()
-  File "d:\scripts\py\lib\http\client.py", line 1321, in getresponse
-    response.begin()
-  File "d:\scripts\py\lib\http\client.py", line 296, in begin
-    version, status, reason = self._read_status()
-  File "d:\scripts\py\lib\http\client.py", line 265, in _read_status
-    raise RemoteDisconnected("Remote end closed connection without"
-urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "Aruba_Wireless_Upgrade_V1.2.py", line 212, in get_session
-    res = r_session.post(login_url, data = login_post,verify=False)
-  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
-    return self.request('POST', url, data=data, json=json, **kwargs)
-  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
-    resp = self.send(prep, **send_kwargs)
-  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
-    r = adapter.send(request, **kwargs)
-  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
-    raise ConnectionError(err, request=request)
-requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-2020-08-07 06:57:49,106 > ERROR > Login error:10.17.84.221:4343 
+2020-08-07 16:32:22,373 > ERROR > Login error:10.17.84.220:4343 
 Traceback (most recent call last):
   File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
     chunked=chunked,
@@ -153,7 +28,7 @@ Traceback (most recent call last):
     self.do_handshake()
   File "d:\scripts\py\lib\ssl.py", line 1108, in do_handshake
     self._sslobj.do_handshake()
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+FileNotFoundError: [Errno 2] No such file or directory
 
 During handling of the above exception, another exception occurred:
 
@@ -182,7 +57,7 @@ Traceback (most recent call last):
     self.do_handshake()
   File "d:\scripts\py\lib\ssl.py", line 1108, in do_handshake
     self._sslobj.do_handshake()
-urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+urllib3.exceptions.ProtocolError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
 
 During handling of the above exception, another exception occurred:
 
@@ -197,14 +72,4 @@ Traceback (most recent call last):
     r = adapter.send(request, **kwargs)
   File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
     raise ConnectionError(err, request=request)
-requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
-2020-08-07 06:59:10,093 > ERROR > validating_pre_check : show cpuload
-Traceback (most recent call last):
-  File "Aruba_Wireless_Upgrade_V1.2.py", line 375, in validating_pre_check
-    o = re.findall(r'idle.*',out)[0]
-IndexError: list index out of range
-2020-08-07 06:59:10,099 > ERROR > summary failed
-Traceback (most recent call last):
-  File "Aruba_Wireless_Upgrade_V1.2.py", line 565, in Pre_Post_check
-    p = p + _info+" " + _free_cpu
-TypeError: can only concatenate str (not "NoneType") to str
+requests.exceptions.ConnectionError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
