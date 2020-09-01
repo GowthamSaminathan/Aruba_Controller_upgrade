@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Aruba Airwave Summary</title>
+  <title>Aruba Wireless Upgrade</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -107,7 +107,7 @@
 
 
 
-<div class="container-fluid monitor-col" id="monitor-1">
+<div class="container-fluid monitor-col upgrade_class" id="monitor-1">
 
 
 <div class="row" style="margin-right: 0px"> 
@@ -150,11 +150,273 @@
 
 
 
+<!-- PAGE-2 Starts , ------------------------Creating New Execution form start hear-->
+
+
+<div class="container new_execution_class">
+
+<!--<div class="d-flex justify-content-left">
+<h5><span class="badge badge-info">Create New Execution</span><h5>
+</div>-->
+
+<!-- Upgrade name Row -->
+
+<div class="row" style="margin-right: 0px">  
+<div class="col-sm-8">
+
+<form>
+  <div class="input-group mb-3 input-group-sm">
+     <div class="input-group-prepend">
+       <span class="input-group-text">Upgrade Name</span>
+    </div>
+    <input type="text" class="form-control input-sm" placeholder="Ex: Change CRN20211" id="p2_upgrade_name">
+
+  </div>
+</form>
+
+<form>
+  <div class="input-group mb-3 input-group-sm">
+     <div class="input-group-prepend">
+       <span class="input-group-text">AOS Source</span>
+    </div>
+    <select class="form-control input-sm" id="sel1" id="p2_upgrade_source">
+    <option>Local</option>
+    <option>TFTP</option>
+    <option>SFTP</option>
+    <option>FTP</option>
+  </select>
+   <input type="text" class="form-control" placeholder="Host" id="p2_upgrade_host">
+    <input type="text" class="form-control" placeholder="Path" id="p2_upgrade_path">
+     <input type="text" class="form-control" placeholder="Username" id="p2_upgrade_uname">
+      <input type="password" class="form-control" placeholder="Password" id="p2_upgrade_password">
+  </div>
+</form>
+
+
+
+</div>
+</div>
+
+
+
+
+
+<!-- MM details -->
+<h5>MM/MD AOS Details:</h5>
+<div class="row" style="margin-right: 0px">
+      
+<div class="col-sm-12">
+
+<div class="table-responsive">
+<table class="table table-striped table-sm">
+
+<thead>
+<tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td><input type="text" class="form-control input-sm" placeholder="MM AOS Filename" name="mm_aso_file" required="" id="p2_mm_aso_file"></td>
+<td><input type="text" class="form-control input-sm" placeholder="Version" name="mm_aso_version" required="" id="p2_mm_aso_version"></td>
+<td><input type="text" class="form-control input-sm" placeholder="Build" name="mm_aso_build" required="" id="p2_mm_aso_build"></td>
+
+   
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+</div>
+
+
+<!-- MD details -->
+
+<div class="row" style="margin-right: 0px">
+      
+<div class="col-sm-12">
+
+<div class="table-responsive">
+<table class="table  table-striped table-sm">
+
+<thead>
+<tr id="md_list_table">
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><input type="text" class="form-control" placeholder="MD AOS Filename" name="md_aso_file" required="" id="p2_md_aso_file"></td>
+<td><input type="text" class="form-control" placeholder="Version" name="md_aso_version" required="" id="p2_md_aso_version"></td>
+<td><input type="text" class="form-control" placeholder="Build" name="md_aso_build" required="" id="p2_md_aso_build"></td>
+
+
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- host details -->
+
+<div class="row" style="margin-right: 0px">
+      
+<div class="col-sm-12">
+
+<div class="table-responsive">
+<table class="table table-dark table-striped table-sm">
+
+<thead>
+<tr id="p2_new_host_row">
+<th>Device</th>
+<th>Hostname</th>
+<th>Host IP</th>
+<th>Custome</th>
+<th>Remove/Add</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+   
+</tr>
+</tbody>
+
+</table>
+</div>
+</div>
+</div>
+
+
+<!-- Save , Modify reset Row -->
+<div class="row" style="margin-right: 0px">
+      
+<div class="col-sm-12">
+
+
+<div class="d-flex justify-content-center">
+  <button type="button" class="btn btn-primary" id="p2_custome_setting_exe">Modify Custome Settings</button>&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning" id="p2_save_reset">Reset</button>&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-success" id="p2_save_all">Save All</button>
+</div>
+<br>
+<br>
+</div>
+
+
+
+</div>
+
+
+<!-- Page 2 Models start -->
+
+
+<!-- Save  Modal -->
+  <div class="modal fade" id="p2_save_status" id="p2_custome_setting">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" >
+          <h4 class="modal-title" id="p2_save_status_title">Saving Status</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" id="p2_save_status_body">
+           Please wait...
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+<!-- Modify Custome settings Modal -->
+  <div class="modal fade" id="p2_custome_setting">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" id="p2_custome_setting_title"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" id="p2_custome_setting_body">
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Edit host settings -->
+  <div class="modal fade" id="p2_host_seeting">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" id="p2_host_seeting_title"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" id="p2_host_seeting_body">
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+<!-- Page-2 End End of New Execution form -->
+
+
+
+
+
 
 
 <script>
 
-  
+
+//////////////// PAGE -1 START ////////////////////////////////////////////// 
+
+// Init the page-2
+var dev_id = 0;
+new_execution();
+$(".report_class").hide()
+$(".upgrade_class").hide()
+$(".new_execution").show()
+
 var dataSet = [
     [ 2,"Tiger Nixon", "System Architect", "Edinburgh", "5421", "Pending" ],
     [ 1,"Garrett Winters", "Accountant", "Tokyo", "8422", "Completed"],
@@ -283,26 +545,20 @@ $.ajax({
 // Upgrade function
 function upgrade(){
 
+$(".report_class").hide()
+$(".new_execution_class").hide()
+$(".upgrade_class").show()
 $("#select_upgrade").modal({backdrop: "static"})
 $("#upgrade").attr('class', 'btn btn-outline-primary active');
 $("#new_execution").attr('class', 'btn btn-outline-primary');
 $("#history").attr('class', 'btn btn-outline-primary');
-
-
-
-}
-
-
-// Creating new execution 
-function new_execution(){
-
-$("#upgrade").attr('class', 'btn btn-outline-primary');
-$("#new_execution").attr('class', 'btn btn-outline-primary active');
-$("#history").attr('class', 'btn btn-outline-primary');
-
+$(".upgrade_class").show()
 
 
 }
+
+
+
 
 
 // Get update execution from server
@@ -396,6 +652,87 @@ function execute_list(odd_even,t_data){
     `
   return make_table(odd_even,t_data)
 }
+
+
+//////////////// PAGE -1 END /////////////////////////////////////////////////
+
+//////////////// PAGE -2 START ////////////////////////////////////////////// 
+
+
+function new_device_list(id_name,t_data){
+
+  make_device_table = (id_name,t_data) =>
+    `
+
+<tr role="row" id="${id_name}_new_device">
+
+<td ><select class="form-control input-sm" id="${id_name}_device" data-live-search="true"><option>MM</option><option>MD</option><option>Select Device</option></select></td>
+
+<td><input type="text" class="form-control input-sm" placeholder="Host name" name="host_name" required="" id="${id_name}_hostname"></td>
+
+<td><input type="text" class="form-control input-sm" placeholder="Host IP" name="host_ip" required="" id="${id_name}_hostip"></td>
+<td><button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" onclick="delete_device(${id_name})"><i class="fa fa-edit"></i></button></td>
+<td><ul class="list-inline m-0">
+<li class="list-inline-item">
+</li>
+<li class="list-inline-item">
+<button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="delete_device(${id_name})"><i class="fa fa-trash"></i></button>
+</li>
+<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add" onclick="add_new_device(${id_name})"><i class="fa fa-plus"></i></button>
+
+</ul></td>
+
+</tr>`
+
+  return make_device_table(id_name,t_data)
+}
+
+
+// Creating new execution 
+function new_execution(){
+
+// Reset the page 2 form
+
+console.log("Page-2 init....");
+dev_id = 0;
+$(".upgrade_class").hide();
+$(".report_class").hide();
+$(".new_execution_class").show();
+
+$("#upgrade").attr('class', 'btn btn-outline-primary');
+$("#new_execution").attr('class', 'btn btn-outline-primary active');
+$("#history").attr('class', 'btn btn-outline-primary');
+
+
+// Add one new device 
+add_new_device(dev_id);
+
+}
+
+
+function delete_device(dev_id){
+
+$("#"+dev_id).remove()
+
+}
+
+
+function add_new_device(caller_id){
+
+//console.log(caller_id);
+dev_id = dev_id + 1;
+console.log(dev_id);
+
+new_dev = new_device_list(dev_id,"");
+console.log(new_dev);
+
+$('#p2_new_host_row').eq(caller_id-1).after(new_dev);
+
+
+}
+
+
+//////////////// PAGE -2 END ////////////////////////////////////////////// 
 
 
 setInterval(get_server_status,3000)
