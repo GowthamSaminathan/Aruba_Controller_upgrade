@@ -204,10 +204,10 @@
        <span class="input-group-text">AOS Source</span>
     </div>
     <select class="form-control input-sm"  id="p2_upgrade_source">
-    <option>Local</option>
-    <option>TFTP</option>
-    <option>SFTP</option>
-    <option>FTP</option>
+    <option>local</option>
+    <option>tftp</option>
+    <option>sftp</option>
+    <option>ftp</option>
   </select>
    <input type="text" class="form-control" placeholder="Host" id="p2_upgrade_host">
     <input type="text" class="form-control" placeholder="Path" id="p2_upgrade_path">
@@ -296,7 +296,7 @@
 <div class="col-sm-12">
 
 <div class="table-responsive">
-<table class="table table-dark table-striped table-sm" >
+<table class="table table-dark table-striped table-sm" id="p2_upgrade_hosts_list">
 
 <thead>
 <tr id="p2_new_host_row">
@@ -339,7 +339,7 @@
 
 <div class="d-flex justify-content-center">
   <button type="button" class="btn btn-primary" id="p2_custome_setting_exe" onclick="custome_settings()">Modify Custome Settings</button>&nbsp;&nbsp;&nbsp;
-  <button type="button" class="btn btn-warning" id="p2_save_reset">Reset</button>&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning" id="p2_save_reset" onclick="reset_settings()">Reset</button>&nbsp;&nbsp;&nbsp;
   <button type="button" class="btn btn-success" id="p2_save_all">Save All</button>
 </div>
 <br>
@@ -452,15 +452,28 @@
             <td> </td></tr>
 
             <tr>
-            <td><h6><span class="badge badge-dark">Pre & Post check commands:</span></h6></td>
+            <td><h6><span class="badge badge-dark">MM Checklist commands:</span></h6></td>
             <td><div class="form-group">
             
-            <textarea class="form-control" rows="5" id="comment"></textarea>
+            <textarea class="form-control" rows="5"></textarea>
             </div>
             </td>
             <td>
 
             </td></tr>
+
+            <tr>
+            <td><h6><span class="badge badge-dark">MD Checklist commands:</span></h6></td>
+            <td><div class="form-group">
+            
+            <textarea class="form-control" rows="5"></textarea>
+            </div>
+            </td>
+            <td>
+
+            </td></tr>
+
+
           
           </tbody>
 
@@ -537,23 +550,23 @@
         </div>
       </form>
 
-        <form>
+        <!-- <form>
         <div class="input-group mb-3 input-group-sm">
            <div class="input-group-prepend">
              <span class="input-group-text">AOS Source</span>
           </div>
           <select class="form-control input-sm" id="p2_host_upgrade_source">
-          <option>Local</option>
-          <option>TFTP</option>
-          <option>SFTP</option>
-          <option>FTP</option>
+          <option>local</option>
+          <option>tftp</option>
+          <option>sftp</option>
+          <option>ftp</option>
         </select>
          <input type="text" class="form-control" placeholder="Host" id="p2_host_upgrade_host">
           <input type="text" class="form-control" placeholder="Path" id="p2_host_upgrade_path">
            <input type="text" class="form-control" placeholder="Username" id="p2_host_upgrade_uname">
             <input type="password" class="form-control" placeholder="Password" id="p2_host_upgrade_password">
         </div>
-      </form>
+      </form> -->
 
         </div>
         
@@ -775,7 +788,7 @@ function get_server_status(){
 
 try{
 
-console.log("Getting server Live status")
+//console.log("Getting server Live status")
 
 $.ajax({
     type: 'GET',url: '/portal/status',contentType: false,cache: false,processData:false,
@@ -838,7 +851,7 @@ function update_execution(device_data){
   }else
   {
     // No new update from server
-    console.log("No new execution update from server")
+    //console.log("No new execution update from server")
 
   }
   
@@ -894,17 +907,43 @@ function execute_list(odd_even,t_data){
 
 function new_device_list(id_name,t_data){
 
+mm_device = "";
+md_device = "";
+hostname = "";
+hostip = "";
+
+if(t_data["device"] == "MM")
+{
+mm_device = 'selected="selected"'
+}
+
+if(t_data["device"] == "MD")
+{
+md_device = 'selected="selected"'
+}
+
+if(t_data["hostname"] != undefined)
+{
+hostname = t_data["hostname"]
+}
+
+if(t_data["hostip"] != undefined)
+{
+hostip = t_data["hostip"]
+}
+
+console.log(hostip)
 console.log("Received:"+id_name)
-  make_device_table = (id_name,t_data) =>
+  make_device_table = (id_name,mm_device,md_device,hostname,hostip) =>
     `
 
 <tr role="row" id="${id_name}_new_device">
 <<td ></td>
-<td ><select class="form-control input-sm" id="${id_name}_device" data-live-search="true"><option>MM</option><option>MD</option><option>Select Device</option></select></td>
+<td ><select class="form-control input-sm" id="${id_name}_device" data-live-search="true"><option ${mm_device}>MM</option><option ${md_device}>MD</option><option>Select Device</option>MD</select></td>
 
-<td><input type="text" class="form-control input-sm" placeholder="Host name" name="host_name" required="" id="${id_name}_hostname"></td>
+<td><input value="${hostname}" type="text" class="form-control input-sm" placeholder="Host name" name="host_name" required="" id="${id_name}_hostname"></td>
 
-<td><input type="text" class="form-control input-sm" placeholder="Host IP" name="host_ip" required="" id="${id_name}_hostip"></td>
+<td><input value="${hostip}" type="text" class="form-control input-sm" placeholder="Host IP" name="host_ip" required="" id="${id_name}_hostip"></td>
 <td><button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" onclick="host_settings(${id_name})"><i class="fa fa-edit"></i></button></td>
 <td><ul class="list-inline m-0">
 <li class="list-inline-item">
@@ -912,23 +951,181 @@ console.log("Received:"+id_name)
 <li class="list-inline-item">
 <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="delete_device('${id_name}_new_device')"><i class="fa fa-trash"></i></button>
 </li>
-<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add" onclick="add_new_device('${id_name}_new_device')"><i class="fa fa-plus"></i></button>
+<button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add" onclick="add_new_device('${id_name}_new_device','')"><i class="fa fa-plus"></i></button>
 
 </ul></td>
 
 </tr>`
 
-  return make_device_table(id_name,t_data)
+  return make_device_table(id_name,mm_device,md_device,hostname,hostip)
 }
 
 
-// Creating new execution 
-function new_execution(){
 
-// Reset the page 2 form
+function reset_settings(){
 
-console.log("Page-2 init....");
-dev_id = 0;
+console.log("Resetting host settings....")
+$("#p2_upgrade_hosts_list").empty();
+$("#p2_upgrade_name").val("");
+
+$("#p2_upgrade_host").val("");
+$("#p2_upgrade_path").val("");
+$("#p2_upgrade_uname").val("");
+$("#p2_upgrade_password").val("");
+
+$("#p2_mm_aso_file").val("");
+$("#p2_mm_aso_version").val("");
+$("#p2_mm_aso_build").val("");
+
+$("#p2_md_aso_file").val("");
+$("#p2_md_aso_version").val("");
+$("#p2_md_aso_build").val("");
+
+$("#p2_hosts_uname").val("");
+$("#p2_hosts_password").val("");
+
+}
+
+
+function add_data_to_execution_form(data){
+
+// Empty all data
+
+
+try{
+
+if(data["results"] == "success"){
+
+data = data["data"]
+console.log(data);
+
+default_settings = data["default_settings"];
+//console.log(default_settings);
+Upgrade = data["Upgrade"];
+
+AOS_Source = default_settings["AOS_Source"];
+Authentication = default_settings["Authentication"];
+MM = default_settings["MM"];
+MD = default_settings["MD"];
+Validate_Image_before_upgrade = default_settings["Validate_Image_before_upgrade"];
+Validate_controller_sync_before_upgrade = default_settings["Validate_controller_sync_before_upgrade"];
+Validate_controller_up_before_upgrade = default_settings["Validate_controller_up_before_upgrade"];
+
+// Default AOS source
+if(jQuery.isEmptyObject(AOS_Source) == false){
+aos_source_device_type = AOS_Source["device_type"];
+
+console.log(aos_source_device_type);
+
+aos_source_local_path = AOS_Source["local_path"];
+
+aos_source_ftp_host = AOS_Source["ftp_host"];
+aos_source_ftp_username = AOS_Source["ftp_username"];
+aos_source_ftp_password = AOS_Source["ftp_password"];
+aos_source_ftp_path = AOS_Source["ftp_path"];
+
+aos_source_sftp_host = AOS_Source["sftp_host"];
+aos_source_sftp_username = AOS_Source["sftp_username"];
+aos_source_sftp_password = AOS_Source["sftp_password"];
+aos_source_sftp_path = AOS_Source["sftp_path"];
+
+aos_source_tftp_host = AOS_Source["tftp_host"];
+aos_source_tftp_path = AOS_Source["tftp_path"];
+
+if(aos_source_device_type == "local")
+{
+$("#p2_upgrade_source").val("local");
+$("#p2_upgrade_path").val(aos_source_local_path);
+}
+
+if(aos_source_device_type == "ftp")
+{
+console.log("OKkkk")
+$("#p2_upgrade_source").val("ftp");
+$("#p2_upgrade_host").val(aos_source_ftp_host);
+$("#p2_upgrade_path").val(aos_source_ftp_path);
+$("#p2_upgrade_uname").val(aos_source_ftp_username);
+$("#p2_upgrade_password").val(aos_source_ftp_password);
+}
+
+if(aos_source_device_type == "sftp")
+{
+$("#p2_upgrade_source").val("sftp");
+$("#p2_upgrade_host").val(aos_source_sftp_host);
+$("#p2_upgrade_path").val(aos_source_sftp_path);
+$("#p2_upgrade_uname").val(aos_source_sftp_username);
+$("#p2_upgrade_password").val(aos_source_sftp_password);
+}
+
+if(aos_source_device_type == "tftp")
+{
+$("#p2_upgrade_source").val("tftp");
+$("#p2_upgrade_host").val(aos_source_tftp_host);
+$("#p2_upgrade_path").val(aos_source_tftp_path);
+}
+}
+
+
+if(jQuery.isEmptyObject(MM) == false)
+{
+
+$("#p2_mm_aso_file").val(MM["image_file_name"]);
+$("#p2_mm_aso_version").val(MM["image_version"]);
+$("#p2_mm_aso_build").val(MM["image_build"]);
+
+}
+
+if(jQuery.isEmptyObject(MD) == false)
+{
+
+$("#p2_md_aso_file").val(MD["image_file_name"]);
+$("#p2_md_aso_version").val(MD["image_version"]);
+$("#p2_md_aso_build").val(MD["image_build"]);
+
+}
+
+if(jQuery.isEmptyObject(Authentication) == false)
+{
+
+$("#p2_hosts_uname").val(Authentication["username"]);
+$("#p2_hosts_password").val(Authentication["password"]);
+
+}
+
+if(jQuery.isEmptyObject(Authentication) == false)
+{
+
+$("#p2_hosts_uname").val(Authentication["username"]);
+$("#p2_hosts_password").val(Authentication["password"]);
+
+}
+
+if(jQuery.isEmptyObject(Upgrade) == false)
+{
+
+jQuery.each(Upgrade, function(i, val){
+
+hostname = val["hostname"];
+device_type = val["device_type"];
+host = val["host"];
+d ={};
+d["device"] = device_type;
+d["hostname"] = hostname;
+d["hostip"] = host;
+if (i == 0){add_new_device(i+1,d);}else{
+add_new_device(i+"_new_device",d);}
+console.log(d)
+
+});
+
+}
+
+}else{
+
+
+}
+
+//console.log(data);
 $(".upgrade_class").hide();
 $(".report_class").hide();
 $(".new_execution_class").show();
@@ -939,7 +1136,40 @@ $("#history").attr('class', 'btn btn-outline-primary');
 
 
 // Add one new device 
-add_new_device(1);
+
+
+}catch(e){console.log(e);}
+
+
+}
+
+
+// Creating new execution 
+function new_execution(){
+
+// Reset the page 2 form
+
+console.log("Page-2 init....");
+dev_id = 0;
+
+// Reading default template from server
+fname_down = "/portal/read_config?config_name=default.yaml"
+$(function(){
+    $.ajax({
+        url: fname_down,
+        async: true,   // asynchronous request? (synchronous requests are discouraged...)
+        cache: false,   // with this, you can force the browser to not make cache of the retrieved data
+        dataType: "json",  // jQuery will infer this, but you can set explicitly
+        success: function( data, textStatus, jqXHR ) {
+          add_data_to_execution_form(data);
+        },
+        error(xhr,status,error){
+          console.log("read_config error.....");
+          console.log(error);
+        }
+    });
+});
+
 
 }
 
@@ -951,21 +1181,21 @@ $("#"+delete_id).remove()
 }
 
 
-function add_new_device(caller_id){
+function add_new_device(caller_id,d){
 
 console.log("Adding new device...");
 
 dev_id = dev_id + 1;
 
 
-new_dev = new_device_list(dev_id,"");
+new_dev = new_device_list(dev_id,d);
 //console.log(new_dev);
 val = caller_id-1
 
 console.log("Adding:"+dev_id+"-After -->"+val);
 
 if(caller_id == 1){
-
+console.log(caller_id-1);
 $('#p2_new_host_row').eq(caller_id-1).after(new_dev);
 
 }

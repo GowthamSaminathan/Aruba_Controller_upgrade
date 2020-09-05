@@ -255,3 +255,28 @@ TypeError: an integer is required (got type str)
  ==> Starting WEB server ...
 
 2020-09-05 12:51:14,825 > INFO > Starting main model
+2020-09-05 12:57:46,559 > INFO > 
+ ==> Starting WEB server ...
+
+2020-09-05 12:57:46,564 > INFO > Starting main model
+2020-09-05 12:57:48,284 > INFO > 
+ ==> Starting WEB server ...
+
+2020-09-05 12:57:48,289 > INFO > Starting main model
+2020-09-05 13:30:51,671 > ERROR > read_config
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 124, in read_config
+    check_file = os.path.join(app.config['CONF_FILES'],config_name)
+  File "d:\scripts\py\lib\ntpath.py", line 115, in join
+    genericpath._check_arg_types('join', path, *paths)
+  File "d:\scripts\py\lib\genericpath.py", line 149, in _check_arg_types
+    (funcname, s.__class__.__name__)) from None
+TypeError: join() argument must be str or bytes, not 'NoneType'
+2020-09-05 13:33:02,058 > INFO > 
+ ==> Starting WEB server ...
+
+2020-09-05 13:33:02,063 > INFO > Starting main model
+2020-09-05 13:33:03,782 > INFO > 
+ ==> Starting WEB server ...
+
+2020-09-05 13:33:03,787 > INFO > Starting main model
