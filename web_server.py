@@ -17,7 +17,8 @@ import datetime
 
 from threading import Thread
 import Aruba_Wireless_Upgrade_APP
-
+import config_file_generator
+import yaml
 
 
 
@@ -75,6 +76,66 @@ def email_agent_post():
 		return jsonify({"results":"error","message":"Check server log"})
 
 
+@app.route('/portal/manage_file',methods = ['GET'])
+def manage_file():
+	try:
+		if request.method == 'GET':
+			f_type = request.args.get('type')
+			#download = request.args.get('download')
+
+			if f_type == "download" or f_type == "delete":
+				f_name = request.args.get('file_name')
+				
+				check_file = os.path.join(app.config['CONF_FILES'],f_name)
+				file_status = os.path.isfile(check_file)
+
+				if file_status == True:
+					if f_type == "delete":
+
+						try:
+							os.remove(check_file)
+							name = os.listdir(app.config['CONF_FILES'])
+							return jsonify({"status":"success","current_files":name})
+						except:
+							return jsonify({"status":"failed","message":"not deleted"})
+
+					if f_type == "download":
+						return send_file(check_file, as_attachment=True)
+
+				else:
+					return jsonify({"results":"error","message":"File not exist","config_name":str(f_type)})
+			else:
+				name = os.listdir(app.config['CONF_FILES'])
+				return jsonify({"status":"success","current_files":name})
+
+			return jsonify({"results":"failed"})
+
+	except Exception :
+		logger.exception("read_config")
+		return jsonify({"results":"error","message":"Check server log"})
+
+@app.route('/portal/read_config',methods = ['GET'])
+def read_config():
+	try:
+		if request.method == 'GET':
+			config_name = request.args.get('config_name')
+			#download = request.args.get('download')
+
+			check_file = os.path.join(app.config['CONF_FILES'],config_name)
+			file_status = os.path.isfile(check_file)
+
+			if file_status == True:
+				print(check_file)
+				config = open(check_file,"r").read()
+				config_json = yaml.load(config,Loader=yaml.Loader)
+				return jsonify({"results":"success","data":config_json})
+			else:
+				return jsonify({"results":"error","message":"Config not exist...","config_name":str(config_name)})
+
+	except Exception :
+		logger.exception("read_config")
+		return jsonify({"results":"error","message":"Check server log"})
+
 @app.route('/portal/start_execution',methods = ['POST'])
 def start_execution():
 	try:
@@ -103,124 +164,42 @@ def start_execution():
 		return jsonify({"results":"error","message":"Check server log"})
 
 
-def validate_create_yaml(json_data):
-	"""
-	---
-Upgrade:
-  - hostname: NaaS-MM-1
-    type: MM
-    image_file_name: ArubaOS_MM_8.6.0.5_75979
-    host: 10.17.84.220:4343
 
-  - hostname: NaaS-VMC-1
-    type: MD
-    image_file_name: ArubaOS_VMC_8.6.0.5_75979
-    host: 10.17.84.221:4343
-
-
-default:
-  AOS Source:
-    type: ftp
-    ftp_host: 10.17.84.225
-    ftp_username: admin
-    ftp_password: admin123456
-    ftp_path: /
-
-  MM:
-    image_file_name: ArubaOS_MM_8.6.0.5_75979
-    image_version: 8.6.0.5
-    image_build: 75979
-    upgrade_disk: Auto
-    CheckList_MM:
-      - show: show clock
-      - show: show version
-      - show: show image version
-      - show: show storage
-      - show: show cpuload
-      - show: show memory
-      - show: show boot
-      - show: show switches
-      - show: show switchinfo
-      - show: show boot history
-
-      - show: show crypto Ipsec sa
-      - show: show master-redundancy
-      - show: show database synchronize
-      - show: show license
-      - show: show running-config
-
-
-  MD:
-    image_file_name: ArubaOS_MM_8.6.0.5_75979
-    image_version: 8.6.0.5
-    image_build: 75979
-    upgrade_disk: Auto
-    Pre_image_AP: True
-    max_ap_image_load: 10
-    CheckList_MD:
-      - show: show clock
-      - show: show version
-      - show: show image version
-      - show: show storage
-      - show: show cpuload
-      - show: show memory
-      - show: show boot
-      - show: show switches
-      - show: show switchinfo
-      - show: show boot history
-
-      - show: show user
-      - show: show ap database long 
-      - show: show ap bss-table 
-      - show: show ap essid
-      - show: show ap active counters
-      - show: show ap debug counters
-      - show: show lc-cluster group-membership
-      - show: show switches
-      - show: show license
-      - show: show running-config
-      - show: show boot
-      - show: show version
-
-  Authentication:
-    username: admin
-    password: Aruba@123$
-
-
-  Validate Image before upgrade: True
-  Validate controller sync before upgrade: True
-  Validate controller up before upgrade: True
-
-
-
-
-	"""
+@app.route('/portal/save_configuration',methods = ['POST'])
+def save_configuration():
 	try:
-		#conf_yaml = yaml.load(config_file,Loader=yaml.Loader)
-		
-
-
-
-	except Exception:
-		logger.exception("validate_create_yaml")
-		return jsonify({"results":"error","message":"Check server log"})
-
-@app.route('/portal/excell_to_json',methods = ['POST'])
-def excell_to_json():
-	try:
-		global main_thread
 		if request.method == 'POST':
-			xlfile = request.files['file']
-			#override = request.form.get('override')
-			content = xlfile.stream.read()
-			print(str(content))
+			json_config = request.form.get('config')
+			config_name = request.form.get('config_name')
+			override = request.form.get('override')
 
-
-
-
+			check_file = os.path.join(app.config['CONF_FILES'],config_name)
+			file_status = os.path.isfile(check_file)
+			
+			if file_status == True and override == "yes":
+				pass;
+			elif file_status == False:
+				pass;
+			else:
+				return jsonify({"results":"error","message":"Configuration name already exist (Enable override to override the existing file)"})
+			
+			if type(json_config) == dict:
+				yaml_config = yaml.safe_dump(json_config,default_flow_style=False)
+				config = config_file_generator.validate_create_yaml(yaml_config)
+				if type(config) == dict:
+					if config.get("status") == "success":
+						config_yaml = config.get("config_yaml")
+						open(check_file,"w").write(config_yaml)
+						return jsonify({"results":"success","message":"Configuration Saved"})
+					else:
+						return jsonify({"results":"failed","data":config.get("error")})
+				else:
+					return jsonify({"results":"error","message":"Check Server log..."})
+			else:
+				return jsonify({"results":"error","message":"Configuration not json"})
 	except Exception:
-		logger.exception("start_execution")
-		return jsonify({"results":"error","message":"Check server log"})
+		logger.exception("save_configuration")
+		return jsonify({"results":"error","message":"validate_configuration - Check server log"})
 
 
 

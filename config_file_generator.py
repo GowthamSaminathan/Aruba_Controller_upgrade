@@ -2,10 +2,7 @@ import yaml
 import cerberus
 import sys
 
-from marshmallow import Schema, fields,ValidationError,validates_schema,validate,INCLUDE,EXCLUDE,RAISE 
-yaml.Dumper.ignore_aliases = lambda *args : True
-
-
+from marshmallow import Schema, fields,ValidationError,validates_schema,validate,INCLUDE,EXCLUDE,RAISE
 
 
 class device_authentication(Schema):
@@ -183,94 +180,80 @@ class upgradeschema(Schema):
 	#email = fields.Email()
 	#created_at = fields.DateTime()
 
-def validate_create_yaml(json_data):
-	#try:
+def validate_create_yaml(config_yaml):
+	try:
+		
+		config_json = yaml.load(config_yaml,Loader=yaml.Loader)
+		upgrade_host = config_json.get("Upgrade")
+		default_settings = config_json.get("default_settings")
+		
+		for host in upgrade_host:
+			#print(host)
+			AOS_Source = default_settings.get("AOS_Source")
+			if host.get("AOS_Source") == None:
+				host.update({"AOS_Source":AOS_Source})
 
-		# Validate the provided upgrade host
-		validator = cerberus.Validator()
-		validator.allow_unknown = True
-		form_schema = dict()
+			Authentication = default_settings.get("Authentication")
+			if host.get("Authentication") == None:
+				host.update({"Authentication":Authentication})
 
-		config_file = open("out_yaml.yaml")
-		config_json = yaml.load(config_file,Loader=yaml.Loader)
-		#print(config_json)
-		print("===========================\n\n")
+			Validate_Image_before_upgrade = default_settings.get("Validate_Image_before_upgrade")
+			if host.get("Validate_Image_before_upgrade") == None:
+				host.update({"Validate_Image_before_upgrade":Validate_Image_before_upgrade})
 
-		try:
-			upgrade_host = config_json.get("Upgrade")
-			default_settings = config_json.get("default_settings")
-			
-			for host in upgrade_host:
-				#print(host)
-				AOS_Source = default_settings.get("AOS_Source")
-				if host.get("AOS_Source") == None:
-					host.update({"AOS_Source":AOS_Source})
+			Validate_controller_sync_before_upgrade = default_settings.get("Validate_controller_sync_before_upgrade")
+			if host.get("Validate_controller_sync_before_upgrade") == None:
+				host.update({"Validate_controller_sync_before_upgrade":Validate_controller_sync_before_upgrade})
 
-				Authentication = default_settings.get("Authentication")
-				if host.get("Authentication") == None:
-					host.update({"Authentication":Authentication})
-
-				Validate_Image_before_upgrade = default_settings.get("Validate_Image_before_upgrade")
-				if host.get("Validate_Image_before_upgrade") == None:
-					host.update({"Validate_Image_before_upgrade":Validate_Image_before_upgrade})
-
-				Validate_controller_sync_before_upgrade = default_settings.get("Validate_controller_sync_before_upgrade")
-				if host.get("Validate_controller_sync_before_upgrade") == None:
-					host.update({"Validate_controller_sync_before_upgrade":Validate_controller_sync_before_upgrade})
-
-				Validate_controller_up_before_upgrade = default_settings.get("Validate_controller_up_before_upgrade")
-				if host.get("Validate_controller_up_before_upgrade") == None:
-					host.update({"Validate_controller_up_before_upgrade":Validate_controller_up_before_upgrade})
+			Validate_controller_up_before_upgrade = default_settings.get("Validate_controller_up_before_upgrade")
+			if host.get("Validate_controller_up_before_upgrade") == None:
+				host.update({"Validate_controller_up_before_upgrade":Validate_controller_up_before_upgrade})
 
 
-				host_type = host.get("device_type")
-				host_type_settings = default_settings.get(host_type)
+			host_type = host.get("device_type")
+			host_type_settings = default_settings.get(host_type)
 
-				image_file_name = host_type_settings.get("image_file_name")
-				if host.get("image_file_name") == None:
-					host.update({"image_file_name":image_file_name})
+			image_file_name = host_type_settings.get("image_file_name")
+			if host.get("image_file_name") == None:
+				host.update({"image_file_name":image_file_name})
 
-				image_version = host_type_settings.get("image_version")
-				if host.get("image_version") == None:
-					host.update({"image_version":image_version})
+			image_version = host_type_settings.get("image_version")
+			if host.get("image_version") == None:
+				host.update({"image_version":image_version})
 
-				image_build = host_type_settings.get("image_build")
-				if host.get("image_build") == None:
-					host.update({"image_build":image_build})
+			image_build = host_type_settings.get("image_build")
+			if host.get("image_build") == None:
+				host.update({"image_build":image_build})
 
-				upgrade_disk = host_type_settings.get("upgrade_disk")
-				if host.get("upgrade_disk") == None:
-					host.update({"upgrade_disk":upgrade_disk})
+			upgrade_disk = host_type_settings.get("upgrade_disk")
+			if host.get("upgrade_disk") == None:
+				host.update({"upgrade_disk":upgrade_disk})
 
-				Pre_image_AP = host_type_settings.get("Pre_image_AP")
-				if host_type == "MD" and host.get("Pre_image_AP") == None:
-					host.update({"Pre_image_AP":Pre_image_AP})
+			Pre_image_AP = host_type_settings.get("Pre_image_AP")
+			if host_type == "MD" and host.get("Pre_image_AP") == None:
+				host.update({"Pre_image_AP":Pre_image_AP})
 
-				max_ap_image_load = host_type_settings.get("max_ap_image_load")
-				if host_type == "MD" and host.get("max_ap_image_load") == None:
-					host.update({"max_ap_image_load":max_ap_image_load})
+			max_ap_image_load = host_type_settings.get("max_ap_image_load")
+			if host_type == "MD" and host.get("max_ap_image_load") == None:
+				host.update({"max_ap_image_load":max_ap_image_load})
 
-				CheckList = host_type_settings.get("CheckList")
-				if host.get("CheckList") == None:
-					host.update({"CheckList":CheckList})
+			CheckList = host_type_settings.get("CheckList")
+			if host.get("CheckList") == None:
+				host.update({"CheckList":CheckList})
 
-				#if type(host_type_settings) == dict:
-				#	host.update(host_type_settings)
+			#if type(host_type_settings) == dict:
+			#	host.update(host_type_settings)
 
 
-			config_json.update({"Upgrade":upgrade_host})
-			print("###############################################")
-			#print(upgrade_host)
-			print("###############################################")
-			validate = upgradeschema().load(config_json,unknown=EXCLUDE)
-			#print(validate)
-			gen_yaml = yaml.safe_dump(config_json,default_flow_style=False)
-			open("out_yaml_2.yaml","w").write(gen_yaml)
-		except ValidationError as err:
-			print(err.messages)
-			#print(err.valid_data)
+		config_json.update({"Upgrade":upgrade_host})
+		validate = upgradeschema().load(config_json,unknown=EXCLUDE)
+		#print(validate)
+		gen_yaml = yaml.safe_dump(config_json,default_flow_style=False)
+		return {"status":"success","config_yaml":gen_yaml}
+	except ValidationError as err:
+		print(err.messages)
+		return {"status": "error","error":err.messages}
+		#print(err.valid_data)
 
-	#except Exception as e:
-		#print("validate_create_yaml: "+str(e))
-
-validate_create_yaml("json_data")
+	except Exception as e:
+		print("validate_create_yaml: "+str(e))
