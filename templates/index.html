@@ -11,18 +11,17 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous">
   
   
+
+
+<script src="static/papaparse.min.js"></script>
+
+
   
   <link rel="stylesheet" type="text/css" href="static/DataTables/datatables.min.css"/>
  
   <script type="text/javascript" src="static/DataTables/datatables.min.js"></script>
 
-
-</head>
-
-<body overflow-x: hidden;>
-
-
-<style>
+  <style>
 
 .body {
 
@@ -46,6 +45,14 @@
 }
 
 </style>
+
+
+</head>
+
+<body overflow-x: hidden;>
+
+
+
 
 
 <nav class="navbar navbar-expand-md navbar-light bg-light border-dark">
@@ -124,12 +131,12 @@
 
 
 
-<div class="container-fluid monitor-col upgrade_class" id="monitor-1">
+<div class="container-fluid monitor-col upgrade_class" style="display: none;">
 
 
 <div class="row" style="margin-right: 0px"> 
 
-<div class="col-sm-6" id="table_1" style="background-color:#f8f9fa">
+<div class="col-sm-6" style="background-color:#f8f9fa">
 
 <button class="btn btn-light" style="width:90%">
   <span class="spinner-border spinner-border-sm"></span>
@@ -138,19 +145,19 @@
 
 </div>
 
-<div class="col-sm-6" id="table_1" style="background-color:#f8f9fa">
+<div class="col-sm-6" style="background-color:#f8f9fa">
 <button type="button" class="btn btn-warning btn-sm">Pause Upgrade</button>
 <button type="button" class="btn btn-danger btn-sm">Stop Upgrade</button>
 </div>
 
 </div>
 
-</br>
+<br>
 
 <!-- Table -->
 <div class="row" style="margin-right: 0px">
       
-      <div class="col-sm-8" id="table_1">
+      <div class="col-sm-8">
         <table id="execution_table" class="display compact" cellspacing="0"> 
         <tbody id="execution_body"></tbody>
         </table>
@@ -167,13 +174,13 @@
 
 
 
-<!-- PAGE-2 Starts , ------------------------Creating New Execution form start hear-->
+<!-- PAGE-2 Starts , ------------------------Creating New Execution form start hear -->
 
 
-<div class="container new_execution_class">
+<div class="container new_execution_class" style="display: none;">
 
 <!--<div class="d-flex justify-content-left">
-<h5><span class="badge badge-info">Create New Execution</span><h5>
+<h5><span class="badge badge-info">Create New Execution</span></h5>
 </div>-->
 
 <!-- Upgrade name Row -->
@@ -228,7 +235,6 @@
 <table class="table table-striped table-sm">
 
 <thead>
-<tr>
 
 </thead>
 
@@ -342,7 +348,7 @@
 
 
 
-</div>
+</div></div>
 
 
 <!-- Page 2 Models start -->
@@ -402,12 +408,12 @@
 
           <tbody >
           <tr>
-            <td><h6><span class="badge badge-dark">Maximum AP image load: </span><h6></td>
+            <td><h6><span class="badge badge-dark">Maximum AP image load: </span></h6></td>
             <td><input type="number" value="500" min="0" max="1000" step="10"/></td>
             <td> </td></tr>
 
             <tr>
-            <td><h6><span class="badge badge-dark">Validate controller sync before upgrade: </span><h6></td>
+            <td><h6><span class="badge badge-dark">Validate controller sync before upgrade: </span></h6></td>
             <td> <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="switch1" name="example">
             <label class="custom-control-label" for="switch1"></label>
@@ -415,14 +421,14 @@
             <td> </td></tr>
 
             <tr>
-            <td><h6><span class="badge badge-dark">Validate controller up before upgrade: </span><h6></td>
+            <td><h6><span class="badge badge-dark">Validate controller up before upgrade: </span></h6></td>
             <td> <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="switch2" name="example">
             <label class="custom-control-label" for="switch2"></label>
             </div></td>
             <td> </td></tr>
 
-            <td><h6><span class="badge badge-dark">Backup flash before upgrade: </span><h6></td>
+            <td><h6><span class="badge badge-dark">Backup flash before upgrade: </span></h6></td>
             <td><div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="switch3" name="example">
             <label class="custom-control-label" for="switch3"></label>
@@ -430,7 +436,7 @@
             <td> </td></tr>
 
             <tr>
-            <td><h6><span class="badge badge-dark">Backup configuration before upgrade: </span><h6></td>
+            <td><h6><span class="badge badge-dark">Backup configuration before upgrade: </span></h6></td>
             <td><div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="switch4" name="example">
             <label class="custom-control-label" for="switch4"></label>
@@ -438,7 +444,7 @@
             <td> </td></tr>
 
             <tr>
-            <td><h6><span class="badge badge-dark">Backup license before upgrade: </span><h6></td>
+            <td><h6><span class="badge badge-dark">Backup license before upgrade: </span></h6></td>
             <td><div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="switch5" name="example">
             <label class="custom-control-label" for="switch5"></label>
@@ -446,7 +452,7 @@
             <td> </td></tr>
 
             <tr>
-            <td><h6><span class="badge badge-dark">Pre & Post check commands:</span><h6></td>
+            <td><h6><span class="badge badge-dark">Pre & Post check commands:</span></h6></td>
             <td><div class="form-group">
             
             <textarea class="form-control" rows="5" id="comment"></textarea>
@@ -496,7 +502,6 @@
         <div class="table-responsive">
         <table class="table table-striped table-sm">
         <thead>
-        <tr>
         </thead>
         <tbody>
         <tr>
@@ -511,7 +516,6 @@
         <div class="table-responsive">
         <table class="table table-striped table-sm">
         <thead>
-        <tr>
         </thead>
         <tbody>
         <tr>
@@ -578,18 +582,18 @@
         <div class="modal-body" id="p2_excell_upload_body">
 
           <div class="d-flex flex-row ">
-          <div class="p-2"><h5><span class="badge badge-light">Download Excel template: </span><h5>
+          <div class="p-2"><h5><span class="badge badge-light">Download Excel template: </span></h5>
           </div>
           <div class="p-2"><button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download" aria-hidden="true"></i></button></div>
           </div>
 
           <div class="d-flex flex-row ">
-          <div class="p-2"><h5><span class="badge badge-light">Upload host's from excel:</span><h4></h5></div>
+          <div class="p-2"><h5><span class="badge badge-light">Upload host's from excel:</span></h5></div>
           <div class="p-2">
             
-            <input type="file" id="myFile" name="filename2">
+            <input type="file" id="csv_file" name="filename2">
             <div class="mt-2">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" onclick="import_from_csv()"> Submit</button>
             </div>
 
           </div>
@@ -600,7 +604,7 @@
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <span class="badge badge-danger">Import failed</span>
+          <span class="badge badge-danger" id="csv_import_status">Import failed</span>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
         
@@ -615,17 +619,25 @@
 
 <!-- Pagge-3 Start : History -->
 
-<div class="container-fluid monitor-col report_class">
+<div class="container monitor-col report_class">
 
-<p> OK </p>
-<div class="row" style="margin-right: 0px"> 
+<!-- Table -->
+<div class="row" style="margin-right: 0px">
+      
+      <div class="col-sm-6">
+        <h5><p>Download the Execution report</p></h5>
+        <table id="history_table" class="table table-dark" cellspacing="0"> 
+        <tbody id="history_table_body"></tbody>
+        </table>
+      </div>
 
-<div class="col-sm-6" style="background-color:#f8f9fa">
+      <div class="col-sm-6">
+        <div id="mymy"></div>
+      </div>
 
-<table id="history_table" class="display compact hover" cellspacing="0"> </table>
+</div>
 
-</div></div></div>
-
+</div>
 
 
 
@@ -641,10 +653,11 @@
 
 // Init the page-2
 var dev_id = 0;
-new_execution();
-$(".report_class").show()
-$(".upgrade_class").hide()
-$(".new_execution").hide()
+//new_execution();
+show_history();
+//$(".report_class").show()
+//$(".upgrade_class").hide()
+//$(".new_execution_class").hide()
 
 var dataSet = [
     [ 2,"Tiger Nixon", "System Architect", "Edinburgh", "5421", "Pending" ],
@@ -1016,13 +1029,14 @@ $("#history").attr('class', 'btn btn-outline-primary active');
 
 }
 
-event_data = [["SSSSSS"]]
+event_data = [["SSSSSS","ok"]]
 
 $(document).ready(function() {
     $('#history_table').DataTable( {
         data: event_data,
         columns: [
-            { title: "Events" }
+            { title: "Date" },
+            { title: "Report" }
         ],
         "scrollY":        "400px",
         "scrollCollapse": true,
@@ -1032,6 +1046,46 @@ $(document).ready(function() {
       });
 
 } );
+
+
+function import_from_csv()
+{
+console.log("reading csv....");
+csv_file_data = $("#csv_file").prop('files')[0];
+console.log(csv_file_data);
+
+Papa.parse(csv_file_data,{
+  config: {
+    // base config to use for each file
+  },
+  before: function(file, inputElem)
+  {
+
+    $("#csv_import_status").attr('class', 'badge badge-success');
+    $("#csv_import_status").text("Uploading...");
+    console.log("parsing csv....");
+    // executed before parsing each file begins;
+    // what you return here controls the flow
+  },
+  error: function(err, file, inputElem, reason)
+  {
+    // executed if an error occurs while loading the file,
+    // or if before callback aborted for some reason
+    $("#csv_import_status").attr('class', 'badge badge-danger');
+    $("#csv_import_status").text(reason);
+  },
+  complete: function(results)
+  {
+    // executed after all files are complete
+    $("#csv_import_status").attr('class', 'badge badge-success');
+    $("#csv_import_status").text("Uploaded...");
+    console.log(results);
+  }
+});
+
+
+
+}
 
 
 //////////////// PAGE -3 END ////////////////////////////////////////////
