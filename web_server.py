@@ -25,7 +25,7 @@ import yaml
 
 logger = logging.getLogger("Rotating Log")
 logger.setLevel(logging.DEBUG)
-handler = RotatingFileHandler(os.path.join(os.getcwd(),"webserver_log.log"), maxBytes=5000000, backupCount=25)
+handler = RotatingFileHandler(os.path.join(os.getcwd(),"log","webserver_log.log"), maxBytes=5000000, backupCount=25)
 formatter = logging.Formatter('%(asctime)s > %(levelname)s > %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
@@ -36,9 +36,9 @@ logger.info("\n ==> Starting WEB server ...\n")
 
 app = Flask(__name__,static_url_path='/static')
 app.config['CONF_FILES'] = os.path.join(os.getcwd(),"conf_files")
-app.config['DB_FILES'] = os.path.join(os.getcwd(),"db")
+app.config['DB_LOCATION'] = os.path.join(os.getcwd(),"db","job_history.db")
 app.config['CONF_TEMPLATES'] = os.path.join(os.getcwd(),"conf_templates")
-app.config['LOG_FILES'] = os.path.join(os.getcwd(),"logs")
+#app.config['LOG_FILES'] = os.path.join(os.getcwd(),"log")
 CORS(app)
 
 

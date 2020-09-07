@@ -280,3 +280,11 @@ TypeError: join() argument must be str or bytes, not 'NoneType'
  ==> Starting WEB server ...
 
 2020-09-05 13:33:03,787 > INFO > Starting main model
+2020-09-06 12:25:18,453 > INFO > 
+ ==> Starting WEB server ...
+
+2020-09-06 12:25:18,483 > INFO > Starting main model
+2020-09-06 12:25:20,349 > INFO > 
+ ==> Starting WEB server ...
+
+2020-09-06 12:25:20,354 > INFO > Starting main model

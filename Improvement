@@ -3,7 +3,7 @@ Auto-Validation for Pre-Check & POST-Check.
 Standardize Pre-check report.
 TFTP reachability to be checked in Pre-Check.
 Add the server reachability (AAA, NTP, Airwave).
-Include L3-redundance validation in MM, show c-cluster vlan probe status on MDs as part of Pre & POST check. 
+Include L3-redundance validation in MM, show lc-cluster vlan probe status on MDs as part of Pre & POST check. 
 
 1.	Can you create a questionnaire rather than filling in the file, using the questionnaire you can create the file for upgrade. Question can have the data that you have filled in the file
 
