@@ -180,7 +180,7 @@ class upgradeschema(Schema):
 	#email = fields.Email()
 	#created_at = fields.DateTime()
 
-def validate_create_yaml(config_yaml):
+def validate_create_yaml(config_yaml,logger):
 	try:
 		
 		config_json = yaml.load(config_yaml,Loader=yaml.Loader)
@@ -249,11 +249,12 @@ def validate_create_yaml(config_yaml):
 		validate = upgradeschema().load(config_json,unknown=EXCLUDE)
 		#print(validate)
 		gen_yaml = yaml.safe_dump(config_json,default_flow_style=False)
-		return {"status":"success","config_yaml":gen_yaml}
+		return {"status":"success","config_yaml":gen_yaml,"config_json":config_json}
 	except ValidationError as err:
 		print(err.messages)
 		return {"status": "error","error":err.messages}
 		#print(err.valid_data)
 
-	except Exception as e:
+	except Exception:
+		logger.exception("validate_create_yaml")
 		print("validate_create_yaml: "+str(e))
