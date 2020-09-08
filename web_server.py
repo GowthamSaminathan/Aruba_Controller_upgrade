@@ -229,18 +229,35 @@ def start_execution():
 			result = request.form
 			
 			file_name = result.get("file_name")
+			job_list = result.get("job_list")
+
+			if all(item in ["precheck","postcheck","upgrade","all"] for item in job_list) == False:
+				return jsonify({"results":"failed","message":"Job list not valid"})
 
 			filename = secure_filename(file_name)
 			full_path = os.path.join(app.config['CONF_FILES'], filename)
 
 			if os.path.isfile(full_path):
 
-				if main_thread.isAlive() == False:
-						main_thread = Thread(target=aruba_wireless.main_run,name = "wireless_upgrade", args=(full_path,))
-						main_thread.start()
-						return jsonify({"results":"success","message":"Job Started"})
+				last_job = get_last_job()
+
+				if type(last_job) == list:
+					if last_job[3] != "COMPLETED":
+						return jsonify({"results":"failed","message":"Last Job {} not completed".format(str(last_job[2]))})
+
+				S_DATE = str(datetime.datetime.now())
+				job_name = str(time.time()).replace(".","_")
+				data = {"NAME":job_name,"CONF_FILE":file_name,"STATUS":"STARTING","S_DATE":S_DATE,"E_DATE":"","MSG":""}
+				history_db = os.path.join(app.config['DB_LOCATION'],"job_history.db")
+				status = db_management.insert_if_lastjob_completed(history_db,data)
+
+				#main_thread.isAlive() == False
+				if status == 1:
+					main_thread = Thread(target=aruba_wireless.main_run,name = "wireless_upgrade", args=(job_name,filename,job_list,))
+					main_thread.start()
+					return jsonify({"results":"success","message":"Job Started"})
 				else:
-					return jsonify({"results":"failed","message":"ExistingJobRunning"})
+					return jsonify({"results":"failed","message":"Existing Job Running"})
 
 			return jsonify({"results":"failed","message":"File not found: "+str(filename)})
 

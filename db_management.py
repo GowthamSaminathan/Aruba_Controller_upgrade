@@ -112,6 +112,27 @@ def get_all_events(db_path):
 	except Exception as e:
 		print("get_event_update_by_name: "+str(e))
 
+def insert_if_lastjob_completed(db_path,data):
+	try:
+		query = "INSERT OR REPLACE INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT {},{},{},{},{},{}"
+		query = query + " WHERE EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND STATUS='COMPLETED');"
+		
+		NAME = data.get("NAME")
+		CONF_FILE = data.get("CONF_FILE")
+		STATUS = data.get("STATUS")
+		S_DATE = data.get("S_DATE")
+		E_DATE = data.get("E_DATE")
+		MSG = data.get("MSG")
+
+		query = query.format(NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG)
+		conn = sqlite3.connect(db_path)
+		
+		conn.execute(query)
+		conn.commit()
+		conn.close()
+		return True
+	except Exception as e:
+		print(e)
 
 
 

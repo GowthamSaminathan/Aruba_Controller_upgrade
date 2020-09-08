@@ -11,7 +11,7 @@ class device_authentication(Schema):
 
 
 class aos_source_schema(Schema):
-	device_type = fields.Str(validate=validate.OneOf(["ftp", "tftp","local","sftp"]),required=True)
+	device_type = fields.Str(validate=validate.OneOf(["ftp", "tftp","local","scp"]),required=True)
 	
 	local_path = fields.Str(validate=validate.Length(min=1),required=False)
 	
@@ -23,10 +23,10 @@ class aos_source_schema(Schema):
 	ftp_username = fields.Str(validate=validate.Length(min=1),required=False)
 	ftp_password = fields.Str(validate=validate.Length(min=1),required=False)
 	
-	sftp_host = fields.Str(validate=validate.Length(min=1),required=False)
-	sftp_username = fields.Str(validate=validate.Length(min=1),required=False)
-	sftp_password = fields.Str(validate=validate.Length(min=1),required=False)
-	sftp_path = fields.Str(validate=validate.Length(min=1),required=False)
+	scp_host = fields.Str(validate=validate.Length(min=1),required=False)
+	scp_username = fields.Str(validate=validate.Length(min=1),required=False)
+	scp_password = fields.Str(validate=validate.Length(min=1),required=False)
+	scp_path = fields.Str(validate=validate.Length(min=1),required=False)
 
 	# Don't raise  ValidationError for unknown data just include it.
 	class Meta:
@@ -56,18 +56,18 @@ class aos_source_schema(Schema):
 			if data.get("ftp_password") == None:
 				errors["ftp_password"] = ["Not Valid password"]
 		
-		elif data.get("device_type") == "sftp":
-			if data.get("sftp_path") == None:
-				errors["sftp_path"] = ["Not Valid path"]
-			if data.get("sftp_host") == None:
+		elif data.get("device_type") == "scp":
+			if data.get("scp_path") == None:
+				errors["scp_path"] = ["Not Valid path"]
+			if data.get("scp_host") == None:
 				errors["local_path"] = ["Not Valid host"]
-			if data.get("sftp_host") == None:
-				errors["sftp_username"] = ["Not Valid username"]
-			if data.get("sftp_password") == None:
-				errors["sftp_password"] = ["Not valid password"]
+			if data.get("scp_host") == None:
+				errors["scp_username"] = ["Not Valid username"]
+			if data.get("scp_password") == None:
+				errors["scp_password"] = ["Not valid password"]
 
 		else:
-			raise ValidationError("Device type must be local,sftp,ftp or local")
+			raise ValidationError("Device type must be local,scp,ftp or local")
 
 		if errors:
 			raise ValidationError(errors)

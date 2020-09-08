@@ -22,6 +22,7 @@ import sqlite3
 import db_management
 import config_file_generator
 import time
+import pprint
 
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -51,6 +52,9 @@ class Aruba_Wireless_upgrade():
 		self.logger = conf.logger
 		self.get_user_input = conf.get_user_input
 		self.eprint = conf.eprint
+		self.local_aos_file_path = os.path.join(os.getcwd(),"aos")
+
+		self.print = pprint.PrettyPrinter(indent=4)
 
 	def get_session(self,single_host,new_session=False):
 		try:
@@ -130,7 +134,7 @@ class Aruba_Wireless_upgrade():
 		try:
 
 			new_image = single_host.get("image_file_name")
-			new_disk = single_host.get("disk")
+			new_disk = single_host.get("upgrade_disk")
 			upload_type = single_host.get("upload_type")
 			device_type = single_host.get("type")
 			hostname = single_host.get("hostname")
@@ -260,8 +264,8 @@ class Aruba_Wireless_upgrade():
 				cmds = single_host.get("CheckList")
 				self.eprint("info",check_type+" started for : ({}) {}:{}".format(device_type,hostname,host))
 				_host = host.split(":")[0]
-				log_file = open(os.path.join(self.job_path,_host+".txt"),"w")
-				#pyobj_file = open(os.path.join(log_file_path,_host+".pyobj"),"wb")
+				log_file = open(os.path.join(self.job_path,check_type,_host+".txt"),"w")
+				#pyobj_file = open(os.path.join(log_file_path,check_type,_host+".pyobj"),"wb")
 				
 				session = None
 				login_status = self.get_session(single_host)
@@ -287,7 +291,7 @@ class Aruba_Wireless_upgrade():
 							
 							
 							host_output.update({cmd:res_json})
-							#out = self.print.pformat(res_json)
+							out = self.print.pformat(res_json)
 							log_file.write("\n\n"+"==="*20+">")
 							log_file.write(cmd+"\n")
 							log_file.write(out)
@@ -322,6 +326,319 @@ class Aruba_Wireless_upgrade():
 		finally:
 			self.eprint("info",check_type+" Completed")
 
+	def execute_cmd(self,single_host,cmds):
+		try:
+			out_cmd = {}
+			host_ip = single_host.get(host)
+			login_status = self.get_session(single_host)
+			if login_status[0] == True:
+				session = login_status[1]
+				UIDARUBA = login_status[2]
+				for cmd in cmds:
+					req_url = self.api_show_cmd.format(host_ip,cmd,UIDARUBA)
+					res = session.get(req_url,verify=False)
+					#print(res.headers.get("content-type"))
+
+					if len(res.text) < 1:
+						# Aruba API JSON Bug (empty string)
+						res_json = {}
+						out_cmd.update({cmd:res_json})
+					else:
+						res_json = res.json()
+						out_cmd.update({cmd:res_json})
+
+				#self.logout(session,host_ip)
+				return out_cmd
+		except Exception:
+			self.logger.exception("get_image_details: ")
+
+	def upload_image_http(self,single_host):
+		try:
+			login_status = self.get_session(single_host)
+
+			headers = {}
+			img_file = single_host.get("image_file_name")
+			host_ip = single_host.get("host")
+			upgrade_disk = single_host.get("upgrade_disk")
+
+			if login_status[0] == True:
+				session = login_status[1]
+				UIDARUBA = login_status[2]
+				file_path = os.path.join(self.local_aos_file_path,img_file)
+				file_data = open(file_path,'rb')
+				
+				data = {'.osimage_handle': (img_file,file_data,"application/octet-stream")}
+				data.update({"fpartition":str(upgrade_disk),"UIDARUBA":UIDARUBA})
+				url = self.mm_image_upload.format(host_ip)
+				#print(url)
+				#print(UIDARUBA)
+				mp = MultipartEncoder(fields=data)
+				headers.update({'Content-Type': mp.content_type})
+				
+				#prepared = requests.Request('POST', url,data=mp,headers=headers).prepare()
+				
+				self.eprint("info","Uploading image file to MD: {} AOS: {}".format(host_ip,img_file))
+				#print(prepared.headers)
+				#print(session.cookies.get_dict())
+				
+				#url = "https://10.17.84.221:4343/v1/configuration/showcommand?command=show%20version&UIDARUBA="+UIDARUBA
+				#prepared = requests.Request('GET', url).prepare()
+				
+				res = session.post(url,data=mp,headers=headers,verify=False)
+				#print(res.content)
+				self.eprint("success","Completed Upload image file to MD: {} AOS: {}".format(host_ip,img_file))
+				
+				#self.logout(session,host_ip)
+		except Exception:
+			self.logger.exception("upload_image_http: ")
+
+	def upload_image_from_server(self,single_host,aos_source,server_type):
+		# Copy file using TFTP , webUI API method
+		try:
+			login_status = self.get_session(single_host)
+			host_ip = single_host.get("host")
+			upgrade_disk = single_host.get("upgrade_disk")
+			img_file = single_host.get("image_file_name")
+			
+			if login_status[0] == True:
+				session = login_status[1]
+				UIDARUBA = login_status[2]
+				partition = "partition"+str(upgrade_disk)
+
+				if server_type == "ftp":
+					username = aos_source.get("ftp_username")
+					password = aos_source.get("ftp_password")
+					server_ip = aos_source.get("ftp_server")
+				elif server_type == "scp":
+					username = aos_source.get("scp_username")
+					password = aos_source.get("scp_password")
+					server_ip = aos_source.get("scp_server")
+				else:
+					server_type = "imtftp"
+					server_ip = aos_source.get("tftp_server")
+					username = "zz"
+					password = "zz"
+
+				
+				web_data = {'method': 'imtftp','args':server_type+','+server_ip+','+username+','+password+','+img_file+','+partition.upper()+',unknown_host,none'}
+				web_data.update({'UIDARUBA': UIDARUBA})
+
+				#print(web_data)
+
+				self.eprint("info","{}:{}- Installing AOS: {} from {} server:{}".format(hostname,host_ip,img_file,server_type,server_ip))
+				url = self.copy_tftp_system_web.format(host_ip)
+				res = session.post(url,data=web_data,verify=False)
+				
+				try:
+					response = res.json()
+				except:
+					response = res.content
+
+				#print(response)
+
+				if response.find("SUCCESS") != -1:
+					self.eprint("success","File copy completed ....")
+					self.logger.info(response)
+				else:
+					self.eprint("error","File copy failed ....")
+					self.logger.error(response)
+
+		except Exception:
+			self.logger.exception("upload_image_tftp")
+
+	def MM_MD_Upload(self,host):
+		upload_not_required = False
+		img_file = host.get("image_file_name")
+		host_ip = host.get("host")
+		hostname = host.get("hostname")
+		upgrade_disk = host.get("upgrade_disk")
+		aos_source = host.get("AOS_Source")
+		
+		upload_type = aos_source.get("device_type")
+		
+		image_build = host.get("image_build")
+		image_version = host.get("image_version")
+		host_type = host.get("type")
+
+		upload_not_required = self.validate_image_upload(hostname,host_ip,host_type,upgrade_disk,image_version,image_build)
+
+		while upload_not_required == False:
+			if self.validate_image_upload(hostname,host_ip,host_type,upgrade_disk,image_version,image_build) != True:
+				msg = "Do you want to install: "
+				if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}  (Y/N)".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "yes":
+					#print("=> Starting MM Upgrade for {}".format(host_ip))
+					if upload_type == "local":
+						self.upload_image_http(host,aos_source)
+					elif upload_type == "tftp":
+						server_ip = self.config.get(upload_type)
+						self.upload_image_from_server(host,aos_source,"tftp")
+					elif upload_type == "ftp":
+						server_ip = self.config.get(upload_type)
+						self.upload_image_from_server(host,aos_source,"ftp")
+					elif upload_type == "scp":
+						server_ip = self.config.get(upload_type)
+						self.upload_image_from_server(host,aos_source,"scp")
+					else:
+						self.eprint("error","No valid file upload type found"+str(upload_type))
+
+				else:
+					upload_not_required = True
+			else:
+				upload_not_required = True
+
+
+	def AP_IMAGE_PRELOAD(self,single_host):
+		try:
+
+			global last_skip
+			upload_not_required = False
+			img_file = single_host.get("image_file_name")
+			host_ip = single_host.get("host")
+			host_name = single_host.get("hostname")
+			upgrade_disk = single_host.get("upgrade_disk")
+			image_build = single_host.get("image_build")
+			image_version = single_host.get("image_version")
+			max_ap_image_load = self.config.get("max_ap_image_load")
+
+			msg = " \n=> Do You want to preimage AP's for :"
+			if self.user_input("{} {} - {} from Disk {}".format(msg,host_name,host_ip,upgrade_disk),["yes","no"]) == "yes":
+				self.eprint("warning","Skipping AP's preimage....")
+				return False
+			
+			self.eprint("info","STARTING AP IMAGE PRELOAD FOR {}-{} FROM DISK:{} MAX AP:{}".format
+				(host_name,host_ip,upgrade_disk,max_ap_image_load))
+			
+			# Execute the pre-image command
+			valid_state = False
+			
+			while last_skip == False and valid_state == False:
+				try:
+					upload_not_required = True
+					login_status = self.get_session(host_ip)
+					if login_status[0] == True:
+						session = login_status[1]
+						UIDARUBA = login_status[2]
+						url = self.ap_image_preload.format(host_ip,UIDARUBA)
+						data = {"ap_info":"all-aps","partition":int(upgrade_disk),"max-downloads":int(max_ap_image_load)}
+						res = session.post(url,json=data,verify=False)
+						try:
+							response = res.json()
+						except:
+							response = res.content
+
+						if type(response) != dict:
+							raise TypeError("Response is not JSON")
+						else:
+							response = response.get("ap_image_preload")
+							if response != None:
+								if response.get("_result").get("status") == 0:
+									p = response.get("_result").get("status_str")
+									self.eprint("success","AP Pre-load Executed:{}-{} => {}".format(host_name,host_ip,p))
+									valid_state = True
+									#self.logout(session,host_ip)
+								else:
+									p = response.get("_result").get("status_str")
+									self.eprint("error","**=> AP Pre-load Failed:{}-{} => {}".format(host_name,host_ip,p))
+							else:
+								raise TypeError("Response not having 'ap_image_preload' field")
+				except TypeError:
+					#self.logout(session,host_ip)
+					self.eprint("error","AP image response failed")
+					self.logger.exception("AP_IMAGE_PRELOAD:")
+
+				except Exception:
+					#self.logout(session,host_ip)
+					self.eprint("error","AP image Failed")
+					self.logger.exception("AP_IMAGE_PRELOAD POST: ")
+				finally:
+					# Sleep for some time before retry
+					self.eprint("debug","Retry in 3 (sec) - Press Ctl+c to Skip the retry")
+					time.sleep(3)
+
+
+			# Validate the pre-load
+			valid_state = False
+			
+			while last_skip == False and valid_state == False:
+				try:
+					res = self.execute_cmd(single_host,["show ap image-preload status summary","show ap image-preload status list"])
+					if res != None:
+						try:
+							out = res.get("show ap image-preload status list")
+							itm = out.get("AP Image Preload AP Status")
+							#self.print.pprint(itm)
+						except:
+							pass;
+							#print(out)
+
+						try:
+							self.eprint("info","Validating AP Preload status for:{} - {}".format(host_name,host_ip))
+							out = res.get("show ap image-preload status summary")
+							itm = out.get("AP Image Preload AP Status Summary")
+							#self.print.pprint(itm)
+							#*** Need to print preload status
+							#print(_info+yaml.dump(itm, default_flow_style=False))
+						except Exception:
+							self.logger.exception("Validating AP Preload status: ")
+					else:
+						self.eprint("error","AP Preload status check failed:{}-{}".format(host_name,host_ip))
+				except Exception:
+					self.eprint("error","**=> Failed")
+					self.logger.exception("AP_IMAGE_PRELOAD POST: ")
+				finally:
+					# Sleep for some time before retry
+					self.eprint("info","Retry in 3 (sec) - Press Ctl+c to Skip the validation")
+					time.sleep(3)
+
+
+
+		except Exception:
+			self.logger.exception("AP_IMAGE_PRELOAD: ")
+
+
+	def Upload_Images(self):
+		try:
+			#Read upgrade host details from configuration
+			upgrade_hosts = self.gen_config.get("Upgrade")
+			self.eprint("info","Total upgrade hosts:{}".format(len(upgrade_hosts)))
+
+			# Uploading Images to MM and MD
+			for host in upgrade_hosts:
+				host_name = host.get("hostname")
+				host_ip = host.get("host")
+				upgrade_disk = host.get("upgrade_disk")
+				image_build = host.get("image_build")
+				image_version = host.get("image_version")
+
+				if host.get("type") == "MM":
+					# Start the MM Upgrade
+					self.eprint("info","MM: Preparing for host {} IP: {}".format(host_name,host_ip))
+					#self.validate_image_upload(host_ip,disk,image_version,image_build)
+					self.MM_MD_Upload(host)
+					#self.validate_running_image(host_ip,image_version,image_build)
+					
+				elif host.get("type") == "MD":
+					self.eprint("info","MD: Preparing for host {} IP: {}".format(host_name,host_ip))
+					self.MM_MD_Upload(host)
+				else:
+					self.eprint("error","Upgrade type invalid ({})".format(host.get("type")))
+
+			#Pre-Uploading images to AP
+			for host in upgrade_hosts:
+				host_name = host.get("hostname")
+				host_ip = host.get("host")
+				upgrade_disk = host.get("upgrade_disk")
+				image_build = host.get("image_build")
+				image_version = host.get("image_version")
+
+				if host.get("type") == "MD" :
+					# Pre-Upload images to this MD
+					self.AP_IMAGE_PRELOAD(host)
+
+		except Exception:
+			self.eprint("error","Upload Image Error For : {} - {}".format(host_name,host_ip))
+			self.logger.exception("Upgrade Error: ")
+
 
 
 class main_model():
@@ -335,16 +652,20 @@ class main_model():
 		pass;
 
 	def eprint(self,print_level,msg):
-		if msg == "warning":
-			self.logger.warning(msg)
-		if msg == "error":
-			self.logger.error(msg)
-		if msg == "info":
-			self.logger.info(msg)
 
 		msg = print_level.upper()+":"+str(msg)
-
-		db_management.update_event_db(self.event_db,self.job_name,msg,None)
+		if print_level == "warning":
+			self.logger.warning(msg)
+			db_management.update_event_db(self.event_db,self.job_name,msg,None)
+		if print_level == "error":
+			self.logger.error(msg)
+			db_management.update_event_db(self.event_db,self.job_name,msg,None)
+		if print_level == "info":
+			self.logger.info(msg)
+			db_management.update_event_db(self.event_db,self.job_name,msg,None)
+		else:
+			self.logger.debug(msg)
+			db_management.update_event_db(self.event_db,self.job_name,msg,None)		
 
 
 	def get_user_input(self,msg,expected=None):
@@ -420,7 +741,7 @@ class main_model():
 				conn = sqlite3.connect(self.job_history_db)
 				conn.execute("UPDATE HISTORY set STATUS = 'RUNNING' where NAME={}".format(self.job_name))
 				conn.commit()
-				self.eprint("error","HISTORY STATUS RUNNNING MODIFIED: "+str(conn.total_changes))
+				self.eprint("info","HISTORY STATUS RUNNNING MODIFIED: "+str(conn.total_changes))
 
 				if conn.total_changes == 1:
 					return True
@@ -435,7 +756,7 @@ class main_model():
 		except Exception:
 			self.logger.exception("init_upgrade")
 
-	def main_run(self,job_name,config_file):
+	def main_run(self,job_name,config_file,job_list):
 		try:
 
 			self.job_name = str(job_name)
@@ -446,6 +767,9 @@ class main_model():
 
 			if not os.path.exists(job_path):
 				os.makedirs(job_path)
+				os.makedirs(os.path.join(job_path,"Precheck"))
+				os.makedirs(os.path.join(job_path,"Postcheck"))
+				os.makedirs(os.path.join(job_path,"Upgrade"))
 			else:
 				print("Job Path already exist (terminating job): "+str(job_path))
 				return None
@@ -474,7 +798,19 @@ class main_model():
 
 			if config_status == True:
 				ar_upgrade = Aruba_Wireless_upgrade(self)
-				ar_upgrade.Pre_Post_check("Precheck")
+				for job in job_list:
+					if job == "precheck":
+						self.eprint("info","Starting "+str(job))
+						ar_upgrade.Pre_Post_check("Precheck")
+					elif job == "postcheck":
+						self.eprint("info","Starting "+str(job))
+						ar_upgrade.Pre_Post_check("Postcheck")
+					elif job == "upgrade":
+						self.eprint("info","Starting "+str(job))
+					else:
+						self.eprint("error","[Terminting] Job not allowed - "+str(job))
+						return False
+
 			else:
 				self.eprint("error","Generating config failed (Terminating)")
 				return False
@@ -490,5 +826,5 @@ class main_model():
 
 if __name__ == '__main__':
 	mm = main_model()
-	mm.main_run(12345,"configuration_2.yaml")
+	mm.main_run(12345,"configuration_2.yaml",["precheck"])
 	#print("Direct call not supported...")

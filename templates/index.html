@@ -206,7 +206,7 @@
     <select class="form-control input-sm"  id="p2_upgrade_source">
     <option>local</option>
     <option>tftp</option>
-    <option>sftp</option>
+    <option>scp</option>
     <option>ftp</option>
   </select>
    <input type="text" class="form-control" placeholder="Host" id="p2_upgrade_host">
@@ -558,7 +558,7 @@
           <select class="form-control input-sm" id="p2_host_upgrade_source">
           <option>local</option>
           <option>tftp</option>
-          <option>sftp</option>
+          <option>scp</option>
           <option>ftp</option>
         </select>
          <input type="text" class="form-control" placeholder="Host" id="p2_host_upgrade_host">
@@ -1083,10 +1083,10 @@ aos_source_ftp_username = AOS_Source["ftp_username"];
 aos_source_ftp_password = AOS_Source["ftp_password"];
 aos_source_ftp_path = AOS_Source["ftp_path"];
 
-aos_source_sftp_host = AOS_Source["sftp_host"];
-aos_source_sftp_username = AOS_Source["sftp_username"];
-aos_source_sftp_password = AOS_Source["sftp_password"];
-aos_source_sftp_path = AOS_Source["sftp_path"];
+aos_source_scp_host = AOS_Source["scp_host"];
+aos_source_scp_username = AOS_Source["scp_username"];
+aos_source_scp_password = AOS_Source["scp_password"];
+aos_source_scp_path = AOS_Source["scp_path"];
 
 aos_source_tftp_host = AOS_Source["tftp_host"];
 aos_source_tftp_path = AOS_Source["tftp_path"];
@@ -1107,13 +1107,13 @@ $("#p2_upgrade_uname").val(aos_source_ftp_username);
 $("#p2_upgrade_password").val(aos_source_ftp_password);
 }
 
-if(aos_source_device_type == "sftp")
+if(aos_source_device_type == "scp")
 {
-$("#p2_upgrade_source").val("sftp");
-$("#p2_upgrade_host").val(aos_source_sftp_host);
-$("#p2_upgrade_path").val(aos_source_sftp_path);
-$("#p2_upgrade_uname").val(aos_source_sftp_username);
-$("#p2_upgrade_password").val(aos_source_sftp_password);
+$("#p2_upgrade_source").val("scp");
+$("#p2_upgrade_host").val(aos_source_scp_host);
+$("#p2_upgrade_path").val(aos_source_scp_path);
+$("#p2_upgrade_uname").val(aos_source_scp_username);
+$("#p2_upgrade_password").val(aos_source_scp_password);
 }
 
 if(aos_source_device_type == "tftp")

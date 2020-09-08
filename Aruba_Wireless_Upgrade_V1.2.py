@@ -642,9 +642,7 @@ class Aruba_upgrade():
 					username = "zz"
 					password = "zz"
 
-				ftp_ip = self.config.get("ftp_username")
-				ftp_ip = self.config.get("ftp_password")
-
+				
 				web_data = {'method': 'imtftp','args':server_type+','+server_ip+','+username+','+password+','+img_file+','+partition.upper()+',unknown_host,none'}
 				web_data.update({'UIDARUBA': UIDARUBA})
 
