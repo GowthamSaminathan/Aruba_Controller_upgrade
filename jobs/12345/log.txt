@@ -1,7 +1,7 @@
-2020-09-07 12:28:11,632 > INFO > JOBNAME:12345
-2020-09-07 12:28:11,632 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\configuration_2.yaml
-2020-09-07 12:28:11,737 > INFO > Starting Job
-2020-09-07 12:28:33,076 > ERROR > Login error:10.17.84.220:4343 
+2020-09-08 10:05:31,268 > INFO > JOBNAME:12345
+2020-09-08 10:05:31,268 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\configuration_2.yaml
+2020-09-08 10:05:31,381 > INFO > Starting Job
+2020-09-08 10:05:52,691 > ERROR > Login error:10.17.84.220:4343 
 Traceback (most recent call last):
   File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
     (self._dns_host, self.port), self.timeout, **extra_kw
@@ -24,7 +24,7 @@ Traceback (most recent call last):
     conn = self._new_conn()
   File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
     self, "Failed to establish a new connection: %s" % e
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000021318B79048>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x00000204C8577358>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
 
 During handling of the above exception, another exception occurred:
 
@@ -35,7 +35,7 @@ Traceback (most recent call last):
     method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
   File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
     raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000021318B79048>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000204C8577358>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
 
 During handling of the above exception, another exception occurred:
 
@@ -50,8 +50,8 @@ Traceback (most recent call last):
     r = adapter.send(request, **kwargs)
   File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000021318B79048>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
-2020-09-07 12:28:54,439 > ERROR > Login error:10.17.84.221:4343 
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000204C8577358>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-09-08 10:06:13,801 > ERROR > Login error:10.17.84.221:4343 
 Traceback (most recent call last):
   File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
     (self._dns_host, self.port), self.timeout, **extra_kw
@@ -74,7 +74,7 @@ Traceback (most recent call last):
     conn = self._new_conn()
   File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
     self, "Failed to establish a new connection: %s" % e
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000021318B8C860>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x00000204C945D860>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
 
 During handling of the above exception, another exception occurred:
 
@@ -85,7 +85,7 @@ Traceback (most recent call last):
     method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
   File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
     raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000021318B8C860>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000204C945D860>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
 
 During handling of the above exception, another exception occurred:
 
@@ -100,4 +100,4 @@ Traceback (most recent call last):
     r = adapter.send(request, **kwargs)
   File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000021318B8C860>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000204C945D860>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))

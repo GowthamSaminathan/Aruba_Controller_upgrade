@@ -637,8 +637,8 @@
 <!-- Table -->
 <div class="row" style="margin-right: 0px">
       
-      <div class="col-sm-6">
-        <h5><p>Download the Execution report</p></h5>
+      <div class="col-sm-12">
+        <h5><p>Job History</p></h5>
         <table id="history_table" class="table table-dark" cellspacing="0"> 
         <tbody id="history_table_body"></tbody>
         </table>
@@ -720,6 +720,7 @@ if( data[5] ==  "Failed"){
 
 
 
+
 $(document).ready(function() {
     $('#execution_table').DataTable( {
         "responsive": true,
@@ -740,24 +741,82 @@ $(document).ready(function() {
         "paging":         false,
         "createdRow" : new_row_action
 
-
-
 } );
 });
 
 
-event_data = [["SSSSSS"]]
+
+
+function modify_execution_table_data( json ) 
+{
+
+try{
+  console.log("Reding Events response...")
+  //console.log(json);
+ 
+   // for ( var i=0, ien=json.length ; i<ien ; i++ ) 
+    //{
+    //    json[i][0] = '<a href="/message/'+json[i][0]+'>View message</a>';
+      
+    //}
+  only_data = json["data"]
+  if (jQuery.isEmptyObject(only_data) == false){
+      console.log(only_data);
+      jQuery.each(only_data, function(i, val){
+      evnt_msg = val[3];
+      style_val = 'style="text-align:left;white-space=nowrap"'
+      if (evnt_msg.indexOf("ERROR:") == 0)
+      {
+
+        val[2] = '<span class="badge badge-danger"'+style_val+'>'+val[2]+'</span>'
+         val[3] = '<span class="badge badge-danger"'+style_val+'>'+val[3]+'</span>'
+
+      }else if (evnt_msg.indexOf("INFO:") == 0){
+
+         val[2] = '<span class="badge badge-info"'+style_val+'>'+val[2]+'</span>'
+         val[3] = '<span class="badge badge-info"'+style_val+'>'+val[3]+'</span>'
+
+
+      }else if (evnt_msg.indexOf("WARNING:") == 0){
+
+         val[2] = '<span class="badge badge-warning"'+style_val+'>'+val[2]+'</span>'
+         val[3] = '<span class="badge badge-warning"'+style_val+'>'+val[3]+'</span>'
+
+        
+      }
+
+      });
+      return only_data;
+
+  }
+else{
+  console.log("Events data not")
+  console.log(json);
+  return [];
+}
+
+}catch(e){console.log("Receiving Events error");return [];}}
 
 $(document).ready(function() {
-    $('#execution_events_table').DataTable( {
-        data: event_data,
+    events_table = $('#execution_events_table').DataTable( {
         columns: [
-            { title: "Events" }
+            { title: "ID" },
+            { title: "NAME" },
+            { title: "DATE" },
+            { title: "EVENTS" },
+            { title: "EID" }
+
         ],
+        "columnDefs": [{ "visible": false, "targets": [0,1,4] }],
         "scrollY":        "400px",
         "scrollCollapse": true,
         "paging":         false,
-        "order": [[ 0, "desc" ]]
+        //"order": [[ 0, "desc" ]],
+        "ajax": {
+        "url": "/portal/read_last_events",
+        "type": "GET",
+        "dataSrc": modify_execution_table_data,
+        }
       
       });
 
@@ -1259,19 +1318,84 @@ $("#history").attr('class', 'btn btn-outline-primary active');
 
 }
 
-event_data = [["SSSSSS","ok"]]
+
+function modify_history_table_data( json ) 
+{
+
+try{
+  console.log("Reding history response...")
+  //console.log(json);
+ 
+   // for ( var i=0, ien=json.length ; i<ien ; i++ ) 
+    //{
+    //    json[i][0] = '<a href="/message/'+json[i][0]+'>View message</a>';
+      
+    //}
+  only_data = json["data"]
+  if (jQuery.isEmptyObject(only_data) == false){
+      console.log(only_data);
+      jQuery.each(only_data, function(i, val){
+      evnt_msg = val[3];
+      style_val = 'style="text-align:left;white-space=nowrap"'
+      if (evnt_msg.indexOf("ERROR:") == 0)
+      {
+
+        val[2] = '<span class="badge badge-danger"'+style_val+'>'+val[2]+'</span>'
+         val[3] = '<span class="badge badge-danger"'+style_val+'>'+val[3]+'</span>'
+
+      }else if (evnt_msg.indexOf("RUNNING:") == 0){
+
+         val[2] = '<span class="badge badge-info"'+style_val+'>'+val[2]+'</span>'
+         val[3] = '<span class="badge badge-info"'+style_val+'>'+val[3]+'</span>'
+
+
+      }else if (evnt_msg.indexOf("COMPLETED:") == 0){
+
+        val[0] = '<span class="badge badge-success"'+style_val+'>'+val[0]+'</span>'
+        val[1] = '<span class="badge badge-success"'+style_val+'>'+val[1]+'</span>'
+        val[2] = '<span class="badge badge-success"'+style_val+'>'+val[2]+'</span>'
+        val[3] = '<span class="badge badge-success"'+style_val+'>'+val[3]+'</span>'
+         val[4] = '<span class="badge badge-success"'+style_val+'>'+val[4]+'</span>'
+         val[5] = '<span class="badge badge-success"'+style_val+'>'+val[5]+'</span>'
+         val[6] = '<span class="badge badge-success"'+style_val+'>'+val[6]+'</span>'
+
+        
+      }
+
+      });
+      return only_data;
+
+  }
+else{
+  console.log("Job history data not")
+  console.log(json);
+  return [];
+}
+
+}catch(e){console.log("Receiving history error");return [];}}
 
 $(document).ready(function() {
-    $('#history_table').DataTable( {
-        data: event_data,
+    jobs_table = $('#history_table').DataTable( {
         columns: [
-            { title: "Date" },
-            { title: "Report" }
+            { title: "ID" },
+            { title: "Name" },
+            { title: "Configuration" },
+            { title: "Status" },
+            { title: "Start Date" },
+            { title: "Completed Date" },
+            { title: "Note" }
         ],
-        "scrollY":        "400px",
+        "scrollY":        "500px",
+        "columnDefs": [{ "visible": false, "targets": [1] }],
         "scrollCollapse": true,
+        "responsive":true,
         "paging":         false,
-        "order": [[ 0, "desc" ]]
+        //"order": [[ 0, "desc" ]],
+        "ajax": {
+        "url": "/portal/read_all_jobs",
+        "type": "GET",
+        "dataSrc": modify_history_table_data,
+        }
       
       });
 
@@ -1322,6 +1446,8 @@ Papa.parse(csv_file_data,{
 
 setInterval(get_server_status,3000)
 setInterval(get_execution_status,3000)
+setInterval( function () {events_table.ajax.reload( null, false );}, 3000 );
+setInterval( function () {jobs_table.ajax.reload( null, false );}, 5000 );
 </script>
 
 

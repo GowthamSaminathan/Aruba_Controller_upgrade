@@ -17,7 +17,7 @@ def create_history_db(db_path):
 
 def create_job_db(db_path):
 	conn = sqlite3.connect(db_path)
-	cmd = "NAME TEXT NOT NULL,DEVICE_TYPE NAME TEXT NOT NULL,HOST_NAME TEXT NOT NULL,HOST TEXT NOT NULL,"
+	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT NOT NULL,DEVICE_TYPE NAME TEXT NOT NULL,HOST_NAME TEXT NOT NULL,HOST TEXT NOT NULL,"
 	cmd = cmd+"UPGRADE_VERSION TEXT NOT NULL,STATUS TEXT NOT NULL,CONF_FILE TEXT NOT NULL,MSG TEXT NOT NULL,S_DATE TEXT,E_DATE TEXT"
 	try:
 		conn.execute('''CREATE TABLE JOBS({});'''.format(cmd))
@@ -31,7 +31,7 @@ def create_job_db(db_path):
 
 def create_event_db(db_path):
 	conn = sqlite3.connect(db_path)
-	cmd = "NAME TEXT NOT NULL,E_DATE NAME TEXT NOT NULL,MSG TEXT NOT NULL,E_ID TEXT"
+	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT NOT NULL,E_DATE NAME TEXT NOT NULL,MSG TEXT NOT NULL,E_ID TEXT"
 	try:
 		conn.execute('''CREATE TABLE EVENTS({});'''.format(cmd))
 		print("EVENT table created successfully")
@@ -45,7 +45,7 @@ def get_event_update_by_eid(db_path,e_id):
 	try:
 		conn = sqlite3.connect(db_path)
 		#E_DATE = str(datetime.datetime.now()).split(".")[0]
-		evnt = conn.execute("SELECT NAME,E_DATE,MSG,E_ID FROM EVENTS WHERE E_ID='{}'".format(e_id))
+		evnt = conn.execute("SELECT ID,NAME,E_DATE,MSG,E_ID FROM EVENTS WHERE E_ID='{}'".format(e_id))
 		evnt = evnt.fetchall()
 		conn.close()
 		return evnt
@@ -56,12 +56,38 @@ def get_event_update_by_name(db_path,NAME):
 	try:
 		conn = sqlite3.connect(db_path)
 		#E_DATE = str(datetime.datetime.now()).split(".")[0]
-		evnt = conn.execute("SELECT NAME,E_DATE,MSG,E_ID FROM EVENTS WHERE NAME='{}'".format(NAME))
+		evnt = conn.execute("SELECT ID,NAME,E_DATE,MSG,E_ID FROM EVENTS WHERE NAME='{}'".format(NAME))
 		evnt = evnt.fetchall()
 		conn.close()
 		return evnt
 	except Exception as e:
 		print("get_event_update_by_name: "+str(e))
+
+
+def get_last_job(db_path):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		cursor = conn.cursor()
+		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,STATUS FROM HISTORY ORDER BY ID DESC LIMIT 1")
+		result = cursor.fetchone()
+		conn.close()
+		return result
+	except Exception as e:
+		print("get_event_update_by_name: "+str(e))
+
+def get_all_jobs(db_path):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		cursor = conn.cursor()
+		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,STATUS FROM HISTORY ORDER BY ID DESC")
+		result = cursor.fetchall()
+		conn.close()
+		return result
+	except Exception as e:
+		print("get_event_update_by_name: "+str(e))
+
 
 def update_event_db(db_path,job_name,msg,e_id):
 	try:
@@ -74,7 +100,28 @@ def update_event_db(db_path,job_name,msg,e_id):
 	except Exception as e:
 		print(e)
 
+def get_all_events(db_path):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		cursor = conn.cursor()
+		cursor.execute("SELECT ID,NAME,E_DATE,MSG,E_ID FROM EVENTS")
+		result = cursor.fetchall()
+		conn.close()
+		return result
+	except Exception as e:
+		print("get_event_update_by_name: "+str(e))
+
+
+
+
+
+
+
 
 #create_event_db("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\12345\\event.db")
 #create_history_db("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\db\\job_history.db")
 #print(get_event_update_by_eid("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\12345\\event.db"))
+#print(get_last_job("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\db\\job_history.db"))
+
+#print(get_all_events("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\12345\\event.db"))

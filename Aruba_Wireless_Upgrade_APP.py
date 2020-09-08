@@ -342,7 +342,7 @@ class main_model():
 		if msg == "info":
 			self.logger.info(msg)
 
-		msg = print_level+":"+str(msg)
+		msg = print_level.upper()+":"+str(msg)
 
 		db_management.update_event_db(self.event_db,self.job_name,msg,None)
 

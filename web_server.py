@@ -20,6 +20,8 @@ import Aruba_Wireless_Upgrade_APP
 import config_file_generator
 import yaml
 
+import db_management
+
 
 
 
@@ -36,7 +38,8 @@ logger.info("\n ==> Starting WEB server ...\n")
 
 app = Flask(__name__,static_url_path='/static')
 app.config['CONF_FILES'] = os.path.join(os.getcwd(),"conf_files")
-app.config['DB_LOCATION'] = os.path.join(os.getcwd(),"db","job_history.db")
+app.config['JOBS_FILES'] = os.path.join(os.getcwd(),"jobs")
+app.config['DB_LOCATION'] = os.path.join(os.getcwd(),"db")
 app.config['CONF_TEMPLATES'] = os.path.join(os.getcwd(),"conf_templates")
 #app.config['LOG_FILES'] = os.path.join(os.getcwd(),"log")
 CORS(app)
@@ -134,6 +137,88 @@ def read_config():
 
 	except Exception :
 		logger.exception("read_config")
+		return jsonify({"results":"error","message":"Check server log"})
+
+
+def get_last_job():
+	try:
+
+		history_db = os.path.join(app.config['DB_LOCATION'],"job_history.db")
+		#print(history_db)
+			
+		last_job = db_management.get_last_job(history_db)
+		last_job_name = None
+
+		if type(last_job) == tuple:
+			if len(last_job) > 0:
+				return last_job
+		else:
+			return None
+
+	except Exception:
+		logger.exception("get_last_job")
+
+def get_all_jobs():
+	try:
+
+		history_db = os.path.join(app.config['DB_LOCATION'],"job_history.db")
+		print(history_db)
+			
+		last_job = db_management.get_all_jobs(history_db)
+		last_job_name = None
+
+		if type(last_job) == list:
+			if len(last_job) > 0:
+				return last_job
+		else:
+			return None
+
+	except Exception:
+		logger.exception("get_all_jobs")
+
+@app.route('/portal/read_last_events',methods = ['GET'])
+def read_last_events():
+	try:
+		if request.method == 'GET':
+			#config_name = request.args.get('config_name')
+			#download = request.args.get('download')
+
+			last_job = get_last_job()
+
+			if last_job == None:
+				return jsonify({"results":"failed","message":"No last Job found"})
+
+			job_name = last_job[1]
+
+			events_db = os.path.join(app.config['JOBS_FILES'],str(job_name),"event.db")
+
+			all_events = db_management.get_all_events(events_db)
+
+			if type(all_events) == list:
+				return jsonify({"results":"success","data":all_events})
+			else:
+				return jsonify({"results":"failed","msg":"no events for: "+str(job_name)})
+
+	except Exception :
+		logger.exception("read_last_events")
+		return jsonify({"results":"error","message":"Check server log"})
+
+@app.route('/portal/read_all_jobs',methods = ['GET'])
+def read_all_jobs():
+	try:
+		if request.method == 'GET':
+			config_name = request.args.get('config_name')
+			#download = request.args.get('download')
+
+			all_jobs = get_all_jobs()
+
+			if all_jobs == None:
+				return jsonify({"results":"failed","message":"No Jobs found"})
+			else:
+				return jsonify({"results":"success","data":all_jobs})
+
+	except Exception :
+		logger.exception("read_all_jobs")
 		return jsonify({"results":"error","message":"Check server log"})
 
 @app.route('/portal/start_execution',methods = ['POST'])
