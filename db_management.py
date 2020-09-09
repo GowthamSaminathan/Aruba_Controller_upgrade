@@ -1,5 +1,17 @@
 import sqlite3
 import datetime
+import os
+import logging
+from logging.handlers import RotatingFileHandler
+
+logger = logging.getLogger("db_management")
+logger.setLevel(logging.DEBUG)
+handler = RotatingFileHandler(os.path.join(os.getcwd(),"log","db_management.log"), maxBytes=5000000, backupCount=25)
+formatter = logging.Formatter('%(asctime)s > %(levelname)s > %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+logger.info("DB Managenet imported")
 
 
 def create_history_db(db_path):
@@ -12,8 +24,8 @@ def create_history_db(db_path):
 		#return conn
 		conn.close()
 		return True
-	except Exception as e:
-		print("create_history_db: "+str(e))
+	except Exception:
+		logger.exception("create_history_db")
 
 def create_job_db(db_path):
 	conn = sqlite3.connect(db_path)
@@ -25,8 +37,8 @@ def create_job_db(db_path):
 		#return conn
 		conn.close()
 		return True
-	except Exception as e:
-		print("create_job_db: "+str(e))
+	except Exception:
+		logger.exception("create_job_db")
 
 
 def create_event_db(db_path):
@@ -38,8 +50,8 @@ def create_event_db(db_path):
 		#return conn
 		conn.close()
 		return True
-	except Exception as e:
-		print("create_event_db: "+str(e))
+	except Exception:
+		logger.exception("create_event_db")
 
 def get_event_update_by_eid(db_path,e_id):
 	try:
@@ -49,8 +61,8 @@ def get_event_update_by_eid(db_path,e_id):
 		evnt = evnt.fetchall()
 		conn.close()
 		return evnt
-	except Exception as e:
-		print("get_event_update_by_eid: "+str(e))
+	except Exception:
+		logger.exception("get_event_update_by_eid")
 
 def get_event_update_by_name(db_path,NAME):
 	try:
@@ -60,8 +72,25 @@ def get_event_update_by_name(db_path,NAME):
 		evnt = evnt.fetchall()
 		conn.close()
 		return evnt
-	except Exception as e:
-		print("get_event_update_by_name: "+str(e))
+	except Exception:
+		logger.exception("get_event_update_by_name")
+
+def update_job_status_by_name(db_path,status,job_name,msg=None):
+	try:
+		conn = sqlite3.connect(db_path)
+		cursor = conn.cursor()
+		if msg != None:
+			cursor.execute("UPDATE HISTORY set STATUS='{}' where NAME='{}'".format(status,job_name))
+		else:
+			cursor.execute("UPDATE HISTORY set STATUS='{}',MSG='{}' where NAME='{}'".format(status,msg,job_name))
+		
+		if cursor.rowcount == 1:
+			return True
+		else:
+			return False
+		conn.commit()
+	except Exception:
+		logger.exception("update_job_status_by_name")
 
 
 def get_last_job(db_path):
@@ -73,8 +102,8 @@ def get_last_job(db_path):
 		result = cursor.fetchone()
 		conn.close()
 		return result
-	except Exception as e:
-		print("get_event_update_by_name: "+str(e))
+	except Exception:
+		logger.exception("get_last_job")
 
 def get_all_jobs(db_path):
 	try:
@@ -85,8 +114,8 @@ def get_all_jobs(db_path):
 		result = cursor.fetchall()
 		conn.close()
 		return result
-	except Exception as e:
-		print("get_event_update_by_name: "+str(e))
+	except Exception:
+		logger.exception("get_all_jobs")
 
 
 def update_event_db(db_path,job_name,msg,e_id):
@@ -97,8 +126,8 @@ def update_event_db(db_path,job_name,msg,e_id):
 		conn.commit()
 		conn.close()
 		return True
-	except Exception as e:
-		print(e)
+	except Exception:
+		logger.exception("update_event_db")
 
 def get_all_events(db_path):
 	try:
@@ -109,13 +138,12 @@ def get_all_events(db_path):
 		result = cursor.fetchall()
 		conn.close()
 		return result
-	except Exception as e:
-		print("get_event_update_by_name: "+str(e))
+	except Exception:
+		logger.exception("get_all_events")
 
 def insert_if_lastjob_completed(db_path,data):
 	try:
-		query = "INSERT OR REPLACE INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT {},{},{},{},{},{}"
-		query = query + " WHERE EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND STATUS='COMPLETED');"
+		
 		
 		NAME = data.get("NAME")
 		CONF_FILE = data.get("CONF_FILE")
@@ -124,21 +152,28 @@ def insert_if_lastjob_completed(db_path,data):
 		E_DATE = data.get("E_DATE")
 		MSG = data.get("MSG")
 
+		query = "INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '{}','{}','{}','{}','{}','{}'".format(NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG)
+		query = query + " WHERE EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND STATUS='COMPLETED');"
+
 		query = query.format(NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG)
 		conn = sqlite3.connect(db_path)
-		
-		conn.execute(query)
+		cursor = conn.cursor()
+
+		cursor.execute(query)
 		conn.commit()
 		conn.close()
-		return True
-	except Exception as e:
-		print(e)
+		if cursor.lastrowid > 0:
+			return True
+		else:
+			return False
+	except Exception:
+		logger.exception("insert_if_lastjob_completed")
 
 
 
+#data = {"NAME":"test","CONF_FILE":"fff","STATUS":"running","S_DATE":"dddd","E_DATE":"dsdsd","MSG":"ok"}
 
-
-
+#print(insert_if_lastjob_completed("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\db\\job_history.db",data))
 
 #create_event_db("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\12345\\event.db")
 #create_history_db("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\db\\job_history.db")

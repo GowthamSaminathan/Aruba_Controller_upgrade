@@ -9,7 +9,7 @@ import time
 import json
 import logging
 from logging.handlers import RotatingFileHandler
-from logging.handlers import SysLogHandler
+#from logging.handlers import SysLogHandler
 
 
 import urllib.parse
@@ -33,7 +33,6 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 logger.info("\n ==> Starting WEB server ...\n")
-
 
 
 app = Flask(__name__,static_url_path='/static')
@@ -226,12 +225,12 @@ def start_execution():
 	try:
 		global main_thread
 		if request.method == 'POST':
-			result = request.form
+			result = request.get_json()
 			
 			file_name = result.get("file_name")
 			job_list = result.get("job_list")
 
-			if all(item in ["precheck","postcheck","upgrade","all"] for item in job_list) == False:
+			if all(item in ["precheck","all"] for item in job_list) == False:
 				return jsonify({"results":"failed","message":"Job list not valid"})
 
 			filename = secure_filename(file_name)
@@ -241,7 +240,9 @@ def start_execution():
 
 				last_job = get_last_job()
 
-				if type(last_job) == list:
+				#print(last_job)
+
+				if type(last_job) == tuple:
 					if last_job[3] != "COMPLETED":
 						return jsonify({"results":"failed","message":"Last Job {} not completed".format(str(last_job[2]))})
 
@@ -252,7 +253,7 @@ def start_execution():
 				status = db_management.insert_if_lastjob_completed(history_db,data)
 
 				#main_thread.isAlive() == False
-				if status == 1:
+				if status == True:
 					main_thread = Thread(target=aruba_wireless.main_run,name = "wireless_upgrade", args=(job_name,filename,job_list,))
 					main_thread.start()
 					return jsonify({"results":"success","message":"Job Started"})

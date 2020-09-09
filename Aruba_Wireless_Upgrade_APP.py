@@ -1,8 +1,8 @@
 # Aruba MM,Controller,AP upgrade with pre,post check
 
 import os
-import logging
-from logging.handlers import RotatingFileHandler
+import logging as clogging
+from logging.handlers import RotatingFileHandler as cRotatingFileHandler
 import yaml # From pyyaml
 import cerberus
 import requests
@@ -738,12 +738,13 @@ class main_model():
 			if job_db_status == True and event_db_status == True:
 
 				self.logger.info("Starting Job")
-				conn = sqlite3.connect(self.job_history_db)
-				conn.execute("UPDATE HISTORY set STATUS = 'RUNNING' where NAME={}".format(self.job_name))
-				conn.commit()
-				self.eprint("info","HISTORY STATUS RUNNNING MODIFIED: "+str(conn.total_changes))
-
-				if conn.total_changes == 1:
+				status = db_management.update_job_status_by_name(self.job_history_db,"RUNNING",self.job_name)
+				if status == False:
+					self.eprint("warning","Running status not updated in DB (Bug)")
+				
+				
+				if status == True:
+					self.eprint("info","Running: "+str(self.job_name))
 					return True
 				else:
 					self.eprint("error","Terminating Job , DB update failed...")
@@ -755,6 +756,14 @@ class main_model():
 
 		except Exception:
 			self.logger.exception("init_upgrade")
+
+	def finish_upgrade(self):
+		try:
+			db_management.update_job_status_by_name(self.job_history_db,"COMPLETED",self.job_name)
+			self.eprint("info","==== Completed ====")
+		except Exception:
+			self.logger.exception("finish_upgrade")
+
 
 	def main_run(self,job_name,config_file,job_list):
 		try:
@@ -775,10 +784,10 @@ class main_model():
 				return None
 
 			log_path = os.path.join(os.getcwd(),"jobs",self.job_name,"log.txt")
-			self.logger = logging.getLogger("Rotating Log")
-			self.logger.setLevel(logging.DEBUG)
-			handler = RotatingFileHandler(log_path, maxBytes=50000000, backupCount=1)
-			formatter = logging.Formatter('%(asctime)s > %(levelname)s > %(message)s')
+			self.logger = clogging.getLogger("upgrade_logger")
+			self.logger.setLevel(clogging.DEBUG)
+			handler = cRotatingFileHandler(log_path, maxBytes=50000000, backupCount=1)
+			formatter = clogging.Formatter('%(asctime)s > %(levelname)s > %(message)s')
 			handler.setFormatter(formatter)
 			self.logger.addHandler(handler)
 			self.logger.propagate = True
@@ -805,7 +814,7 @@ class main_model():
 					elif job == "postcheck":
 						self.eprint("info","Starting "+str(job))
 						ar_upgrade.Pre_Post_check("Postcheck")
-					elif job == "upgrade":
+					elif job == "all":
 						self.eprint("info","Starting "+str(job))
 					else:
 						self.eprint("error","[Terminting] Job not allowed - "+str(job))
@@ -820,6 +829,10 @@ class main_model():
 		except Exception as e:
 			print("main_run: "+str(e))
 			#self.logger.exception("main_run")
+		finally:
+			# Update the job status as completed with message
+			self.finish_upgrade()
+
 
 
 

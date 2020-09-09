@@ -1,0 +1,8 @@
+2020-09-09 23:11:33,116 > INFO > JOBNAME:1599673293_0902858
+2020-09-09 23:11:33,117 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\configuration_2.yaml
+2020-09-09 23:11:33,117 > ERROR > init_upgrade
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 735, in init_upgrade
+    job_db_status = db_management.create_job_db(self.logger,self.upgrade_db)
+TypeError: create_job_db() takes 1 positional argument but 2 were given
+2020-09-09 23:11:33,118 > INFO > INFO:==== Completed ====

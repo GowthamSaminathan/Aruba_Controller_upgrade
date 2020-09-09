@@ -1,0 +1,12 @@
+2020-09-09 23:14:24,459 > INFO > DB Managenet imported
+2020-09-09 23:14:26,193 > INFO > DB Managenet imported
+2020-09-09 23:14:27,812 > ERROR > get_all_events
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\db_management.py", line 134, in get_all_events
+    conn = sqlite3.connect(db_path)
+sqlite3.OperationalError: unable to open database file
+2020-09-09 23:14:30,808 > ERROR > get_all_events
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\db_management.py", line 134, in get_all_events
+    conn = sqlite3.connect(db_path)
+sqlite3.OperationalError: unable to open database file
