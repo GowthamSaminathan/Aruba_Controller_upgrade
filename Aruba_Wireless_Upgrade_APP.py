@@ -326,10 +326,63 @@ class Aruba_Wireless_upgrade():
 		finally:
 			self.eprint("info",check_type+" Completed")
 
+	def validate_image_upload(self,single_host):
+		try:
+			host_ip = single_host.get("host")
+			host_name = single_host.get("hostname")
+			host_type = single_host.get("device_type")
+			version = single_host.get("image_version")
+			disk = single_host.get("upgrade_disk")
+			build = single_host.get("image_build")
+
+
+			out = self.execute_cmd(single_host,["show image version"])
+			valid_image = False
+			
+			if out != None:
+				_data = out.get("show image version")
+				_data = _data.get("_data")
+				part = _data[0].split("\n")
+				
+				first_partition = part[1]
+				first_partition = first_partition.split(" : ")[1].split(" ")[0].split(":")[1]
+				first_version = part[2]
+				first_build = part[3].split(" : ")[1].split(" ")[0]
+
+				second_partition = part[7]
+				second_partition = second_partition.split(" : ")[1].split(" ")[0].split(":")[1]
+				second_version = part[8]
+				second_build = part[9].split(" : ")[1].split(" ")[0]
+
+				if int(disk) == int(first_partition):
+					if first_version.find(str(version)) != -1:
+						if str(first_build) == str(build):
+							valid_image =  True
+
+				if int(disk) == int(second_partition):
+					if second_version.find(str(version)) != -1:
+						if str(second_build) == str(build):
+							valid_image = True
+
+				if valid_image == True:
+					self.eprint("success","New Image Installed for ({}) Host:{}:{} Disk:{} Version:{} Build:{}"
+						.format(host_type,host_name,host_ip,disk,version,build))
+					return True
+				else:
+					self.eprint("warning","Required image version for ({}) Host:{}:{} = Disk:{} Version:{} Build:{}"
+						.format(host_type,host_name,host_ip,disk,version,build))
+					return False
+				
+
+			else:
+				return None
+		except Exception:
+			self.logger.exception("validate_image_upload")
+
 	def execute_cmd(self,single_host,cmds):
 		try:
 			out_cmd = {}
-			host_ip = single_host.get(host)
+			host_ip = single_host.get("host")
 			login_status = self.get_session(single_host)
 			if login_status[0] == True:
 				session = login_status[1]
@@ -446,38 +499,35 @@ class Aruba_Wireless_upgrade():
 		except Exception:
 			self.logger.exception("upload_image_tftp")
 
-	def MM_MD_Upload(self,host):
+	def MM_MD_Upload(self,single_host):
 		upload_not_required = False
-		img_file = host.get("image_file_name")
-		host_ip = host.get("host")
-		hostname = host.get("hostname")
-		upgrade_disk = host.get("upgrade_disk")
-		aos_source = host.get("AOS_Source")
+		img_file = single_host.get("image_file_name")
+		host_ip = single_host.get("host")
+		hostname = single_host.get("hostname")
+		upgrade_disk = single_host.get("upgrade_disk")
+		aos_source = single_host.get("AOS_Source")
 		
 		upload_type = aos_source.get("device_type")
 		
-		image_build = host.get("image_build")
-		image_version = host.get("image_version")
-		host_type = host.get("type")
+		image_build = single_host.get("image_build")
+		image_version = single_host.get("image_version")
+		host_type = single_host.get("type")
 
-		upload_not_required = self.validate_image_upload(hostname,host_ip,host_type,upgrade_disk,image_version,image_build)
+		upload_not_required = self.validate_image_upload(single_host)
 
 		while upload_not_required == False:
-			if self.validate_image_upload(hostname,host_ip,host_type,upgrade_disk,image_version,image_build) != True:
+			if self.validate_image_upload(single_host) != True:
 				msg = "Do you want to install: "
 				if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}  (Y/N)".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "yes":
 					#print("=> Starting MM Upgrade for {}".format(host_ip))
 					if upload_type == "local":
-						self.upload_image_http(host,aos_source)
+						self.upload_image_http(single_host,aos_source)
 					elif upload_type == "tftp":
-						server_ip = self.config.get(upload_type)
-						self.upload_image_from_server(host,aos_source,"tftp")
+						self.upload_image_from_server(single_host,aos_source,"tftp")
 					elif upload_type == "ftp":
-						server_ip = self.config.get(upload_type)
-						self.upload_image_from_server(host,aos_source,"ftp")
+						self.upload_image_from_server(single_host,aos_source,"ftp")
 					elif upload_type == "scp":
-						server_ip = self.config.get(upload_type)
-						self.upload_image_from_server(host,aos_source,"scp")
+						self.upload_image_from_server(single_host,aos_source,"scp")
 					else:
 						self.eprint("error","No valid file upload type found"+str(upload_type))
 
@@ -498,7 +548,7 @@ class Aruba_Wireless_upgrade():
 			upgrade_disk = single_host.get("upgrade_disk")
 			image_build = single_host.get("image_build")
 			image_version = single_host.get("image_version")
-			max_ap_image_load = self.config.get("max_ap_image_load")
+			max_ap_image_load = single_host.get("max_ap_image_load")
 
 			msg = " \n=> Do You want to preimage AP's for :"
 			if self.user_input("{} {} - {} from Disk {}".format(msg,host_name,host_ip,upgrade_disk),["yes","no"]) == "yes":
@@ -610,14 +660,14 @@ class Aruba_Wireless_upgrade():
 				image_build = host.get("image_build")
 				image_version = host.get("image_version")
 
-				if host.get("type") == "MM":
+				if host.get("device_type") == "MM":
 					# Start the MM Upgrade
 					self.eprint("info","MM: Preparing for host {} IP: {}".format(host_name,host_ip))
 					#self.validate_image_upload(host_ip,disk,image_version,image_build)
 					self.MM_MD_Upload(host)
 					#self.validate_running_image(host_ip,image_version,image_build)
 					
-				elif host.get("type") == "MD":
+				elif host.get("device_type") == "MD":
 					self.eprint("info","MD: Preparing for host {} IP: {}".format(host_name,host_ip))
 					self.MM_MD_Upload(host)
 				else:
@@ -631,7 +681,7 @@ class Aruba_Wireless_upgrade():
 				image_build = host.get("image_build")
 				image_version = host.get("image_version")
 
-				if host.get("type") == "MD" :
+				if host.get("device_type") == "MD" :
 					# Pre-Upload images to this MD
 					self.AP_IMAGE_PRELOAD(host)
 
@@ -831,6 +881,7 @@ class main_model():
 						self.eprint("info","Starting "+str(job))
 						ar_upgrade.Pre_Post_check("Postcheck")
 					elif job == "all":
+						ar_upgrade.Upload_Images()
 						self.eprint("info","Starting "+str(job))
 					else:
 						self.eprint("error","[Terminting] Job not allowed - "+str(job))

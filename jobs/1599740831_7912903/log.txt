@@ -1,0 +1,72 @@
+2020-09-10 17:57:12,745 > INFO > JOBNAME:1599740831_7912903
+2020-09-10 17:57:12,746 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\configuration_2.yaml
+2020-09-10 17:57:12,832 > INFO > Starting Job
+2020-09-10 17:57:12,854 > INFO > INFO:Running: 1599740831_7912903 Type:precheck,all
+2020-09-10 17:57:12,876 > INFO > INFO:Starting Configuration configuration_2.yaml Validation
+2020-09-10 17:57:12,918 > INFO > Inserting upgrade list to upgrade.db
+2020-09-10 17:57:12,978 > INFO > INFO:Starting precheck
+2020-09-10 17:57:13,015 > INFO > INFO:Executing Precheck
+2020-09-10 17:57:13,035 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-10 17:57:15,871 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-10 17:57:16,269 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-10 17:57:18,996 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-10 17:57:21,033 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-10 17:57:23,050 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-10 17:57:25,086 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-10 17:57:27,112 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-10 17:57:29,131 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-10 17:57:31,377 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-10 17:57:33,349 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-10 17:57:34,962 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-10 17:57:37,517 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-10 17:57:39,498 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-10 17:57:41,491 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-10 17:57:43,418 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-10 17:57:45,399 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-10 17:57:50,274 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-10 17:57:53,160 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-10 17:57:53,188 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-10 17:57:55,872 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-10 17:57:56,717 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-10 17:57:57,524 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-10 17:57:58,308 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-10 17:57:59,116 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-10 17:57:59,888 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-10 17:58:00,666 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-10 17:58:01,422 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-10 17:58:02,238 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-10 17:58:03,114 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-10 17:58:03,948 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-10 17:58:05,160 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-10 17:58:06,364 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-10 17:58:07,163 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-10 17:58:07,931 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-10 17:58:09,003 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-10 17:58:09,802 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-10 17:58:11,214 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-10 17:58:12,326 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-10 17:58:16,547 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-10 17:58:17,583 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-10 17:58:18,494 > INFO > INFO:Precheck Completed
+2020-09-10 17:58:19,291 > INFO > INFO:Total upgrade hosts:2
+2020-09-10 17:58:19,332 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-10 17:58:21,958 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-10 17:58:23,252 > ERROR > validate_image_upload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 357, in validate_image_upload
+    if int(disk) == int(first_partition):
+ValueError: invalid literal for int() with base 10: 'Auto'
+2020-09-10 17:58:23,252 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-10 17:58:24,588 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-10 17:58:25,760 > ERROR > validate_image_upload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 357, in validate_image_upload
+    if int(disk) == int(first_partition):
+ValueError: invalid literal for int() with base 10: 'Auto'
+2020-09-10 17:58:25,762 > ERROR > AP_IMAGE_PRELOAD: 
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 554, in AP_IMAGE_PRELOAD
+    if self.user_input("{} {} - {} from Disk {}".format(msg,host_name,host_ip,upgrade_disk),["yes","no"]) == "yes":
+AttributeError: 'Aruba_Wireless_upgrade' object has no attribute 'user_input'
+2020-09-10 17:58:25,763 > INFO > INFO:Starting all
+2020-09-10 17:58:26,695 > INFO > INFO:==== Completed ====

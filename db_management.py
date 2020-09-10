@@ -103,7 +103,7 @@ def get_last_job(db_path):
 		conn = sqlite3.connect(db_path)
 		#E_DATE = str(datetime.datetime.now()).split(".")[0]
 		cursor = conn.cursor()
-		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,STATUS FROM HISTORY ORDER BY ID DESC LIMIT 1")
+		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG FROM HISTORY ORDER BY ID DESC LIMIT 1")
 		result = cursor.fetchone()
 		conn.close()
 		return result

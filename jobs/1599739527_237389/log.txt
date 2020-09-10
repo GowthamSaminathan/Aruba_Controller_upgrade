@@ -1,0 +1,72 @@
+2020-09-10 17:35:27,352 > INFO > JOBNAME:1599739527_237389
+2020-09-10 17:35:27,352 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\configuration_2.yaml
+2020-09-10 17:35:27,505 > INFO > Starting Job
+2020-09-10 17:35:27,530 > INFO > INFO:Running: 1599739527_237389 Type:precheck,all
+2020-09-10 17:35:27,552 > INFO > INFO:Starting Configuration configuration_2.yaml Validation
+2020-09-10 17:35:27,602 > INFO > Inserting upgrade list to upgrade.db
+2020-09-10 17:35:27,706 > INFO > INFO:Starting precheck
+2020-09-10 17:35:27,729 > INFO > INFO:Executing Precheck
+2020-09-10 17:35:27,753 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-10 17:35:30,780 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-10 17:35:30,806 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-10 17:35:33,686 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-10 17:35:34,783 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-10 17:35:35,737 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-10 17:35:36,619 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-10 17:35:37,489 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-10 17:35:38,349 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-10 17:35:39,201 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-10 17:35:40,153 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-10 17:35:41,416 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-10 17:35:42,874 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-10 17:35:43,846 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-10 17:35:44,838 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-10 17:35:45,630 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-10 17:35:46,413 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-10 17:35:50,325 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-10 17:35:56,293 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-10 17:35:56,324 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-10 17:35:59,085 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-10 17:35:59,965 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-10 17:36:00,825 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-10 17:36:01,665 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-10 17:36:02,525 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-10 17:36:03,341 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-10 17:36:04,201 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-10 17:36:05,046 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-10 17:36:05,892 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-10 17:36:06,831 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-10 17:36:07,741 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-10 17:36:08,562 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-10 17:36:09,991 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-10 17:36:10,822 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-10 17:36:11,657 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-10 17:36:12,606 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-10 17:36:13,402 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-10 17:36:14,233 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-10 17:36:15,064 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-10 17:36:16,654 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-10 17:36:17,497 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-10 17:36:18,434 > INFO > INFO:Precheck Completed
+2020-09-10 17:36:18,459 > INFO > INFO:Total upgrade hosts:2
+2020-09-10 17:36:18,504 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-10 17:36:21,350 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-10 17:36:22,636 > ERROR > validate_image_upload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 357, in validate_image_upload
+    if int(disk) == int(first_partition):
+ValueError: invalid literal for int() with base 10: 'Auto'
+2020-09-10 17:36:22,636 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-10 17:36:23,469 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-10 17:36:24,258 > ERROR > validate_image_upload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 357, in validate_image_upload
+    if int(disk) == int(first_partition):
+ValueError: invalid literal for int() with base 10: 'Auto'
+2020-09-10 17:36:24,258 > ERROR > AP_IMAGE_PRELOAD: 
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 551, in AP_IMAGE_PRELOAD
+    max_ap_image_load = self.single_host.get("max_ap_image_load")
+AttributeError: 'Aruba_Wireless_upgrade' object has no attribute 'single_host'
+2020-09-10 17:36:24,258 > INFO > INFO:Starting all
+2020-09-10 17:36:25,513 > INFO > INFO:==== Completed ====

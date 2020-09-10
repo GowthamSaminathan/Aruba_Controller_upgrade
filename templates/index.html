@@ -193,7 +193,7 @@
 <div class="container-fluid monitor-col upgrade_class" style="display: none;">
 
 <div class="row" style="margin-right: 0px"> 
-<div class="col-sm-4" >
+<div class="col-sm-8" >
   <span class="badge badge-warning" id="message_1"></span>
   <span class="badge badge-primary" id="message_2"></span>
   <span class="badge badge-info" id="message_3"></span>
@@ -213,9 +213,10 @@
 
 </div>
 
-<div class="col-sm-3" style="background-color:#f8f9fa">
-<button type="button" class="btn btn-warning btn-sm">Pause Upgrade</button>
-<button type="button" class="btn btn-danger btn-sm">Stop Upgrade</button>
+<div class="col-sm-3" style="background-color:#f8f9fa;">
+<div class="d-flex flex-row-reverse">
+<button type="button" class="btn btn-danger btn-sm" style="top:3px;">Stop Upgrade</button>
+</div>
 
 </div>
 
@@ -228,14 +229,14 @@
 <!-- Table -->
 <div class="row" style="margin-right: 0px">
       
-      <div class="col-sm-8">
-        <table id="execution_table" class="display compact" cellspacing="0"> 
+      <div class="col-sm-7">
+        <table id="execution_table" class="display compact table-dark table-striped table-sm" cellspacing="0"> 
         <tbody id="execution_body"></tbody>
         </table>
       </div>
       
-      <div class="col-sm-4">
-      <table id="execution_events_table" class="display compact hover" cellspacing="0"> </table>
+      <div class="col-sm-5">
+      <table id="execution_events_table" class="display compact hover " cellspacing="0"> </table>
       </div>
 </div>
 
@@ -711,7 +712,7 @@
       <div class="col-sm-12">
         <h5><p>Job History</p></h5>
         <div class="table-responsive">
-        <table id="history_table" class="table table-striped table-bordered"  style="width:100%"> 
+        <table id="history_table" class="table table-dark table-striped table-sm table-striped table-bordered"  style="width:100%"> 
         <tbody id="history_table_body"></tbody>
         </table>
       </div>
@@ -754,6 +755,9 @@ function new_row_action( json )
 
 try{
   console.log("Reding job response...")
+  $("#message_1").text("");
+  $("#message_2").text("");
+  $("#message_3").text("");
   //console.log(json);
  
    // for ( var i=0, ien=json.length ; i<ien ; i++ ) 
@@ -762,8 +766,28 @@ try{
       
     //}
   only_data = json["data"]
+
+
   if (jQuery.isEmptyObject(only_data) == false){
-      console.log(only_data);
+      
+      job_file = json["job_file"];
+      job_status = json["job_status"];
+      job_start_date = json["job_start_date"];
+      job_end_date = json["job_end_date"];
+      job_msg = json["job_msg"];
+
+      message_1 = "JOB "+job_status +": "+job_file
+      if(job_msg == "None" || job_msg == ""){message_2 = "";}else{message_2 = job_msg;}
+      
+      message_3 = "Started: "+job_start_date
+      if(job_end_date == "" || job_end_date == "None"){}else{message_3 = message_3+ " Completed: "+job_end_date;}
+      
+
+      //$("#load-status").attr('class', 'badge badge-danger');
+      $("#message_1").text(message_1);
+      $("#message_2").text(message_2);
+      $("#message_3").text(message_3);
+
       jQuery.each(only_data, function(i, val){
       status = val[5];
       style_val = 'style="text-align:left;white-space=nowrap"'
@@ -840,6 +864,9 @@ $(document).ready(function() {
             { title: "Note" }
 
         ],
+        //"buttons": [ 'copy', 'excel', 'pdf', 'colvis' ],
+        lengthChange: false,
+        dom: 'Bfrtip',
         "columnDefs": [{ "visible": false, "targets": [] }],
         "scrollY":        "400px",
         "scrollCollapse": true,
@@ -849,9 +876,12 @@ $(document).ready(function() {
         "url": "/portal/read_last_job",
         "type": "GET",
         "dataSrc": new_row_action,
-        }
+        },
+        buttons: ['copy','pdf','excel',{text: 'My button',action: function ( e, dt, node, config ) {alert( 'Button activated' );}}]
       
       });
+
+
 
 } );
 
@@ -873,6 +903,7 @@ try{
       console.log(only_data);
       jQuery.each(only_data, function(i, val){
       evnt_msg = val[3];
+      val[2] = val[2].split(" ")[1];
       style_val = 'style="text-align:left;white-space=nowrap"'
       if (evnt_msg.indexOf("ERROR:") == 0)
       {
@@ -911,13 +942,16 @@ $(document).ready(function() {
         columns: [
             { title: "ID" },
             { title: "NAME" },
-            { title: "DATE" },
+            { title: "TIME" },
             { title: "EVENTS" },
             { title: "EID" }
 
         ],
+         dom: 'Bfrtip',
+        buttons: ['copy', 'excel'],
         "columnDefs": [{ "visible": false, "targets": [0,1,4] }],
         "scrollY":        "400px",
+        "order": [[ 0, "desc" ]],
         "scrollCollapse": true,
         "paging":         false,
         //"order": [[ 0, "desc" ]],
@@ -1430,7 +1464,6 @@ function start_new_upgrade(){
 
 job_name = $("#job_file_list").val();
 pre_check = $('#precheck_only').prop("checked");
-
 console.log(job_name);
 if (job_name == "none"){
 
@@ -1442,7 +1475,7 @@ $("#start_new_upgrade_badge").text("Please select the POA");
 $("#start_new_upgrade_badge").attr('class', 'badge badge-info');
 $("#start_new_upgrade_badge").text("Please Wait");
 
-if (pre_check == true){job_list=["precheck"];}else{job_list=["all"];}
+if (pre_check == true){job_list=["precheck"];}else{job_list=["precheck","all"];}
 jdata = {"file_name":job_name,"job_list":job_list}
 
 
@@ -1608,7 +1641,7 @@ $(document).ready(function() {
         "url": "/portal/read_all_jobs",
         "type": "GET",
         "dataSrc": modify_history_table_data,
-        }
+        },
       
       });
 

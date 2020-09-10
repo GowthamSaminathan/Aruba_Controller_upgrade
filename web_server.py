@@ -224,6 +224,13 @@ def read_last_job():
 				return jsonify({"results":"failed","message":"No last Job found"})
 
 			job_name = last_job[1]
+			job_file = last_job[2]
+			job_status = last_job[3]
+			job_s_date = last_job[4]
+			job_e_date = last_job[5]
+			job_msg = last_job[6]
+
+			job_summary = {"job_file":job_file,"job_status":job_status,"job_start_date":job_s_date,"job_end_date":job_e_date,"job_msg":job_msg}
 
 			upgrade_db = os.path.join(app.config['JOBS_FILES'],str(job_name),"upgrade.db")
 
@@ -234,7 +241,8 @@ def read_last_job():
 			all_upgrade = db_management.get_upgrade_details(upgrade_db)
 
 			if type(all_upgrade) == list:
-				return jsonify({"results":"success","data":all_upgrade})
+				job_summary.update({"results":"success","data":all_upgrade})
+				return jsonify(job_summary)
 			else:
 				return jsonify({"results":"failed","msg":"no events for: "+str(job_name)})
 
@@ -286,7 +294,7 @@ def start_execution():
 					if last_job[3] != "COMPLETED":
 						return jsonify({"results":"failed","message":"Last Job {} not completed".format(str(last_job[2]))})
 
-				S_DATE = str(datetime.datetime.now())
+				S_DATE = str(datetime.datetime.now()).split(".")[0]
 				job_name = str(time.time()).replace(".","_")
 				data = {"NAME":job_name,"CONF_FILE":file_name,"STATUS":"STARTING","S_DATE":S_DATE,"E_DATE":"","MSG":""}
 				history_db = os.path.join(app.config['DB_LOCATION'],"job_history.db")
