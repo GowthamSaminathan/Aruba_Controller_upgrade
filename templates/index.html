@@ -98,7 +98,6 @@
     </div>
 </nav>
 
-<br>
 
 
 
@@ -193,26 +192,38 @@
 
 <div class="container-fluid monitor-col upgrade_class" style="display: none;">
 
+<div class="row" style="margin-right: 0px"> 
+<div class="col-sm-4" >
+  <span class="badge badge-warning" id="message_1"></span>
+  <span class="badge badge-primary" id="message_2"></span>
+  <span class="badge badge-info" id="message_3"></span>
+</div>
+<div class="col-sm-4" >
+
+</div>
+</div>
 
 <div class="row" style="margin-right: 0px"> 
 
-<div class="col-sm-6" style="background-color:#f8f9fa">
-
-<button class="btn btn-light" style="width:90%">
-  <span class="spinner-border spinner-border-sm"></span>
-  Upgrading Controllers 123456 asdasd asdasdasd
+<div class="col-sm-5" style="background-color:#f8f9fa">
+<button class="btn btn-light">
+  <span class="spinner-border spinner-border-sm" id="message_4"></span>
+  
 </button>
 
 </div>
 
-<div class="col-sm-6" style="background-color:#f8f9fa">
+<div class="col-sm-3" style="background-color:#f8f9fa">
 <button type="button" class="btn btn-warning btn-sm">Pause Upgrade</button>
 <button type="button" class="btn btn-danger btn-sm">Stop Upgrade</button>
-</div>
 
 </div>
 
-<br>
+
+
+</div>
+
+
 
 <!-- Table -->
 <div class="row" style="margin-right: 0px">
@@ -735,56 +746,65 @@ upgrade();
 //$(".upgrade_class").hide()
 //$(".new_execution_class").hide()
 
-var dataSet = [
-    [ 2,"Tiger Nixon", "System Architect", "Edinburgh", "5421", "Pending" ],
-    [ 1,"Garrett Winters", "Accountant", "Tokyo", "8422", "Completed"],
-    [ 3,"Ashton Cox", "Junior Technical Author", "San Francisco", "1562", "Running"],
-    [ 5,"Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "6224", "Completed"],
-    [ 4,"Airi Satou", "Accountant", "Tokyo", "5407", "Completed"],
-    [ 6,"Brielle Williamson", "Integration Specialist", "New York", "4804", "Completed"],
-    [ 7,"Herrod Chandler", "Sales Assistant", "San Francisco", "9608", "Pending"],
-    [ 8,"Rhona Davidson", "Integration Specialist", "Tokyo", "6200", "Completed"],
-    [ 9,"Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "Paused" ],
-    [ 10,"Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "Pending" ],
-    [ 12,"Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "Paused" ],
-    [ 11,"Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "Failed"]
-    
-];
-
 
 
 // Adding action on creating new row in exection_table
-function new_row_action( row, data, dataIndex){
+function new_row_action( json ) 
+{
+
 try{
+  console.log("Reding job response...")
+  //console.log(json);
+ 
+   // for ( var i=0, ien=json.length ; i<ien ; i++ ) 
+    //{
+    //    json[i][0] = '<a href="/message/'+json[i][0]+'>View message</a>';
+      
+    //}
+  only_data = json["data"]
+  if (jQuery.isEmptyObject(only_data) == false){
+      console.log(only_data);
+      jQuery.each(only_data, function(i, val){
+      status = val[5];
+      style_val = 'style="text-align:left;white-space=nowrap"'
+      if (status.indexOf("RUNNING") == 0)
+      {
 
-if( data[5] ==  "Running"){
-$(row).children('td').slice(5, 6).addClass('bg-primary text-white');
+        val[5] = '<span class="badge badge-warning"'+style_val+'>'+val[5]+'</span>'
+         
+
+      }else if (status.indexOf("PENDING") == 0){
+
+         val[5] = '<span class="badge badge-info"'+style_val+'>'+val[5]+'</span>'
+        
+
+
+      }else if (status.indexOf("COMPLETED") == 0){
+
+         val[5] = '<span class="badge badge-success"'+style_val+'>'+val[5]+'</span>'
+         
+
+        
+      }else {
+
+        val[5] = '<span class="badge badge-danger"'+style_val+'>'+val[5]+'</span>'
+
+      }
+
+      });
+      return only_data;
+
+  }
+else{
+  console.log("Job data not available......")
+  console.log(json);
+  return [];
 }
 
-if( data[5] ==  "Completed"){
-$(row).children('td').slice(5, 6).addClass('bg-success text-white');
-}
-
-if( data[5] ==  "Pending"){
-$(row).children('td').slice(5, 6).addClass('bg-secondary text-white');
-}
-
-if( data[5] ==  "Paused"){
-$(row).children('td').slice(5, 6).addClass('bg-warning text-white');
-}
-
-if( data[5] ==  "Failed"){
-//$(row).addClass('bg-danger text-white');
-}
-
-}catch(e){console.log(e);}
-}
+}catch(e){console.log("Receiving Job data error");return [];}}
 
 
-
-
-
-$(document).ready(function() {
+/* $(document).ready(function() {
     $('#execution_table').DataTable( {
         "responsive": true,
         "select": true,
@@ -805,9 +825,35 @@ $(document).ready(function() {
         "createdRow" : new_row_action
 
 } );
-});
+});*/
 
 
+$(document).ready(function() {
+    execution_table = $('#execution_table').DataTable( {
+        columns: [
+            { title: "ID"},
+            { title: "Type" },
+            { title: "Host Name" },
+            { title: "Host" },
+            { title: "Version" },
+            { title: "Status" },
+            { title: "Note" }
+
+        ],
+        "columnDefs": [{ "visible": false, "targets": [] }],
+        "scrollY":        "400px",
+        "scrollCollapse": true,
+        "paging":         false,
+        //"order": [[ 0, "desc" ]],
+        "ajax": {
+        "url": "/portal/read_last_job",
+        "type": "GET",
+        "dataSrc": new_row_action,
+        }
+      
+      });
+
+} );
 
 
 function modify_execution_table_data( json ) 
@@ -938,15 +984,6 @@ $(".upgrade_class").show()
 
 
 
-// Get update execution from server
-function get_execution_status(){
-
-
-update_execution(dataSet);
-
-}
-
-
 function equalArray(a, b) {
     try{
     //console.log(a)
@@ -956,29 +993,7 @@ function equalArray(a, b) {
 }
 
 
-//Update the execution table
-function update_execution(device_data){
 
-
- if(jQuery.isEmptyObject(device_data) == false){
-
-  var ex_table = $('#execution_table').dataTable();
-  
-  old_update = equalArray(ex_table.fnGetData(),device_data);
-  if(old_update != true) {
-    console.log("New execution update from server....")
-    ex_table.fnClearTable();
-    ex_table.dataTable().fnAddData(device_data);
-
-  }else
-  {
-    // No new update from server
-    //console.log("No new execution update from server")
-
-  }
-  
-}
-}
 
 
 // Action on selected execution table
@@ -1646,7 +1661,8 @@ Papa.parse(csv_file_data,{
 
 
 setInterval(get_server_status,3000)
-setInterval(get_execution_status,3000)
+
+setInterval( function () {execution_table.ajax.reload( null, false );}, 3000 );
 setInterval( function () {events_table.ajax.reload( null, false );}, 3000 );
 setInterval( function () {jobs_table.ajax.reload( null, false );}, 5000 );
 </script>

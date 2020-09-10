@@ -210,6 +210,38 @@ def read_last_events():
 		logger.exception("read_last_events")
 		return jsonify({"results":"error","message":"Check server log"})
 
+
+@app.route('/portal/read_last_job',methods = ['GET'])
+def read_last_job():
+	try:
+		if request.method == 'GET':
+			#config_name = request.args.get('config_name')
+			#download = request.args.get('download')
+
+			last_job = get_last_job()
+
+			if last_job == None:
+				return jsonify({"results":"failed","message":"No last Job found"})
+
+			job_name = last_job[1]
+
+			upgrade_db = os.path.join(app.config['JOBS_FILES'],str(job_name),"upgrade.db")
+
+			if os.path.isfile(upgrade_db) == False:
+
+				return jsonify({"results":"failed","msg":"no events for: "+str(job_name)})
+
+			all_upgrade = db_management.get_upgrade_details(upgrade_db)
+
+			if type(all_upgrade) == list:
+				return jsonify({"results":"success","data":all_upgrade})
+			else:
+				return jsonify({"results":"failed","msg":"no events for: "+str(job_name)})
+
+	except Exception :
+		logger.exception("read_last_job")
+		return jsonify({"results":"error","message":"Check server log"})
+
 @app.route('/portal/read_all_jobs',methods = ['GET'])
 def read_all_jobs():
 	try:

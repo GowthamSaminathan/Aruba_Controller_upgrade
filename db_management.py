@@ -132,7 +132,39 @@ def update_event_db(db_path,job_name,msg,e_id):
 		conn.close()
 		return True
 	except Exception:
-		logger.exception("update_event_db")
+		logger.exception("update_event_db",conf_file)
+
+def insert_to_upgrade(db_path,job_name,conf_file,data):
+	try:
+		device_type = data.get("device_type")
+		host = data.get("host")
+		hostname = data.get("hostname")
+		image_version = data.get("image_version")
+		image_build = data.get("image_build")
+		up_version = str(image_version)+":"+str(image_build)
+
+		status = "PENDING"
+		s_date = str(datetime.datetime.now()).split(".")[0]
+		e_date = "-"
+		msg = "Precheck"
+
+		conn = sqlite3.connect(db_path)
+		cursor = conn.cursor()
+		cmd = "INSERT INTO JOBS (NAME,DEVICE_TYPE,HOST_NAME,HOST,UPGRADE_VERSION,STATUS,CONF_FILE,MSG,S_DATE,E_DATE) "
+		cmd = cmd+"VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(job_name,device_type,hostname,host,up_version,status,conf_file,msg,s_date,e_date)
+		cursor.execute(cmd)
+			
+		
+		conn.commit()
+		conn.close()
+
+		if cursor.lastrowid > 0:
+			return True
+		else:
+			return False
+	except Exception:
+		logger.exception("insert_to_upgrade")
+
 
 def get_all_events(db_path):
 	try:
@@ -145,6 +177,19 @@ def get_all_events(db_path):
 		return result
 	except Exception:
 		logger.exception("get_all_events")
+
+def get_upgrade_details(db_path):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		cursor = conn.cursor()
+		#ID,NAME,DEVICE_TYPE,HOST_NAME,HOST,UPGRADE_VERSION,STATUS,CONF_FILE,MSG,S_DATE,E_DATE
+		cursor.execute("SELECT ID,DEVICE_TYPE,HOST_NAME,HOST,UPGRADE_VERSION,STATUS,MSG FROM JOBS")
+		result = cursor.fetchall()
+		conn.close()
+		return result
+	except Exception:
+		logger.exception("get_upgrade_details")
 
 def insert_if_lastjob_completed(db_path,data):
 	try:

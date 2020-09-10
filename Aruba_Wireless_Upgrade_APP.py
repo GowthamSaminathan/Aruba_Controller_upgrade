@@ -691,6 +691,19 @@ class main_model():
 		except Exception:
 			self.logger.error("validate_configuration not dict")
 
+	def insert_hosts_details_to_db(self):
+		try:
+
+			self.logger.info("Inserting upgrade list to upgrade.db")
+			upgrade = self.gen_config.get("Upgrade")
+
+			for host in upgrade:
+				db_management.insert_to_upgrade(self.upgrade_db,self.job_name,self.config_file_name,host)
+
+		except Exception:
+			self.logger.exception("insert_hosts_details_to_db")
+
+
 	def validate_configuration(self):
 		try:
 			try:
@@ -710,6 +723,7 @@ class main_model():
 			if type(config) == dict:
 					if config.get("status") == "success":
 						self.gen_config = config.get("config_json")
+						self.insert_hosts_details_to_db()
 						try:
 							open(os.path.join(self.job_path,"gen_configuration.yaml"),"w").write(config.get("config_yaml"))
 						except Exception:
@@ -769,6 +783,7 @@ class main_model():
 		try:
 
 			self.job_name = str(job_name)
+			self.config_file_name = config_file
 			self.config_file = os.path.join(os.getcwd(),"conf_files",config_file)
 			self.job_list = job_list
 
