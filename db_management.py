@@ -18,7 +18,7 @@ def create_history_db(db_path):
 	conn = sqlite3.connect(db_path)
 	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT NOT NULL,CONF_FILE NAME TEXT NOT NULL,STATUS TEXT NOT NULL,S_DATE TEXT,E_DATE TEXT,MSG TEXT NOT NULL"
 	try:
-		conn.execute('''CREATE TABLE HISTORY({});'''.format(cmd))
+		conn.execute('''CREATE TABLE IF NOT EXISTS HISTORY({});'''.format(cmd))
 		print("HISTORY table created successfully")
 		#print(conn)
 		#return conn
@@ -80,15 +80,20 @@ def update_job_status_by_name(db_path,status,job_name,msg=None):
 		conn = sqlite3.connect(db_path)
 		cursor = conn.cursor()
 		if msg != None:
+			logger.info("UPDATE HISTORY set STATUS='{}' where NAME='{}'".format(status,job_name))
 			cursor.execute("UPDATE HISTORY set STATUS='{}' where NAME='{}'".format(status,job_name))
 		else:
+			logger.info("UPDATE HISTORY set STATUS='{}' where NAME='{}'".format(status,job_name))
 			cursor.execute("UPDATE HISTORY set STATUS='{}',MSG='{}' where NAME='{}'".format(status,msg,job_name))
+
+
+		conn.commit()
 		
 		if cursor.rowcount == 1:
 			return True
 		else:
 			return False
-		conn.commit()
+		
 	except Exception:
 		logger.exception("update_job_status_by_name")
 
@@ -153,7 +158,7 @@ def insert_if_lastjob_completed(db_path,data):
 		MSG = data.get("MSG")
 
 		query = "INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '{}','{}','{}','{}','{}','{}'".format(NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG)
-		query = query + " WHERE EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND STATUS='COMPLETED');"
+		query = query + " WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));"
 
 		query = query.format(NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG)
 		conn = sqlite3.connect(db_path)

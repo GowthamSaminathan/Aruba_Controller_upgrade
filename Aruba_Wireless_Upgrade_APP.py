@@ -744,7 +744,7 @@ class main_model():
 				
 				
 				if status == True:
-					self.eprint("info","Running: "+str(self.job_name))
+					self.eprint("info","Running: "+str(self.job_name)+" Type:"+str(",".join(self.job_list)))
 					return True
 				else:
 					self.eprint("error","Terminating Job , DB update failed...")
@@ -770,6 +770,7 @@ class main_model():
 
 			self.job_name = str(job_name)
 			self.config_file = os.path.join(os.getcwd(),"conf_files",config_file)
+			self.job_list = job_list
 
 			job_path = os.path.join(os.getcwd(),"jobs",self.job_name)
 			self.job_path = job_path

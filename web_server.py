@@ -52,6 +52,10 @@ main_thread = Thread(target="",name="No")
 main_thread.run()
 main_thread.isAlive()
 
+
+#Creating the table JOB HISTORY if not exist
+db_management.create_history_db(os.path.join(app.config['DB_LOCATION'],"job_history.db"))
+
 @app.route('/')
 def main():
 	 return render_template('index.html')
@@ -127,7 +131,7 @@ def read_config():
 			file_status = os.path.isfile(check_file)
 
 			if file_status == True:
-				print(check_file)
+				#print(check_file)
 				config = open(check_file,"r").read()
 				config_json = yaml.load(config,Loader=yaml.Loader)
 				return jsonify({"results":"success","data":config_json})
@@ -161,7 +165,7 @@ def get_all_jobs():
 	try:
 
 		history_db = os.path.join(app.config['DB_LOCATION'],"job_history.db")
-		print(history_db)
+		#print(history_db)
 			
 		last_job = db_management.get_all_jobs(history_db)
 		last_job_name = None
@@ -190,6 +194,10 @@ def read_last_events():
 			job_name = last_job[1]
 
 			events_db = os.path.join(app.config['JOBS_FILES'],str(job_name),"event.db")
+
+			if os.path.isfile(events_db) == False:
+
+				return jsonify({"results":"failed","msg":"no events for: "+str(job_name)})
 
 			all_events = db_management.get_all_events(events_db)
 
