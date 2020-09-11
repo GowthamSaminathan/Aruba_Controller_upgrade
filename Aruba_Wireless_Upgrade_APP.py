@@ -258,71 +258,79 @@ class Aruba_Wireless_upgrade():
 
 			
 			for single_host in hosts:
-				host = single_host.get("host")
-				hostname = single_host.get("hostname")
-				device_type = single_host.get("device_type").strip()
-				cmds = single_host.get("CheckList")
-				self.eprint("info",check_type+" started for : ({}) {}:{}".format(device_type,hostname,host))
-				_host = host.split(":")[0]
-				log_file = open(os.path.join(self.job_path,check_type,_host+".txt"),"w")
-				#pyobj_file = open(os.path.join(log_file_path,check_type,_host+".pyobj"),"wb")
-				
-				session = None
-				login_status = self.get_session(single_host)
+				try:
 
-				if login_status[0] == True:
-					session = login_status[1]
-					UIDARUBA = login_status[2]
-					host_output = dict()
-					for cmd in cmds:
-						if cmd.get("show") != None:
-							cmd = cmd.get("show")
-							cmd = cmd.lower().strip()
-							self.eprint("info","Executing {} - {} => {}".format(hostname,host,cmd))
-							req_url = self.api_show_cmd.format(host,cmd,UIDARUBA)
-							res = session.get(req_url,verify=False)
-							#print(res.headers.get("content-type"))
+					host = single_host.get("host")
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"RUNNING",check_type)
+					hostname = single_host.get("hostname")
+					device_type = single_host.get("device_type").strip()
+					cmds = single_host.get("CheckList")
+					self.eprint("info",check_type+" started for : ({}) {}:{}".format(device_type,hostname,host))
+					_host = host.split(":")[0]
+					log_file = open(os.path.join(self.job_path,check_type,_host+".txt"),"w")
+					#pyobj_file = open(os.path.join(log_file_path,check_type,_host+".pyobj"),"wb")
+					
+					session = None
+					login_status = self.get_session(single_host)
 
-							if len(res.text) < 1:
-								# Aruba API JSON Bug (empty string)
-								res_json = {}
+					if login_status[0] == True:
+						session = login_status[1]
+						UIDARUBA = login_status[2]
+						host_output = dict()
+						for cmd in cmds:
+							if cmd.get("show") != None:
+								cmd = cmd.get("show")
+								cmd = cmd.lower().strip()
+								self.eprint("info","Executing {} - {} => {}".format(hostname,host,cmd))
+								req_url = self.api_show_cmd.format(host,cmd,UIDARUBA)
+								res = session.get(req_url,verify=False)
+								#print(res.headers.get("content-type"))
+
+								if len(res.text) < 1:
+									# Aruba API JSON Bug (empty string)
+									res_json = {}
+								else:
+									res_json = res.json()
+								
+								
+								host_output.update({cmd:res_json})
+								out = self.print.pformat(res_json)
+								log_file.write("\n\n"+"==="*20+">")
+								log_file.write(cmd+"\n")
+								log_file.write(out)
+
+							elif cmd.get("copy_flash_tftp") != None:
+								cp = cmd.get("copy_flash_tftp")
+								cp = re.split("\s+",cp)
+								dst_file = host.replace(".","_")
+								dst_file = host.replace(":","_")
+								self.file_copy_flash_tftp(host,cp[0],cp[1],dst_file+"_"+cp[2])
+
+							elif cmd.get("backup_flash") != None:
+
+								dst_file_name = cmd.get("backup_flash").strip()
+								self.backup_flash_to_disk(host,session,UIDARUBA,dst_file_name)
+							
 							else:
-								res_json = res.json()
-							
-							
-							host_output.update({cmd:res_json})
-							out = self.print.pformat(res_json)
-							log_file.write("\n\n"+"==="*20+">")
-							log_file.write(cmd+"\n")
-							log_file.write(out)
-
-						elif cmd.get("copy_flash_tftp") != None:
-							cp = cmd.get("copy_flash_tftp")
-							cp = re.split("\s+",cp)
-							dst_file = host.replace(".","_")
-							dst_file = host.replace(":","_")
-							self.file_copy_flash_tftp(host,cp[0],cp[1],dst_file+"_"+cp[2])
-
-						elif cmd.get("backup_flash") != None:
-
-							dst_file_name = cmd.get("backup_flash").strip()
-							self.backup_flash_to_disk(host,session,UIDARUBA,dst_file_name)
+								self.eprint("warning","Not Implemented for: "+str(cmd))
 						
-						else:
-							self.eprint("warning","Not Implemented for: "+str(cmd))
-					
-					
-					s_data = self.validating_pre_check(single_host,host_output)
-					summary_data.append(s_data)
-					
-				else:
-					self.eprint("error","Precheck failed for => {}:{}".format(hostname,host))
+						
+						s_data = self.validating_pre_check(single_host,host_output)
+						summary_data.append(s_data)
+						
+					else:
+						self.eprint("error","Precheck failed for => {}:{}".format(hostname,host))
+				except Exception:
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"ERROR",check_type)
+					self.logger.exception("Error host pre_post_check")
+				finally:
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"COMPLETED",check_type)
 
-				#self.logout(session,host)
+					#self.logout(session,host)
 
 		except Exception:
 			self.eprint("error","Check execution error")
-			self.logger.exception("Precheck_Error")
+			self.logger.exception("Pre_Post_check")
 		finally:
 			self.eprint("info",check_type+" Completed")
 
@@ -715,12 +723,44 @@ class main_model():
 			db_management.update_event_db(self.event_db,self.job_name,msg,None)
 		else:
 			self.logger.debug(msg)
-			db_management.update_event_db(self.event_db,self.job_name,msg,None)		
+			db_management.update_event_db(self.event_db,self.job_name,msg,None)	
+	
+	def user_pause_terminate(self):
+		# Check user send terminate or pause
+		try:
+			job_status = db_management.get_job_by_name()
+			if type(job_status) == tuple:
+				if job_status[3] == "TERMINATE":
+					self.eprint("warning","Job Terminated by user")
+					self.finish_upgrade("TERMINATED","Terminated by user")
+					exit(0)
+				elif job_status[3] == "PAUSE":
+					self.eprint("warning","Job Paused by user")
+					pause = True
+					while pause == False:
+						sleep(3)
+						job_status = db_management.get_job_by_name()
+						if job_status[3] == "PAUSE":
+							pass;
+						elif job_status[3] == "TERMINATE":
+							self.eprint("warning","Job Terminated by user")
+							self.finish_upgrade("TERMINATED","Terminated by user")
+							exit(0)
+						else:
+							pause = False
+
+			else:
+				self.eprint("warning","user_pause_terminate (Bug), Job not in DB , Job name:"+str(self.job_name))
+
+		except Exception:
+			self.logger.exception("user_pause_terminate")
+
 
 
 	def get_user_input(self,msg,expected=None):
 		# Ask User conformation using event DB
 		try:
+			msg = "IN:"+msg
 			while True:
 				e_id = str(time.time())
 				db_management.update_event_db(self.event_db,self.job_name,msg,e_id)
@@ -729,13 +769,13 @@ class main_model():
 					if type(user_input) == list:
 						if len(user_input) > 1:
 							user_conformation = user_input[1]
-							user_input = user_conformation[2]
+							user_input = user_conformation[3]
 							if expected == None:
 								return user_input
 							elif user_input in expected:
 								return user_input
 							else:
-								self.eprint("error","User Input not stasfied: "+str(expected)+"Expected, Input:"+str(user_input))
+								self.eprint("error","User Input not stasfied: "+str(expected)+"Expected , Provided Input:"+str(user_input))
 								break
 					time.sleep(2)
 		except Exception:
@@ -821,9 +861,9 @@ class main_model():
 		except Exception:
 			self.logger.exception("init_upgrade")
 
-	def finish_upgrade(self):
+	def finish_upgrade(self,status,msg):
 		try:
-			db_management.update_job_status_by_name(self.job_history_db,"COMPLETED",self.job_name)
+			db_management.update_job_status_by_name(self.job_history_db,status,self.job_name,msg)
 			self.eprint("info","==== Completed ====")
 		except Exception:
 			self.logger.exception("finish_upgrade")
@@ -875,6 +915,8 @@ class main_model():
 				ar_upgrade = Aruba_Wireless_upgrade(self)
 				for job in job_list:
 					if job == "precheck":
+						res = self.get_user_input("Are You sure want to start the precheck",["yes","no"])
+						self.logger.info(res)
 						self.eprint("info","Starting "+str(job))
 						ar_upgrade.Pre_Post_check("Precheck")
 					elif job == "postcheck":
@@ -898,7 +940,7 @@ class main_model():
 			#self.logger.exception("main_run")
 		finally:
 			# Update the job status as completed with message
-			self.finish_upgrade()
+			self.finish_upgrade("COMPLETED","-")
 
 
 

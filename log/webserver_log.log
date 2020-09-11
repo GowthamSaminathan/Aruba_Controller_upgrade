@@ -1,105 +1,37 @@
-2020-09-10 11:23:54,005 > INFO > 
+2020-09-11 11:17:52,813 > INFO > 
  ==> Starting WEB server ...
 
-2020-09-10 11:23:55,687 > INFO > 
+2020-09-11 11:17:54,454 > INFO > 
  ==> Starting WEB server ...
 
-2020-09-10 11:41:47,510 > INFO > 
+2020-09-11 12:02:03,816 > INFO > 
  ==> Starting WEB server ...
 
-2020-09-10 11:44:53,369 > INFO > 
+2020-09-11 12:02:52,461 > INFO > 
  ==> Starting WEB server ...
 
-2020-09-10 12:40:50,370 > INFO > 
+2020-09-11 12:48:35,398 > INFO > 
  ==> Starting WEB server ...
 
-2020-09-10 12:40:52,087 > INFO > 
+2020-09-11 12:48:42,504 > ERROR > start_execution
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 286, in start_execution
+    full_path = os.path.join(app.config['CONF_FILES'], filename)
+NameError: name 'filename' is not defined
+2020-09-11 12:49:15,547 > INFO > 
  ==> Starting WEB server ...
 
-2020-09-10 15:13:59,205 > INFO > 
+2020-09-11 12:49:21,124 > INFO > 
  ==> Starting WEB server ...
 
-2020-09-10 15:15:36,323 > INFO > 
+2020-09-11 12:49:26,255 > ERROR > start_execution
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 300, in start_execution
+    data = {"NAME":job_name,"CONF_FILE":file_name,"STATUS":"STARTING","S_DATE":S_DATE,"E_DATE":"","MSG":""}
+NameError: name 'file_name' is not defined
+2020-09-11 12:50:12,135 > INFO > 
  ==> Starting WEB server ...
 
-2020-09-10 15:16:55,779 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 15:17:05,832 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 15:18:24,238 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 15:18:48,952 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 15:19:04,685 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 15:19:58,376 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 15:21:10,009 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 15:45:06,353 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 15:47:21,721 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:05:50,033 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:08:44,747 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:11:31,727 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:13:03,446 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:14:34,045 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:15:11,018 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:16:23,799 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:17:08,645 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:18:11,499 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:18:40,699 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:24:46,301 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:24:59,841 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:25:06,645 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:25:27,993 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:25:49,372 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:28:26,991 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:29:37,477 > INFO > 
- ==> Starting WEB server ...
-
-2020-09-10 17:31:16,985 > INFO > 
+2020-09-11 12:50:18,758 > INFO > 
  ==> Starting WEB server ...
 

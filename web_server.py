@@ -223,6 +223,7 @@ def read_last_job():
 			if last_job == None:
 				return jsonify({"results":"failed","message":"No last Job found"})
 
+			
 			job_name = last_job[1]
 			job_file = last_job[2]
 			job_status = last_job[3]
@@ -230,7 +231,7 @@ def read_last_job():
 			job_e_date = last_job[5]
 			job_msg = last_job[6]
 
-			job_summary = {"job_file":job_file,"job_status":job_status,"job_start_date":job_s_date,"job_end_date":job_e_date,"job_msg":job_msg}
+			job_summary = {"job_name":job_name,"job_file":job_file,"job_status":job_status,"job_start_date":job_s_date,"job_end_date":job_e_date,"job_msg":job_msg}
 
 			upgrade_db = os.path.join(app.config['JOBS_FILES'],str(job_name),"upgrade.db")
 
@@ -275,13 +276,13 @@ def start_execution():
 		if request.method == 'POST':
 			result = request.get_json()
 			
-			file_name = result.get("file_name")
+			filename = result.get("file_name")
 			job_list = result.get("job_list")
 
 			if all(item in ["precheck","all"] for item in job_list) == False:
 				return jsonify({"results":"failed","message":"Job list not valid"})
 
-			filename = secure_filename(file_name)
+			
 			full_path = os.path.join(app.config['CONF_FILES'], filename)
 
 			if os.path.isfile(full_path):
@@ -296,7 +297,7 @@ def start_execution():
 
 				S_DATE = str(datetime.datetime.now()).split(".")[0]
 				job_name = str(time.time()).replace(".","_")
-				data = {"NAME":job_name,"CONF_FILE":file_name,"STATUS":"STARTING","S_DATE":S_DATE,"E_DATE":"","MSG":""}
+				data = {"NAME":job_name,"CONF_FILE":filename,"STATUS":"STARTING","S_DATE":S_DATE,"E_DATE":"","MSG":""}
 				history_db = os.path.join(app.config['DB_LOCATION'],"job_history.db")
 				status = db_management.insert_if_lastjob_completed(history_db,data)
 
@@ -312,6 +313,63 @@ def start_execution():
 
 	except Exception:
 		logger.exception("start_execution")
+		return jsonify({"results":"error","message":"Check server log"})
+
+
+
+@app.route('/portal/job_manage',methods = ['POST'])
+def job_manage():
+	try:
+		if request.method == 'POST':
+			result = request.get_json()
+			#download = request.args.get('download')
+			name = result.get("job_name")
+			status = result.get("status")
+
+			if status not in ["TERMINATE","PAUSE","RUNNING"]:
+				return jsonify({"results":"failed","message":"Not valid job manage"})
+
+			history_db = os.path.join(app.config['DB_LOCATION'],"job_history.db")
+
+			if os.path.isfile(history_db) == False:
+				return jsonify({"results":"failed","message":"History DB not available"})
+
+			db_status = db_management.update_job_status_by_name(history_db,status,status+" request by user",name)
+
+			if db_status != True:
+				return jsonify({"results":"failed","message":"user request failed"})
+			else:
+				return jsonify({"results":"success","message":status})
+
+	except Exception :
+		logger.exception("job_manage")
+		return jsonify({"results":"error","message":"Check server log"})
+
+
+@app.route('/portal/yes_or_no',methods = ['POST'])
+def yes_or_no():
+	try:
+		if request.method == 'POST':
+			result = request.get_json()
+			#download = request.args.get('download')
+			e_id = result.get("e_id")
+			name = result.get("name")
+			msg = result.get("input")
+
+			event_db_loc = os.path.join(os.getcwd(),"jobs",name,"event.db")
+
+			if os.path.isfile(event_db_loc) == False:
+				return jsonify({"results":"failed","message":"Updating user input (yes or no)"})
+
+			status = db_management.update_event_db(event_db_loc,name,msg,e_id)
+
+			if status != True:
+				return jsonify({"results":"failed","message":"Updating user input failed"})
+			else:
+				return jsonify({"results":"success"})
+
+	except Exception :
+		logger.exception("yes_or_no")
 		return jsonify({"results":"error","message":"Check server log"})
 
 

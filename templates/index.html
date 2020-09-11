@@ -176,7 +176,31 @@
 
 
 
+<!-- Get user conformation -->
+  <div class="modal fade" id="user_input">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" >
+          <h4 class="modal-title" id="user_input_head">Please confirm</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" id="user_input_body">
+           <span class="label label-warning" id="user_input_msg"> </span>
+           <h6 id="user_input_eid" style="visibility: hidden;"><h6>
+            <h6 id="user_input_name" style="visibility: hidden;"><h6>
+           <button type="button" class="btn btn-warning btn-md" onclick="user_yes_no('yes')">Yes</button>
+            <button type="button" class="btn btn-warning btn-md" onclick="user_yes_no('no')">No</button>
 
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 
 
@@ -193,29 +217,28 @@
 <div class="container-fluid monitor-col upgrade_class" style="display: none;">
 
 <div class="row" style="margin-right: 0px"> 
-<div class="col-sm-8" >
-  <span class="badge badge-warning" id="message_1"></span>
+<div class="col-sm-12" >
+  <h5><span class="badge badge-warning" id="message_1"></span>
   <span class="badge badge-primary" id="message_2"></span>
-  <span class="badge badge-info" id="message_3"></span>
-</div>
-<div class="col-sm-4" >
-
-</div>
+  <span class="badge badge-info" id="message_3"></span></h5>
 </div>
 
-<div class="row" style="margin-right: 0px"> 
+</div>
+
+<div class="row" id="running_status_live" style="margin-right: 0px"> 
 
 <div class="col-sm-5" style="background-color:#f8f9fa">
-<button class="btn btn-light">
-  <span class="spinner-border spinner-border-sm" id="message_4"></span>
-  
-</button>
+<div class="" id="message_4"></div>
+<span class="badge badge-primary" id="message_5"></span>
+
 
 </div>
 
-<div class="col-sm-3" style="background-color:#f8f9fa;">
-<div class="d-flex flex-row-reverse">
-<button type="button" class="btn btn-danger btn-sm" style="top:3px;">Stop Upgrade</button>
+<div class="col-sm-3" >
+<div class="d-flex flex-row">
+<button type="button" class="btn btn-warning btn-sm" style="top:3px;" id="pause_run" onclick="pause_stop_upgrade('P_or_RUNNING')">Pause</button>&nbsp;
+<button type="button" class="btn btn-danger btn-sm" style="top:3px;" onclick="pause_stop_upgrade('TERMINATE')">Stop Upgrade</button>
+<h6 id="job_name_id" style="visibility: hidden;"><h6>
 </div>
 
 </div>
@@ -229,13 +252,13 @@
 <!-- Table -->
 <div class="row" style="margin-right: 0px">
       
-      <div class="col-sm-7">
+      <div class="col-sm-12">
         <table id="execution_table" class="display compact table-dark table-striped table-sm" cellspacing="0"> 
         <tbody id="execution_body"></tbody>
         </table>
       </div>
       
-      <div class="col-sm-5">
+      <div class="col-sm-5" style="visibility: hidden;">
       <table id="execution_events_table" class="display compact hover " cellspacing="0"> </table>
       </div>
 </div>
@@ -427,7 +450,7 @@
 
 
 <!-- Save  Modal -->
-  <div class="modal fade" id="p2_save_status" id="p2_custome_setting">
+  <div class="modal fade" id="p2_save_status">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
       
@@ -748,16 +771,91 @@ upgrade();
 //$(".new_execution_class").hide()
 
 
+// Send user confirmation
+
+function user_yes_no(ans){
+
+eid = $("#user_input_eid").text()
+ename = $("#user_input_name").text()
+jdata = {"input":ans,"e_id":eid,"name":ename}
+console.log(jdata);
+$.ajax({
+    type: 'POST',data:JSON.stringify(jdata),url: '/portal/yes_or_no',contentType: "application/json",dataType: 'json',    
+    success:function(results){
+      res_results = results["results"];
+
+
+
+      if (res_results == "success"){
+
+        $("#user_input_eid").text()
+        $("#user_input_name").text()
+        $(".user_yes_no").attr("id","tmp");
+        $("#user_input").modal('hide');
+
+
+      }
+
+    } ,error: function(xhr, ajaxOptions, thrownError){
+
+      console.log("** Server resonce - Yes no error");
+
+
+    }});
+
+}
+
+function pause_stop_upgrade(ans){
+
+if(ans == "P_or_RUNNING"){
+
+ans = $("#P_or_RUNNING").text();
+if ( ans == "Pause" ){ans="PAUSE";}
+if ( ans == "Resume" ){ans="RUNNING";}
+
+}
+job_name = $("#job_name_id").text();
+jdata = {"job_name":job_name,"status":status}
+
+$.ajax({
+    type: 'POST',data:JSON.stringify(jdata),url: '/portal/job_manage',contentType: "application/json",dataType: 'json',    
+    success:function(results){
+      res_results = results["results"];
+
+
+
+      if (res_results == "success"){
+
+        if (results["message"] == "PAUSE"){$("#P_or_RUNNING").text("Resume");}
+        if (results["message"] == "RUNNING"){$("#P_or_RUNNING").text("PAUSE");}
+
+
+      }
+
+    } ,error: function(xhr, ajaxOptions, thrownError){
+
+      console.log("** Server resonce - pause_stop_upgrade");
+
+
+    }});
+
+}
+
+
 
 // Adding action on creating new row in exection_table
 function new_row_action( json ) 
 {
 
 try{
-  console.log("Reding job response...")
+  console.log("jobs status update....")
   $("#message_1").text("");
   $("#message_2").text("");
   $("#message_3").text("");
+  $("#message_4").text("");
+  $("#message_5").text("");
+  $("#message_4").attr('class', '');
+  
   //console.log(json);
  
    // for ( var i=0, ien=json.length ; i<ien ; i++ ) 
@@ -768,22 +866,32 @@ try{
   only_data = json["data"]
 
 
+
   if (jQuery.isEmptyObject(only_data) == false){
       
+      job_name = json["job_name"];
       job_file = json["job_file"];
       job_status = json["job_status"];
       job_start_date = json["job_start_date"];
       job_end_date = json["job_end_date"];
       job_msg = json["job_msg"];
 
+
+      if (job_status == "RUNNING") { $("#message_4").attr('class', 'spinner-border text-primary');}
+      if (job_status == "COMPLETED") {$("#running_status_live").hide();}else{$("#running_status_live").show();}
+
+      if (job_status == "PAUSE" || job_status == "PAUSED"){$("#P_or_RUNNING").text("Resume")}else{$("#P_or_RUNNING").text("Pause")}
+
       message_1 = "JOB "+job_status +": "+job_file
       if(job_msg == "None" || job_msg == ""){message_2 = "";}else{message_2 = job_msg;}
       
+      console.log(job_end_date);
       message_3 = "Started: "+job_start_date
       if(job_end_date == "" || job_end_date == "None"){}else{message_3 = message_3+ " Completed: "+job_end_date;}
       
 
       //$("#load-status").attr('class', 'badge badge-danger');
+      $("#job_name_id").text(job_name);
       $("#message_1").text(message_1);
       $("#message_2").text(message_2);
       $("#message_3").text(message_3);
@@ -795,6 +903,9 @@ try{
       {
 
         val[5] = '<span class="badge badge-warning"'+style_val+'>'+val[5]+'</span>'
+        t = status + " " + val[6] + " - Host:"+val[2];
+        $("#message_5").text(t);
+       
          
 
       }else if (status.indexOf("PENDING") == 0){
@@ -820,12 +931,30 @@ try{
 
   }
 else{
-  console.log("Job data not available......")
+  $("#job_name_id").text();
+  $("#message_1").text("");
+  $("#message_2").text("");
+  $("#message_3").text("");
+  $("#message_4").text("");
+  $("#message_4").attr('class', '');
+  $("#message_5").text("");
+  console.log("Job data not available......");
   console.log(json);
   return [];
 }
 
-}catch(e){console.log("Receiving Job data error");return [];}}
+}catch(e){
+console.log("Receiving Job data error");
+$("#job_name_id").text();
+$("#message_5").text("");
+$("#message_4").text("");
+$("#message_4").attr('class', '');
+$("#message_1").text("");
+$("#message_2").text("");
+$("#message_3").text("");
+return []; 
+}
+}
 
 
 /* $(document).ready(function() {
@@ -866,7 +995,7 @@ $(document).ready(function() {
         ],
         //"buttons": [ 'copy', 'excel', 'pdf', 'colvis' ],
         lengthChange: false,
-        dom: 'Bfrtip',
+        //dom: 'Bfrtip',
         "columnDefs": [{ "visible": false, "targets": [] }],
         "scrollY":        "400px",
         "scrollCollapse": true,
@@ -900,7 +1029,6 @@ try{
     //}
   only_data = json["data"]
   if (jQuery.isEmptyObject(only_data) == false){
-      console.log(only_data);
       jQuery.each(only_data, function(i, val){
       evnt_msg = val[3];
       val[2] = val[2].split(" ")[1];
@@ -923,6 +1051,32 @@ try{
          val[3] = '<span class="badge badge-warning"'+style_val+'>'+val[3]+'</span>'
 
         
+      }else if (evnt_msg.indexOf("IN:") == 0){
+
+         msg = val[3];
+         val[2] = '<span class="badge badge-primary"'+style_val+'>'+val[2]+'</span>'
+         val[3] = '<span class="badge badge-primary"'+style_val+'>'+val[3]+'</span>'
+        
+         if(only_data.length == i+1)
+         {
+
+          
+          msg = msg.split("IN:")[1];
+          $("#user_input_msg").text(msg);
+          console.log("User Input required : "+msg);
+          $("#user_input_eid").text(val[4]);
+          $("#user_input_name").text(val[1]);
+          $("#user_input").modal({backdrop: "static"});
+
+         }
+
+        
+      }
+      else{
+
+        val[2] = '<span class="badge badge-warning"'+style_val+'>'+val[2]+'</span>'
+         val[3] = '<span class="badge badge-warning"'+style_val+'>'+val[3]+'</span>'
+
       }
 
       });
@@ -930,7 +1084,7 @@ try{
 
   }
 else{
-  console.log("Events data not")
+  console.log("Events data not found")
   console.log(json);
   return [];
 }
@@ -1103,8 +1257,8 @@ if(t_data["hostip"] != undefined)
 hostip = t_data["hostip"]
 }
 
-console.log(hostip)
-console.log("Received:"+id_name)
+
+
   make_device_table = (id_name,mm_device,md_device,hostname,hostip) =>
     `
 
@@ -1168,7 +1322,7 @@ try{
 if(data["results"] == "success"){
 
 data = data["data"]
-console.log(data);
+
 
 default_settings = data["default_settings"];
 //console.log(default_settings);
@@ -1186,7 +1340,7 @@ Validate_controller_up_before_upgrade = default_settings["Validate_controller_up
 if(jQuery.isEmptyObject(AOS_Source) == false){
 aos_source_device_type = AOS_Source["device_type"];
 
-console.log(aos_source_device_type);
+
 
 aos_source_local_path = AOS_Source["local_path"];
 
@@ -1211,7 +1365,6 @@ $("#p2_upgrade_path").val(aos_source_local_path);
 
 if(aos_source_device_type == "ftp")
 {
-console.log("OKkkk")
 $("#p2_upgrade_source").val("ftp");
 $("#p2_upgrade_host").val(aos_source_ftp_host);
 $("#p2_upgrade_path").val(aos_source_ftp_path);
@@ -1285,7 +1438,7 @@ d["hostname"] = hostname;
 d["hostip"] = host;
 if (i == 0){add_new_device(i+1,d);}else{
 add_new_device(i+"_new_device",d);}
-console.log(d)
+
 
 });
 
@@ -1366,7 +1519,7 @@ val = caller_id-1
 console.log("Adding:"+dev_id+"-After -->"+val);
 
 if(caller_id == 1){
-console.log(caller_id-1);
+
 $('#p2_new_host_row').eq(caller_id-1).after(new_dev);
 
 }
@@ -1464,7 +1617,7 @@ function start_new_upgrade(){
 
 job_name = $("#job_file_list").val();
 pre_check = $('#precheck_only').prop("checked");
-console.log(job_name);
+//console.log(job_name);
 if (job_name == "none"){
 
 $("#start_new_upgrade_badge").attr('class', 'badge badge-danger');
@@ -1483,7 +1636,7 @@ $.ajax({
     type: 'POST',data:JSON.stringify(jdata),url: '/portal/start_execution',contentType: "application/json",dataType: 'json',    
     success:function(results){
       console.log("Received response for new job execution...");
-      console.log(results);
+      //console.log(results);
       res_results = results["results"];
 
       message = results["message"];
@@ -1558,7 +1711,7 @@ try{
     //}
   only_data = json["data"]
   if (jQuery.isEmptyObject(only_data) == false){
-      console.log(only_data);
+      //console.log(only_data);
       jQuery.each(only_data, function(i, val){
       evnt_msg = val[3];
       style_val = 'style="text-align:left;white-space=nowrap"'
@@ -1652,7 +1805,7 @@ function import_from_csv()
 {
 console.log("reading csv....");
 csv_file_data = $("#csv_file").prop('files')[0];
-console.log(csv_file_data);
+//console.log(csv_file_data);
 
 Papa.parse(csv_file_data,{
   config: {
@@ -1679,7 +1832,7 @@ Papa.parse(csv_file_data,{
     // executed after all files are complete
     $("#csv_import_status").attr('class', 'badge badge-success');
     $("#csv_import_status").text("Uploaded...");
-    console.log(results);
+    //console.log(results);
   }
 });
 

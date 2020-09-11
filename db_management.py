@@ -79,11 +79,11 @@ def update_job_status_by_name(db_path,status,job_name,msg=None):
 	try:
 		conn = sqlite3.connect(db_path)
 		cursor = conn.cursor()
-		if msg != None:
+		if msg == None:
 			logger.info("UPDATE HISTORY set STATUS='{}' where NAME='{}'".format(status,job_name))
 			cursor.execute("UPDATE HISTORY set STATUS='{}' where NAME='{}'".format(status,job_name))
 		else:
-			logger.info("UPDATE HISTORY set STATUS='{}' where NAME='{}'".format(status,job_name))
+			logger.info("UPDATE HISTORY set STATUS='{}',MSG='{}' where NAME='{}'".format(status,msg,job_name))
 			cursor.execute("UPDATE HISTORY set STATUS='{}',MSG='{}' where NAME='{}'".format(status,msg,job_name))
 
 
@@ -98,6 +98,23 @@ def update_job_status_by_name(db_path,status,job_name,msg=None):
 		logger.exception("update_job_status_by_name")
 
 
+def update_upgrade_status_by_device_host(db_path,host,status,msg):
+	try:
+		conn = sqlite3.connect(db_path)
+		cursor = conn.cursor()
+		cursor.execute("UPDATE JOBS set STATUS='{}', MSG='{}' where HOST='{}'".format(status,msg,host))
+
+		conn.commit()
+		
+		if cursor.rowcount == 1:
+			return True
+		else:
+			return False
+		
+	except Exception:
+		logger.exception("update_upgrade_status_by_device_host")
+
+
 def get_last_job(db_path):
 	try:
 		conn = sqlite3.connect(db_path)
@@ -109,6 +126,19 @@ def get_last_job(db_path):
 		return result
 	except Exception:
 		logger.exception("get_last_job")
+
+def get_job_by_name(db_path,name):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		cursor = conn.cursor()
+		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG FROM HISTORY WHERE NAME='{}'".format(name))
+		result = cursor.fetchone()
+		conn.close()
+		return result
+	except Exception:
+		logger.exception("get_job_by_name")
+
 
 def get_all_jobs(db_path):
 	try:
@@ -126,13 +156,19 @@ def get_all_jobs(db_path):
 def update_event_db(db_path,job_name,msg,e_id):
 	try:
 		conn = sqlite3.connect(db_path)
+		cursor = conn.cursor()
 		E_DATE = str(datetime.datetime.now()).split(".")[0]
-		conn.execute("INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('{}','{}','{}','{}')".format(job_name,E_DATE,msg,e_id))
+		logger.info("INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('{}','{}','{}','{}')".format(job_name,E_DATE,msg,e_id))
+		cursor.execute('INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES (?,?,?,?)',(job_name,E_DATE,msg,e_id))
 		conn.commit()
 		conn.close()
-		return True
+
+		if cursor.lastrowid > 0:
+			return True
+		else:
+			return False
 	except Exception:
-		logger.exception("update_event_db",conf_file)
+		logger.exception("update_event_db")
 
 def insert_to_upgrade(db_path,job_name,conf_file,data):
 	try:
