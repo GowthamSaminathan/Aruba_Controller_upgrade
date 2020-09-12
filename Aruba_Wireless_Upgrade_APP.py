@@ -60,6 +60,7 @@ class Aruba_Wireless_upgrade():
 
 	def get_session(self,single_host,new_session=False):
 		try:
+			self.user_pause_terminate()
 			try:
 				# Try to use previous session
 				host_ip = single_host.get("host")

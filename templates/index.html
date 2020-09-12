@@ -179,7 +179,7 @@
 
 <!-- Get user conformation -->
   <div class="modal fade" id="user_input">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
       
         <!-- Modal Header -->
@@ -190,11 +190,11 @@
         
         <!-- Modal body -->
         <div class="modal-body" id="user_input_body">
-           <span class="label label-warning" id="user_input_msg"> </span>
+           <b><span class="label label-warning" id="user_input_msg"> </span></b>
            <h6 id="user_input_eid" style="visibility: hidden;"><h6>
             <h6 id="user_input_name" style="visibility: hidden;"><h6>
-           <button type="button" class="btn btn-warning btn-md" onclick="user_yes_no('yes')">Yes</button>
-            <button type="button" class="btn btn-warning btn-md" onclick="user_yes_no('no')">No</button>
+           <button type="button" class="btn btn-warning btn-md" onclick="user_yes_no('yes')">Yes</button>&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-danger btn-md" onclick="user_yes_no('no')">No</button>
 
 
         </div>
@@ -937,7 +937,7 @@ try{
         if (job_status == "RUNNING")
         {
 
-          val[5] = '<div class="spinner-border text-warning"></div><span class="badge badge-warning"'+style_val+'>'+val[5]+'</span>';
+          val[5] = '<div class="spinner-border spinner-border-sm text-warning"></div><span class="badge badge-warning"'+style_val+'>'+val[5]+'</span>';
 
         }
 
@@ -1065,7 +1065,7 @@ bar_2 = '<button type="button" class="btn btn-warning running_status_live" style
       '">Pause</button>&nbsp;'+
       '<button type="button" class="btn btn-danger running_status_live" style="top:3px;" onclick="pause_stop_upgrade('+"'TERMINATED')"+
       '"><b>Stop running</b></button>&nbsp;'+
-      '<button type="button" class="btn btn-light" onclick="show_events()"><b>Events</b><span class="badge badge-warning">10</span></button>&nbsp;'
+      '<button type="button" class="btn btn-light" onclick="show_events()"><b>Events</b><span class="badge badge-warning"></span></button>&nbsp;'
 
 //'<label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="execution_table"></label>'
 
@@ -1640,6 +1640,7 @@ try{
 
 console.log("start_upgrade clicked...")
 $("#select_upgrade").modal({backdrop: "static"});
+$("#start_new_upgrade_badge").text("")
 
 $('#job_file_list').find('option').not(':first').remove();
 $('#precheck_only').prop("checked",false);
@@ -1714,6 +1715,7 @@ $.ajax({
 
         $("#start_new_upgrade_badge").attr('class', 'badge badge-success');
         $("#start_new_upgrade_badge").text(message);
+        $("#select_upgrade").modal('toggle');
 
 
       }else if (res_results == "error"){
