@@ -290,9 +290,9 @@ def start_execution():
 				last_job = get_last_job()
 
 				#print(last_job)
-
+				print(last_job[3])
 				if type(last_job) == tuple:
-					if last_job[3] != "COMPLETED":
+					if last_job[3] != "COMPLETED" and last_job[3] != "TERMINATED":
 						return jsonify({"results":"failed","message":"Last Job {} not completed".format(str(last_job[2]))})
 
 				S_DATE = str(datetime.datetime.now()).split(".")[0]
@@ -326,7 +326,7 @@ def job_manage():
 			name = result.get("job_name")
 			status = result.get("status")
 
-			if status not in ["TERMINATE","PAUSE","RUNNING"]:
+			if status not in ["TERMINATED","PAUSED","RUNNING"]:
 				return jsonify({"results":"failed","message":"Not valid job manage"})
 
 			history_db = os.path.join(app.config['DB_LOCATION'],"job_history.db")
@@ -334,7 +334,7 @@ def job_manage():
 			if os.path.isfile(history_db) == False:
 				return jsonify({"results":"failed","message":"History DB not available"})
 
-			db_status = db_management.update_job_status_by_name(history_db,status,status+" request by user",name)
+			db_status = db_management.update_job_status_by_name(history_db,status,name,status+" by user")
 
 			if db_status != True:
 				return jsonify({"results":"failed","message":"user request failed"})

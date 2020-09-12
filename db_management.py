@@ -177,7 +177,7 @@ def insert_to_upgrade(db_path,job_name,conf_file,data):
 		hostname = data.get("hostname")
 		image_version = data.get("image_version")
 		image_build = data.get("image_build")
-		up_version = str(image_version)+":"+str(image_build)
+		up_version = str(image_version)+" Build:"+str(image_build)
 
 		status = "PENDING"
 		s_date = str(datetime.datetime.now()).split(".")[0]
@@ -240,6 +240,8 @@ def insert_if_lastjob_completed(db_path,data):
 
 		query = "INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '{}','{}','{}','{}','{}','{}'".format(NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG)
 		query = query + " WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));"
+
+		logger.info(query)
 
 		query = query.format(NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG)
 		conn = sqlite3.connect(db_path)

@@ -1,0 +1,46 @@
+2020-09-12 19:52:22,742 > INFO > JOBNAME:1599920542_7208045
+2020-09-12 19:52:22,743 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-12 19:52:22,778 > INFO > Starting Job
+2020-09-12 19:52:22,792 > INFO > INFO:Running: 1599920542_7208045 Type:precheck
+2020-09-12 19:52:22,807 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-12 19:52:22,847 > INFO > Inserting upgrade list to upgrade.db
+2020-09-12 19:52:25,394 > INFO > yes
+2020-09-12 19:52:25,395 > INFO > INFO:Starting precheck
+2020-09-12 19:52:25,439 > INFO > INFO:Executing Precheck
+2020-09-12 19:52:25,501 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-12 19:52:32,126 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-12 19:52:32,190 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-12 19:52:35,373 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-12 19:52:36,349 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-12 19:52:37,277 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-12 19:52:38,194 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-12 19:52:39,135 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-12 19:52:40,054 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-12 19:52:40,987 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-12 19:52:41,900 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-12 19:52:42,887 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-12 19:52:44,036 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-12 19:52:45,082 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-12 19:52:46,010 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-12 19:52:46,937 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-12 19:52:47,867 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-12 19:52:49,640 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-12 19:52:56,243 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-12 19:52:56,343 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-12 19:52:59,615 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-12 19:53:00,641 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-12 19:53:01,621 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-12 19:53:02,634 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-12 19:53:03,628 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-12 19:53:04,591 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-12 19:53:05,611 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-12 19:53:07,771 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-12 19:53:08,827 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-12 19:53:10,356 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-12 19:53:12,165 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-12 19:53:13,190 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-12 19:53:14,206 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-12 19:53:15,198 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-12 19:53:16,166 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-12 19:53:17,134 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-12 19:53:18,318 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches

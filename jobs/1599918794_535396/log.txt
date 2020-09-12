@@ -1,0 +1,26 @@
+2020-09-12 19:23:14,733 > INFO > JOBNAME:1599918794_535396
+2020-09-12 19:23:14,734 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-12 19:23:14,961 > INFO > Starting Job
+2020-09-12 19:23:14,993 > INFO > INFO:Running: 1599918794_535396 Type:precheck
+2020-09-12 19:23:15,200 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-12 19:23:15,454 > INFO > Inserting upgrade list to upgrade.db
+2020-09-12 19:23:18,507 > INFO > yes
+2020-09-12 19:23:18,507 > INFO > INFO:Starting precheck
+2020-09-12 19:23:18,555 > INFO > INFO:Executing Precheck
+2020-09-12 19:23:18,786 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-12 19:23:21,157 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-12 19:23:21,373 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-12 19:23:24,025 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:23:24,295 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:24:34,550 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-12 19:24:36,837 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-12 19:24:37,880 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-12 19:24:38,821 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:24:38,839 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:25:00,916 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-12 19:25:03,157 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-12 19:25:03,807 > WARNING > WARNING:Job Terminated by user
+2020-09-12 19:25:03,897 > DEBUG > WARNING:Job Terminated by user
+2020-09-12 19:25:04,895 > INFO > INFO:==== Completed ====
+2020-09-12 19:25:04,977 > INFO > INFO:Precheck Completed
+2020-09-12 19:25:05,048 > INFO > INFO:==== Completed ====

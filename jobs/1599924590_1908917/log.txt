@@ -1,0 +1,22 @@
+2020-09-12 20:59:50,218 > INFO > JOBNAME:1599924590_1908917
+2020-09-12 20:59:50,218 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-12 20:59:50,255 > INFO > Starting Job
+2020-09-12 20:59:50,269 > INFO > INFO:Running: 1599924590_1908917 Type:precheck
+2020-09-12 20:59:50,285 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-12 20:59:50,320 > INFO > Inserting upgrade list to upgrade.db
+2020-09-12 20:59:54,366 > INFO > yes
+2020-09-12 20:59:54,367 > INFO > INFO:Starting precheck
+2020-09-12 20:59:54,654 > INFO > INFO:Executing Precheck
+2020-09-12 20:59:54,690 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-12 20:59:58,391 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-12 20:59:58,447 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-12 21:00:02,052 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-12 21:00:03,205 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-12 21:00:04,304 > WARNING > WARNING:Job Terminated by user
+2020-09-12 21:00:04,331 > DEBUG > WARNING:Job Terminated by user
+2020-09-12 21:00:04,362 > INFO > INFO:==== Completed ====
+2020-09-12 21:00:04,403 > WARNING > WARNING:Job Terminated by user
+2020-09-12 21:00:04,426 > DEBUG > WARNING:Job Terminated by user
+2020-09-12 21:00:04,490 > INFO > INFO:==== Completed ====
+2020-09-12 21:00:04,515 > INFO > INFO:Precheck Completed
+2020-09-12 21:00:04,562 > INFO > INFO:==== Completed ====

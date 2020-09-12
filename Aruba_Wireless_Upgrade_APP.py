@@ -43,6 +43,8 @@ class Aruba_Wireless_upgrade():
 		self.copy_tftp_system_web = "https://{}/screens/cmnutil/ncftp.html"
 
 		self.login_sessions = dict()
+		self.final_status = conf.final_status
+		self.user_pause_terminate = conf.user_pause_terminate
 		self.upgrade_db = conf.upgrade_db
 		self.event_db = conf.event_db
 		self.job_path = conf.job_path
@@ -256,9 +258,10 @@ class Aruba_Wireless_upgrade():
 			hosts = self.gen_config.get("Upgrade")
 			summary_data = []
 
-			
+			self.user_pause_terminate()
 			for single_host in hosts:
 				try:
+					self.user_pause_terminate()
 					_status = None
 					host = single_host.get("host")
 					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"RUNNING PRECHECK",check_type)
@@ -280,6 +283,7 @@ class Aruba_Wireless_upgrade():
 						_len_cmds = str(len(cmds))
 						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"RUNNING PRECHECK","Completed 0/"+_len_cmds)
 						for _count,cmd in enumerate(cmds):
+							self.user_pause_terminate()
 							db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"RUNNING PRECHECK","Status "+str(_count+1)+"/"+_len_cmds)
 							if cmd.get("show") != None:
 								cmd = cmd.get("show")
@@ -332,6 +336,7 @@ class Aruba_Wireless_upgrade():
 					if _status == None:
 						_status = "COMPLETED"
 					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,_status,check_type)
+					self.user_pause_terminate()
 
 					#self.logout(session,host)
 
@@ -735,22 +740,25 @@ class main_model():
 	def user_pause_terminate(self):
 		# Check user send terminate or pause
 		try:
-			job_status = db_management.get_job_by_name()
+			job_status = db_management.get_job_by_name(self.job_history_db,self.job_name)
 			if type(job_status) == tuple:
-				if job_status[3] == "TERMINATE":
+				if job_status[3] == "TERMINATED":
 					self.eprint("warning","Job Terminated by user")
+					self.final_status = ["TERMINATED","Terminated by user"]
 					self.finish_upgrade("TERMINATED","Terminated by user")
 					exit(0)
-				elif job_status[3] == "PAUSE":
+				elif job_status[3] == "PAUSED":
 					self.eprint("warning","Job Paused by user")
 					pause = True
-					while pause == False:
-						sleep(3)
-						job_status = db_management.get_job_by_name()
-						if job_status[3] == "PAUSE":
+					while pause == True:
+						time.sleep(2)
+						job_status = db_management.get_job_by_name(self.job_history_db,self.job_name)
+						print(job_status)
+						if job_status[3] == "PAUSED":
 							pass;
-						elif job_status[3] == "TERMINATE":
+						elif job_status[3] == "TERMINATED":
 							self.eprint("warning","Job Terminated by user")
+							self.final_status = ["TERMINATED","Terminated by user"]
 							self.finish_upgrade("TERMINATED","Terminated by user")
 							exit(0)
 						else:
@@ -878,7 +886,7 @@ class main_model():
 
 	def main_run(self,job_name,config_file,job_list):
 		try:
-
+			self.final_status = ["COMPLETED","-"]
 			self.job_name = str(job_name)
 			self.config_file_name = config_file
 			self.config_file = os.path.join(os.getcwd(),"conf_files",config_file)
@@ -922,14 +930,17 @@ class main_model():
 				ar_upgrade = Aruba_Wireless_upgrade(self)
 				for job in job_list:
 					if job == "precheck":
-						res = self.get_user_input("Are You sure want to start the precheck",["yes","no"])
+						self.user_pause_terminate()
+						res = self.get_user_input("Are you sure want to start the precheck",["yes","no"])
 						self.logger.info(res)
 						self.eprint("info","Starting "+str(job))
 						ar_upgrade.Pre_Post_check("Precheck")
 					elif job == "postcheck":
+						self.user_pause_terminate()
 						self.eprint("info","Starting "+str(job))
 						ar_upgrade.Pre_Post_check("Postcheck")
 					elif job == "all":
+						self.user_pause_terminate()
 						ar_upgrade.Upload_Images()
 						self.eprint("info","Starting "+str(job))
 					else:
@@ -947,7 +958,8 @@ class main_model():
 			#self.logger.exception("main_run")
 		finally:
 			# Update the job status as completed with message
-			self.finish_upgrade("COMPLETED","-")
+			print("===============>>>>")
+			self.finish_upgrade(self.final_status[0],self.final_status[1])
 
 
 

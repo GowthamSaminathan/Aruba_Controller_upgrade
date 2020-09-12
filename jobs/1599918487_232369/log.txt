@@ -1,0 +1,307 @@
+2020-09-12 19:18:07,266 > INFO > JOBNAME:1599918487_232369
+2020-09-12 19:18:07,266 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-12 19:18:07,306 > INFO > Starting Job
+2020-09-12 19:18:07,325 > INFO > INFO:Running: 1599918487_232369 Type:precheck
+2020-09-12 19:18:07,343 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-12 19:18:07,409 > INFO > Inserting upgrade list to upgrade.db
+2020-09-12 19:18:09,468 > INFO > yes
+2020-09-12 19:18:09,469 > INFO > INFO:Starting precheck
+2020-09-12 19:18:09,489 > INFO > INFO:Executing Precheck
+2020-09-12 19:18:09,537 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-12 19:18:12,526 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-12 19:18:12,585 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:12,607 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:12,630 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:12,664 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-12 19:18:15,394 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:15,424 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:15,440 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:15,455 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-12 19:18:16,210 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:16,245 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:16,268 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:16,292 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-12 19:18:17,025 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:17,055 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:17,074 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:17,091 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-12 19:18:17,844 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:17,867 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:17,884 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:17,897 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-12 19:18:18,509 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:18,535 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:18,552 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:18,569 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-12 19:18:19,482 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:20,593 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:20,652 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:20,673 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-12 19:18:21,357 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:21,428 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:21,447 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:21,469 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-12 19:18:22,356 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:23,365 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:23,400 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:23,422 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-12 19:18:24,198 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:25,299 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:25,343 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:25,383 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-12 19:18:26,479 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:26,802 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:26,832 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:26,864 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-12 19:18:27,497 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:27,552 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:27,584 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:27,616 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-12 19:18:28,496 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:28,530 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:28,572 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:28,619 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-12 19:18:29,308 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:29,337 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:29,369 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:29,401 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-12 19:18:30,032 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:30,081 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:30,114 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:30,145 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-12 19:18:34,485 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:34,514 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:34,547 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:34,550 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:34,579 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:34,611 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:34,643 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-12 19:18:36,767 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-12 19:18:36,818 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:36,835 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:36,853 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:36,870 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-12 19:18:39,142 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:39,172 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:39,186 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:39,202 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-12 19:18:39,865 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:40,339 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:40,358 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:40,376 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-12 19:18:41,194 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:41,219 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:41,236 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:41,252 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-12 19:18:41,885 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:41,903 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:41,918 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:41,935 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-12 19:18:42,630 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:43,524 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:43,551 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:43,580 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-12 19:18:44,472 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:44,525 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:44,558 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:44,597 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-12 19:18:45,496 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:45,622 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:45,661 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:45,693 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-12 19:18:46,725 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:46,764 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:46,804 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:46,895 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-12 19:18:47,794 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:47,867 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:47,918 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:47,951 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-12 19:18:48,704 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:48,755 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:48,794 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:48,822 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-12 19:18:49,588 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:49,630 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:49,681 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:49,711 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-12 19:18:51,229 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:51,278 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:51,312 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:51,344 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-12 19:18:53,083 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:53,113 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:53,144 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:53,176 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-12 19:18:54,100 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:54,159 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:54,200 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:54,233 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-12 19:18:54,911 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:54,961 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:54,993 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:55,025 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-12 19:18:55,735 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:55,762 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:55,794 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:55,826 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-12 19:18:56,459 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:56,491 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:56,522 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:56,554 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-12 19:18:57,457 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:57,514 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:57,546 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:57,578 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-12 19:18:58,603 > WARNING > WARNING:Job Paused by user
+2020-09-12 19:18:58,651 > DEBUG > WARNING:Job Paused by user
+2020-09-12 19:18:58,778 > ERROR > user_pause_terminate
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 753, in user_pause_terminate
+    sleep(2)
+NameError: name 'sleep' is not defined
+2020-09-12 19:18:58,818 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config

@@ -1,0 +1,30 @@
+2020-09-12 20:16:56,356 > INFO > JOBNAME:1599922016_3345368
+2020-09-12 20:16:56,356 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-12 20:16:56,394 > INFO > Starting Job
+2020-09-12 20:16:56,411 > INFO > INFO:Running: 1599922016_3345368 Type:precheck
+2020-09-12 20:16:56,427 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-12 20:16:56,465 > INFO > Inserting upgrade list to upgrade.db
+2020-09-12 20:17:00,516 > INFO > yes
+2020-09-12 20:17:00,517 > INFO > INFO:Starting precheck
+2020-09-12 20:17:00,537 > INFO > INFO:Executing Precheck
+2020-09-12 20:17:00,743 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-12 20:17:03,810 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-12 20:17:03,861 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-12 20:17:07,027 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-12 20:17:07,997 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-12 20:17:08,922 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-12 20:17:09,858 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-12 20:17:11,992 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-12 20:17:12,900 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-12 20:17:13,845 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-12 20:17:14,752 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-12 20:17:15,754 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-12 20:17:17,418 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-12 20:17:18,330 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-12 20:17:19,258 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-12 20:17:20,168 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-12 20:17:21,090 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-12 20:17:24,914 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-12 20:17:28,641 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-12 20:17:28,818 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-12 20:17:31,955 > WARNING > WARNING:Job Terminated by user

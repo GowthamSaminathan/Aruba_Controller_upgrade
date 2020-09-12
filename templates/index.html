@@ -803,25 +803,25 @@ $.ajax({
 function pause_stop_upgrade(ans){
 
 if(ans == "P_or_RUNNING"){
-
+console.log(ans);
 ans = $("#P_or_RUNNING").text();
-if ( ans == "Pause" ){ans="PAUSE";}
+if ( ans == "Pause" ){ans="PAUSED";}
 if ( ans == "Resume" ){ans="RUNNING";}
 
 }
 job_name = $("#job_name_id").text();
-jdata = {"job_name":job_name,"status":status}
-
+jdata = {"job_name":job_name,"status":ans}
+console.log(ans);
 $.ajax({
     type: 'POST',data:JSON.stringify(jdata),url: '/portal/job_manage',contentType: "application/json",dataType: 'json',    
     success:function(results){
       res_results = results["results"];
 
-
+      console.log(results);
 
       if (res_results == "success"){
 
-        if (results["message"] == "PAUSE"){$("#P_or_RUNNING").text("Resume");}
+        if (results["message"] == "PAUSED"){$("#P_or_RUNNING").text("Resume");}
         if (results["message"] == "RUNNING"){$("#P_or_RUNNING").text("Pause");}
 
 
@@ -873,12 +873,18 @@ try{
 
 
       if (job_status == "RUNNING") {
-     
-       $("#message_4").attr('class', 'spinner-border text-primary');
+       $(".running_status_live").show();
+       //$("#message_4").attr('class', 'spinner-border text-primary');
        $("#message_1").attr('class', 'badge badge-primary');
 
      }
-      if (job_status == "COMPLETED") {
+      else if (job_status.indexOf("TERMINATE") == 0) {
+
+        $(".running_status_live").hide();
+        $("#message_1").attr('class', 'badge badge-danger');
+
+      }
+      else if (job_status == "COMPLETED") {
 
         $(".running_status_live").hide();
         $("#message_1").attr('class', 'badge badge-success');
@@ -889,7 +895,8 @@ try{
 
       }
 
-      if (job_status == "PAUSE" || job_status == "PAUSED"){
+      if (job_status.indexOf("PAUSE") == 0){
+        $(".running_status_live").show();
         $("#message_1").attr('class', 'badge badge-warning');
         $("#P_or_RUNNING").text("Resume")
       }
@@ -927,11 +934,22 @@ try{
       if (status.indexOf("RUNNING") == 0)
       {
 
-        val[5] = '<div class="spinner-border text-warning"></div><span class="badge badge-warning"'+style_val+'>'+val[5]+'</span>'
+        if (job_status == "RUNNING")
+        {
+
+          val[5] = '<div class="spinner-border text-warning"></div><span class="badge badge-warning"'+style_val+'>'+val[5]+'</span>';
+
+        }
+
+        else
+        {
+        
+        val[5] = '<span class="badge badge-warning"'+style_val+'>'+val[5]+'</span>';
+
+        }
         //t = status + " " + val[6] + " - Host:"+val[2];
         //$("#message_5").text(t);
        
-         
 
       }else if (status.indexOf("PENDING") == 0){
 
@@ -965,6 +983,7 @@ else{
   $("#message_5").text("");
   console.log("Job data not available......");
   console.log(json);
+  $(".running_status_live").hide();
   return [];
 }
 
@@ -1038,14 +1057,14 @@ $(document).ready(function() {
      //execution_table.buttons().container().appendTo( $('div.eight.column:eq(0)', execution_table.table().container()) );
 
 bar_1 = '<h5><span class="badge badge-primary" id="message_1"></span>&nbsp;'+
-        '<span class="badge badge-primary" id="message_2"></span></h5>'+
+        '<span class="badge badge-light" id="message_2"></span></h5>'+
         '<h6><span class="badge badge-light" id="message_3"></span>&nbsp;</h6>'
           
 
 bar_2 = '<button type="button" class="btn btn-warning running_status_live" style="top:3px;" id="P_or_RUNNING" onclick="pause_stop_upgrade('+"'P_or_RUNNING')"+
       '">Pause</button>&nbsp;'+
-      '<button type="button" class="btn btn-danger running_status_live" style="top:3px;" onclick="pause_stop_upgrade('+"'TERMINATE')"+
-      '"><b>Stop Upgrade</b></button>&nbsp;'+
+      '<button type="button" class="btn btn-danger running_status_live" style="top:3px;" onclick="pause_stop_upgrade('+"'TERMINATED')"+
+      '"><b>Stop running</b></button>&nbsp;'+
       '<button type="button" class="btn btn-light" onclick="show_events()"><b>Events</b><span class="badge badge-warning">10</span></button>&nbsp;'
 
 //'<label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="execution_table"></label>'

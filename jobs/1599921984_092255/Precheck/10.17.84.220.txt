@@ -1,0 +1,399 @@
+
+
+============================================================>show clock
+{'_data': ['Sat Sep 12 07:12:15 PDT 2020']}
+
+============================================================>show version
+{   '_data': [   'Aruba Operating System Software.\n'
+                 'ArubaOS (MODEL: ArubaMM-VA), Version 8.6.0.5\n'
+                 'Website: http://www.arubanetworks.com\n'
+                 '(c) Copyright 2020 Hewlett Packard Enterprise Development '
+                 'LP.\n'
+                 'Compiled on 2020-06-25 at 00:14:10 UTC (build 75979) by '
+                 'p4build\n'
+                 '\n'
+                 'BIOS Version: Phoenix Technologies LTD, 6.00\n'
+                 'Built: 12/12/2018\n'
+                 '\n'
+                 'Switch uptime is 36 days 3 hours 46 minutes 28 seconds\n'
+                 'Reboot Cause: User reboot (Intent:cause: 86:50)\n'
+                 'Supervisor Card\n'
+                 'Processor(s):\n'
+                 'Total CPUs :       3,    Sockets : 1,    Cores Per CPU :  3\n'
+                 'Socket 0: AMD EPYC 7551 32-Core Processor\n'
+                 '5703M bytes of memory\n'
+                 '4096M bytes of Supervisor Card system flash.']}
+
+============================================================>show image version
+{   '_data': [   '----------------------------------\n'
+                 'Partition       : 0:0 (/mnt/disk1)\n'
+                 'Software Version: ArubaOS 8.5.0.10-FIPS (Digitally Signed '
+                 'SHA1/SHA256 - Production Build)\n'
+                 'Build number    : 76207\n'
+                 'Label           : 76207\n'
+                 'Built on        : Sat Jul 11 05:24:33 UTC 2020\n'
+                 '----------------------------------\n'
+                 'Partition       : 0:1 (/mnt/disk2) **Default boot**\n'
+                 'Software Version: ArubaOS 8.6.0.5 (Digitally Signed '
+                 'SHA1/SHA256 - Production Build)\n'
+                 'Build number    : 75979\n'
+                 'Label           : 75979\n'
+                 'Built on        : Thu Jun 25 00:14:10 UTC 2020']}
+
+============================================================>show storage
+{   '_data': [   'Filesystem                Size      Used Available Use% '
+                 'Mounted on\n'
+                 'none                      3.0G     52.0M      2.9G   2% '
+                 '/tmp\n'
+                 '/dev/sdb1                 5.8G    934.0M      4.6G  17% '
+                 '/flash\n'
+                 '/dev/sda5                 1.4G    419.8M    983.3M  30% '
+                 '/mnt/disk1\n'
+                 '/dev/sda6                 1.4G    420.2M    982.8M  30% '
+                 '/mnt/disk2']}
+
+============================================================>show cpuload
+{'_data': ['user 7.3%, system 6.0%, idle 86.2%']}
+
+============================================================>show memory
+{'_data': ['Memory (Kb): total: 5840728, used: 3184224, free: 2656504']}
+
+============================================================>show boot
+{'_data': ['Config ID: 117\n\n\nBoot Partition: PARTITION 1']}
+
+============================================================>show switches
+{   'All Switches': [   {   'Config ID': '117',
+                            'Config Sync Time (sec)': '0',
+                            'Configuration State': 'UPDATE SUCCESSFUL',
+                            'IP Address': '10.17.84.220',
+                            'IPv6 Address': 'None',
+                            'Location': 'Building1.floor1',
+                            'Model': 'ArubaMM-VA',
+                            'Name': 'NaaS-MM-11',
+                            'Status': 'up',
+                            'Type': 'master',
+                            'Version': '8.6.0.5_75979'},
+                        {   'Config ID': '99',
+                            'Config Sync Time (sec)': '0',
+                            'Configuration State': 'CONFIG ROLLBACK',
+                            'IP Address': '10.17.84.221',
+                            'IPv6 Address': 'None',
+                            'Location': 'Building1.floor1',
+                            'Model': 'ArubaMC-VA',
+                            'Name': 'Naas-VMC-1',
+                            'Status': 'up',
+                            'Type': 'MD',
+                            'Version': '8.6.0.5_75979'}],
+    '_data': ['2'],
+    '_meta': [   'IP Address',
+                 'IPv6 Address',
+                 'Name',
+                 'Location',
+                 'Type',
+                 'Model',
+                 'Version',
+                 'Status',
+                 'Configuration State',
+                 'Config Sync Time (sec)',
+                 'Config ID']}
+
+============================================================>show switchinfo
+{   '_data': [   'Hostname is NaaS-MM-11\n'
+                 '\n'
+                 'Building1.floor1\n'
+                 'System Time:Sat Sep 12 07:12:23 PDT 2020\n'
+                 '\n'
+                 'Aruba Operating System Software.\n'
+                 'ArubaOS (MODEL: ArubaMM-VA), Version 8.6.0.5\n'
+                 'Website: http://www.arubanetworks.com\n'
+                 '(c) Copyright 2020 Hewlett Packard Enterprise Development '
+                 'LP.\n'
+                 'Compiled on 2020-06-25 at 00:14:10 UTC (build 75979) by '
+                 'p4build\n'
+                 '\n'
+                 'BIOS Version: Phoenix Technologies LTD, 6.00\n'
+                 'Built: 12/12/2018\n'
+                 '\n'
+                 'Switch uptime is 36 days 3 hours 46 minutes 35 seconds\n'
+                 'Reboot Cause: User reboot (Intent:cause: 86:50)\n'
+                 'Supervisor Card\n'
+                 'Processor(s):\n'
+                 'Total CPUs :       3,    Sockets : 1,    Cores Per CPU :  3\n'
+                 'Socket 0: AMD EPYC 7551 32-Core Processor\n'
+                 '5703M bytes of memory\n'
+                 '4096M bytes of Supervisor Card system flash.\n'
+                 '\n'
+                 'Config ID: 117\n'
+                 '\n'
+                 '\n'
+                 'Boot Partition: PARTITION 1\n'
+                 '\n'
+                 '\n'
+                 'mgmt is administratively down line protocol is down \n'
+                 'Hardware is Ethernet, address is 00:0C:29:27:82:D5 \n'
+                 '\n'
+                 '\n'
+                 'VLAN1 is up line protocol is down\n'
+                 'Hardware is CPU Interface, Interface address is '
+                 '00:0C:29:27:82:DF (bia 00:0C:29:27:82:DF)\n'
+                 'Description: 802.1Q VLAN\n'
+                 '\n'
+                 'IPv6 Router Advertisements are disabled\n'
+                 'Routing interface is enable, Forwarding mode is enable \n'
+                 'Directed broadcast is disabled, BCMC Optimization disabled '
+                 'ProxyARP disabled Suppress ARP enable\n'
+                 'Encapsulation 802, loopback not set\n'
+                 'MTU 1500 bytes\n'
+                 'Last clearing of "show interface" counters 36 day 3 hr 46 '
+                 'min 35 sec \n'
+                 'link status last changed 36 day 3 hr 46 min 35 sec \n'
+                 'Proxy Arp is disabled for the Interface\n'
+                 '\n'
+                 'switchrole:master\n'
+                 'Configuration unchanged since last save\n'
+                 'No AP crash information available.\n'
+                 'No controller crash information available.\n'
+                 'Reboot Cause: User reboot (Intent:cause: 86:50)']}
+
+============================================================>show boot history
+{   '_data': [   'Reboot History Table\n'
+                 '--------------------\n'
+                 'No  '
+                 'Description                                                                                             '
+                 'User        Role  IP              Timestamp\n'
+                 '--  '
+                 '-----------                                                                                             '
+                 '----        ----  --              ---------\n'
+                 '1   Upgrade to ArubaOS_MM_8.6.0.5_75979 on partition 0 '
+                 'Successful.                                          '
+                 'admin       root  10.240.126.75   Mon Aug  3 13:44:49 2020\n'
+                 '\n'
+                 '2   Controller Reboot '
+                 'initiated.                                                                            '
+                 'admin       root  10.240.126.75   Mon Aug  3 14:08:23 2020\n'
+                 '\n'
+                 '3   Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Mon Aug  3 14:10:06 2020\n'
+                 '\n'
+                 '4   Controller Reboot '
+                 'initiated.                                                                            '
+                 'admin       root  10.240.124.251  Tue Aug  4 08:01:17 2020\n'
+                 '\n'
+                 '5   Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Tue Aug  4 08:02:49 2020\n'
+                 '\n'
+                 '6   Upgrade to ArubaOS_MM_8.5.0.10-FIPS_76207 on partition 1 '
+                 'Successful.                                    admin       '
+                 'root  10.240.124.251  Tue Aug  4 10:28:05 2020\n'
+                 '\n'
+                 '7   Controller Reboot '
+                 'initiated.                                                                            '
+                 'admin       root  10.240.124.251  Tue Aug  4 10:38:53 2020\n'
+                 '\n'
+                 '8   Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Tue Aug  4 10:40:34 2020\n'
+                 '\n'
+                 '9   Upgrade through Web-UI to 8.5.0.10-FIPS on partition 0 '
+                 'Successful.                                      admin       '
+                 'root  10.17.84.225    Tue Aug  4 11:38:48 2020\n'
+                 '\n'
+                 '10  Controller Reboot initiated from '
+                 'Web-UI.                                                                '
+                 'admin       root  10.17.84.225    Tue Aug  4 11:40:10 2020\n'
+                 '\n'
+                 '11  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Tue Aug  4 11:41:58 2020\n'
+                 '\n'
+                 '12  Upgrade to ArubaOS_MM_8.6.0.5_75979 on partition 1 '
+                 'Successful.                                          '
+                 'admin       root  10.240.126.227  Tue Aug  4 12:53:13 2020\n'
+                 '\n'
+                 '13  Upgrade through Web-UI to 8.6.0.5_75979 on partition 1 '
+                 'Successful.                                      admin       '
+                 'root  10.17.84.225    Tue Aug  4 13:17:22 2020\n'
+                 '\n'
+                 '14  Upgrade through Web-UI to 8.6.0.5_75979 on partition 1 '
+                 'Successful.                                      admin       '
+                 'root  10.17.84.225    Tue Aug  4 13:44:03 2020\n'
+                 '\n'
+                 '15  Boot partition is changed from 1 to '
+                 '0                                                                   '
+                 'admin       root  10.240.126.227  Tue Aug  4 14:04:37 2020\n'
+                 '\n'
+                 '16  Boot partition is changed from 0 to '
+                 '1                                                                   '
+                 'admin       root  10.240.126.227  Tue Aug  4 14:05:48 2020\n'
+                 '\n'
+                 '17  Upgrade through Web-UI Failed:tftp: server says: '
+                 'Cancelled by administrator                             '
+                 'admin       root  10.17.84.225    Tue Aug  4 14:12:23 2020\n'
+                 '\n'
+                 '18  Upgrade through Web-UI Failed:tftp: server says: '
+                 'Cancelled by administrator                             '
+                 'admin       root  10.17.84.225    Tue Aug  4 14:27:51 2020\n'
+                 '\n'
+                 '19  Upgrade through Web-UI to 8.6.0.5_75979 on partition 0 '
+                 'Successful.                                      admin       '
+                 'root  10.240.126.227  Tue Aug  4 14:47:38 2020\n'
+                 '\n'
+                 '20  Upgrade through Web-UI to 8.5.0.10-FIPS on partition 0 '
+                 'Successful.                                      admin       '
+                 'root  10.17.84.225    Tue Aug  4 16:00:18 2020\n'
+                 '\n'
+                 '21  Upgrade through Web-UI to 8.5.0.10-FIPS on partition 1 '
+                 'Successful.                                      admin       '
+                 'root  10.17.84.225    Tue Aug  4 16:04:12 2020\n'
+                 '\n'
+                 '22  Boot partition is changed from 1 to '
+                 '0                                                                   '
+                 'admin       root  serial-console  Tue Aug  4 16:05:06 2020\n'
+                 '\n'
+                 '23  Controller Reboot initiated from '
+                 'Web-UI.                                                                '
+                 'admin       root  10.17.84.225    Tue Aug  4 16:05:24 2020\n'
+                 '\n'
+                 '24  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Tue Aug  4 16:07:09 2020\n'
+                 '\n'
+                 '25  Upgrade through Web-UI to 8.6.0.5_75979 on partition 1 '
+                 'Successful.                                      admin       '
+                 'root  10.240.123.199  Wed Aug  5 02:19:06 2020\n'
+                 '\n'
+                 '26  Controller Reboot '
+                 'initiated.                                                                            '
+                 'admin       root  10.240.123.199  Wed Aug  5 02:50:27 2020\n'
+                 '\n'
+                 '27  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Wed Aug  5 02:52:08 2020\n'
+                 '\n'
+                 '28                                                                                                          '
+                 'admin       root  10.17.84.225    Wed Aug  5 03:28:06 2020\n'
+                 '\n'
+                 '29  Controller Reboot initiated from '
+                 'Web-UI.                                                                '
+                 'admin       root  10.17.84.225    Wed Aug  5 03:28:20 2020\n'
+                 '\n'
+                 '30  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Wed Aug  5 03:30:04 2020\n'
+                 '\n'
+                 '31  Upgrade through Web-UI to 8.6.0.5_75979 on partition 0 '
+                 'Successful.                                      admin       '
+                 'root  10.240.120.121  Wed Aug  5 13:54:50 2020\n'
+                 '\n'
+                 '32  Upgrade through Web-UI to 8.6.0.5_75979 on partition 1 '
+                 'Successful.                                      admin       '
+                 'root  10.240.120.121  Wed Aug  5 14:59:59 2020\n'
+                 '\n'
+                 '33  Upgrade through Web-UI Failed:ncftpget: cannot open '
+                 '10.17.84.220: username was not accepted for '
+                 'login.                    serial-console  Thu Aug  6 '
+                 '06:15:35 2020\n'
+                 '\n'
+                 '34  '
+                 'root                                                                                                    '
+                 '-514584310        serial-console  Wed Dec 31 16:00:00 1969\n'
+                 '\n'
+                 '35  Upgrade through Web-UI to 8.5.0.10-FIPS_76207 on '
+                 'partition 0 Successful.                                '
+                 'admin       root  10.17.84.225    Thu Aug  6 06:17:19 2020\n'
+                 '\n'
+                 '36  Upgrade through Web-UI to 8.5.0.10-FIPS_76207 on '
+                 'partition 1 Successful.                                '
+                 'admin       root  10.17.84.225    Thu Aug  6 06:20:30 2020\n'
+                 '\n'
+                 '37  Controller Reboot initiated from '
+                 'Web-UI.                                                                '
+                 'admin       root  10.17.84.225    Thu Aug  6 06:29:18 2020\n'
+                 '\n'
+                 '38  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Thu Aug  6 06:31:03 2020\n'
+                 '\n'
+                 '39  Upgrade through Web-UI to 8.6.0.5_75979 on partition 0 '
+                 'Successful.                                      admin       '
+                 'root  10.240.122.204  Thu Aug  6 17:37:05 2020\n'
+                 '\n'
+                 '40  Controller Reboot '
+                 'initiated.                                                                            '
+                 'admin       root  10.240.122.204  Thu Aug  6 17:45:47 2020\n'
+                 '\n'
+                 '41  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Thu Aug  6 17:47:27 2020\n'
+                 '\n'
+                 '42  Upgrade through Web-UI to 8.6.0.5_75979 on partition 0 '
+                 'Successful.                                      admin       '
+                 'root  10.240.122.204  Thu Aug  6 18:10:43 2020\n'
+                 '\n'
+                 '43  Controller Reboot initiated from '
+                 'Web-UI.                                                                '
+                 'admin       root  10.240.122.204  Thu Aug  6 18:11:22 2020\n'
+                 '\n'
+                 '44  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Thu Aug  6 18:13:04 2020\n'
+                 '\n'
+                 '45  Upgrade through Web-UI to 8.5.0.10-FIPS_76207 on '
+                 'partition 0 Successful.                                '
+                 'admin       root  10.17.84.225    Fri Aug  7 01:55:35 2020\n'
+                 '\n'
+                 '46  Controller Reboot initiated from '
+                 'Web-UI.                                                                '
+                 'admin       root  10.17.84.225    Fri Aug  7 01:55:43 2020\n'
+                 '\n'
+                 '47  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Fri Aug  7 01:57:27 2020\n'
+                 '\n'
+                 '48  Upgrade through Web-UI to 8.6.0.5_75979 on partition 1 '
+                 'Successful.                                      admin       '
+                 'root  10.240.125.212  Fri Aug  7 03:13:33 2020\n'
+                 '\n'
+                 '49  Controller Reboot '
+                 'initiated.                                                                            '
+                 'admin       root  10.240.125.212  Fri Aug  7 03:24:32 2020\n'
+                 '\n'
+                 '50  Reboot Cause: User reboot (Intent:cause: '
+                 '86:50)                                                         '
+                 'system       -    -               Fri Aug  7 03:26:23 2020']}
+
+============================================================>show crypto ipsec sa
+{   '_data': [   'IPSEC SA (V2) Active Session Information',
+                 '-----------------------------------',
+                 'Initiator IP                              Responder '
+                 'IP                              SPI(IN/OUT)        Flags '
+                 'Start Time        Inner IP                                   '
+                 'Ipsec-map',
+                 '------------                              '
+                 '------------                              ----------------   '
+                 '----- ---------------   '
+                 '--------                                   ---------',
+                 '10.17.84.221                              '
+                 '10.17.84.220                              da0e0200/5170e400  '
+                 'UT2   Sep 12 06:15:09     '
+                 '-                                        '
+                 'default-local-master-ipsecmap10.17.84.221',
+                 'Flags: T = Tunnel Mode; E = Transport Mode; U = UDP Encap',
+                 'L = L2TP Tunnel; N = Nortel Client; C = Client; 2 = IKEv2',
+                 'l = uplink load-balance',
+                 'Total IPSEC SAs: 1']}
+
+============================================================>show master-redundancy
+{}
+
+============================================================>show database synchronize
+{   '_data': [   'Last L2 synchronization time: Standby not synchronized since '
+                 'last reboot',
+                 'Last L3 synchronization time: Secondary not synchronized '
+                 'since last reboot',
+                 'L2 Periodic synchronization is disabled',
+                 'L3 Periodic synchronization is disabled',
+                 'Synchronization doesn&#39;t include Captive Portal Custom '
+                 'data']}
