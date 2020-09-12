@@ -249,7 +249,7 @@
 <div class="row" style="margin-right: 0px">
       
       <div class="col-sm-12">
-        <table id="execution_table" class="table table-striped table-bordered table" cellspacing="0" width="100%"> 
+        <table id="execution_table" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%"> 
         <tbody id="execution_body"></tbody>
         </table>
         <h6 id="job_name_id" style="visibility: hidden;"><h6>
@@ -916,12 +916,20 @@ try{
       jQuery.each(only_data, function(i, val){
       status = val[5];
       style_val = 'style="text-align:left;white-space=nowrap"'
+
+      //val[0] = '<span class="badge badge-secondary"'+style_val+'>'+val[0]+'</span>'
+      val[1] = '<h5><span class="badge badge-primary"'+style_val+'>'+val[1]+'</span></h5>'
+      val[2] = '<h6><span class="badge badge-light"'+style_val+'>'+val[2]+'</span></h6>'
+      val[3] = '<h6><span class="badge badge-light"'+style_val+'>'+val[3]+'</span></h6>'
+      val[4] = '<h6><span class="badge badge-light"'+style_val+'>'+val[4]+'</span></h6>'
+      val[6] = '<h5><span class="badge badge-light"'+style_val+'>'+val[6]+'</span></h6>'
+
       if (status.indexOf("RUNNING") == 0)
       {
 
         val[5] = '<div class="spinner-border text-warning"></div><span class="badge badge-warning"'+style_val+'>'+val[5]+'</span>'
-        t = status + " " + val[6] + " - Host:"+val[2];
-        $("#message_5").text(t);
+        //t = status + " " + val[6] + " - Host:"+val[2];
+        //$("#message_5").text(t);
        
          
 
@@ -1002,12 +1010,12 @@ $(document).ready(function() {
     execution_table = $('#execution_table').DataTable( {
         columns: [
             { title: "ID"},
-            { title: "Type" },
+            { title: "Device" },
             { title: "Host Name" },
             { title: "Host" },
-            { title: "Version" },
+            { title: "Upgrade Version" },
             { title: "Status" },
-            { title: "Note" }
+            { title: "Info" }
 
         ],
         //"buttons": [ 'copy', 'excel', 'pdf', 'colvis' ],

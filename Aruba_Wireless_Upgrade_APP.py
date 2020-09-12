@@ -259,9 +259,9 @@ class Aruba_Wireless_upgrade():
 			
 			for single_host in hosts:
 				try:
-
+					_status = None
 					host = single_host.get("host")
-					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"RUNNING",check_type)
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"RUNNING PRECHECK",check_type)
 					hostname = single_host.get("hostname")
 					device_type = single_host.get("device_type").strip()
 					cmds = single_host.get("CheckList")
@@ -277,7 +277,10 @@ class Aruba_Wireless_upgrade():
 						session = login_status[1]
 						UIDARUBA = login_status[2]
 						host_output = dict()
-						for cmd in cmds:
+						_len_cmds = str(len(cmds))
+						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"RUNNING PRECHECK","Completed 0/"+_len_cmds)
+						for _count,cmd in enumerate(cmds):
+							db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"RUNNING PRECHECK","Status "+str(_count+1)+"/"+_len_cmds)
 							if cmd.get("show") != None:
 								cmd = cmd.get("show")
 								cmd = cmd.lower().strip()
@@ -319,12 +322,16 @@ class Aruba_Wireless_upgrade():
 						summary_data.append(s_data)
 						
 					else:
+						_status = "LOGIN FAILED"
 						self.eprint("error","Precheck failed for => {}:{}".format(hostname,host))
 				except Exception:
-					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"ERROR",check_type)
+					_status = "FAILED"
+					self.eprint("error","Precheck failed for => {}:{}".format(hostname,host))
 					self.logger.exception("Error host pre_post_check")
 				finally:
-					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,"COMPLETED",check_type)
+					if _status == None:
+						_status = "COMPLETED"
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host,_status,check_type)
 
 					#self.logout(session,host)
 
