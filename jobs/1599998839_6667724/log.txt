@@ -1,0 +1,117 @@
+2020-09-13 17:37:19,686 > INFO > JOBNAME:1599998839_6667724
+2020-09-13 17:37:19,687 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-13 17:37:19,741 > INFO > Starting Job
+2020-09-13 17:37:19,756 > INFO > INFO:Running: 1599998839_6667724 Type:precheck,all
+2020-09-13 17:37:19,772 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-13 17:37:19,807 > INFO > Inserting upgrade list to upgrade.db
+2020-09-13 17:37:35,873 > INFO > yes
+2020-09-13 17:37:35,873 > INFO > INFO:Starting precheck
+2020-09-13 17:37:35,935 > INFO > INFO:Executing Precheck
+2020-09-13 17:37:36,000 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-13 17:37:38,851 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-13 17:37:41,461 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-09-13 17:37:41,518 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-13 17:37:44,076 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-13 17:37:46,695 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-13 17:37:46,769 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-13 17:37:47,531 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 17:37:47,578 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-13 17:37:48,491 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-13 17:37:49,347 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-13 17:37:50,203 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-13 17:37:51,051 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-13 17:37:51,868 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-13 17:37:52,716 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-13 17:37:53,549 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-13 17:37:54,367 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-13 17:37:55,429 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-13 17:37:56,930 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-13 17:37:58,307 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-13 17:37:59,593 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-13 17:38:00,973 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-13 17:38:02,210 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-13 17:38:04,918 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-13 17:38:07,960 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-13 17:38:08,099 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-13 17:38:08,913 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-13 17:38:09,761 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-13 17:38:10,609 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-13 17:38:11,443 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-13 17:38:12,387 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-13 17:38:13,698 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-13 17:38:14,646 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-13 17:38:15,969 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-13 17:38:17,452 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-13 17:38:19,052 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-13 17:38:20,386 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-13 17:38:22,182 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-13 17:38:24,115 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-13 17:38:25,279 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-13 17:38:26,669 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-13 17:38:28,189 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-13 17:38:29,515 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-13 17:38:31,123 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-13 17:38:32,273 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-13 17:38:36,797 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-13 17:38:38,286 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-13 17:38:39,821 > INFO > INFO:Precheck Completed
+2020-09-13 17:38:48,461 > INFO > INFO:Total upgrade hosts:2
+2020-09-13 17:38:48,476 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-13 17:38:51,081 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 17:38:51,864 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 17:38:51,880 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 17:38:52,647 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 17:38:53,439 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 17:38:53,456 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 17:39:01,496 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-13 17:39:02,267 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 17:39:02,310 > ERROR > upload_image_from_server
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 577, in upload_image_from_server
+    web_data = {'method': 'imtftp','args':server_type+','+server_ip+','+username+','+password+','+img_file+','+partition.upper()+',unknown_host,none'}
+TypeError: can only concatenate str (not "NoneType") to str
+2020-09-13 17:39:03,054 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 17:39:03,877 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 17:39:03,897 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 17:39:07,934 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-13 17:39:08,722 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 17:39:08,982 > ERROR > upload_image_from_server
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 577, in upload_image_from_server
+    web_data = {'method': 'imtftp','args':server_type+','+server_ip+','+username+','+password+','+img_file+','+partition.upper()+',unknown_host,none'}
+TypeError: can only concatenate str (not "NoneType") to str
+2020-09-13 17:39:09,746 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 17:39:10,637 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 17:39:10,694 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 17:39:18,782 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-13 17:39:19,581 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 17:39:19,616 > ERROR > upload_image_from_server
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 577, in upload_image_from_server
+    web_data = {'method': 'imtftp','args':server_type+','+server_ip+','+username+','+password+','+img_file+','+partition.upper()+',unknown_host,none'}
+TypeError: can only concatenate str (not "NoneType") to str
+2020-09-13 17:39:20,359 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 17:39:21,387 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 17:39:21,416 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 18:27:47,124 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-13 18:27:47,152 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-13 18:27:47,170 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-13 18:27:56,159 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-13 18:27:58,854 > WARNING > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 18:27:58,887 > DEBUG > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 18:27:59,683 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-13 18:28:00,496 > WARNING > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 18:28:00,527 > DEBUG > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-13 18:28:06,585 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-13 18:28:06,606 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-13 18:28:08,644 > INFO > INFO:STARTING AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343 FROM DISK:0 MAX AP:1
+2020-09-13 18:28:08,665 > ERROR > AP_IMAGE_PRELOAD: 
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 674, in AP_IMAGE_PRELOAD
+    while last_skip == False and valid_state == False:
+NameError: name 'last_skip' is not defined
+2020-09-13 18:28:08,666 > INFO > INFO:Starting Upgrade
+2020-09-13 18:28:12,704 > INFO > no
+2020-09-13 18:28:12,704 > WARNING > WARNING:TERMINATED User aborted the postcheck
+2020-09-13 18:28:12,720 > DEBUG > WARNING:TERMINATED User aborted the postcheck
+2020-09-13 18:28:12,751 > INFO > INFO:==== Completed ====

@@ -259,7 +259,7 @@ class Aruba_Wireless_upgrade():
 
 				self.user_pause_terminate()
 				host_type = single_host.get("device_type")
-				host_name = single_host.get("host_name")
+				host_name = single_host.get("hostname")
 				host_ip = single_host.get("host")
 				upgrade_disk =  single_host.get("upgrade_disk")
 
@@ -527,7 +527,7 @@ class Aruba_Wireless_upgrade():
 				
 				#prepared = requests.Request('POST', url,data=mp,headers=headers).prepare()
 				
-				self.eprint("info","Uploading image file to MD: {} AOS: {}".format(host_ip,img_file))
+				self.eprint("info","Uploading image file: {} AOS: {}".format(host_ip,img_file))
 				#print(prepared.headers)
 				#print(session.cookies.get_dict())
 				
@@ -536,7 +536,8 @@ class Aruba_Wireless_upgrade():
 				
 				res = session.post(url,data=mp,headers=headers,verify=False)
 				#print(res.content)
-				self.eprint("success","Completed Upload image file to MD: {} AOS: {}".format(host_ip,img_file))
+				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: UPLOADED IMAGE TO DISK {}".format(disk),"Image:"+str(img_file))
+				self.eprint("success","Completed Upload image file to: {} AOS: {}".format(host_ip,img_file))
 				
 				#self.logout(session,host_ip)
 		except Exception:
@@ -545,10 +546,15 @@ class Aruba_Wireless_upgrade():
 	def upload_image_from_server(self,single_host,aos_source,server_type):
 		# Copy file using TFTP , webUI API method
 		try:
+
 			login_status = self.get_session(single_host)
 			host_ip = single_host.get("host")
-			upgrade_disk = single_host.get("disk")
+			host_name = single_host.get("hostname")
+			disk = single_host.get("disk")
 			img_file = single_host.get("image_file_name")
+
+
+			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING: UPLOADING IMAGE TO DISK {}".format(disk),"Image:"+str(img_file))
 			
 			if login_status[0] == True:
 				session = login_status[1]
@@ -558,24 +564,24 @@ class Aruba_Wireless_upgrade():
 				if server_type == "ftp":
 					username = aos_source.get("ftp_username")
 					password = aos_source.get("ftp_password")
-					server_ip = aos_source.get("ftp_server")
+					server_ip = aos_source.get("ftp_host")
 				elif server_type == "scp":
 					username = aos_source.get("scp_username")
 					password = aos_source.get("scp_password")
-					server_ip = aos_source.get("scp_server")
+					server_ip = aos_source.get("scp_host")
 				else:
-					server_type = "imtftp"
-					server_ip = aos_source.get("tftp_server")
+					server_type = "tftp"
+					server_ip = aos_source.get("tftp_host")
 					username = "zz"
 					password = "zz"
 
 				
-				web_data = {'method': 'imtftp','args':server_type+','+server_ip+','+username+','+password+','+img_file+','+partition.upper()+',unknown_host,none'}
+				web_data = {'method': 'im'+server_type,'args':server_type+','+server_ip+','+username+','+password+','+img_file+','+partition.upper()+',unknown_host,none'}
 				web_data.update({'UIDARUBA': UIDARUBA})
 
-				#print(web_data)
+				print(web_data)
 
-				self.eprint("info","{}:{}- Installing AOS: {} from {} server:{}".format(hostname,host_ip,img_file,server_type,server_ip))
+				self.eprint("info","{}:{}- Installing AOS: {} from {} server:{}".format(host_name,host_ip,img_file,server_type,server_ip))
 				url = self.copy_tftp_system_web.format(host_ip)
 				res = session.post(url,data=web_data,verify=False)
 				
@@ -584,17 +590,23 @@ class Aruba_Wireless_upgrade():
 				except:
 					response = res.content
 
-				#print(response)
+				self.eprint("debug",str(response))
 
 				if response.find("SUCCESS") != -1:
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: UPLOADED IMAGE TO DISK {}".format(disk),"Image:"+str(img_file))
 					self.eprint("success","File copy completed ....")
 					self.logger.info(response)
+					return True
 				else:
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED: UPLOADING IMAGE TO DISK {}".format(disk),"Image:"+str(img_file))
 					self.eprint("error","File copy failed ....")
 					self.logger.error(response)
+			else:
+				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED: UPLOADING IMAGE","Login failed")
+
 
 		except Exception:
-			self.logger.exception("upload_image_tftp")
+			self.logger.exception("upload_image_from_server")
 
 	def MM_MD_Upload(self,single_host):
 		upload_not_required = False
@@ -610,27 +622,43 @@ class Aruba_Wireless_upgrade():
 		image_version = single_host.get("image_version")
 		host_type = single_host.get("type")
 
-		upload_not_required = self.validate_image_upload(single_host)
+		msg = "Do you want to install: "
 
+		if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "no":
+			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED: UPLOADING IMAGE","User Aborted")
+		else:
+			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING: UPLOADING IMAGE","")
+			a = "{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip)
+			self.eprint("warning","User aborted to install : "+a)
+			
+		upload_not_required = False
 		while upload_not_required == False:
 			if self.validate_image_upload(single_host) != True:
-				msg = "Do you want to install: "
-				if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}  (Y/N)".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "yes":
-					#print("=> Starting MM Upgrade for {}".format(host_ip))
-					if upload_type == "local":
-						self.upload_image_http(single_host,aos_source)
-					elif upload_type == "tftp":
-						self.upload_image_from_server(single_host,aos_source,"tftp")
-					elif upload_type == "ftp":
-						self.upload_image_from_server(single_host,aos_source,"ftp")
-					elif upload_type == "scp":
-						self.upload_image_from_server(single_host,aos_source,"scp")
-					else:
-						self.eprint("error","No valid file upload type found"+str(upload_type))
 
+				#print("=> Starting MM Upgrade for {}".format(host_ip))
+				a = "{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip)
+				self.eprint("info","User accepted : "+a)
+				if upload_type == "local":
+					upload_status = self.upload_image_http(single_host,aos_source)
+				elif upload_type == "tftp":
+					upload_status = self.upload_image_from_server(single_host,aos_source,"tftp")
+				elif upload_type == "ftp":
+					upload_status = self.upload_image_from_server(single_host,aos_source,"ftp")
+				elif upload_type == "scp":
+					upload_status = self.upload_image_from_server(single_host,aos_source,"scp")
 				else:
+					self.eprint("error","No valid file upload type found"+str(upload_type))
+				
+				if upload_status == True:
 					upload_not_required = True
+				else:
+					msg = "Retry Image Upload "
+					if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "no":
+						self.eprint("warning","User aborted for retry image upload")
+						upload_not_required = True
+
 			else:
+				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: IMAGE UPLOADED","")
 				upload_not_required = True
 
 
@@ -647,7 +675,7 @@ class Aruba_Wireless_upgrade():
 			image_version = single_host.get("image_version")
 			max_ap_image_load = single_host.get("max_ap_image_load")
 
-			msg = " \n=> Do You want to preimage AP's for :"
+			msg = "Do You want to preimage AP's for :"
 			if self.get_user_input("{} {} - {} from Disk {}".format(msg,host_name,host_ip,upgrade_disk),["yes","no"]) == "yes":
 				self.eprint("warning","Skipping AP's preimage....")
 				return False
@@ -756,6 +784,9 @@ class Aruba_Wireless_upgrade():
 				upgrade_disk = host.get("disk")
 				image_build = host.get("image_build")
 				image_version = host.get("image_version")
+				upload_device_type = host.get("device_type")
+
+				#db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING: UPLOADING IMAGE","From:"+str(upload_device_type).upper())
 
 				if host.get("device_type") == "MM":
 					# Start the MM Upgrade
@@ -929,7 +960,7 @@ class main_model():
 			# Update the DB
 			job_db_status = db_management.create_job_db(self.upgrade_db)
 			event_db_status = db_management.create_event_db(self.event_db)
-			validation_db_status = db_management.create_event_db(self.validation_db)
+			validation_db_status = db_management.create_pre_post_db(self.validation_db)
 
 			if job_db_status == True and event_db_status == True and validation_db_status == True:
 

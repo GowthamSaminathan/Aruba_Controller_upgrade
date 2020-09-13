@@ -290,7 +290,6 @@ def start_execution():
 				last_job = get_last_job()
 
 				#print(last_job)
-				print(last_job[3])
 				if type(last_job) == tuple:
 					if last_job[3] != "COMPLETED" and last_job[3] != "TERMINATED":
 						return jsonify({"results":"failed","message":"Last Job {} not completed".format(str(last_job[2]))})

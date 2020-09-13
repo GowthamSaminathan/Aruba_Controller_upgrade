@@ -643,10 +643,10 @@ class Aruba_upgrade():
 					password = "zz"
 
 				
-				web_data = {'method': 'imtftp','args':server_type+','+server_ip+','+username+','+password+','+img_file+','+partition.upper()+',unknown_host,none'}
+				web_data = {'method': 'imtftp','args':str(server_type)+','+str(server_ip)+','+str(username)+','+str(password)+','+str(img_file)+','+partition.upper()+',unknown_host,none'}
 				web_data.update({'UIDARUBA': UIDARUBA})
 
-				#print(web_data)
+				print(web_data)
 
 				print(_info+"=> {}:{}- Installing AOS: {} from {} server:{}".format(hostname,host_ip,img_file,server_type,server_ip))
 				url = self.copy_tftp_system_web.format(host_ip)

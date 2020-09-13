@@ -71,7 +71,6 @@ def checklist_update(db_path,data,chec_list_type):
 		conn = sqlite3.connect(db_path)
 		cursor = conn.cursor()
 
-		print(data)
 		host_type = data.get("device_type")
 		host_name = data.get("host_name")
 		host = data.get("host")
@@ -86,9 +85,11 @@ def checklist_update(db_path,data,chec_list_type):
 		precheck_note = data.get("precheck_note")
 		postcheck_note = data.get("postcheck_note")
 		
+		#logger.info("Selecting ........")
+		#logger.info("SELECT ID FROM CHECKLIST WHERE HOST='{}' AND VALIDATION='{}'".format(host,validation))
 		cursor.execute("SELECT ID FROM CHECKLIST WHERE HOST='{}' AND VALIDATION='{}'".format(host,validation))
 		result = cursor.fetchone()
-		print(result)
+		#logger.info(result)
 
 		if chec_list_type == "Precheck":
 			if result == None:
@@ -108,9 +109,9 @@ def checklist_update(db_path,data,chec_list_type):
 				cmd = cmd+"where HOST='{}' AND VALIDATION='{}'"
 				cmd = cmd.format(host_type,host_name,host,validation,postcheck,postcheck_remark,postcheck_note,host,validation)
 
-			logger.info(cmd)
-			cursor.execute(cmd)
-			conn.commit()
+		logger.info(cmd)
+		cursor.execute(cmd)
+		conn.commit()
 		
 		#print(cursor.rowcount)
 		if cursor.rowcount == 1:

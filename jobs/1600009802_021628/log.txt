@@ -1,0 +1,64 @@
+2020-09-13 20:40:02,088 > INFO > JOBNAME:1600009802_021628
+2020-09-13 20:40:02,089 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-13 20:40:02,142 > INFO > Starting Job
+2020-09-13 20:40:02,159 > INFO > INFO:Running: 1600009802_021628 Type:precheck,all
+2020-09-13 20:40:02,175 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-13 20:40:02,221 > INFO > Inserting upgrade list to upgrade.db
+2020-09-13 20:40:08,447 > INFO > yes
+2020-09-13 20:40:08,447 > INFO > INFO:Starting precheck
+2020-09-13 20:40:08,494 > INFO > INFO:Executing Precheck
+2020-09-13 20:40:08,788 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-13 20:40:12,660 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-13 20:40:16,219 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-09-13 20:40:16,295 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-13 20:40:19,600 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-13 20:40:23,703 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-13 20:40:24,774 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-13 20:40:25,752 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 20:40:25,831 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-13 20:40:26,800 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-13 20:40:27,792 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-13 20:40:28,831 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-13 20:40:29,851 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-13 20:40:31,674 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-13 20:40:32,975 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-13 20:40:34,000 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-13 20:40:35,024 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-13 20:40:36,353 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-13 20:40:39,896 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-13 20:40:42,171 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-13 20:40:44,115 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-13 20:40:46,290 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-13 20:40:48,560 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-13 20:40:53,218 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-13 20:40:56,711 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-13 20:40:56,770 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-13 20:40:58,634 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-13 20:41:00,613 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-13 20:41:01,587 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-13 20:41:02,559 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-13 20:41:03,693 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-13 20:41:04,701 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-13 20:41:05,669 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-13 20:41:06,691 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-13 20:41:08,567 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-13 20:41:09,697 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-13 20:41:10,721 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-13 20:41:11,687 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-13 20:41:13,487 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-13 20:41:14,693 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-13 20:41:16,259 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-13 20:41:17,813 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-13 20:41:19,193 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-13 20:41:20,781 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-13 20:41:22,135 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-13 20:41:27,895 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-13 20:41:29,054 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-13 20:41:30,102 > INFO > INFO:Precheck Completed
+2020-09-13 20:41:38,143 > INFO > INFO:Total upgrade hosts:2
+2020-09-13 20:41:39,200 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-13 20:43:19,809 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-13 20:43:20,056 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-13 20:43:23,420 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 20:43:24,395 > DEBUG > SUCCESS:New Image Installed for (MM) Host:NaaS-MM-1:10.17.84.220:4343 Disk:1 Version:8.6.0.5 Build:75979
+2020-09-13 20:43:24,432 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
