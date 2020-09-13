@@ -1,0 +1,36 @@
+2020-09-13 12:30:14,555 > INFO > JOBNAME:1599980414_5330935
+2020-09-13 12:30:14,555 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-13 12:30:14,607 > INFO > Starting Job
+2020-09-13 12:30:14,622 > INFO > INFO:Running: 1599980414_5330935 Type:precheck,all
+2020-09-13 12:30:14,637 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-13 12:30:14,673 > INFO > Inserting upgrade list to upgrade.db
+2020-09-13 12:30:18,726 > INFO > yes
+2020-09-13 12:30:18,726 > INFO > INFO:Starting precheck
+2020-09-13 12:30:18,754 > INFO > INFO:Executing Precheck
+2020-09-13 12:30:18,782 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-13 12:30:21,429 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-13 12:30:24,107 > INFO > INFO:None-10.17.84.220:4343 : Auto detect alternative partition failed
+2020-09-13 12:30:24,121 > ERROR > Auto detect alternative partition failed
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 282, in find_alternative_partition
+    out = out.get("_data")[0]
+AttributeError: 'NoneType' object has no attribute 'get'
+2020-09-13 12:30:24,154 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-13 12:30:27,614 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-13 12:30:30,240 > INFO > INFO:None-10.17.84.221:4343 : Auto detect alternative partition failed
+2020-09-13 12:30:30,258 > ERROR > Auto detect alternative partition failed
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 282, in find_alternative_partition
+    out = out.get("_data")[0]
+AttributeError: 'NoneType' object has no attribute 'get'
+2020-09-13 12:30:30,275 > ERROR > ERROR:Check execution error
+2020-09-13 12:30:30,290 > DEBUG > ERROR:Check execution error
+2020-09-13 12:30:30,304 > ERROR > Pre_Post_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 330, in Pre_Post_check
+    pre_status.append(_pre_status)
+NameError: name 'pre_status' is not defined
+2020-09-13 12:30:30,305 > INFO > INFO:Precheck Completed
+2020-09-13 12:30:36,341 > WARNING > WARNING:TERMINATED User aborted the upgrade
+2020-09-13 12:30:36,363 > DEBUG > WARNING:TERMINATED User aborted the upgrade
+2020-09-13 12:30:36,398 > INFO > INFO:==== Completed ====

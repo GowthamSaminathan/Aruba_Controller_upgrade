@@ -47,6 +47,7 @@ class Aruba_Wireless_upgrade():
 		self.user_pause_terminate = conf.user_pause_terminate
 		self.upgrade_db = conf.upgrade_db
 		self.event_db = conf.event_db
+		self.validation_db = conf.validation_db
 		self.job_path = conf.job_path
 		self.gen_config = conf.gen_config
 		self.job_history_db = conf.job_history_db
@@ -137,7 +138,7 @@ class Aruba_Wireless_upgrade():
 		try:
 
 			new_image = single_host.get("image_file_name")
-			new_disk = single_host.get("upgrade_disk")
+			new_disk = single_host.get("disk")
 			upload_type = single_host.get("upload_type")
 			device_type = single_host.get("type")
 			hostname = single_host.get("hostname")
@@ -250,9 +251,71 @@ class Aruba_Wireless_upgrade():
 			self.eprint("error","Validation failed for: "+str(hostname))
 			self.logger.exception("validating_pre_check")
 
+	def find_alternative_partition(self):
+		self.user_pause_terminate()
+		hosts = self.gen_config.get("Upgrade")
+		for single_host in hosts:
+			try:
+
+				self.user_pause_terminate()
+				host_type = single_host.get("device_type")
+				host_name = single_host.get("host_name")
+				host_ip = single_host.get("host")
+				upgrade_disk =  single_host.get("upgrade_disk")
+
+				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING","Finding alternative partition")
+
+				disk = None
+
+				if upgrade_disk != "Auto":
+					self.eprint("info","Installation Disk {} provided by user for host {} , Skiping auto detect".format(upgrade_disk,host_ip))
+					single_host.update({"disk":upgrade_disk})
+					continue
+				else:
+					self.eprint("info","Installation Disk {} not provided for {} , Trying to auto detect".format(upgrade_disk,host_ip))
+
+					self.user_pause_terminate()
+					cmd_out = self.execute_cmd(single_host,["show boot"])
+					
+					
+					out = cmd_out.get("show boot")
+					out = out.get("_data")[0]
+					out = re.findall(r'PARTITION\s*.*',out)[0][-1]
+					out = int(out)
+					if out == 1:
+						disk = 0
+					elif out == 0:
+						disk = 1
+
+					if disk != None:
+						single_host.update({"disk":disk})
+						_status = "COMPLETED"
+					else:
+						_status = "FAILED"
+
+					self.eprint("info","{}-{} :Auto detect alternative partition: {}".format(host_name,host_ip,disk))
+			
+			except Exception:
+				_status = "FAILED"
+				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,_status,"Auto detect alternative disk")
+				self.eprint("error","{}-{} : Auto detect alternative partition failed".format(host_name,host_ip))
+				self.logger.exception("Auto detect alternative partition failed")
+
+			finally:
+				data = {"device_type":host_type,"host_name":host_name,"host":host_ip,"validation":"Alternative Disk","precheck":str(disk),"precheck_remark":_status,"precheck_note":_status}
+				db_management.checklist_update(self.validation_db,data,"Precheck")
+				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,_status,"Auto detected alternative disk {}".format(disk))
+
+				self.user_pause_terminate()
+
+
+
+
+
 	def Pre_Post_check(self,check_type):
 		try:
-
+			# Add all the errors in this list
+			#pre_status = []
 			c_date = str(datetime.datetime.now().strftime('%b_%d_%H_%M_%S'))
 
 			self.eprint("info","Executing "+check_type)
@@ -260,6 +323,18 @@ class Aruba_Wireless_upgrade():
 			summary_data = []
 
 			self.user_pause_terminate()
+			
+			if check_type == "Precheck":
+				# Precheck - Only for precheck
+				_pre_status = self.find_alternative_partition()
+				#pre_status.append(_pre_status)
+
+			
+			#_pre_status = self.phase_one_check()
+			#pre_status.append(_pre_status)
+
+
+			# Phase 2 Precheck
 			for single_host in hosts:
 				try:
 					self.user_pause_terminate()
@@ -353,7 +428,7 @@ class Aruba_Wireless_upgrade():
 			host_name = single_host.get("hostname")
 			host_type = single_host.get("device_type")
 			version = single_host.get("image_version")
-			disk = single_host.get("upgrade_disk")
+			disk = single_host.get("disk")
 			build = single_host.get("image_build")
 
 
@@ -405,14 +480,15 @@ class Aruba_Wireless_upgrade():
 			out_cmd = {}
 			host_ip = single_host.get("host")
 			login_status = self.get_session(single_host)
+			print(login_status)
 			if login_status[0] == True:
 				session = login_status[1]
 				UIDARUBA = login_status[2]
 				for cmd in cmds:
+					#print(cmd)
 					req_url = self.api_show_cmd.format(host_ip,cmd,UIDARUBA)
 					res = session.get(req_url,verify=False)
 					#print(res.headers.get("content-type"))
-
 					if len(res.text) < 1:
 						# Aruba API JSON Bug (empty string)
 						res_json = {}
@@ -433,7 +509,7 @@ class Aruba_Wireless_upgrade():
 			headers = {}
 			img_file = single_host.get("image_file_name")
 			host_ip = single_host.get("host")
-			upgrade_disk = single_host.get("upgrade_disk")
+			upgrade_disk = single_host.get("disk")
 
 			if login_status[0] == True:
 				session = login_status[1]
@@ -442,7 +518,7 @@ class Aruba_Wireless_upgrade():
 				file_data = open(file_path,'rb')
 				
 				data = {'.osimage_handle': (img_file,file_data,"application/octet-stream")}
-				data.update({"fpartition":str(upgrade_disk),"UIDARUBA":UIDARUBA})
+				data.update({"fpartition":str(disk),"UIDARUBA":UIDARUBA})
 				url = self.mm_image_upload.format(host_ip)
 				#print(url)
 				#print(UIDARUBA)
@@ -471,13 +547,13 @@ class Aruba_Wireless_upgrade():
 		try:
 			login_status = self.get_session(single_host)
 			host_ip = single_host.get("host")
-			upgrade_disk = single_host.get("upgrade_disk")
+			upgrade_disk = single_host.get("disk")
 			img_file = single_host.get("image_file_name")
 			
 			if login_status[0] == True:
 				session = login_status[1]
 				UIDARUBA = login_status[2]
-				partition = "partition"+str(upgrade_disk)
+				partition = "partition"+str(disk)
 
 				if server_type == "ftp":
 					username = aos_source.get("ftp_username")
@@ -525,7 +601,7 @@ class Aruba_Wireless_upgrade():
 		img_file = single_host.get("image_file_name")
 		host_ip = single_host.get("host")
 		hostname = single_host.get("hostname")
-		upgrade_disk = single_host.get("upgrade_disk")
+		upgrade_disk = single_host.get("disk")
 		aos_source = single_host.get("AOS_Source")
 		
 		upload_type = aos_source.get("device_type")
@@ -566,13 +642,13 @@ class Aruba_Wireless_upgrade():
 			img_file = single_host.get("image_file_name")
 			host_ip = single_host.get("host")
 			host_name = single_host.get("hostname")
-			upgrade_disk = single_host.get("upgrade_disk")
+			upgrade_disk = single_host.get("disk")
 			image_build = single_host.get("image_build")
 			image_version = single_host.get("image_version")
 			max_ap_image_load = single_host.get("max_ap_image_load")
 
 			msg = " \n=> Do You want to preimage AP's for :"
-			if self.user_input("{} {} - {} from Disk {}".format(msg,host_name,host_ip,upgrade_disk),["yes","no"]) == "yes":
+			if self.get_user_input("{} {} - {} from Disk {}".format(msg,host_name,host_ip,upgrade_disk),["yes","no"]) == "yes":
 				self.eprint("warning","Skipping AP's preimage....")
 				return False
 			
@@ -677,7 +753,7 @@ class Aruba_Wireless_upgrade():
 			for host in upgrade_hosts:
 				host_name = host.get("hostname")
 				host_ip = host.get("host")
-				upgrade_disk = host.get("upgrade_disk")
+				upgrade_disk = host.get("disk")
 				image_build = host.get("image_build")
 				image_version = host.get("image_version")
 
@@ -698,7 +774,7 @@ class Aruba_Wireless_upgrade():
 			for host in upgrade_hosts:
 				host_name = host.get("hostname")
 				host_ip = host.get("host")
-				upgrade_disk = host.get("upgrade_disk")
+				upgrade_disk = host.get("disk")
 				image_build = host.get("image_build")
 				image_version = host.get("image_version")
 
@@ -754,7 +830,6 @@ class main_model():
 					while pause == True:
 						time.sleep(2)
 						job_status = db_management.get_job_by_name(self.job_history_db,self.job_name)
-						print(job_status)
 						if job_status[3] == "PAUSED":
 							pass;
 						elif job_status[3] == "TERMINATED":
@@ -854,11 +929,13 @@ class main_model():
 			# Update the DB
 			job_db_status = db_management.create_job_db(self.upgrade_db)
 			event_db_status = db_management.create_event_db(self.event_db)
+			validation_db_status = db_management.create_event_db(self.validation_db)
 
-			if job_db_status == True and event_db_status == True:
+			if job_db_status == True and event_db_status == True and validation_db_status == True:
 
 				self.logger.info("Starting Job")
-				status = db_management.update_job_status_by_name(self.job_history_db,"RUNNING",self.job_name)
+				E_DATE = str(datetime.datetime.now()).split(".")[0]
+				status = db_management.update_job_status_by_name(self.job_history_db,"RUNNING",self.job_name,"",E_DATE)
 				if status == False:
 					self.eprint("warning","Running status not updated in DB (Bug)")
 				
@@ -879,7 +956,8 @@ class main_model():
 
 	def finish_upgrade(self,status,msg):
 		try:
-			db_management.update_job_status_by_name(self.job_history_db,status,self.job_name,msg)
+			E_DATE = str(datetime.datetime.now()).split(".")[0]
+			db_management.update_job_status_by_name(self.job_history_db,status,self.job_name,msg,E_DATE)
 			self.eprint("info","==== Completed ====")
 		except Exception:
 			self.logger.exception("finish_upgrade")
@@ -887,7 +965,7 @@ class main_model():
 
 	def main_run(self,job_name,config_file,job_list):
 		try:
-			self.final_status = ["COMPLETED","-"]
+			self.final_status = ["COMPLETED",""]
 			self.job_name = str(job_name)
 			self.config_file_name = config_file
 			self.config_file = os.path.join(os.getcwd(),"conf_files",config_file)
@@ -920,35 +998,83 @@ class main_model():
 			self.job_history_db = os.path.join(os.getcwd(),"db","job_history.db")
 			self.upgrade_db = os.path.join(os.getcwd(),"jobs",self.job_name,"upgrade.db")
 			self.event_db = os.path.join(os.getcwd(),"jobs",self.job_name,"event.db")
+			self.validation_db = os.path.join(os.getcwd(),"jobs",self.job_name,"validation.db")
 
 			if self.init_upgrade() == True:
 				self.eprint("info","Starting Configuration {} Validation".format(config_file))
 				config_status = self.validate_configuration()
 			else:
+				self.eprint("error","Init failed")
 				return False
 
 			if config_status == True:
 				ar_upgrade = Aruba_Wireless_upgrade(self)
-				for job in job_list:
-					if job == "precheck":
+
+				# Start the precheck
+				self.user_pause_terminate()
+				res = self.get_user_input("Are you sure want to start the precheck",["yes","no"])
+				self.logger.info(res)
+				pre_check_valid = False
+				if res == "yes":
+					self.eprint("info","Starting precheck")
+					pre_check_valid = ar_upgrade.Pre_Post_check("Precheck")
+				else:
+					self.eprint("warning","TERMINATED User aborted the precheck")
+					self.final_status = ["TERMINATED","User aborted the precheck"]
+					return False
+
+				# Start the Installation
+				pre_check_valid = True
+				upgrade_valid = False
+				if pre_check_valid == True:
+					if "all" in job_list:
 						self.user_pause_terminate()
-						res = self.get_user_input("Are you sure want to start the precheck",["yes","no"])
-						self.logger.info(res)
-						self.eprint("info","Starting "+str(job))
-						ar_upgrade.Pre_Post_check("Precheck")
-					elif job == "postcheck":
-						self.user_pause_terminate()
-						self.eprint("info","Starting "+str(job))
-						ar_upgrade.Pre_Post_check("Postcheck")
-					elif job == "all":
-						self.user_pause_terminate()
-						ar_upgrade.Upload_Images()
-						self.eprint("info","Starting "+str(job))
+						res = self.get_user_input("Are you sure want to start the AOS Upgrade",["yes","no"])
+						if res == "yes":
+							self.user_pause_terminate()
+							upgrade_valid = ar_upgrade.Upload_Images()
+							self.eprint("info","Starting Upgrade")
+						else:
+							self.eprint("warning","TERMINATED User aborted the upgrade")
+							self.final_status = ["TERMINATED","User aborted the upgrade"]
+							return False
 					else:
-						self.eprint("error","[Terminting] Job not allowed - "+str(job))
+						self.final_status = ["COMPLETED","Precheck Valid"]
+						return True
+				else:
+					self.final_status = ["TERMINATED","Precheck Validation failed"]
+					self.eprint("error","Precheck validation failed")
+					return False
+
+				# Start the reboot, Running from upgraded AOS
+
+				if upgrade_valid == True:
+					self.user_pause_terminate()
+					res = self.get_user_input("Are you sure want to start the AOS Upgrade",["yes","no"])
+					if res == "yes":
+						self.user_pause_terminate()
+						self.eprint("info","Starting reboot")
+						ar_upgrade.ReBoot_Controller()
+					else:
+						self.eprint("warning","TERMINATED User aborted the reboot")
+						self.final_status = ["TERMINATED","User aborted the reboot"]
 						return False
 
+				# Starting Post check
+				self.user_pause_terminate()
+				res = self.get_user_input("Are you sure want to start the postcheck",["yes","no"])
+				self.logger.info(res)
+				post_check_valid = False
+				if res == "yes":
+					self.eprint("info","Starting postcheck")
+					post_check_valid = ar_upgrade.Pre_Post_check("Postcheck")
+				else:
+					self.eprint("warning","TERMINATED User aborted the postcheck")
+					self.final_status = ["TERMINATED","User aborted the postcheck"]
+					return False
+
 			else:
+				self.final_status = ["TERMINATED","Yaml configuration validation failed"]
 				self.eprint("error","Generating config failed (Terminating)")
 				return False
 

@@ -334,7 +334,7 @@ def job_manage():
 			if os.path.isfile(history_db) == False:
 				return jsonify({"results":"failed","message":"History DB not available"})
 
-			db_status = db_management.update_job_status_by_name(history_db,status,name,status+" by user")
+			db_status = db_management.update_job_status_by_name(history_db,status,name,status+" by user","")
 
 			if db_status != True:
 				return jsonify({"results":"failed","message":"user request failed"})

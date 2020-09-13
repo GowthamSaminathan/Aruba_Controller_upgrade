@@ -1,0 +1,32 @@
+2020-09-13 12:25:58,796 > INFO > JOBNAME:1599980158_7768967
+2020-09-13 12:25:58,797 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-13 12:25:58,848 > INFO > Starting Job
+2020-09-13 12:25:58,863 > INFO > INFO:Running: 1599980158_7768967 Type:precheck,all
+2020-09-13 12:25:58,877 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-13 12:25:58,913 > INFO > Inserting upgrade list to upgrade.db
+2020-09-13 12:26:04,970 > INFO > yes
+2020-09-13 12:26:04,970 > INFO > INFO:Starting precheck
+2020-09-13 12:26:05,007 > INFO > INFO:Executing Precheck
+2020-09-13 12:26:05,026 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-13 12:26:07,649 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-13 12:26:10,342 > INFO > INFO:None-10.17.84.220:4343 : Auto detect alternative partition failed
+2020-09-13 12:26:10,405 > ERROR > ERROR:Check execution error
+2020-09-13 12:26:10,461 > DEBUG > ERROR:Check execution error
+2020-09-13 12:26:10,485 > ERROR > Pre_Post_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 279, in find_alternative_partition
+    out = out.get("_data")[0]
+AttributeError: 'NoneType' object has no attribute 'get'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 326, in Pre_Post_check
+    _pre_status = self.find_alternative_partition()
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 299, in find_alternative_partition
+    logger.exception("Auto detect alternative partition failed")
+NameError: name 'logger' is not defined
+2020-09-13 12:26:10,485 > INFO > INFO:Precheck Completed
+2020-09-13 12:26:28,564 > WARNING > WARNING:TERMINATED User aborted the upgrade
+2020-09-13 12:26:28,586 > DEBUG > WARNING:TERMINATED User aborted the upgrade
+2020-09-13 12:26:28,619 > INFO > INFO:==== Completed ====

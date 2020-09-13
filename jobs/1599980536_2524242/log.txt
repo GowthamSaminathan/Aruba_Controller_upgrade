@@ -1,0 +1,70 @@
+2020-09-13 12:32:16,274 > INFO > JOBNAME:1599980536_2524242
+2020-09-13 12:32:16,275 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-13 12:32:16,324 > INFO > Starting Job
+2020-09-13 12:32:16,337 > INFO > INFO:Running: 1599980536_2524242 Type:precheck,all
+2020-09-13 12:32:16,351 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-13 12:32:16,393 > INFO > Inserting upgrade list to upgrade.db
+2020-09-13 12:32:22,449 > INFO > yes
+2020-09-13 12:32:22,450 > INFO > INFO:Starting precheck
+2020-09-13 12:32:22,470 > INFO > INFO:Executing Precheck
+2020-09-13 12:32:22,503 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-13 12:32:25,105 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-13 12:32:27,784 > INFO > INFO:None-10.17.84.220:4343 : Auto detect alternative partition failed
+2020-09-13 12:32:27,800 > ERROR > Auto detect alternative partition failed
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 282, in find_alternative_partition
+    out = out.get("_data")[0]
+AttributeError: 'NoneType' object has no attribute 'get'
+2020-09-13 12:32:27,832 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-13 12:32:30,409 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-13 12:32:33,089 > INFO > INFO:None-10.17.84.221:4343 : Auto detect alternative partition failed
+2020-09-13 12:32:33,105 > ERROR > Auto detect alternative partition failed
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 282, in find_alternative_partition
+    out = out.get("_data")[0]
+AttributeError: 'NoneType' object has no attribute 'get'
+2020-09-13 12:32:33,135 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-13 12:32:33,900 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-13 12:32:33,969 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-13 12:32:34,769 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-13 12:32:35,615 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-13 12:32:36,424 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-13 12:32:37,224 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-13 12:32:38,032 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-13 12:32:38,851 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-13 12:32:39,671 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-13 12:32:40,492 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-13 12:32:41,349 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-13 12:32:42,384 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-13 12:32:43,186 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-13 12:32:43,983 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-13 12:32:44,769 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-13 12:32:45,540 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-13 12:32:46,832 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-13 12:32:47,613 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-13 12:32:47,667 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-13 12:32:48,464 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-13 12:32:49,290 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-13 12:32:50,104 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-13 12:32:50,929 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-13 12:32:51,746 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-13 12:32:53,390 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-13 12:32:54,725 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-13 12:32:55,516 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-13 12:32:56,362 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-13 12:32:57,662 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-13 12:32:58,453 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-13 12:32:59,265 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-13 12:33:00,527 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-13 12:33:01,314 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-13 12:33:02,095 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-13 12:33:02,885 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-13 12:33:03,670 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-13 12:33:04,497 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-13 12:33:05,297 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-13 12:33:07,843 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-13 12:33:08,660 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-13 12:33:09,500 > INFO > INFO:Precheck Completed
+2020-09-13 12:33:15,543 > WARNING > WARNING:TERMINATED User aborted the upgrade
+2020-09-13 12:33:15,560 > DEBUG > WARNING:TERMINATED User aborted the upgrade
+2020-09-13 12:33:15,593 > INFO > INFO:==== Completed ====

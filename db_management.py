@@ -53,6 +53,80 @@ def create_event_db(db_path):
 	except Exception:
 		logger.exception("create_event_db")
 
+def create_pre_post_db(db_path):
+	conn = sqlite3.connect(db_path)
+	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,DEVICE_TYPE NAME TEXT NOT NULL,HOST_NAME TEXT NOT NULL,HOST TEXT NOT NULL,"
+	cmd = cmd+"VALIDATION TEXT NOT NULL,PRECHECK TEXT,POSTCHECK TEXT,PRE_REMARKS TEXT,PRE_NOTE TEXT,POST_REMARKS TEXT,POST_NOTE TEXT"
+	try:
+		conn.execute('''CREATE TABLE CHECKLIST({});'''.format(cmd))
+		print("CHECKLIST table created successfully")
+		#return conn
+		conn.close()
+		return True
+	except Exception:
+		logger.exception("create_event_db")
+
+def checklist_update(db_path,data,chec_list_type):
+	try:
+		conn = sqlite3.connect(db_path)
+		cursor = conn.cursor()
+
+		print(data)
+		host_type = data.get("device_type")
+		host_name = data.get("host_name")
+		host = data.get("host")
+		validation = data.get("validation")
+
+		precheck = data.get("precheck")
+		postcheck = data.get("postcheck")
+
+		precheck_remark = data.get("precheck_remark")
+		postcheck_remark = data.get("postcheck_remark")
+		
+		precheck_note = data.get("precheck_note")
+		postcheck_note = data.get("postcheck_note")
+		
+		cursor.execute("SELECT ID FROM CHECKLIST WHERE HOST='{}' AND VALIDATION='{}'".format(host,validation))
+		result = cursor.fetchone()
+		print(result)
+
+		if chec_list_type == "Precheck":
+			if result == None:
+				cmd = "INSERT INTO CHECKLIST (DEVICE_TYPE,HOST_NAME,HOST,VALIDATION,PRECHECK,PRE_REMARKS,PRE_NOTE) VALUES ('{}','{}','{}','{}','{}','{}','{}')"
+				cmd = cmd.format(host_type,host_name,host,validation,precheck,precheck_remark,precheck_note)
+			else:
+				cmd = "UPDATE CHECKLIST set DEVICE_TYPE='{}',HOST_NAME='{}',HOST='{}',VALIDATION='{}',PRECHECK='{}',PRE_REMARKS='{}',PRE_NOTE='{}' "
+				cmd = cmd+"where HOST='{}' AND VALIDATION='{}'"
+				cmd = cmd.format(host_type,host_name,host,validation,precheck,precheck_remark,precheck_note,host,validation)
+
+		if chec_list_type == "Postcheck":
+			if result == None:
+				cmd = "INSERT INTO CHECKLIST (DEVICE_TYPE,HOST_NAME,HOST,VALIDATION,POSTCHECK,POST_REMARKS,POST_NOTE) VALUES ('{}','{}','{}','{}','{}','{}','{}')"
+				cmd = cmd.format(host_type,host_name,host,validation,postcheck,postcheck_remark,postcheck_note)
+			else:
+				cmd = "UPDATE CHECKLIST set DEVICE_TYPE='{}',HOST_NAME='{}',HOST='{}',VALIDATION='{}',POSTCHECK='{}',POST_REMARKS='{}',POST_NOTE='{}' "
+				cmd = cmd+"where HOST='{}' AND VALIDATION='{}'"
+				cmd = cmd.format(host_type,host_name,host,validation,postcheck,postcheck_remark,postcheck_note,host,validation)
+
+			logger.info(cmd)
+			cursor.execute(cmd)
+			conn.commit()
+		
+		#print(cursor.rowcount)
+		if cursor.rowcount == 1:
+			conn.close()
+			return True
+		else:
+			conn.close()
+			return False
+		
+	except Exception:
+		logger.exception("checklist_update")
+
+
+
+
+
 def get_event_update_by_eid(db_path,e_id):
 	try:
 		conn = sqlite3.connect(db_path)
@@ -75,23 +149,22 @@ def get_event_update_by_name(db_path,NAME):
 	except Exception:
 		logger.exception("get_event_update_by_name")
 
-def update_job_status_by_name(db_path,status,job_name,msg=None):
+def update_job_status_by_name(db_path,status,job_name,msg,e_date):
 	try:
 		conn = sqlite3.connect(db_path)
 		cursor = conn.cursor()
-		if msg == None:
-			logger.info("UPDATE HISTORY set STATUS='{}' where NAME='{}'".format(status,job_name))
-			cursor.execute("UPDATE HISTORY set STATUS='{}' where NAME='{}'".format(status,job_name))
-		else:
-			logger.info("UPDATE HISTORY set STATUS='{}',MSG='{}' where NAME='{}'".format(status,msg,job_name))
-			cursor.execute("UPDATE HISTORY set STATUS='{}',MSG='{}' where NAME='{}'".format(status,msg,job_name))
+
+		logger.info("UPDATE HISTORY set STATUS='{}',MSG='{}',E_DATE='{}' where NAME='{}'".format(status,msg,e_date,job_name))
+		cursor.execute("UPDATE HISTORY set STATUS='{}',MSG='{}',E_DATE='{}' where NAME='{}'".format(status,msg,e_date,job_name))
 
 
 		conn.commit()
 		
 		if cursor.rowcount == 1:
+			conn.close()
 			return True
 		else:
+			conn.close()
 			return False
 		
 	except Exception:
@@ -107,8 +180,10 @@ def update_upgrade_status_by_device_host(db_path,host,status,msg):
 		conn.commit()
 		
 		if cursor.rowcount == 1:
+			conn.close()
 			return True
 		else:
+			conn.close()
 			return False
 		
 	except Exception:
@@ -269,3 +344,10 @@ def insert_if_lastjob_completed(db_path,data):
 #print(get_last_job("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\db\\job_history.db"))
 
 #print(get_all_events("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\12345\\event.db"))
+
+
+
+
+#create_pre_post_db("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1599965269_565146\\validation.db")
+#data = {"device_type":"MM","host_name":"h1","host":"10.1.1.1","validation":"show clock","precheck":"12PM","precheck_remark":"remark 1","precheck_note":"note 1"}
+#checklist_update("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1599965269_565146\\validation.db",data,"Precheck")
