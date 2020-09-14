@@ -42,9 +42,9 @@ default_settings:
 
 
   MD:
-    image_file_name: ArubaOS_VMC_8.5.0.10-FIPS_76207
-    image_version: 8.5.0.10
-    image_build: "76207"
+    image_file_name: ArubaOS_VMC_8.6.0.5_75979
+    image_version: 8.6.0.5
+    image_build: "75979"
     upgrade_disk: Auto
     Pre_image_AP: True
     max_ap_image_load: 1
@@ -81,4 +81,5 @@ default_settings:
   Validate_Image_before_upgrade: True
   Validate_controller_sync_before_upgrade: True
   Validate_controller_up_before_upgrade: True
+  Validate_Image_before_upgrade: True
 

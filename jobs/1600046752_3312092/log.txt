@@ -1,0 +1,148 @@
+2020-09-14 06:55:52,368 > INFO > JOBNAME:1600046752_3312092
+2020-09-14 06:55:52,368 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-14 06:55:52,418 > INFO > Starting Job
+2020-09-14 06:55:52,431 > INFO > INFO:Running: 1600046752_3312092 Type:precheck,all
+2020-09-14 06:55:52,446 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-14 06:55:52,482 > INFO > Inserting upgrade list to upgrade.db
+2020-09-14 06:55:56,532 > INFO > yes
+2020-09-14 06:55:56,532 > INFO > INFO:Starting precheck
+2020-09-14 06:55:56,547 > INFO > INFO:Executing Precheck
+2020-09-14 06:55:56,575 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-14 06:55:59,069 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-14 06:56:01,633 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-09-14 06:56:01,688 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-14 06:56:04,366 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-14 06:56:07,132 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-14 06:56:07,185 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-14 06:56:07,917 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-14 06:56:07,967 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-14 06:56:08,772 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-14 06:56:09,613 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-14 06:56:10,421 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-14 06:56:11,230 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-14 06:56:12,022 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-14 06:56:12,830 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-14 06:56:13,615 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-14 06:56:14,400 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-14 06:56:15,256 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-14 06:56:16,193 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-14 06:56:17,425 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-14 06:56:18,430 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-14 06:56:19,314 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-14 06:56:20,455 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-14 06:56:21,815 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-14 06:56:22,111 > ERROR > get_session:
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\scripts\py\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\scripts\py\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 80, in get_session
+    res = r_session.get(get_clock,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2020-09-14 06:56:24,665 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-14 06:56:24,707 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-14 06:56:27,190 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-14 06:56:27,997 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-14 06:56:28,772 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-14 06:56:29,565 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-14 06:56:30,357 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-14 06:56:31,150 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-14 06:56:31,949 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-14 06:56:32,710 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-14 06:56:33,559 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-14 06:56:34,408 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-14 06:56:35,200 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-14 06:56:35,993 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-14 06:56:37,173 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-14 06:56:37,937 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-14 06:56:38,706 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-14 06:56:39,449 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-14 06:56:40,191 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-14 06:56:41,191 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-14 06:56:42,023 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-14 06:56:45,756 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-14 06:56:46,566 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-14 06:56:47,397 > INFO > INFO:Precheck Completed
+2020-09-14 06:56:51,467 > INFO > INFO:Total upgrade hosts:2
+2020-09-14 06:56:51,493 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-14 06:59:05,928 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-14 06:59:06,064 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-14 06:59:08,782 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-14 06:59:09,933 > DEBUG > SUCCESS:New Image Installed for (MM) Host:NaaS-MM-1:10.17.84.220:4343 Disk:1 Version:8.6.0.5 Build:75979
+2020-09-14 06:59:10,562 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-14 06:59:23,394 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-14 06:59:23,411 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-14 06:59:25,912 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-14 06:59:26,661 > WARNING > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-14 06:59:26,677 > DEBUG > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-09-14 06:59:26,691 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-14 06:59:27,412 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-14 06:59:27,443 > INFO > INFO:NaaS-VMC-1:10.17.84.221:4343- Installing AOS: ArubaOS_VMC_8.6.0.5_75979 from ftp server:10.17.84.225
+2020-09-14 07:03:33,756 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-09-14 07:03:33,779 > ERROR > upload_image_from_server
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 595, in upload_image_from_server
+    if response.find("SUCCESS") != -1:
+TypeError: argument should be integer or bytes-like object, not 'str'
+2020-09-14 07:08:08,139 > WARNING > WARNING:User aborted for retry image upload
+2020-09-14 07:08:08,157 > DEBUG > WARNING:User aborted for retry image upload
+2020-09-14 07:08:10,190 > INFO > INFO:STARTING AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343 FROM DISK:0 MAX AP:1
+2020-09-14 07:08:10,205 > ERROR > AP_IMAGE_PRELOAD: 
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 692, in AP_IMAGE_PRELOAD
+    while last_skip == False and valid_state == False:
+NameError: name 'last_skip' is not defined
+2020-09-14 07:08:10,205 > INFO > INFO:Starting Upgrade
+2020-09-14 07:08:14,241 > INFO > no
+2020-09-14 07:08:14,241 > WARNING > WARNING:TERMINATED User aborted the postcheck
+2020-09-14 07:08:14,260 > DEBUG > WARNING:TERMINATED User aborted the postcheck
+2020-09-14 07:08:14,296 > INFO > INFO:==== Completed ====

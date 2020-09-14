@@ -424,6 +424,7 @@ class Aruba_Wireless_upgrade():
 
 	def validate_image_upload(self,single_host):
 		try:
+			self.user_pause_terminate()
 			host_ip = single_host.get("host")
 			host_name = single_host.get("hostname")
 			host_type = single_host.get("device_type")
@@ -477,6 +478,7 @@ class Aruba_Wireless_upgrade():
 
 	def execute_cmd(self,single_host,cmds):
 		try:
+			self.user_pause_terminate()
 			out_cmd = {}
 			host_ip = single_host.get("host")
 			login_status = self.get_session(single_host)
@@ -504,6 +506,7 @@ class Aruba_Wireless_upgrade():
 
 	def upload_image_http(self,single_host):
 		try:
+			self.user_pause_terminate()
 			login_status = self.get_session(single_host)
 
 			headers = {}
@@ -546,7 +549,7 @@ class Aruba_Wireless_upgrade():
 	def upload_image_from_server(self,single_host,aos_source,server_type):
 		# Copy file using TFTP , webUI API method
 		try:
-
+			self.user_pause_terminate()
 			login_status = self.get_session(single_host)
 			host_ip = single_host.get("host")
 			host_name = single_host.get("hostname")
@@ -579,7 +582,7 @@ class Aruba_Wireless_upgrade():
 				web_data = {'method': 'im'+server_type,'args':server_type+','+server_ip+','+username+','+password+','+img_file+','+partition.upper()+',unknown_host,none'}
 				web_data.update({'UIDARUBA': UIDARUBA})
 
-				print(web_data)
+				#print(web_data)
 
 				self.eprint("info","{}:{}- Installing AOS: {} from {} server:{}".format(host_name,host_ip,img_file,server_type,server_ip))
 				url = self.copy_tftp_system_web.format(host_ip)
@@ -592,14 +595,14 @@ class Aruba_Wireless_upgrade():
 
 				self.eprint("debug",str(response))
 
-				if response.find("SUCCESS") != -1:
+				if str(response).find("SUCCESS") != -1:
 					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: UPLOADED IMAGE TO DISK {}".format(disk),"Image:"+str(img_file))
-					self.eprint("success","File copy completed ....")
+					self.eprint("info","File copy completed "+str("COMPLETED: UPLOADED IMAGE TO DISK {} {}".format(disk,img_file)))
 					self.logger.info(response)
 					return True
 				else:
 					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED: UPLOADING IMAGE TO DISK {}".format(disk),"Image:"+str(img_file))
-					self.eprint("error","File copy failed ....")
+					self.eprint("warning","File copy completed "+str("Failed: UPLOADED IMAGE TO DISK {} {}".format(disk,img_file)))
 					self.logger.error(response)
 			else:
 				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED: UPLOADING IMAGE","Login failed")
@@ -623,16 +626,17 @@ class Aruba_Wireless_upgrade():
 		host_type = single_host.get("type")
 
 		msg = "Do you want to install: "
-
+		self.user_pause_terminate()
 		if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "no":
 			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED: UPLOADING IMAGE","User Aborted")
 		else:
-			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING: UPLOADING IMAGE","")
+			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING: VALIDADING PRESENT IMAGE","")
 			a = "{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip)
 			self.eprint("warning","User aborted to install : "+a)
 			
 		upload_not_required = False
 		while upload_not_required == False:
+			self.user_pause_terminate()
 			if self.validate_image_upload(single_host) != True:
 
 				#print("=> Starting MM Upgrade for {}".format(host_ip))
@@ -650,21 +654,25 @@ class Aruba_Wireless_upgrade():
 					self.eprint("error","No valid file upload type found"+str(upload_type))
 				
 				if upload_status == True:
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: NEW IMAGE PRESENT","{} Build:{} in Disk:{}"
+						.format(image_version,image_build,upgrade_disk))
 					upload_not_required = True
 				else:
-					msg = "Retry Image Upload "
+					self.user_pause_terminate()
+					msg = "Retry Image Upload, "
 					if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "no":
 						self.eprint("warning","User aborted for retry image upload")
 						upload_not_required = True
 
 			else:
-				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: IMAGE UPLOADED","")
+				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: NEW IMAGE PRESENT","{} Build:{} in Disk:{}"
+					.format(image_version,image_build,upgrade_disk))
 				upload_not_required = True
 
 
 	def AP_IMAGE_PRELOAD(self,single_host):
 		try:
-
+			self.user_pause_terminate()
 			global last_skip
 			upload_not_required = False
 			img_file = single_host.get("image_file_name")
