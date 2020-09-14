@@ -801,17 +801,17 @@ class Aruba_upgrade():
 
 		
 
-	def AP_IMAGE_PRELOAD(self,host):
+	def AP_IMAGE_PRELOAD(self,single_host):
 		try:
 
 			global last_skip
 			upload_not_required = False
-			img_file = host.get("image_file_name")
-			host_ip = host.get("host")
-			host_name = host.get("hostname")
-			disk = host.get("disk")
-			image_build = host.get("image_build")
-			image_version = host.get("image_version")
+			img_file = single_host.get("image_file_name")
+			host_ip = single_host.get("host")
+			host_name = single_host.get("hostname")
+			disk = single_host.get("disk")
+			image_build = single_host.get("image_build")
+			image_version = single_host.get("image_version")
 			max_ap_image_load = self.config.get("max_ap_image_load")
 
 			msg = " \n=> Do You want to preimage AP's for :"
@@ -829,7 +829,7 @@ class Aruba_upgrade():
 			while last_skip == False and valid_state == False:
 				try:
 					upload_not_required = True
-					login_status = self.get_session(host_ip)
+					login_status = self.get_session(single_host)
 					if login_status[0] == True:
 						session = login_status[1]
 						UIDARUBA = login_status[2]

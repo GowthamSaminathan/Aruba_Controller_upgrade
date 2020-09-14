@@ -192,6 +192,10 @@ def read_last_events():
 				return jsonify({"results":"failed","message":"No last Job found"})
 
 			job_name = last_job[1]
+			job_status = last_job[3]
+
+			if job_status == "COMPLETED" or job_status == "TERMINATED":
+				return jsonify({"results":"failed","msg":"no events for: "+str(job_name)})
 
 			events_db = os.path.join(app.config['JOBS_FILES'],str(job_name),"event.db")
 
@@ -208,6 +212,44 @@ def read_last_events():
 
 	except Exception :
 		logger.exception("read_last_events")
+		return jsonify({"results":"error","message":"Check server log"})
+
+@app.route('/portal/async_read_last_events',methods = ['GET'])
+def async_read_last_events():
+	try:
+		if request.method == 'GET':
+			#config_name = request.args.get('config_name')
+			#download = request.args.get('download')
+
+			last_job = get_last_job()
+
+			if last_job == None:
+				return jsonify({"results":"failed","message":"No last Job found"})
+
+			job_name = last_job[1]
+
+			job_status = last_job[3]
+
+			if job_status == "COMPLETED" or job_status == "TERMINATED":
+				return jsonify({"results":"failed","msg":"no events for: "+str(job_name)})
+
+			events_db = os.path.join(app.config['JOBS_FILES'],str(job_name),"async_event.db")
+
+			if os.path.isfile(events_db) == False:
+
+				return jsonify({"results":"failed","msg":"no events for: "+str(job_name)})
+
+			all_events = db_management.async_get_all_events(events_db)
+
+			if type(all_events) == list:
+				if len(all_events) > 0:
+					all_events = all_events[-1]
+				return jsonify({"results":"success","data":all_events})
+			else:
+				return jsonify({"results":"failed","msg":"no events for: "+str(job_name)})
+
+	except Exception :
+		logger.exception("async_get_all_events")
 		return jsonify({"results":"error","message":"Check server log"})
 
 
@@ -369,6 +411,32 @@ def yes_or_no():
 
 	except Exception :
 		logger.exception("yes_or_no")
+		return jsonify({"results":"error","message":"Check server log"})
+
+@app.route('/portal/async_yes_or_no',methods = ['POST'])
+def async_yes_or_no():
+	try:
+		if request.method == 'POST':
+			result = request.get_json()
+			#download = request.args.get('download')
+			e_id = result.get("e_id")
+			name = result.get("name")
+			msg = result.get("input")
+
+			event_db_loc = os.path.join(os.getcwd(),"jobs",name,"async_event.db")
+
+			if os.path.isfile(event_db_loc) == False:
+				return jsonify({"results":"failed","message":"Updating user input (yes or no)"})
+
+			status = db_management.update_event_db(event_db_loc,name,msg,e_id)
+
+			if status != True:
+				return jsonify({"results":"failed","message":"Updating user input failed"})
+			else:
+				return jsonify({"results":"success"})
+
+	except Exception :
+		logger.exception("async_yes_or_no")
 		return jsonify({"results":"error","message":"Check server log"})
 
 

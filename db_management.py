@@ -53,6 +53,18 @@ def create_event_db(db_path):
 	except Exception:
 		logger.exception("create_event_db")
 
+def async_create_event_db(db_path):
+	conn = sqlite3.connect(db_path)
+	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT NOT NULL,E_DATE NAME TEXT NOT NULL,MSG TEXT NOT NULL,E_ID TEXT"
+	try:
+		conn.execute('''CREATE TABLE EVENTS({});'''.format(cmd))
+		print("EVENT table created successfully")
+		#return conn
+		conn.close()
+		return True
+	except Exception:
+		logger.exception("create_async_event_db")
+
 def create_pre_post_db(db_path):
 	conn = sqlite3.connect(db_path)
 	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,DEVICE_TYPE NAME TEXT NOT NULL,HOST_NAME TEXT NOT NULL,HOST TEXT NOT NULL,"
@@ -150,6 +162,29 @@ def get_event_update_by_name(db_path,NAME):
 	except Exception:
 		logger.exception("get_event_update_by_name")
 
+
+def async_get_event_update_by_eid(db_path,e_id):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		evnt = conn.execute("SELECT ID,NAME,E_DATE,MSG,E_ID FROM EVENTS WHERE E_ID='{}'".format(e_id))
+		evnt = evnt.fetchall()
+		conn.close()
+		return evnt
+	except Exception:
+		logger.exception("async_get_event_update_by_eid")
+
+def async_get_event_update_by_name(db_path,NAME):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		evnt = conn.execute("SELECT ID,NAME,E_DATE,MSG,E_ID FROM EVENTS WHERE NAME='{}'".format(NAME))
+		evnt = evnt.fetchall()
+		conn.close()
+		return evnt
+	except Exception:
+		logger.exception("async_get_event_update_by_name")
+
 def update_job_status_by_name(db_path,status,job_name,msg,e_date):
 	try:
 		conn = sqlite3.connect(db_path)
@@ -246,6 +281,24 @@ def update_event_db(db_path,job_name,msg,e_id):
 	except Exception:
 		logger.exception("update_event_db")
 
+
+def async_update_event_db(db_path,job_name,msg,e_id):
+	try:
+		conn = sqlite3.connect(db_path)
+		cursor = conn.cursor()
+		E_DATE = str(datetime.datetime.now()).split(".")[0]
+		logger.info("INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('{}','{}','{}','{}')".format(job_name,E_DATE,msg,e_id))
+		cursor.execute('INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES (?,?,?,?)',(job_name,E_DATE,msg,e_id))
+		conn.commit()
+		conn.close()
+
+		if cursor.lastrowid > 0:
+			return True
+		else:
+			return False
+	except Exception:
+		logger.exception("async_update_event_db")
+
 def insert_to_upgrade(db_path,job_name,conf_file,data):
 	try:
 		device_type = data.get("device_type")
@@ -289,6 +342,18 @@ def get_all_events(db_path):
 		return result
 	except Exception:
 		logger.exception("get_all_events")
+
+def async_get_all_events(db_path):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		cursor = conn.cursor()
+		cursor.execute("SELECT ID,NAME,E_DATE,MSG,E_ID FROM EVENTS")
+		result = cursor.fetchall()
+		conn.close()
+		return result
+	except Exception:
+		logger.exception("async_get_all_events")
 
 def get_upgrade_details(db_path):
 	try:

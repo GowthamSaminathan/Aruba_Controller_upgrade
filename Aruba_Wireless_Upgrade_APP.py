@@ -47,6 +47,7 @@ class Aruba_Wireless_upgrade():
 		self.user_pause_terminate = conf.user_pause_terminate
 		self.upgrade_db = conf.upgrade_db
 		self.event_db = conf.event_db
+		self.async_event_db = conf.async_event_db
 		self.validation_db = conf.validation_db
 		self.job_path = conf.job_path
 		self.gen_config = conf.gen_config
@@ -54,6 +55,7 @@ class Aruba_Wireless_upgrade():
 		self.job_name = conf.job_name
 		self.logger = conf.logger
 		self.get_user_input = conf.get_user_input
+		self.get_user_input_async = conf.get_user_input_async
 		self.eprint = conf.eprint
 		self.local_aos_file_path = os.path.join(os.getcwd(),"aos")
 
@@ -684,20 +686,26 @@ class Aruba_Wireless_upgrade():
 			max_ap_image_load = single_host.get("max_ap_image_load")
 
 			msg = "Do You want to preimage AP's for :"
-			if self.get_user_input("{} {} - {} from Disk {}".format(msg,host_name,host_ip,upgrade_disk),["yes","no"]) == "yes":
+			if self.get_user_input("{} {} - {} from Disk {}".format(msg,host_name,host_ip,upgrade_disk),["yes","no"]) == "no":
 				self.eprint("warning","Skipping AP's preimage....")
 				return False
 			
 			self.eprint("info","STARTING AP IMAGE PRELOAD FOR {}-{} FROM DISK:{} MAX AP:{}".format
 				(host_name,host_ip,upgrade_disk,max_ap_image_load))
+
+			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"PENDING","AP Pre-Imaging")
 			
 			# Execute the pre-image command
 			valid_state = False
-			
-			while last_skip == False and valid_state == False:
+			eid = str(time.time())
+			self.get_user_input_async("Press yes to skip",eid,get=None)
+			while valid_state == False:
 				try:
+					self.user_pause_terminate()
+					self.get_user_input_async("Press yes to skip",eid,get=True)
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"PENDING","AP Pre-Imaging request")
 					upload_not_required = True
-					login_status = self.get_session(host_ip)
+					login_status = self.get_session(single_host)
 					if login_status[0] == True:
 						session = login_status[1]
 						UIDARUBA = login_status[2]
@@ -716,34 +724,43 @@ class Aruba_Wireless_upgrade():
 							if response != None:
 								if response.get("_result").get("status") == 0:
 									p = response.get("_result").get("status_str")
+									db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED","AP Pre-Imaging request success")
 									self.eprint("success","AP Pre-load Executed:{}-{} => {}".format(host_name,host_ip,p))
 									valid_state = True
 									#self.logout(session,host_ip)
 								else:
 									p = response.get("_result").get("status_str")
-									self.eprint("error","**=> AP Pre-load Failed:{}-{} => {}".format(host_name,host_ip,p))
+									db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED","AP Pre-Imaging")
+									self.eprint("error","AP Pre-load Failed:{}-{} => {}".format(host_name,host_ip,p))
 							else:
 								raise TypeError("Response not having 'ap_image_preload' field")
 				except TypeError:
 					#self.logout(session,host_ip)
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED","AP Pre-Imaging response failed")
 					self.eprint("error","AP image response failed")
 					self.logger.exception("AP_IMAGE_PRELOAD:")
 
 				except Exception:
 					#self.logout(session,host_ip)
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED","AP Pre-Imaging response failed")
 					self.eprint("error","AP image Failed")
 					self.logger.exception("AP_IMAGE_PRELOAD POST: ")
 				finally:
-					# Sleep for some time before retry
-					self.eprint("debug","Retry in 3 (sec) - Press Ctl+c to Skip the retry")
+					#Sleep for some time before retry
+					#self.eprint("debug","Retry in 3 - AP Pre-Imaging")
 					time.sleep(3)
 
 
 			# Validate the pre-load
 			valid_state = False
-			
-			while last_skip == False and valid_state == False:
+			eid = str(time.time())
+			self.get_user_input_async("Press yes to skip",eid,get=None)
+			while valid_state == False:
 				try:
+					self.user_pause_terminate()
+					self.get_user_input_async("Press yes to skip",eid,get=True)
+					#self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"])
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING","AP Pre-Imaging Validation")
 					res = self.execute_cmd(single_host,["show ap image-preload status summary","show ap image-preload status list"])
 					if res != None:
 						try:
@@ -764,13 +781,14 @@ class Aruba_Wireless_upgrade():
 						except Exception:
 							self.logger.exception("Validating AP Preload status: ")
 					else:
+						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED","AP Pre-Imaging Validation")
 						self.eprint("error","AP Preload status check failed:{}-{}".format(host_name,host_ip))
 				except Exception:
-					self.eprint("error","**=> Failed")
+					self.eprint("error","AP Pre-Imaging Validation")
 					self.logger.exception("AP_IMAGE_PRELOAD POST: ")
 				finally:
 					# Sleep for some time before retry
-					self.eprint("info","Retry in 3 (sec) - Press Ctl+c to Skip the validation")
+					self.eprint("info","Retry in 3 - AP Pre-Image validation")
 					time.sleep(3)
 
 
@@ -909,7 +927,26 @@ class main_model():
 								break
 					time.sleep(2)
 		except Exception:
-			self.logger.error("validate_configuration not dict")
+			self.logger.error("get_user_input")
+
+	def get_user_input_async(self,msg,e_id,get):
+		# Ask User conformation using event DB
+		try:
+			msg = "ASYNC_IN:"+msg
+			if get == None:
+				db_management.async_update_event_db(self.async_event_db,self.job_name,msg,e_id)
+			else:
+				user_input = db_management.async_get_event_update_by_eid(self.event_db,e_id)
+				if type(user_input) == list:
+					if len(user_input) > 1:
+						user_conformation = user_input[1]
+						user_input = user_conformation[3]
+						return user_input
+				else:
+					return None
+		except Exception:
+			self.logger.error("get_user_input_async")
+
 
 	def insert_hosts_details_to_db(self):
 		try:
@@ -968,6 +1005,7 @@ class main_model():
 			# Update the DB
 			job_db_status = db_management.create_job_db(self.upgrade_db)
 			event_db_status = db_management.create_event_db(self.event_db)
+			async_create_event_db = db_management.async_create_event_db(self.async_event_db)
 			validation_db_status = db_management.create_pre_post_db(self.validation_db)
 
 			if job_db_status == True and event_db_status == True and validation_db_status == True:
@@ -1037,6 +1075,7 @@ class main_model():
 			self.job_history_db = os.path.join(os.getcwd(),"db","job_history.db")
 			self.upgrade_db = os.path.join(os.getcwd(),"jobs",self.job_name,"upgrade.db")
 			self.event_db = os.path.join(os.getcwd(),"jobs",self.job_name,"event.db")
+			self.async_event_db = os.path.join(os.getcwd(),"jobs",self.job_name,"async_event.db")
 			self.validation_db = os.path.join(os.getcwd(),"jobs",self.job_name,"validation.db")
 
 			if self.init_upgrade() == True:
