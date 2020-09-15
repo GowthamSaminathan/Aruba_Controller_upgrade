@@ -1,0 +1,191 @@
+2020-09-15 18:24:52,203 > INFO > JOBNAME:1600174491_8221958
+2020-09-15 18:24:52,204 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-15 18:24:52,288 > INFO > Starting Job
+2020-09-15 18:24:52,308 > INFO > INFO:Running: 1600174491_8221958 Type:precheck,all
+2020-09-15 18:24:52,338 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-15 18:24:52,689 > INFO > Inserting upgrade list to upgrade.db
+2020-09-15 18:24:59,821 > INFO > yes
+2020-09-15 18:24:59,821 > INFO > INFO:Starting precheck
+2020-09-15 18:24:59,849 > INFO > INFO:Executing Precheck
+2020-09-15 18:25:00,096 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-15 18:25:03,673 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-15 18:25:07,384 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-09-15 18:25:07,623 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-15 18:25:11,120 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-15 18:25:14,548 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-15 18:25:14,650 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-15 18:25:15,777 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 18:25:15,837 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-15 18:25:17,008 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-15 18:25:18,119 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-15 18:25:19,188 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-15 18:25:20,286 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-15 18:25:21,367 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-15 18:25:22,311 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-15 18:25:23,547 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-15 18:25:24,547 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-15 18:25:29,118 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-15 18:25:31,867 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-15 18:25:33,013 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-15 18:25:34,027 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-15 18:25:34,958 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-15 18:25:35,961 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-15 18:25:39,582 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 18:25:47,325 > ERROR > get_session:
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 370, in connect
+    ssl_context=context,
+  File "D:\scripts\py\lib\site-packages\urllib3\util\ssl_.py", line 390, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "D:\scripts\py\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "D:\scripts\py\lib\ssl.py", line 850, in _create
+    self.do_handshake()
+  File "D:\scripts\py\lib\ssl.py", line 1108, in do_handshake
+    self._sslobj.do_handshake()
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 370, in connect
+    ssl_context=context,
+  File "D:\scripts\py\lib\site-packages\urllib3\util\ssl_.py", line 390, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "D:\scripts\py\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "D:\scripts\py\lib\ssl.py", line 850, in _create
+    self.do_handshake()
+  File "D:\scripts\py\lib\ssl.py", line 1108, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 82, in get_session
+    res = r_session.get(get_clock,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+2020-09-15 18:25:51,206 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-15 18:25:51,260 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-15 18:25:54,910 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 18:25:55,990 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-15 18:25:56,859 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-15 18:25:57,774 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-15 18:25:58,787 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-15 18:25:59,978 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 18:26:01,060 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 18:26:02,076 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-15 18:26:03,152 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-15 18:26:04,349 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-15 18:26:05,417 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-15 18:26:06,490 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-15 18:26:07,625 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-15 18:26:08,524 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-15 18:26:09,625 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-15 18:26:10,691 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-15 18:26:11,922 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 18:26:13,027 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-15 18:26:14,114 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-15 18:26:16,041 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 18:26:17,167 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 18:26:18,311 > INFO > INFO:Precheck Completed
+2020-09-15 18:26:36,394 > INFO > INFO:Total upgrade hosts:2
+2020-09-15 18:26:36,424 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-15 18:26:40,521 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 18:26:40,552 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 18:26:44,114 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 18:26:45,273 > DEBUG > SUCCESS:New Image Installed for (MM) Host:NaaS-MM-1:10.17.84.220:4343 Disk:0 Version:8.6.0.5 Build:75979
+2020-09-15 18:26:45,307 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-15 18:26:50,135 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 18:26:50,263 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 18:26:54,023 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:26:54,890 > DEBUG > SUCCESS:New Image Installed for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 Disk:0 Version:8.5.0.10 Build:76207
+2020-09-15 18:26:59,004 > INFO > INFO:STARTING AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343 FROM DISK:0 MAX AP:1
+2020-09-15 18:27:00,226 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:02,191 > WARNING > WARNING:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 18:27:02,217 > DEBUG > WARNING:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 18:27:06,163 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:07,954 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:27:12,512 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:14,763 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:27:18,859 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:20,911 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:27:25,005 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:27,054 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:27:31,353 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:33,611 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:27:38,112 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:40,081 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:27:44,095 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:46,714 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:27:50,800 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:52,563 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:27:56,750 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:27:58,694 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:02,686 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:04,329 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:08,253 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:10,065 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:14,022 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:15,476 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:19,503 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:21,943 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:25,780 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:27,265 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:31,157 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:33,203 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:37,093 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:39,588 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:43,646 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:45,477 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:49,263 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:50,822 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:28:54,709 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:28:56,269 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:29:00,203 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:29:01,879 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:29:05,766 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:29:07,410 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:29:11,297 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:29:12,867 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:29:16,656 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:29:18,263 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:29:22,563 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:29:24,198 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:29:28,296 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:29:29,805 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:29:34,437 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:29:36,078 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:29:39,858 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:29:41,401 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 18:29:45,296 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 18:29:47,650 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343

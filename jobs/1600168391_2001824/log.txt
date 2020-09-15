@@ -1,0 +1,247 @@
+2020-09-15 16:43:11,269 > INFO > JOBNAME:1600168391_2001824
+2020-09-15 16:43:11,269 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-15 16:43:11,420 > INFO > Starting Job
+2020-09-15 16:43:11,452 > INFO > INFO:Running: 1600168391_2001824 Type:precheck,all
+2020-09-15 16:43:11,485 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-15 16:43:11,542 > INFO > Inserting upgrade list to upgrade.db
+2020-09-15 16:43:17,628 > INFO > yes
+2020-09-15 16:43:17,628 > INFO > INFO:Starting precheck
+2020-09-15 16:43:17,663 > INFO > INFO:Executing Precheck
+2020-09-15 16:43:17,727 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-15 16:43:20,275 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-15 16:43:22,834 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-09-15 16:43:22,957 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-15 16:43:25,435 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-15 16:43:28,003 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-15 16:43:28,069 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-15 16:43:28,808 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 16:43:28,864 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-15 16:43:29,614 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-15 16:43:30,411 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-15 16:43:31,185 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-15 16:43:31,956 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-15 16:43:32,757 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-15 16:43:33,524 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-15 16:43:34,528 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-15 16:43:35,610 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-15 16:43:36,606 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-15 16:43:38,540 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-15 16:43:39,325 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-15 16:43:40,117 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-15 16:43:40,885 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-15 16:43:42,110 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-15 16:43:45,795 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 16:43:48,255 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:43:48,301 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-15 16:43:49,069 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 16:43:49,859 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-15 16:43:50,617 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-15 16:43:51,385 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-15 16:43:52,211 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-15 16:43:52,986 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 16:43:53,762 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 16:43:55,186 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-15 16:43:56,004 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-15 16:43:56,883 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-15 16:43:57,716 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-15 16:43:58,479 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-15 16:43:59,280 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-15 16:44:01,057 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-15 16:44:02,366 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-15 16:44:03,470 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-15 16:44:04,263 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 16:44:05,056 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-15 16:44:05,857 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-15 16:44:07,104 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 16:44:07,936 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 16:44:08,866 > INFO > INFO:Precheck Completed
+2020-09-15 16:44:12,975 > INFO > INFO:Total upgrade hosts:2
+2020-09-15 16:44:13,007 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-15 16:44:25,098 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 16:44:25,118 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 16:44:27,608 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 16:44:29,100 > DEBUG > SUCCESS:New Image Installed for (MM) Host:NaaS-MM-1:10.17.84.220:4343 Disk:0 Version:8.6.0.5 Build:75979
+2020-09-15 16:44:29,154 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-15 16:44:37,217 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 16:44:37,233 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 16:44:39,866 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:44:40,635 > DEBUG > SUCCESS:New Image Installed for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 Disk:0 Version:8.5.0.10 Build:76207
+2020-09-15 16:44:44,745 > INFO > INFO:STARTING AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343 FROM DISK:0 MAX AP:1
+2020-09-15 16:44:45,530 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:44:46,294 > WARNING > WARNING:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 16:44:46,309 > DEBUG > WARNING:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 16:44:50,092 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:44:51,533 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:44:51,536 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:44:55,398 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:44:56,854 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:44:56,855 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:00,606 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:02,048 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:02,049 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:05,859 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:07,319 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:07,319 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:11,239 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:12,711 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:12,711 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:16,476 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:18,065 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:18,065 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:21,857 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:23,334 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:23,335 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:27,120 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:28,577 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:28,578 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:33,043 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:34,448 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:34,448 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:38,194 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:39,598 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:39,598 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:43,397 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:44,836 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:44,836 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:48,636 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:50,098 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:50,098 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:54,245 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:45:55,875 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:45:55,876 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:45:59,950 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:01,430 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:01,431 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:05,230 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:06,795 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:06,795 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:10,859 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:12,319 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:12,320 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:16,097 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:17,560 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:17,560 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:21,390 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:22,934 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:22,935 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:26,707 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:28,149 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:28,149 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:31,928 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:34,352 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:34,354 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:38,405 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:39,852 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:39,853 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:43,605 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:45,093 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:45,093 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:48,995 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:50,446 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:50,447 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:46:54,207 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:46:56,422 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:46:56,422 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 16:47:00,181 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 16:47:01,631 > ERROR > get_user_input_async
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 959, in get_user_input_async
+    db_management.async_update_event_db(self.async_event_db,self.job_name,_msg,e_id,True)
+TypeError: async_update_event_db() takes 4 positional arguments but 5 were given
+2020-09-15 16:47:01,632 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343

@@ -167,7 +167,8 @@ def async_get_event_update_by_eid(db_path,e_id):
 	try:
 		conn = sqlite3.connect(db_path)
 		#E_DATE = str(datetime.datetime.now()).split(".")[0]
-		evnt = conn.execute("SELECT ID,NAME,E_DATE,MSG,E_ID FROM EVENTS WHERE E_ID='{}'".format(e_id))
+		#print("SELECT ID,NAME,E_DATE,MSG,E_ID FROM EVENTS WHERE E_ID='{}'".format(e_id))
+		evnt = conn.execute("SELECT ID,NAME,E_DATE,MSG,E_ID FROM EVENTS WHERE E_ID='{}' ORDER BY ID DESC LIMIT 1".format(e_id))
 		evnt = evnt.fetchall()
 		conn.close()
 		return evnt
@@ -282,13 +283,18 @@ def update_event_db(db_path,job_name,msg,e_id):
 		logger.exception("update_event_db")
 
 
-def async_update_event_db(db_path,job_name,msg,e_id):
+def async_update_event_db(db_path,job_name,msg,e_id,update=False):
 	try:
 		conn = sqlite3.connect(db_path)
 		cursor = conn.cursor()
 		E_DATE = str(datetime.datetime.now()).split(".")[0]
-		logger.info("INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('{}','{}','{}','{}')".format(job_name,E_DATE,msg,e_id))
-		cursor.execute('INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES (?,?,?,?)',(job_name,E_DATE,msg,e_id))
+		if update == False:
+			logger.info("INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('{}','{}','{}','{}')".format(job_name,E_DATE,msg,e_id))
+			cursor.execute('INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES (?,?,?,?)',(job_name,E_DATE,msg,e_id))
+		else:
+			logger.info("UPDATE EVENTS set MSG='{}' WHERE E_ID='{}' AND MSG LIKE '{}%' ".format(msg,e_id,"ASYNC_IN"))
+			cursor.execute("UPDATE EVENTS set MSG='{}' WHERE E_ID='{}' AND MSG LIKE '{}%' ".format(msg,e_id,"ASYNC_IN"))
+		
 		conn.commit()
 		conn.close()
 
@@ -406,7 +412,7 @@ def insert_if_lastjob_completed(db_path,data):
 
 #create_event_db("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\12345\\event.db")
 #create_history_db("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\db\\job_history.db")
-#print(get_event_update_by_eid("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\12345\\event.db"))
+#print(get_event_update_by_eid("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1600176186_475276\\async_event.db","1600176289.7434554"))
 #print(get_last_job("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\db\\job_history.db"))
 
 #print(get_all_events("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\12345\\event.db"))

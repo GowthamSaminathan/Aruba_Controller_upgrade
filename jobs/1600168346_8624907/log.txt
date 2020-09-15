@@ -1,0 +1,25 @@
+2020-09-15 16:42:26,883 > INFO > JOBNAME:1600168346_8624907
+2020-09-15 16:42:26,883 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-15 16:42:26,953 > INFO > Starting Job
+2020-09-15 16:42:26,967 > INFO > INFO:Running: 1600168346_8624907 Type:precheck,all
+2020-09-15 16:42:26,982 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-15 16:42:27,021 > INFO > Inserting upgrade list to upgrade.db
+2020-09-15 16:42:37,076 > INFO > yes
+2020-09-15 16:42:37,076 > INFO > INFO:Starting precheck
+2020-09-15 16:42:37,108 > INFO > INFO:Executing Precheck
+2020-09-15 16:42:37,364 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-15 16:42:40,128 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-15 16:42:42,815 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-09-15 16:42:42,926 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-15 16:42:45,401 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-15 16:42:47,900 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-15 16:42:47,971 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-15 16:42:48,711 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 16:42:48,786 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-15 16:42:49,558 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-15 16:42:50,354 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-15 16:42:52,006 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-15 16:42:52,782 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-15 16:42:53,549 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-15 16:42:54,359 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-15 16:42:55,198 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches

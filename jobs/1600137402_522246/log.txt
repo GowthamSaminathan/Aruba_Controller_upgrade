@@ -1,0 +1,462 @@
+2020-09-15 08:06:42,561 > INFO > JOBNAME:1600137402_522246
+2020-09-15 08:06:42,561 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-15 08:06:42,631 > INFO > Starting Job
+2020-09-15 08:06:42,645 > INFO > INFO:Running: 1600137402_522246 Type:precheck,all
+2020-09-15 08:06:42,659 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-15 08:06:42,691 > INFO > Inserting upgrade list to upgrade.db
+2020-09-15 08:06:52,737 > INFO > yes
+2020-09-15 08:06:52,738 > INFO > INFO:Starting precheck
+2020-09-15 08:06:52,752 > INFO > INFO:Executing Precheck
+2020-09-15 08:06:52,779 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-15 08:07:13,800 > ERROR > ERROR:Login error : 10.17.84.220:4343
+2020-09-15 08:07:13,820 > DEBUG > ERROR:Login error : 10.17.84.220:4343
+2020-09-15 08:07:13,837 > ERROR > Login error:10.17.84.220:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001581017B6D8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581017B6D8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 100, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581017B6D8>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-09-15 08:07:13,862 > ERROR > ERROR:NaaS-MM-1-10.17.84.220:4343 : Auto detect alternative partition failed
+2020-09-15 08:07:13,875 > DEBUG > ERROR:NaaS-MM-1-10.17.84.220:4343 : Auto detect alternative partition failed
+2020-09-15 08:07:13,888 > ERROR > Auto detect alternative partition failed
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 283, in find_alternative_partition
+    out = cmd_out.get("show boot")
+AttributeError: 'NoneType' object has no attribute 'get'
+2020-09-15 08:07:13,926 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-15 08:07:34,943 > ERROR > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 08:07:34,960 > DEBUG > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 08:07:34,981 > ERROR > Login error:10.17.84.221:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001581018C6A0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581018C6A0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 100, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581018C6A0>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-09-15 08:07:34,996 > ERROR > ERROR:NaaS-VMC-1-10.17.84.221:4343 : Auto detect alternative partition failed
+2020-09-15 08:07:35,012 > DEBUG > ERROR:NaaS-VMC-1-10.17.84.221:4343 : Auto detect alternative partition failed
+2020-09-15 08:07:35,032 > ERROR > Auto detect alternative partition failed
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 283, in find_alternative_partition
+    out = cmd_out.get("show boot")
+AttributeError: 'NoneType' object has no attribute 'get'
+2020-09-15 08:07:35,074 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-15 08:07:56,092 > ERROR > ERROR:Login error : 10.17.84.220:4343
+2020-09-15 08:07:56,110 > DEBUG > ERROR:Login error : 10.17.84.220:4343
+2020-09-15 08:07:56,128 > ERROR > Login error:10.17.84.220:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001581015AD68>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581015AD68>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 100, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581015AD68>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-09-15 08:07:56,129 > ERROR > ERROR:Precheck failed for => NaaS-MM-1:10.17.84.220:4343
+2020-09-15 08:07:56,144 > DEBUG > ERROR:Precheck failed for => NaaS-MM-1:10.17.84.220:4343
+2020-09-15 08:07:56,186 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 08:08:17,205 > ERROR > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 08:08:17,225 > DEBUG > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 08:08:17,247 > ERROR > Login error:10.17.84.221:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001581018CF60>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581018CF60>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 100, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581018CF60>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-09-15 08:08:17,249 > ERROR > ERROR:Precheck failed for => NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 08:08:17,264 > DEBUG > ERROR:Precheck failed for => NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 08:08:17,290 > INFO > INFO:Precheck Completed
+2020-09-15 08:08:21,320 > INFO > INFO:Total upgrade hosts:2
+2020-09-15 08:08:21,333 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-15 08:08:25,380 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 08:08:25,394 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 08:08:46,411 > ERROR > ERROR:Login error : 10.17.84.220:4343
+2020-09-15 08:08:46,430 > DEBUG > ERROR:Login error : 10.17.84.220:4343
+2020-09-15 08:08:46,450 > ERROR > Login error:10.17.84.220:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000015810184E10>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000015810184E10>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 100, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000015810184E10>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-09-15 08:08:46,452 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 08:09:07,471 > ERROR > ERROR:Login error : 10.17.84.220:4343
+2020-09-15 08:09:07,489 > DEBUG > ERROR:Login error : 10.17.84.220:4343
+2020-09-15 08:09:07,506 > ERROR > Login error:10.17.84.220:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000015810229C88>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000015810229C88>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 100, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000015810229C88>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-09-15 08:13:51,845 > WARNING > WARNING:User aborted for retry image upload
+2020-09-15 08:13:51,863 > DEBUG > WARNING:User aborted for retry image upload
+2020-09-15 08:13:51,878 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-15 08:15:00,975 > ERROR > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 08:15:00,992 > DEBUG > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 08:15:01,009 > ERROR > Login error:10.17.84.221:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000015810184978>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000015810184978>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 100, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000015810184978>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-09-15 08:15:01,011 > INFO > INFO:User accepted : Do you want to install: Image Version:8.5.0.10-76207 on Disk:None Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 08:15:22,032 > ERROR > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 08:15:22,048 > DEBUG > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 08:15:22,068 > ERROR > Login error:10.17.84.221:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 160, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\scripts\py\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 308, in connect
+    conn = self._new_conn()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 172, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001581017F208>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581017F208>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 100, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.17.84.221', port=4343): Max retries exceeded with url: /v1/api/login (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001581017F208>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2020-09-15 08:17:12,216 > WARNING > WARNING:User aborted for retry image upload
+2020-09-15 08:17:12,243 > DEBUG > WARNING:User aborted for retry image upload
+2020-09-15 08:17:14,303 > WARNING > WARNING:Skipping AP's preimage....
+2020-09-15 08:17:14,332 > DEBUG > WARNING:Skipping AP's preimage....
+2020-09-15 08:17:14,380 > INFO > INFO:Starting Upgrade

@@ -1,0 +1,320 @@
+2020-09-15 08:44:38,095 > INFO > JOBNAME:1600139678_0702503
+2020-09-15 08:44:38,096 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-15 08:44:38,463 > INFO > Starting Job
+2020-09-15 08:44:38,491 > INFO > INFO:Running: 1600139678_0702503 Type:precheck,all
+2020-09-15 08:44:38,515 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-15 08:44:38,735 > INFO > Inserting upgrade list to upgrade.db
+2020-09-15 08:44:42,824 > INFO > yes
+2020-09-15 08:44:42,825 > INFO > INFO:Starting precheck
+2020-09-15 08:44:42,853 > INFO > INFO:Executing Precheck
+2020-09-15 08:44:42,901 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-15 08:44:45,666 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-15 08:44:48,379 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-09-15 08:44:48,504 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-15 08:44:51,524 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-15 08:44:55,071 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-15 08:44:56,181 > INFO > INFO:Precheck started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-15 08:44:56,977 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 08:44:57,292 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-15 08:44:58,300 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-15 08:44:59,229 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-15 08:45:00,085 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-15 08:45:00,925 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-15 08:45:01,782 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-15 08:45:02,615 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-15 08:45:03,439 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-15 08:45:04,247 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-15 08:45:05,111 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-15 08:45:07,473 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-15 08:45:08,305 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-15 08:45:08,779 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-09-15 08:45:08,818 > INFO > INFO:File copy completed COMPLETED: UPLOADED IMAGE TO DISK None ArubaOS_MM_8.6.0.5_75979
+2020-09-15 08:45:08,831 > INFO > b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-09-15 08:45:08,843 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-15 08:45:09,135 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-15 08:45:10,719 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-15 08:45:11,945 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-15 08:45:15,652 > INFO > INFO:Precheck started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 08:45:18,371 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:45:18,841 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-15 08:45:19,831 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 08:45:20,719 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-15 08:45:21,551 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-15 08:45:22,416 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-15 08:45:23,248 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-15 08:45:24,361 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 08:45:25,402 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 08:45:26,362 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-15 08:45:27,274 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-15 08:45:28,763 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-15 08:45:29,740 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-15 08:45:30,556 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-15 08:45:31,508 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-15 08:45:32,645 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-15 08:45:33,629 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-15 08:45:34,461 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-15 08:45:35,294 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 08:45:36,143 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-15 08:45:36,991 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-15 08:45:38,335 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 08:45:39,176 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 08:45:40,169 > INFO > INFO:Precheck Completed
+2020-09-15 08:45:52,274 > INFO > INFO:Total upgrade hosts:2
+2020-09-15 08:45:52,301 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-15 08:46:01,317 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 08:46:01,504 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 08:46:04,276 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 08:46:05,592 > DEBUG > SUCCESS:New Image Installed for (MM) Host:NaaS-MM-1:10.17.84.220:4343 Disk:0 Version:8.6.0.5 Build:75979
+2020-09-15 08:46:05,626 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-15 08:46:12,082 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 08:46:12,096 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 08:46:14,779 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:46:15,716 > DEBUG > SUCCESS:New Image Installed for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 Disk:0 Version:8.5.0.10 Build:76207
+2020-09-15 08:47:18,053 > INFO > INFO:STARTING AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343 FROM DISK:0 MAX AP:1
+2020-09-15 08:47:21,526 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:47:22,367 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:22,423 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:26,347 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:47:27,240 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:27,288 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:31,147 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:47:31,966 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:31,983 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:35,802 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:47:37,051 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:37,185 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:41,065 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:47:41,953 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:41,968 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:45,739 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:47:46,543 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:46,563 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:50,391 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:47:51,198 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:51,214 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:55,083 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:47:55,902 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:55,920 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:47:59,779 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:00,611 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:00,628 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:04,464 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:05,768 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:05,786 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:09,568 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:10,417 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:10,431 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:14,306 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:15,143 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:15,158 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:18,954 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:19,749 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:19,766 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:23,558 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:24,383 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:24,397 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:28,216 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:29,600 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:29,615 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:33,421 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:34,243 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:34,259 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:38,140 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:39,254 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:39,286 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:43,121 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:44,107 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:44,290 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:48,482 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:49,279 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:49,504 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:53,345 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:54,162 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:54,186 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:57,998 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:48:58,781 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:48:58,797 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:02,634 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:03,412 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:03,428 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:07,407 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:08,243 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:08,276 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:12,100 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:12,857 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:12,873 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:16,697 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:17,784 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:18,155 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:22,311 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:23,138 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:23,195 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:27,079 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:27,892 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:27,951 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:31,883 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:32,701 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:32,724 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:36,534 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:37,395 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:37,415 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:41,219 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:42,008 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:42,029 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:45,852 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:46,636 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:46,651 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:50,732 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:51,548 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:51,577 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:55,410 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:49:56,283 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:49:56,315 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:00,221 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:01,076 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:01,108 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:06,015 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:07,673 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:07,692 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:12,495 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:15,365 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:15,382 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:20,429 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:21,300 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:21,484 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:25,318 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:27,068 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:27,086 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:30,930 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:32,558 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:32,577 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:36,376 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:37,471 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:37,488 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:41,307 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:42,152 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:42,170 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:45,984 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:46,910 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:46,927 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:50,724 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:51,505 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:51,527 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:55,351 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:50:56,129 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:56,144 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:50:59,989 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:00,815 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:00,847 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:04,695 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:05,490 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:05,520 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:09,366 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:10,173 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:10,187 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:14,000 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:14,776 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:14,791 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:18,640 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:21,533 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:21,550 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:25,358 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:26,200 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:26,217 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:30,025 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:30,828 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:30,845 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:34,626 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:35,449 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:35,467 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:39,291 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:40,076 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:40,091 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:43,906 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:44,676 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:44,691 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:48,476 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:49,276 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:49,291 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:53,282 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:54,344 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:54,662 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:58,483 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:51:59,270 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:51:59,284 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:03,160 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:03,966 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:03,980 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:07,774 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:08,576 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:08,591 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:12,536 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:13,418 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:13,432 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:17,230 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:17,995 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:18,011 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:21,824 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:22,626 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:22,643 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:26,456 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:27,278 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:27,294 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:31,134 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:31,911 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:31,926 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:35,755 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:36,537 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:37,029 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:40,865 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:41,665 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:41,680 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:45,479 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:46,288 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:46,306 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:50,147 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:50,925 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:50,941 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:54,776 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:52:55,586 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:55,604 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:52:59,420 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:00,288 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:00,306 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:04,341 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:05,169 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:05,193 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:09,002 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:11,378 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:11,405 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:15,771 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:17,425 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:17,456 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:21,327 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:23,405 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:23,447 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:27,501 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:28,937 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:28,969 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:33,544 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:34,661 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:34,693 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:39,345 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:41,111 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:41,129 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:44,960 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:45,757 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:45,771 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:49,585 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:50,413 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:50,429 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:54,249 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:55,092 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:55,109 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:58,964 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 08:53:59,726 > ERROR > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:53:59,741 > DEBUG > ERROR:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 08:54:02,759 > WARNING > WARNING:Job Terminated by user
+2020-09-15 08:54:02,793 > DEBUG > WARNING:Job Terminated by user
+2020-09-15 08:54:02,831 > INFO > INFO:==== Completed ====
+2020-09-15 08:54:05,885 > INFO > INFO:==== Completed ====

@@ -1,0 +1,229 @@
+2020-09-15 19:20:42,981 > INFO > JOBNAME:1600177842_9492164
+2020-09-15 19:20:42,981 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-15 19:20:43,048 > INFO > Starting Job
+2020-09-15 19:20:43,063 > INFO > INFO:Running: 1600177842_9492164 Type:precheck,all
+2020-09-15 19:20:43,078 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-15 19:20:43,115 > INFO > Inserting upgrade list to upgrade.db
+2020-09-15 19:20:47,294 > INFO > yes
+2020-09-15 19:20:47,294 > INFO > INFO:Starting precheck
+2020-09-15 19:20:47,309 > INFO > INFO:Executing Precheck
+2020-09-15 19:20:47,338 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-15 19:20:49,759 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-15 19:20:51,948 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-09-15 19:20:52,014 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-15 19:20:58,983 > ERROR > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 19:20:59,016 > DEBUG > ERROR:Login error : 10.17.84.221:4343
+2020-09-15 19:20:59,031 > ERROR > Login error:10.17.84.221:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 370, in connect
+    ssl_context=context,
+  File "D:\scripts\py\lib\site-packages\urllib3\util\ssl_.py", line 390, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "D:\scripts\py\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "D:\scripts\py\lib\ssl.py", line 850, in _create
+    self.do_handshake()
+  File "D:\scripts\py\lib\ssl.py", line 1108, in do_handshake
+    self._sslobj.do_handshake()
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 370, in connect
+    ssl_context=context,
+  File "D:\scripts\py\lib\site-packages\urllib3\util\ssl_.py", line 390, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "D:\scripts\py\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "D:\scripts\py\lib\ssl.py", line 850, in _create
+    self.do_handshake()
+  File "D:\scripts\py\lib\ssl.py", line 1108, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 100, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+2020-09-15 19:20:59,058 > ERROR > ERROR:NaaS-VMC-1-10.17.84.221:4343 : Auto detect alternative partition failed
+2020-09-15 19:20:59,308 > DEBUG > ERROR:NaaS-VMC-1-10.17.84.221:4343 : Auto detect alternative partition failed
+2020-09-15 19:20:59,332 > ERROR > Auto detect alternative partition failed
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 283, in find_alternative_partition
+    out = cmd_out.get("show boot")
+AttributeError: 'NoneType' object has no attribute 'get'
+2020-09-15 19:20:59,421 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-15 19:21:00,096 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 19:21:00,172 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-15 19:21:00,878 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-15 19:21:01,646 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-15 19:21:02,703 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-15 19:21:03,423 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-15 19:21:04,151 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-15 19:21:04,989 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-15 19:21:05,710 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-15 19:21:06,407 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-15 19:21:07,166 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-15 19:21:07,991 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-15 19:21:08,703 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-15 19:21:09,407 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-15 19:21:10,079 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-15 19:21:10,768 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-15 19:21:15,205 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 19:21:17,556 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-15 19:21:17,623 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-15 19:21:19,842 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 19:21:20,554 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-15 19:21:21,258 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-15 19:21:22,187 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-15 19:21:22,945 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-15 19:21:23,640 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 19:21:24,350 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 19:21:25,012 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-15 19:21:25,732 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-15 19:21:26,825 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-15 19:21:27,523 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-15 19:21:28,219 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-15 19:21:29,786 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-15 19:21:30,453 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-15 19:21:31,127 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-15 19:21:32,033 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-15 19:21:32,938 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 19:21:33,666 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-15 19:21:34,590 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-15 19:21:37,873 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 19:21:38,592 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 19:21:39,652 > INFO > INFO:Precheck Completed
+2020-09-15 19:21:45,977 > INFO > INFO:Total upgrade hosts:2
+2020-09-15 19:21:46,014 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-15 19:21:50,403 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 19:21:50,709 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 19:21:57,800 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 19:21:58,487 > DEBUG > SUCCESS:New Image Installed for (MM) Host:NaaS-MM-1:10.17.84.220:4343 Disk:0 Version:8.6.0.5 Build:75979
+2020-09-15 19:21:58,615 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-15 19:22:07,104 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 19:22:07,793 > ERROR > validate_image_upload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 457, in validate_image_upload
+    if int(disk) == int(first_partition):
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+2020-09-15 19:22:07,793 > INFO > INFO:User accepted : Do you want to install: Image Version:8.5.0.10-76207 on Disk:None Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 19:22:08,468 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 19:22:08,513 > INFO > INFO:NaaS-VMC-1:10.17.84.221:4343- Installing AOS: ArubaOS_VMC_8.5.0.10-FIPS_76207 from ftp server:10.17.84.225
+2020-09-15 19:22:54,592 > INFO > JOBNAME:1600177974_5512164
+2020-09-15 19:22:54,592 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-15 19:22:54,663 > INFO > Starting Job
+2020-09-15 19:22:54,678 > INFO > INFO:Running: 1600177974_5512164 Type:precheck,all
+2020-09-15 19:22:54,692 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-15 19:22:54,729 > INFO > Inserting upgrade list to upgrade.db
+2020-09-15 19:23:00,782 > INFO > yes
+2020-09-15 19:23:00,783 > INFO > INFO:Starting precheck
+2020-09-15 19:23:00,826 > INFO > INFO:Executing Precheck
+2020-09-15 19:23:00,854 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-15 19:23:03,010 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-15 19:23:05,388 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-09-15 19:23:05,451 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-15 19:23:07,713 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-15 19:23:09,896 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-15 19:23:09,972 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-15 19:23:10,634 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 19:23:10,704 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-15 19:23:11,628 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-15 19:23:12,793 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-15 19:23:14,407 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-15 19:23:15,351 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-15 19:23:16,088 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-15 19:23:16,815 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-15 19:23:17,552 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-15 19:23:18,633 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-15 19:23:19,417 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-15 19:23:20,865 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-15 19:23:21,965 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-15 19:23:22,673 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-15 19:23:23,377 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-15 19:23:25,022 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-15 19:23:27,435 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 19:23:29,622 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 19:23:29,675 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-15 19:23:30,363 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 19:23:31,121 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-15 19:23:31,858 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-15 19:23:32,551 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-15 19:23:33,474 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-15 19:23:34,202 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 19:23:34,954 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 19:23:35,675 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-15 19:23:36,459 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-15 19:23:38,761 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-15 19:23:39,505 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-15 19:23:40,241 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-15 19:23:41,610 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-15 19:23:42,346 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-15 19:23:43,049 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-15 19:23:44,126 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-15 19:23:44,831 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-15 19:23:45,581 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-15 19:23:45,770 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-09-15 19:23:46,056 > INFO > INFO:File copy completed COMPLETED: UPLOADED IMAGE TO DISK None ArubaOS_VMC_8.5.0.10-FIPS_76207
+2020-09-15 19:23:46,209 > INFO > b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-09-15 19:23:46,817 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-15 19:23:50,927 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-15 19:23:51,819 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-15 19:23:52,596 > INFO > INFO:Precheck Completed
+2020-09-15 19:23:56,649 > INFO > INFO:Total upgrade hosts:2
+2020-09-15 19:23:56,851 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-15 19:24:01,196 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 19:24:01,437 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-15 19:24:03,880 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-15 19:24:04,570 > DEBUG > SUCCESS:New Image Installed for (MM) Host:NaaS-MM-1:10.17.84.220:4343 Disk:0 Version:8.6.0.5 Build:75979
+2020-09-15 19:24:04,630 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-15 19:24:07,256 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 19:24:07,529 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-15 19:24:09,986 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 19:24:10,689 > DEBUG > SUCCESS:New Image Installed for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 Disk:0 Version:8.5.0.10 Build:76207
+2020-09-15 19:24:12,964 > INFO > INFO:STARTING AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343 FROM DISK:0 MAX AP:1
+2020-09-15 19:24:13,748 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 19:24:14,778 > WARNING > WARNING:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 19:24:14,832 > DEBUG > WARNING:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => An AP image preload has already been executed. You must reload the controller before executing another one.
+2020-09-15 19:24:18,561 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 19:24:19,869 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 19:24:23,611 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-15 19:24:24,951 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-15 19:24:27,998 > WARNING > WARNING:USER SKIPPED AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343
+2020-09-15 19:24:28,015 > DEBUG > WARNING:USER SKIPPED AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343
+2020-09-15 19:24:31,064 > INFO > INFO:Starting Upgrade
+2020-09-15 19:24:39,105 > INFO > no
+2020-09-15 19:24:39,105 > WARNING > WARNING:TERMINATED User aborted the postcheck
+2020-09-15 19:24:39,148 > DEBUG > WARNING:TERMINATED User aborted the postcheck
+2020-09-15 19:24:39,180 > INFO > INFO:==== Completed ====
