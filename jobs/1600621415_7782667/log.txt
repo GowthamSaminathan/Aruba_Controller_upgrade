@@ -1,0 +1,151 @@
+2020-09-20 22:33:35,806 > INFO > JOBNAME:1600621415_7782667
+2020-09-20 22:33:35,807 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE
+2020-09-20 22:33:35,877 > INFO > Starting Job
+2020-09-20 22:33:35,893 > INFO > INFO:Running: 1600621415_7782667 Type:precheck,all
+2020-09-20 22:33:35,908 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE Validation
+2020-09-20 22:33:35,941 > INFO > Inserting upgrade list to upgrade.db
+2020-09-20 22:33:39,995 > INFO > yes
+2020-09-20 22:33:39,995 > INFO > INFO:Starting precheck
+2020-09-20 22:33:40,012 > INFO > INFO:Executing Precheck
+2020-09-20 22:33:40,047 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-20 22:33:42,222 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-20 22:33:44,213 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-09-20 22:33:44,274 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-20 22:33:46,676 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-20 22:33:49,190 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-20 22:33:49,252 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-20 22:33:49,852 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-20 22:33:49,896 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-20 22:33:50,793 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-20 22:33:51,769 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-20 22:33:52,607 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-20 22:33:53,245 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-20 22:33:53,913 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-20 22:33:54,622 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-20 22:33:55,272 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-20 22:33:55,902 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-20 22:33:56,861 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-20 22:33:58,420 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-20 22:33:59,122 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-20 22:33:59,738 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-20 22:34:00,379 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-20 22:34:01,029 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-20 22:34:03,187 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-20 22:34:03,817 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-20 22:34:03,890 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-20 22:34:04,538 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-20 22:34:05,514 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-20 22:34:06,141 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-20 22:34:06,767 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-20 22:34:07,382 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-20 22:34:08,000 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-20 22:34:08,606 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-20 22:34:09,336 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-20 22:34:10,170 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-20 22:34:11,183 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-20 22:34:12,039 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-20 22:34:12,876 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-20 22:34:13,551 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-20 22:34:14,198 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-20 22:34:15,293 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-20 22:34:16,252 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-20 22:34:17,540 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-20 22:34:18,793 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-20 22:34:20,082 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-20 22:34:23,474 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-20 22:34:24,385 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-20 22:34:25,169 > INFO > INFO:Precheck Completed
+2020-09-20 22:34:31,209 > INFO > INFO:Total upgrade hosts:2
+2020-09-20 22:34:31,225 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-09-20 22:34:49,442 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-20 22:34:49,483 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-09-20 22:34:52,201 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-20 22:34:53,163 > DEBUG > SUCCESS:New Image Installed for (MM) Host:NaaS-MM-1:10.17.84.220:4343 Disk:0 Version:8.6.0.5 Build:75979
+2020-09-20 22:34:53,456 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-09-20 22:36:07,827 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-20 22:36:07,842 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-09-20 22:36:09,965 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-20 22:36:10,608 > DEBUG > SUCCESS:New Image Installed for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 Disk:0 Version:8.5.0.10 Build:76207
+2020-09-20 22:36:24,693 > INFO > INFO:STARTING AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343 FROM DISK:0 MAX AP:1
+2020-09-20 22:36:25,357 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-20 22:36:26,003 > WARNING > WARNING:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => Can not activate Preload on the same image version
+2020-09-20 22:36:26,021 > DEBUG > WARNING:AP Pre-load Failed:NaaS-VMC-1-10.17.84.221:4343 => Can not activate Preload on the same image version
+2020-09-20 22:36:29,804 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-20 22:36:31,090 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-20 22:36:36,205 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-20 22:36:38,491 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-09-20 22:36:42,329 > WARNING > WARNING:USER SKIPPED AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343
+2020-09-20 22:36:42,347 > DEBUG > WARNING:USER SKIPPED AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343
+2020-09-20 22:36:45,412 > INFO > INFO:Starting Upgrade
+2020-09-20 22:36:49,456 > INFO > INFO:Starting reboot
+2020-09-20 22:36:50,053 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 : Validating New Image....
+2020-09-20 22:36:52,522 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-20 22:36:53,187 > DEBUG > SUCCESS:New Image Installed for (MM) Host:NaaS-MM-1:10.17.84.220:4343 Disk:0 Version:8.6.0.5 Build:75979
+2020-09-20 22:36:53,205 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 : Validating New Image....
+2020-09-20 22:36:53,486 > ERROR > get_session:
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "d:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "d:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "d:\scripts\py\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "d:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "d:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "d:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "d:\scripts\py\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 82, in get_session
+    res = r_session.get(get_clock,verify=False)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2020-09-20 22:36:55,485 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-20 22:36:57,971 > DEBUG > SUCCESS:New Image Installed for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 Disk:0 Version:8.5.0.10 Build:76207
+2020-09-20 22:36:57,990 > INFO > INFO:=>NaaS-MM-1-10.17.84.220:4343 : Validating switch sync...
+2020-09-20 22:36:58,007 > ERROR > ReBoot_Controller
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 780, in ReBoot_Controller
+    if self.validate_all_sync(host_ip,validate_sync,validate_up) != True:
+AttributeError: 'Aruba_Wireless_upgrade' object has no attribute 'validate_all_sync'
+2020-09-20 22:36:58,008 > ERROR > ERROR:Rebooting execution error
+2020-09-20 22:36:58,028 > DEBUG > ERROR:Rebooting execution error

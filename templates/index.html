@@ -102,6 +102,7 @@
 
 
 
+
 <!-- Select upgrade file -  Modal -->
   <div class="modal fade" id="select_upgrade">
     <div class="modal-dialog modal-lg">
@@ -213,7 +214,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header" >
-          <h4 class="modal-title" id="async_user_input_head">Please confirm</h4>
+          <h4 class="modal-title" id="async_user_input_head">Status</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -775,6 +776,20 @@
 
 
 
+<!-- Toaste -->
+
+<div class="toast">
+    <div class="toast-header">
+      Toast Header
+    </div>
+    <div class="toast-body">
+      Some text inside the toast body
+    </div>
+  </div>
+</div>
+
+
+
 <!-- Page-3 End : History -->
 
 
@@ -970,7 +985,7 @@ try{
       message_1 = ""+job_status +": "+job_file
       if(job_msg == "None" || job_msg == ""){message_2 = "";}else{message_2 = job_msg;}
       
-      console.log(job_end_date);
+      //console.log(job_end_date);
       message_3 = "Started: "+job_start_date
       if(job_end_date == "" || job_end_date == "None"){}else{message_3 = message_3+ " Finished: "+job_end_date;}
       

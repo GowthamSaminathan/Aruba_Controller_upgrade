@@ -142,7 +142,7 @@ class Aruba_Wireless_upgrade():
 			new_image = single_host.get("image_file_name")
 			new_disk = single_host.get("disk")
 			upload_type = single_host.get("upload_type")
-			device_type = single_host.get("type")
+			device_type = single_host.get("device_type")
 			hostname = single_host.get("hostname")
 			host_ip = single_host.get("host")
 			summary = dict()
@@ -478,6 +478,42 @@ class Aruba_Wireless_upgrade():
 				return None
 		except Exception:
 			self.logger.exception("validate_image_upload")
+	
+	def validate_all_sync(self,single_host,validate_sync,validate_up):
+		try:
+			out = self.execute_cmd(single_host,["show switches"])
+			valid_sync = None
+			if out != None:
+				_data = out.get("show switches")
+				switches = _data.get("All Switches")
+				valid_sync = True
+				for switch in switches:
+					cs = switch.get("Configuration State")
+					cid = switch.get("Config ID")
+					ctype = switch.get("Type")
+					cname = switch.get("Name")
+					ip = switch.get("IP Address")
+					status = switch.get("Status")
+					version = switch.get("Version")
+					ct = switch.get("Config Sync Time (sec)")
+
+					self.eprint("info","\n=> Host:{}:{} Status:{} Config:{} ID:{} V:{} SYNC_TIME:{}".format
+						(cname,ip,status,cs,cid,version,ct))
+					
+					if validate_sync != False:
+						if cs != "UPDATE SUCCESSFUL":
+							valid_sync = False
+					if validate_up != False:
+						if status != "up":
+							valid_sync = False
+
+
+			return valid_sync
+
+
+		except Exception:
+			self.logger.exception("validate_all_sync")
+			return False
 
 	def execute_cmd(self,single_host,cmds):
 		try:
@@ -626,7 +662,7 @@ class Aruba_Wireless_upgrade():
 		
 		image_build = single_host.get("image_build")
 		image_version = single_host.get("image_version")
-		host_type = single_host.get("type")
+		host_type = single_host.get("device_type")
 
 		msg = "Do you want to install: "
 		self.user_pause_terminate()
@@ -654,7 +690,7 @@ class Aruba_Wireless_upgrade():
 				elif upload_type == "scp":
 					upload_status = self.upload_image_from_server(single_host,aos_source,"scp")
 				else:
-					self.eprint("error","No valid file upload type found"+str(upload_type))
+					self.eprint("error","No valid file upload type found "+str(upload_type))
 				
 				if upload_status == True:
 					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: NEW IMAGE PRESENT","{} Build:{} in Disk:{}"
@@ -671,6 +707,152 @@ class Aruba_Wireless_upgrade():
 				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: NEW IMAGE PRESENT","{} Build:{} in Disk:{}"
 					.format(image_version,image_build,upgrade_disk))
 				upload_not_required = True
+
+	def validate_running_image(self,single_host,version,build):
+		try:
+			host_ip = single_host.get("host")
+			build = single_host.get("image_build")
+			version = single_host.get("image_version")
+			out = self.execute_cmd(single_host,["show version"])
+			valid_image = False
+			if out != None:
+				_data = out.get("show version")
+				_data = _data.get("_data")[0]
+				if _data.find(str(version)) != -1:
+					if _data.find(str(build)) != -1:
+						self.eprint("error","=> Running Image Host:{} Version:{} Build:{}"
+						.format(host_ip,version,build))
+						return True
+				return False
+		except Exception:
+			self.logger.exception("validate_running_image: ")
+
+	def process_controller_reboot(self,single_host,wait_reboot=True):
+		try:
+			self.user_pause_terminate()
+			host_name = single_host.get("hostname")
+			host_ip = single_host.get("host")
+			host_type = single_host.get("device_type")
+			rebooted = False
+			login_status = self.get_session(single_host)
+			if login_status[0] == True:
+				session = login_status[1]
+				UIDARUBA = login_status[2]
+				url = self.controller_save_reload.format(host_ip,UIDARUBA)
+				res = session.post(url,data = {},verify=False)
+				#print(res.content)
+				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING: Reload","Reloading the device")
+				self.eprint("warning","=> Reloading {}: {} - {}".format(host_type,host_name,host_ip))
+				time.sleep(3)
+
+				reload_completed = False
+				reachability_failed = False
+
+				if wait_reboot == True:
+					eid = str(time.time())
+					self.get_user_input_async("Please wait...",eid,None)
+					while self.get_user_input_async("",eid,True) != "yes" and reload_completed == False:
+						try:
+							# Check for session expire to validate the reload
+							s_url = self.api_show_cmd.format(host_ip,"show clock",UIDARUBA)
+							res = session.get(s_url,verify=False)
+							#print(res.status_code)
+
+							if res.status_code == 401 and reachability_failed == True:
+								# Session Expired Reload completed
+								db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED","Reload completed")
+								self.get_user_input_async("Reload Completed for ({}) {} {}".format(host_type,host_name,host_ip),eid,"update")
+								self.eprint("info","=> Reload Completed for ({}) {} {}".format(host_type,host_name,host_ip))
+								reload_completed = True
+								return True
+							else:
+								self.get_user_input_async("({}) {} {} => Pinging...".format(host_type,host_name,host_ip),eid,"update")
+								self.eprint("info","({}) {} {} => Pinging...".format(host_type,host_name,host_ip))
+						except Exception:
+							reachability_failed = True
+							self.get_user_input_async("=> Trying ({}) {} {} => Request timeout...".format(host_type,host_name,host_ip),eid,"update")
+							self.eprint("info","=> Trying ({}) {} {} => Request timeout...".format(host_type,host_name,host_ip))
+							#logger.exception("Ping Timeout")
+
+						time.sleep(3)
+		except Exception:
+			self.logger.exception("process_controller_reboot: ")
+
+	def ReBoot_Controller(self):
+		try:
+			self.user_pause_terminate()
+			upgrade_hosts = self.gen_config.get("Upgrade")
+			
+			
+			#validate_confid = self.gen_config.get("Validate controller configID before upgrade")
+			validate_up = self.gen_config.get("Validate_controller_up_before_upgrade")
+			
+			image_valid = None
+			sync_valid = None
+			confid_valid = None
+			
+			# Validate the new image in controller
+				
+			for single_host in upgrade_hosts:
+				validate_image = single_host.get("Validate_Image_before_upgrade")
+				if validate_image != False:
+					self.user_pause_terminate()
+					host_name = single_host.get("hostname")
+					host_ip = single_host.get("host")
+					disk = single_host.get("disk")
+					image_build = single_host.get("image_build")
+					image_version = single_host.get("image_version")
+					host_type = single_host.get("device_type")
+
+					self.eprint("info","{}-{} : Validating New Image....".format(host_name,host_ip))
+					if self.validate_image_upload(single_host) != True:
+						image_valid = False
+
+			
+			for single_host in upgrade_hosts:
+				validate_sync = single_host.get("Validate_controller_sync_before_upgrade")
+				if validate_sync != False:
+					self.user_pause_terminate()
+					host_ip = single_host.get("host")
+					host_name = single_host.get("hostname")
+					self.eprint("info","=>{}-{} : Validating switch sync...".format(host_name,host_ip))
+					if self.validate_all_sync(single_host,validate_sync,validate_up) != True:
+						confid_valid = False
+
+			for single_host in upgrade_hosts:
+				self.user_pause_terminate()
+				host_name = single_host.get("hostname")
+				host_ip = single_host.get("host")
+				host_type = single_host.get("device_type")
+				image_build = single_host.get("image_build")
+				image_version = single_host.get("image_version")
+				#self.eprint("info","Do you want to reboot: ({}) - {} - {}".format(host_type,host_name,host_ip))
+				if self.get_user_input("Do you want to reboot: ({}) - {} - {}".format(host_type,host_name,host_ip),["yes","no"]) == "yes":
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"Running","Reload execution")
+					reboot_status = self.process_controller_reboot(single_host,True)
+					if reboot_status != True:
+						self.eprint("error","*** Warning : Failed to get reboot info (Please check manualy...)")
+					#self.validate_controller_up(host_ip)
+					# Validate config sync and up status
+					if self.validate_running_image(host_ip,image_version,image_build) == False:
+						self.eprint("error","**=> ({}) {}-{} Not booted from new image".format(host_type,host_name,host_ip))
+					else:
+						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"Completed","Upgrade")
+						self.eprint("info","=>({}) {}-{} {}:{} : NEW IMAGE UPGRADE SUCCESS".format(host_type,host_name,host_ip,image_version,image_build))
+
+
+					# valid_state = False
+					# while last_skip == False and valid_state == False:
+					# 	if self.validate_all_sync(host_ip,True,True) == True:
+					# 		valid_state = True
+
+					# 	self.eprint("info","Sleeping 10 sec (Press Ctl+c to skip this validation for:{} {})".format
+					# 		(host_ip,host_name))
+					# 	time.sleep(10)
+
+		except Exception:
+			self.logger.exception("ReBoot_Controller")
+			self.eprint("error","Rebooting execution error")
 
 
 	def AP_IMAGE_PRELOAD(self,single_host):
@@ -847,40 +1029,42 @@ class Aruba_Wireless_upgrade():
 			self.eprint("info","Total upgrade hosts:{}".format(len(upgrade_hosts)))
 
 			# Uploading Images to MM and MD
-			for host in upgrade_hosts:
-				host_name = host.get("hostname")
-				host_ip = host.get("host")
-				upgrade_disk = host.get("disk")
-				image_build = host.get("image_build")
-				image_version = host.get("image_version")
-				upload_device_type = host.get("device_type")
+			for single_host in upgrade_hosts:
+				host_name = single_host.get("hostname")
+				host_ip = single_host.get("host")
+				upgrade_disk = single_host.get("disk")
+				image_build = single_host.get("image_build")
+				image_version = single_host.get("image_version")
+				upload_device_type = single_host.get("device_type")
 
 				#db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING: UPLOADING IMAGE","From:"+str(upload_device_type).upper())
 
-				if host.get("device_type") == "MM":
+				if single_host.get("device_type") == "MM":
 					# Start the MM Upgrade
 					self.eprint("info","MM: Preparing for host {} IP: {}".format(host_name,host_ip))
 					#self.validate_image_upload(host_ip,disk,image_version,image_build)
-					self.MM_MD_Upload(host)
+					self.MM_MD_Upload(single_host)
 					#self.validate_running_image(host_ip,image_version,image_build)
 					
-				elif host.get("device_type") == "MD":
+				elif single_host.get("device_type") == "MD":
 					self.eprint("info","MD: Preparing for host {} IP: {}".format(host_name,host_ip))
-					self.MM_MD_Upload(host)
+					self.MM_MD_Upload(single_host)
 				else:
-					self.eprint("error","Upgrade type invalid ({})".format(host.get("type")))
+					self.eprint("error","Upgrade type invalid ({})".format(single_host.get("device_type")))
 
 			#Pre-Uploading images to AP
-			for host in upgrade_hosts:
-				host_name = host.get("hostname")
-				host_ip = host.get("host")
-				upgrade_disk = host.get("disk")
-				image_build = host.get("image_build")
-				image_version = host.get("image_version")
+			for single_host in upgrade_hosts:
+				host_name = single_host.get("hostname")
+				host_ip = single_host.get("host")
+				upgrade_disk = single_host.get("disk")
+				image_build = single_host.get("image_build")
+				image_version = single_host.get("image_version")
 
-				if host.get("device_type") == "MD" :
+				if single_host.get("device_type") == "MD" :
 					# Pre-Upload images to this MD
-					self.AP_IMAGE_PRELOAD(host)
+					self.AP_IMAGE_PRELOAD(single_host)
+
+			return True
 
 		except Exception:
 			self.eprint("error","Upload Image Error For : {} - {}".format(host_name,host_ip))
@@ -1059,8 +1243,8 @@ class main_model():
 			if job_db_status == True and event_db_status == True and validation_db_status == True:
 
 				self.logger.info("Starting Job")
-				E_DATE = str(datetime.datetime.now()).split(".")[0]
-				status = db_management.update_job_status_by_name(self.job_history_db,"RUNNING",self.job_name,"",E_DATE)
+				#E_DATE = str(datetime.datetime.now()).split(".")[0]
+				status = db_management.update_job_status_by_name(self.job_history_db,"RUNNING",self.job_name,"","")
 				if status == False:
 					self.eprint("warning","Running status not updated in DB (Bug)")
 				
@@ -1174,10 +1358,10 @@ class main_model():
 					return False
 
 				# Start the reboot, Running from upgraded AOS
-
+				# upgrade_valid = False
 				if upgrade_valid == True:
 					self.user_pause_terminate()
-					res = self.get_user_input("Are you sure want to start the AOS Upgrade",["yes","no"])
+					res = self.get_user_input("Are you sure want to start the Reboot",["yes","no"])
 					if res == "yes":
 						self.user_pause_terminate()
 						self.eprint("info","Starting reboot")
