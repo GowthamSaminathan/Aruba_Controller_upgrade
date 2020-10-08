@@ -1,0 +1,35 @@
+2020-09-25 13:37:24,039 > INFO > JOBNAME:1601021243_992283
+2020-09-25 13:37:24,039 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-09-25 13:37:24,101 > INFO > Starting Job
+2020-09-25 13:37:24,115 > INFO > INFO:Running: 1601021243_992283 Type:precheck
+2020-09-25 13:37:24,129 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-09-25 13:37:24,158 > INFO > Inserting upgrade list to upgrade.db
+2020-09-25 13:37:28,204 > INFO > yes
+2020-09-25 13:37:28,204 > INFO > INFO:Starting precheck
+2020-09-25 13:37:28,234 > INFO > INFO:Executing Precheck
+2020-09-25 13:37:30,457 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-25 13:37:33,748 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-25 13:37:38,085 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-25 13:37:41,338 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-25 13:37:43,256 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-25 13:37:43,877 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-25 13:37:43,916 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-25 13:37:44,525 > ERROR > ERROR:Validation failed for: NaaS-MM-1
+2020-09-25 13:37:44,547 > DEBUG > ERROR:Validation failed for: NaaS-MM-1
+2020-09-25 13:37:44,562 > ERROR > validating_pre_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 245, in validating_pre_check
+    running_disk = str(running_disk).split("PARTITION ")[1]
+IndexError: list index out of range
+2020-09-25 13:37:44,595 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-25 13:37:45,213 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-25 13:37:45,260 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-25 13:37:45,875 > ERROR > ERROR:Validation failed for: NaaS-VMC-1
+2020-09-25 13:37:45,902 > DEBUG > ERROR:Validation failed for: NaaS-VMC-1
+2020-09-25 13:37:45,915 > ERROR > validating_pre_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 245, in validating_pre_check
+    running_disk = str(running_disk).split("PARTITION ")[1]
+IndexError: list index out of range
+2020-09-25 13:37:45,930 > INFO > INFO:Precheck Completed
+2020-09-25 13:37:45,987 > INFO > INFO:==== Completed ====

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{title}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../static/local/bootstrap-4.5.2/css/bootstrap.min.css">
+  <script src="../static/local/jquery.min.js"></script>
+  <script src="../static/local/bootstrap-4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light border-dark">
+    <a href="#" class="navbar-brand">
+        <img src="../static/title.png" height="28" alt="CoolBrand" class="navbar_split_line">
+    </a>
+    
+    <h5 class="navbar_split_line_"></h5>
+    <h6 style="margin-top: 6px;"><span class="badge badge-light" style="margin-top: 8px;">Aruba Wireless Upgrade</span></h6>
+
+    <div class="navbar-nav ml-auto">
+    <h5 style="margin-top: 6px;"><span class="badge badge-info" style="margin-top: 8px;">{poa_name}</span></h5>
+</div>
+
+    <div class="navbar-nav ml-auto">
+    <h6 style="margin-top: 6px;"><span class="badge badge-light" style="margin-top: 8px;">Report Date: {report_date}</span></h6>
+</div>
+
+    <!--<h6 style="margin-top: 12px;"><span class="badge badge-info" id="total_clients">Total Clients : 5</span></h6>-->
+    &nbsp;&nbsp;&nbsp;
+</nav>
+</br>
+
+
+
+
+<div class="container">
+  <h4>Precheck Report</h4>
+  
+   <div class="d-flex justify-content-between bg-light mb-3">
+    <div class="p-2 bg-light">
+    	<h5><span class="badge badge-light">Total devices: {total_devices}</span></h5>
+    </div>
+    <div class="p-2 bg-light">
+    	<h5><span class="badge badge-light">Mobility Master: {mm_count}</span></h5>
+    </div>
+    <div class="p-2 bg-light">
+    	<h5><span class="badge badge-light">Mobility Controller: {md_count}</span></h5>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between bg-light mb-3">
+    <div class="p-2 bg-light">
+    	<h5><span class="badge badge-light">Status:{status}</span></h5>
+    </div>
+    <div class="p-2 bg-light">
+    	<h5><span class="badge badge-light">Date{s_e_date}</span></h5>
+    </div>
+    
+  </div>
+
+
+
+
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+      	{table_head}
+        <!--<th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>-->
+      </tr>
+    </thead>
+    <tbody>
+    {table_body}
+      <!--<tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
+
+
+
+</body>
+</html>

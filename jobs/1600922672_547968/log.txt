@@ -1,0 +1,250 @@
+2020-09-24 10:14:32,567 > INFO > JOBNAME:1600922672_547968
+2020-09-24 10:14:32,567 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-09-24 10:14:32,642 > INFO > Starting Job
+2020-09-24 10:14:32,658 > INFO > INFO:Running: 1600922672_547968 Type:precheck
+2020-09-24 10:14:32,674 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-09-24 10:14:32,710 > INFO > Inserting upgrade list to upgrade.db
+2020-09-24 10:14:36,761 > INFO > yes
+2020-09-24 10:14:36,761 > INFO > INFO:Starting precheck
+2020-09-24 10:14:36,777 > INFO > INFO:Executing Precheck
+2020-09-24 10:14:36,806 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-24 10:14:39,182 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-24 10:14:41,801 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-09-24 10:14:41,864 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-24 10:14:44,352 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-24 10:14:51,765 > ERROR > get_image_details: 
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 370, in connect
+    ssl_context=context,
+  File "d:\scripts\py\lib\site-packages\urllib3\util\ssl_.py", line 390, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "d:\scripts\py\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "d:\scripts\py\lib\ssl.py", line 850, in _create
+    self.do_handshake()
+  File "d:\scripts\py\lib\ssl.py", line 1108, in do_handshake
+    self._sslobj.do_handshake()
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "d:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 370, in connect
+    ssl_context=context,
+  File "d:\scripts\py\lib\site-packages\urllib3\util\ssl_.py", line 390, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "d:\scripts\py\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "d:\scripts\py\lib\ssl.py", line 850, in _create
+    self.do_handshake()
+  File "d:\scripts\py\lib\ssl.py", line 1108, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 534, in execute_cmd
+    res = session.get(req_url,verify=False)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+2020-09-24 10:14:51,829 > ERROR > ERROR:NaaS-VMC-1-10.17.84.221:4343 : Auto detect alternative partition failed
+2020-09-24 10:14:51,845 > DEBUG > ERROR:NaaS-VMC-1-10.17.84.221:4343 : Auto detect alternative partition failed
+2020-09-24 10:14:51,863 > ERROR > Auto detect alternative partition failed
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 284, in find_alternative_partition
+    out = cmd_out.get("show boot")
+AttributeError: 'NoneType' object has no attribute 'get'
+2020-09-24 10:14:52,544 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-24 10:14:54,521 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-24 10:14:55,198 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-24 10:14:55,996 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-24 10:14:57,263 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-24 10:14:58,597 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-24 10:14:59,761 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-24 10:15:01,134 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-24 10:15:02,279 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-24 10:15:04,366 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-24 10:15:05,199 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-24 10:15:05,999 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-24 10:15:06,895 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-24 10:15:08,267 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-24 10:15:09,220 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-24 10:15:09,988 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-24 10:15:10,755 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-24 10:15:11,508 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-24 10:15:16,431 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-24 10:15:19,017 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-24 10:15:19,091 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-24 10:15:19,871 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-24 10:15:20,689 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-24 10:15:21,510 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-24 10:15:22,300 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-24 10:15:23,073 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-24 10:15:23,859 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-24 10:15:24,645 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-24 10:15:26,603 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-24 10:15:28,746 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-24 10:15:30,487 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-24 10:15:31,979 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-24 10:15:33,678 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-24 10:15:35,347 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-24 10:15:37,051 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-24 10:15:38,916 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-24 10:15:40,539 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-24 10:15:42,178 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-24 10:15:43,870 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-24 10:15:44,980 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-24 10:15:46,787 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-24 10:15:48,133 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-24 10:15:49,529 > INFO > INFO:Precheck Completed
+2020-09-24 10:15:49,561 > INFO > INFO:==== Completed ====
+2020-09-24 10:16:58,591 > INFO > JOBNAME:1600922818_5466483
+2020-09-24 10:16:58,592 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-09-24 10:16:58,672 > INFO > Starting Job
+2020-09-24 10:16:58,687 > INFO > INFO:Running: 1600922818_5466483 Type:precheck
+2020-09-24 10:16:58,702 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-09-24 10:16:58,748 > INFO > Inserting upgrade list to upgrade.db
+2020-09-24 10:17:02,806 > INFO > yes
+2020-09-24 10:17:02,807 > INFO > INFO:Starting precheck
+2020-09-24 10:17:02,829 > INFO > INFO:Executing Precheck
+2020-09-24 10:17:02,855 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-24 10:17:05,444 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-24 10:17:08,036 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-09-24 10:17:08,108 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-24 10:17:10,663 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-24 10:17:13,259 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-24 10:17:14,024 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-24 10:17:15,724 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-24 10:17:16,481 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-24 10:17:16,613 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-24 10:17:17,422 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-09-24 10:17:18,328 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-09-24 10:17:19,151 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-09-24 10:17:19,976 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-09-24 10:17:20,801 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-09-24 10:17:21,624 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-09-24 10:17:22,433 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-09-24 10:17:23,242 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-09-24 10:17:24,099 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-09-24 10:17:25,526 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-09-24 10:17:26,323 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-09-24 10:17:27,091 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-09-24 10:17:27,874 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-09-24 10:17:28,653 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-09-24 10:17:32,788 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-24 10:17:39,930 > ERROR > get_session:
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 370, in connect
+    ssl_context=context,
+  File "d:\scripts\py\lib\site-packages\urllib3\util\ssl_.py", line 390, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "d:\scripts\py\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "d:\scripts\py\lib\ssl.py", line 850, in _create
+    self.do_handshake()
+  File "d:\scripts\py\lib\ssl.py", line 1108, in do_handshake
+    self._sslobj.do_handshake()
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "d:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "d:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "d:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "d:\scripts\py\lib\site-packages\urllib3\connection.py", line 370, in connect
+    ssl_context=context,
+  File "d:\scripts\py\lib\site-packages\urllib3\util\ssl_.py", line 390, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "d:\scripts\py\lib\ssl.py", line 412, in wrap_socket
+    session=session
+  File "d:\scripts\py\lib\ssl.py", line 850, in _create
+    self.do_handshake()
+  File "d:\scripts\py\lib\ssl.py", line 1108, in do_handshake
+    self._sslobj.do_handshake()
+urllib3.exceptions.ProtocolError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 83, in get_session
+    res = r_session.get(get_clock,verify=False)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "d:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', FileNotFoundError(2, 'No such file or directory'))
+2020-09-24 10:17:42,458 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-24 10:17:42,511 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-24 10:17:46,178 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-24 10:17:47,013 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-09-24 10:17:47,805 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-09-24 10:17:50,212 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-09-24 10:17:51,445 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-09-24 10:17:52,225 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-24 10:17:53,389 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-24 10:17:54,297 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-09-24 10:17:55,226 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-09-24 10:17:56,186 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-09-24 10:17:57,075 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-09-24 10:17:58,026 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-09-24 10:17:58,940 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-09-24 10:17:59,829 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-09-24 10:18:00,637 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-09-24 10:18:01,462 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-09-24 10:18:02,510 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-09-24 10:18:04,505 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-09-24 10:18:05,639 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-09-24 10:18:29,623 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-09-24 10:18:32,613 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-09-24 10:18:33,488 > INFO > INFO:Precheck Completed
+2020-09-24 10:18:33,564 > INFO > INFO:==== Completed ====

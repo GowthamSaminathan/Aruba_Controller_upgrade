@@ -1,0 +1,26 @@
+2020-09-24 10:12:48,891 > INFO > JOBNAME:1600922568_0034342
+2020-09-24 10:12:48,892 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-09-24 10:12:49,157 > INFO > Starting Job
+2020-09-24 10:12:49,174 > INFO > INFO:Running: 1600922568_0034342 Type:precheck
+2020-09-24 10:12:49,195 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-09-24 10:12:49,237 > INFO > Inserting upgrade list to upgrade.db
+2020-09-24 10:12:55,287 > INFO > yes
+2020-09-24 10:12:55,288 > INFO > INFO:Starting precheck
+2020-09-24 10:12:55,304 > INFO > INFO:Executing Precheck
+2020-09-24 10:12:55,334 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-09-24 10:12:58,117 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-24 10:13:00,731 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-09-24 10:13:01,059 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-09-24 10:13:03,717 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-24 10:13:06,257 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-09-24 10:13:06,299 > ERROR > ERROR:Check execution error
+2020-09-24 10:13:06,313 > DEBUG > ERROR:Check execution error
+2020-09-24 10:13:06,326 > ERROR > Pre_Post_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 341, in Pre_Post_check
+    print(wireless_validation.get_disk_images(self,hosts))
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 27, in get_disk_images
+    results.update({host:_d})
+UnboundLocalError: local variable 'host' referenced before assignment
+2020-09-24 10:13:06,328 > INFO > INFO:Precheck Completed
+2020-09-24 10:13:06,354 > INFO > INFO:==== Completed ====

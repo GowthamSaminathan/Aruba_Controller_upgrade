@@ -23,6 +23,8 @@ import db_management
 import config_file_generator
 import time
 import pprint
+import wireless_validation
+import pickle
 
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -327,15 +329,10 @@ class Aruba_Wireless_upgrade():
 
 			self.user_pause_terminate()
 			
+			# Phase 1 Precheck
 			if check_type == "Precheck":
-				# Precheck - Only for precheck
-				_pre_status = self.find_alternative_partition()
-				#pre_status.append(_pre_status)
-
-			
-			#_pre_status = self.phase_one_check()
-			#pre_status.append(_pre_status)
-
+				wgen = wireless_validation.gen_report()
+				wgen.run_checklist(self,hosts)
 
 			# Phase 2 Precheck
 			for single_host in hosts:
@@ -762,16 +759,16 @@ class Aruba_Wireless_upgrade():
 								# Session Expired Reload completed
 								db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED","Reload completed")
 								self.get_user_input_async("Reload Completed for ({}) {} {}".format(host_type,host_name,host_ip),eid,"update")
-								self.eprint("info","=> Reload Completed for ({}) {} {}".format(host_type,host_name,host_ip))
+								self.eprint("info","Reload Completed for ({}) {} {}".format(host_type,host_name,host_ip))
 								reload_completed = True
 								return True
 							else:
-								self.get_user_input_async("({}) {} {} => Pinging...".format(host_type,host_name,host_ip),eid,"update")
-								self.eprint("info","({}) {} {} => Pinging...".format(host_type,host_name,host_ip))
+								self.get_user_input_async("Please wait: ({}) {} {} -- Pinging...".format(host_type,host_name,host_ip),eid,"update")
+								self.eprint("info","Please wait: ({}) {} {} -- Pinging...".format(host_type,host_name,host_ip))
 						except Exception:
 							reachability_failed = True
-							self.get_user_input_async("=> Trying ({}) {} {} => Request timeout...".format(host_type,host_name,host_ip),eid,"update")
-							self.eprint("info","=> Trying ({}) {} {} => Request timeout...".format(host_type,host_name,host_ip))
+							self.get_user_input_async("Please wait: Trying ({}) {} {} -- Request timeout...".format(host_type,host_name,host_ip),eid,"update")
+							self.eprint("info","Please wait: Trying ({}) {} {} -- Request timeout...".format(host_type,host_name,host_ip))
 							#logger.exception("Ping Timeout")
 
 						time.sleep(3)
@@ -828,7 +825,7 @@ class Aruba_Wireless_upgrade():
 				image_version = single_host.get("image_version")
 				#self.eprint("info","Do you want to reboot: ({}) - {} - {}".format(host_type,host_name,host_ip))
 				if self.get_user_input("Do you want to reboot: ({}) - {} - {}".format(host_type,host_name,host_ip),["yes","no"]) == "yes":
-					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"Running","Reload execution")
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING","Reload execution")
 					reboot_status = self.process_controller_reboot(single_host,True)
 					if reboot_status != True:
 						self.eprint("error","*** Warning : Failed to get reboot info (Please check manualy...)")
@@ -837,7 +834,7 @@ class Aruba_Wireless_upgrade():
 					if self.validate_running_image(host_ip,image_version,image_build) == False:
 						self.eprint("error","**=> ({}) {}-{} Not booted from new image".format(host_type,host_name,host_ip))
 					else:
-						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"Completed","Upgrade")
+						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED","Upgrade")
 						self.eprint("info","=>({}) {}-{} {}:{} : NEW IMAGE UPGRADE SUCCESS".format(host_type,host_name,host_ip,image_version,image_build))
 
 
@@ -888,7 +885,7 @@ class Aruba_Wireless_upgrade():
 					self.user_pause_terminate()
 					if self.get_user_input_async("",eid,True) == "yes":
 						self.eprint("warning","USER SKIPPED AP IMAGE PRELOAD FOR {}-{}".format(host_name,host_ip))
-						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED AP Pre-Imaging","User skipped AP Pre-Imaging request")
+						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED AP Pre-Imaging","User AP Pre-Imaging request")
 						return True
 					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING","AP Pre-Imaging request")
 					upload_not_required = True

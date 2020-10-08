@@ -1,0 +1,65 @@
+2020-09-25 12:45:35,730 > INFO > JOBNAME:1601018135_704902
+2020-09-25 12:45:35,731 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-09-25 12:45:35,795 > INFO > Starting Job
+2020-09-25 12:45:35,809 > INFO > INFO:Running: 1601018135_704902 Type:precheck
+2020-09-25 12:45:35,824 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-09-25 12:45:35,871 > INFO > Inserting upgrade list to upgrade.db
+2020-09-25 12:45:39,926 > INFO > yes
+2020-09-25 12:45:39,926 > INFO > INFO:Starting precheck
+2020-09-25 12:45:40,349 > INFO > INFO:Executing Precheck
+2020-09-25 12:45:42,810 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-09-25 12:45:46,103 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-25 12:45:48,007 > ERROR > get_system_health : show storage
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 93, in get_system_health
+    summary.update({"used_disk":all_disk})
+NameError: name 'summary' is not defined
+2020-09-25 12:45:48,009 > ERROR > get_system_health : show cpuload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 103, in get_system_health
+    summary.update({"free_cpu":o})
+NameError: name 'summary' is not defined
+2020-09-25 12:45:48,009 > ERROR > get_system_health : show memory
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 113, in get_system_health
+    summary.update({"free_memory":o})
+NameError: name 'summary' is not defined
+2020-09-25 12:45:53,252 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-09-25 12:45:56,540 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-25 12:45:58,389 > ERROR > get_system_health : show storage
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 93, in get_system_health
+    summary.update({"used_disk":all_disk})
+NameError: name 'summary' is not defined
+2020-09-25 12:45:58,389 > ERROR > get_system_health : show cpuload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 103, in get_system_health
+    summary.update({"free_cpu":o})
+NameError: name 'summary' is not defined
+2020-09-25 12:45:58,390 > ERROR > get_system_health : show memory
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 113, in get_system_health
+    summary.update({"free_memory":o})
+NameError: name 'summary' is not defined
+2020-09-25 12:45:58,414 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-09-25 12:45:59,038 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-09-25 12:45:59,086 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-09-25 12:45:59,692 > ERROR > ERROR:Validation failed for: NaaS-MM-1
+2020-09-25 12:45:59,709 > DEBUG > ERROR:Validation failed for: NaaS-MM-1
+2020-09-25 12:45:59,738 > ERROR > validating_pre_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 245, in validating_pre_check
+    running_disk = str(running_disk).split("PARTITION ")[1]
+IndexError: list index out of range
+2020-09-25 12:45:59,776 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-09-25 12:46:00,406 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-09-25 12:46:00,531 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-09-25 12:46:01,158 > ERROR > ERROR:Validation failed for: NaaS-VMC-1
+2020-09-25 12:46:01,186 > DEBUG > ERROR:Validation failed for: NaaS-VMC-1
+2020-09-25 12:46:01,212 > ERROR > validating_pre_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 245, in validating_pre_check
+    running_disk = str(running_disk).split("PARTITION ")[1]
+IndexError: list index out of range
+2020-09-25 12:46:01,232 > INFO > INFO:Precheck Completed
+2020-09-25 12:46:01,280 > INFO > INFO:==== Completed ====

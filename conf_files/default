@@ -24,21 +24,6 @@ default_settings:
     upgrade_disk: Auto
     CheckList:
       - show: show clock
-      - show: show version
-      - show: show image version
-      - show: show storage
-      - show: show cpuload
-      - show: show memory
-      - show: show boot
-      - show: show switches
-      - show: show switchinfo
-      - show: show boot history
-
-      - show: show crypto Ipsec sa
-      - show: show master-redundancy
-      - show: show database synchronize
-      - show: show license
-      - show: show running-config
 
 
   MD:
@@ -50,28 +35,6 @@ default_settings:
     max_ap_image_load: 1
     CheckList:
       - show: show clock
-      - show: show version
-      - show: show image version
-      - show: show storage
-      - show: show cpuload
-      - show: show memory
-      - show: show boot
-      - show: show switches
-      - show: show switchinfo
-      - show: show boot history
-
-      - show: show user
-      - show: show ap database long 
-      - show: show ap bss-table 
-      - show: show ap essid
-      - show: show ap active counters
-      - show: show ap debug counters
-      - show: show lc-cluster group-membership
-      - show: show switches
-      - show: show license
-      - show: show running-config
-      - show: show boot
-      - show: show version
 
   Authentication:
     username: admin

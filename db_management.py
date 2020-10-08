@@ -68,7 +68,7 @@ def async_create_event_db(db_path):
 def create_pre_post_db(db_path):
 	conn = sqlite3.connect(db_path)
 	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,DEVICE_TYPE NAME TEXT NOT NULL,HOST_NAME TEXT NOT NULL,HOST TEXT NOT NULL,"
-	cmd = cmd+"VALIDATION TEXT NOT NULL,PRECHECK TEXT,POSTCHECK TEXT,PRE_REMARKS TEXT,PRE_NOTE TEXT,POST_REMARKS TEXT,POST_NOTE TEXT"
+	cmd = cmd+"VALIDATION TEXT NOT NULL,STATUS TEXT,REPORT_NAME TEXT"
 	try:
 		conn.execute('''CREATE TABLE CHECKLIST({});'''.format(cmd))
 		print("CHECKLIST table created successfully")
@@ -78,51 +78,26 @@ def create_pre_post_db(db_path):
 	except Exception:
 		logger.exception("create_event_db")
 
-def checklist_update(db_path,data,chec_list_type):
+def checklist_update(db_path,all_data,report_name):
 	try:
 		conn = sqlite3.connect(db_path)
 		cursor = conn.cursor()
 
-		host_type = data.get("device_type")
-		host_name = data.get("host_name")
-		host = data.get("host")
-		validation = data.get("validation")
+		for data in all_data:
 
-		precheck = data.get("precheck")
-		postcheck = data.get("postcheck")
+			host_type = data.get("device_type")
+			host_name = data.get("host_name")
+			host = data.get("host")
+			validation = data.get("validation")
 
-		precheck_remark = data.get("precheck_remark")
-		postcheck_remark = data.get("postcheck_remark")
+			for validation in data.get("report"):
+				status = data.get(validation)
+				cmd = "INSERT INTO CHECKLIST (DEVICE_TYPE,HOST_NAME,HOST,VALIDATION,STATUS,REPORT_NAME) VALUES ('{}','{}','{}','{}','{}','{}')"
+				cmd = cmd.format(host_type,host_name,host,validation,status,report_name)
+				logger.info(cmd)
+			
+				cursor.execute(cmd)
 		
-		precheck_note = data.get("precheck_note")
-		postcheck_note = data.get("postcheck_note")
-		
-		#logger.info("Selecting ........")
-		#logger.info("SELECT ID FROM CHECKLIST WHERE HOST='{}' AND VALIDATION='{}'".format(host,validation))
-		cursor.execute("SELECT ID FROM CHECKLIST WHERE HOST='{}' AND VALIDATION='{}'".format(host,validation))
-		result = cursor.fetchone()
-		#logger.info(result)
-
-		if chec_list_type == "Precheck":
-			if result == None:
-				cmd = "INSERT INTO CHECKLIST (DEVICE_TYPE,HOST_NAME,HOST,VALIDATION,PRECHECK,PRE_REMARKS,PRE_NOTE) VALUES ('{}','{}','{}','{}','{}','{}','{}')"
-				cmd = cmd.format(host_type,host_name,host,validation,precheck,precheck_remark,precheck_note)
-			else:
-				cmd = "UPDATE CHECKLIST set DEVICE_TYPE='{}',HOST_NAME='{}',HOST='{}',VALIDATION='{}',PRECHECK='{}',PRE_REMARKS='{}',PRE_NOTE='{}' "
-				cmd = cmd+"where HOST='{}' AND VALIDATION='{}'"
-				cmd = cmd.format(host_type,host_name,host,validation,precheck,precheck_remark,precheck_note,host,validation)
-
-		if chec_list_type == "Postcheck":
-			if result == None:
-				cmd = "INSERT INTO CHECKLIST (DEVICE_TYPE,HOST_NAME,HOST,VALIDATION,POSTCHECK,POST_REMARKS,POST_NOTE) VALUES ('{}','{}','{}','{}','{}','{}','{}')"
-				cmd = cmd.format(host_type,host_name,host,validation,postcheck,postcheck_remark,postcheck_note)
-			else:
-				cmd = "UPDATE CHECKLIST set DEVICE_TYPE='{}',HOST_NAME='{}',HOST='{}',VALIDATION='{}',POSTCHECK='{}',POST_REMARKS='{}',POST_NOTE='{}' "
-				cmd = cmd+"where HOST='{}' AND VALIDATION='{}'"
-				cmd = cmd.format(host_type,host_name,host,validation,postcheck,postcheck_remark,postcheck_note,host,validation)
-
-		logger.info(cmd)
-		cursor.execute(cmd)
 		conn.commit()
 		
 		#print(cursor.rowcount)
