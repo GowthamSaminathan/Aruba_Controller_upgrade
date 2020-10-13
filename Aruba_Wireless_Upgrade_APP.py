@@ -329,11 +329,16 @@ class Aruba_Wireless_upgrade():
 
 			self.user_pause_terminate()
 			
+
 			# Phase 1 Precheck
 			if check_type == "Precheck":
+				print("Starting precheck..........1")
 				wgen = wireless_validation.gen_report()
-				wgen.run_checklist(self,hosts)
+				phase1_report = wgen.run_checklist(self,hosts)
+				for p in phase1_report:
+					print(p)
 
+			return True
 			# Phase 2 Precheck
 			for single_host in hosts:
 				try:

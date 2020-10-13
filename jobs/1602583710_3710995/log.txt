@@ -1,0 +1,25 @@
+2020-10-13 15:38:30,400 > INFO > JOBNAME:1602583710_3710995
+2020-10-13 15:38:30,400 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-13 15:38:30,549 > INFO > Starting Job
+2020-10-13 15:38:30,577 > INFO > INFO:Running: 1602583710_3710995 Type:precheck
+2020-10-13 15:38:30,595 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-13 15:38:30,628 > INFO > Inserting upgrade list to upgrade.db
+2020-10-13 15:38:32,755 > INFO > yes
+2020-10-13 15:38:32,755 > INFO > INFO:Starting precheck
+2020-10-13 15:38:32,775 > INFO > INFO:Executing Precheck
+2020-10-13 15:38:35,096 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-13 15:38:40,301 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-13 15:38:43,860 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-13 15:38:46,743 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-13 15:38:48,771 > ERROR > validate_system_health
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 186, in validate_system_health
+    value = int(value.split("M")[0])
+ValueError: invalid literal for int() with base 10: '983.3'
+2020-10-13 15:38:48,778 > ERROR > validate_system_health
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 186, in validate_system_health
+    value = int(value.split("M")[0])
+ValueError: invalid literal for int() with base 10: '982.8'
+2020-10-13 15:38:48,815 > INFO > INFO:Precheck Completed
+2020-10-13 15:38:48,875 > INFO > INFO:==== Completed ====

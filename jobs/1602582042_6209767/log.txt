@@ -1,0 +1,26 @@
+2020-10-13 15:10:42,698 > INFO > JOBNAME:1602582042_6209767
+2020-10-13 15:10:42,698 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-13 15:10:42,833 > INFO > Starting Job
+2020-10-13 15:10:42,849 > INFO > INFO:Running: 1602582042_6209767 Type:precheck
+2020-10-13 15:10:42,890 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-13 15:10:42,955 > INFO > Inserting upgrade list to upgrade.db
+2020-10-13 15:10:49,424 > INFO > yes
+2020-10-13 15:10:49,424 > INFO > INFO:Starting precheck
+2020-10-13 15:10:49,457 > INFO > INFO:Executing Precheck
+2020-10-13 15:10:52,164 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-13 15:11:01,063 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-13 15:11:04,993 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-13 15:11:07,873 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-13 15:11:10,045 > ERROR > ERROR:Check execution error
+2020-10-13 15:11:10,069 > DEBUG > ERROR:Check execution error
+2020-10-13 15:11:10,109 > ERROR > Pre_Post_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 335, in Pre_Post_check
+    phase1_report = wgen.run_checklist(self,hosts)
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 166, in run_checklist
+    report = self.validate_system_image(result)
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 194, in validate_system_image
+    for report in result:
+NameError: name 'result' is not defined
+2020-10-13 15:11:10,111 > INFO > INFO:Precheck Completed
+2020-10-13 15:11:10,148 > INFO > INFO:==== Completed ====

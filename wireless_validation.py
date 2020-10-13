@@ -110,7 +110,7 @@ def get_system_health(obj,hosts):
 					for t in re.findall(r'/dev.*',out):
 						t = t.split(" ")
 						used_disk = list(filter(None, t))
-						_d = {"validation":"disk "+used_disk[0]+" useage","value":used_disk[3]}
+						_d = {"validation":"disk "+used_disk[0]+" usage","value":used_disk[3]}
 						_d.update(device_info)
 						results.append(_d)
 						_d = {"validation":"disk "+used_disk[0]+" used percent","value":used_disk[4].split("%")[0]}
@@ -160,17 +160,62 @@ class gen_report():
 		#self.report_data = report_data
 		self.obj = obj
 		self.hosts = hosts
-		r = get_disk_images(self.obj,self.hosts)
-		for x in r:
-			print(x)
-		r = get_system_health(self.obj,self.hosts)
+		all_reports = []
+		result = get_disk_images(self.obj,self.hosts)
+		report = self.validate_system_image(result)
+		all_reports = all_reports + report
+		result = get_system_health(self.obj,self.hosts)
+		report = self.validate_system_health(result)
+		all_reports = all_reports + report
+		return all_reports
 
-		for x in r:
-			print(x)
-
-	def validate_health(self,pre_report,post_report=None):
+	def validate_system_health(self,result):
 		# Validate 
-		for single_host in self.pre_report:
-			pass;
-			
+		for r1 in result:
+			try:
+				print(r1)
+				validation = r1.get("validation")
+				print(validation)
+				value = r1.get("value")
+				if validation.find("disk /") != -1:
+					print("Validating disk")
+					# Validate disk usage
+					if value.find("G") != -1:
+						r1.update({"status":"Good"})
+					elif value.find("M") != -1:
+						value = float(value.split("M")[0])
+						if value > 200:
+						# Space required 200 MB
+							r1.update({"status":"Warning: Avaliable disk less than 200 MB"})
+				elif validation.find("free cpu percent") != -1:
+					print("Validating cpu")
+					if float(value) > 20:
+						r1.update({"status":"Good"})
+					else:
+						r1.update({"status":"Warning: CPU utilization is more than 80%"})
+
+			except Exception:
+				self.obj.logger.exception("validate_system_health")
+		return result
+
+	def validate_system_image(self,result):
+		for r1 in result:
+			try:
+				validation = r1.get("validation")
+				value = r1.get("value")
+				if validation.find("current boot partition"):
+					pass;
+				elif validation.find("first partition version"):
+					pass;
+				elif validation.find("first partition build"):
+					pass;
+				elif validation.find("second partition version"):
+					pass;
+				elif validation.find("second partition build"):
+					pass;
+
+			except Exception:
+				self.obj.logger.exception("validate_system_image")
+
+		return result
 

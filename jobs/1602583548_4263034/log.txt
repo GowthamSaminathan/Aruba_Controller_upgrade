@@ -1,0 +1,33 @@
+2020-10-13 15:35:48,454 > INFO > JOBNAME:1602583548_4263034
+2020-10-13 15:35:48,454 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-13 15:35:48,606 > INFO > Starting Job
+2020-10-13 15:35:48,633 > INFO > INFO:Running: 1602583548_4263034 Type:precheck
+2020-10-13 15:35:48,655 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-13 15:35:48,689 > INFO > Inserting upgrade list to upgrade.db
+2020-10-13 15:35:50,972 > INFO > yes
+2020-10-13 15:35:50,973 > INFO > INFO:Starting precheck
+2020-10-13 15:35:50,995 > INFO > INFO:Executing Precheck
+2020-10-13 15:35:56,226 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-13 15:36:01,642 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-13 15:36:05,201 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-13 15:36:07,925 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-13 15:36:10,507 > ERROR > ERROR:Check execution error
+2020-10-13 15:36:10,531 > DEBUG > ERROR:Check execution error
+2020-10-13 15:36:10,615 > ERROR > Pre_Post_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 187, in validate_system_health
+    if int(value) > 200:
+ValueError: invalid literal for int() with base 10: '4.1G'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 337, in Pre_Post_check
+    phase1_report = wgen.run_checklist(self,hosts)
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 168, in run_checklist
+    report = self.validate_system_health(result)
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 198, in validate_system_health
+    obj.logger.exception("validate_system_health")
+NameError: name 'obj' is not defined
+2020-10-13 15:36:10,618 > INFO > INFO:Precheck Completed
+2020-10-13 15:36:10,682 > INFO > INFO:==== Completed ====
