@@ -11,7 +11,37 @@
 """
 
 import re
+import db_management
 
+
+def get_version(obj,hosts):
+	""" Get the show version output """
+	results = []
+	
+	for single_host in hosts:
+		hostname = single_host.get("hostname")
+		host = single_host.get("host")
+		device_type = single_host.get("device_type")
+
+		device_info = {"hostname":hostname}
+		device_info.update({"host":host})
+		device_info.update({"device_type":device_type})
+		db_management.update_upgrade_status_by_device_host(obj.upgrade_db,host,"RUNNING Checklist","Validating version")
+		_d = dict()
+		try:
+			cmd_out = obj.execute_cmd(single_host,["show version"])
+			if cmd_out != None:
+				_version = cmd_out.get("show version")
+				_version = _version.get("_data")[0]
+				run_version = re.findall(r'Version.*',_version)[0]
+				_d = {"validation":"running version","value":run_version}
+				_d.update(device_info)
+				results.append(_d)
+		except Exception:
+			#obj.eprint("error","Upload Image Error For : {} - {}".format(host_name,host_ip))
+			obj.logger.exception("get_version")
+
+	return results
 
 def get_disk_images(obj,hosts):
 	"""Validate current disk image versions and default boot set for list of upgraded_hosts
@@ -27,6 +57,7 @@ def get_disk_images(obj,hosts):
 		device_info.update({"host":host})
 		device_info.update({"device_type":device_type})
 
+		db_management.update_upgrade_status_by_device_host(obj.upgrade_db,host,"RUNNING Checklist","Validating disk")
 		_d = dict()
 		
 		#_d.update({"current boot partition":None})
@@ -99,6 +130,7 @@ def get_system_health(obj,hosts):
 			device_info.update({"host":host})
 			device_info.update({"device_type":device_type})
 
+			db_management.update_upgrade_status_by_device_host(obj.upgrade_db,host,"RUNNING Checklist","Validating CPU/Memory")
 			_d = dict()
 			host_output = obj.execute_cmd(single_host,["show storage","show cpuload","show memory"])
 			
@@ -149,6 +181,7 @@ def get_system_health(obj,hosts):
 				#obj.eprint("error","Upload Image Error For : {} - {}".format(host_name,host_ip))
 				obj.logger.exception("get_system_health")
 
+
 	return results
 
 
@@ -161,13 +194,26 @@ class gen_report():
 		self.obj = obj
 		self.hosts = hosts
 		all_reports = []
+		
 		result = get_disk_images(self.obj,self.hosts)
 		report = self.validate_system_image(result)
 		all_reports = all_reports + report
+		
 		result = get_system_health(self.obj,self.hosts)
 		report = self.validate_system_health(result)
 		all_reports = all_reports + report
+
+		result = get_version(self.obj,self.hosts)
+		report = result
+		all_reports = all_reports + report
+
+		for single_host in self.hosts:
+			host = single_host.get("host")
+			db_management.update_upgrade_status_by_device_host(self.obj.upgrade_db,host,"COMPLETED","Checklist")
+
 		return all_reports
+
+
 
 	def validate_system_health(self,result):
 		# Validate 

@@ -1,0 +1,22 @@
+2020-10-22 17:07:13,893 > INFO > JOBNAME:1603366633_8561254
+2020-10-22 17:07:13,893 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-22 17:07:13,966 > INFO > Starting Job
+2020-10-22 17:07:13,980 > INFO > INFO:Running: 1603366633_8561254 Type:precheck
+2020-10-22 17:07:13,996 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-22 17:07:14,027 > INFO > Inserting upgrade list to upgrade.db
+2020-10-22 17:07:18,073 > INFO > yes
+2020-10-22 17:07:18,073 > INFO > INFO:Starting precheck
+2020-10-22 17:07:18,100 > INFO > INFO:Executing Precheck
+2020-10-22 17:07:18,125 > ERROR > ERROR:Check execution error
+2020-10-22 17:07:18,156 > DEBUG > ERROR:Check execution error
+2020-10-22 17:07:18,181 > ERROR > Pre_Post_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 336, in Pre_Post_check
+    phase1_report = wgen.run_checklist(self,hosts)
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 197, in run_checklist
+    result = get_disk_images(self.obj,self.hosts)
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 59, in get_disk_images
+    db_management.update_upgrade_status_by_device_host(obj.upgrade_db,host,"RUNNING Checklist","Validating disk")
+NameError: name 'db_management' is not defined
+2020-10-22 17:07:18,184 > INFO > INFO:Precheck Completed
+2020-10-22 17:07:18,236 > INFO > INFO:==== Completed ====

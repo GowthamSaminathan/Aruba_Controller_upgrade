@@ -21167,3 +21167,597 @@ AttributeError: 'str' object has no attribute 'get'
 2020-10-13 15:38:48,837 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-13 15:38:48' where NAME='1602583710_3710995'
 2020-10-13 15:38:48,876 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1602583710_3710995','2020-10-13 15:38:48','INFO:==== Completed ====','None')
 2020-10-13 15:41:18,331 > INFO > DB Managenet imported
+2020-10-19 14:55:29,819 > INFO > DB Managenet imported
+2020-10-19 14:55:29,997 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='12345'
+2020-10-19 14:55:29,998 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('12345','2020-10-19 14:55:29','WARNING:Running status not updated in DB (Bug)','None')
+2020-10-19 14:55:30,014 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('12345','2020-10-19 14:55:30','WARNING:Running status not updated in DB (Bug)','None')
+2020-10-19 14:55:30,028 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('12345','2020-10-19 14:55:30','ERROR:Terminating Job , DB update failed...','None')
+2020-10-19 14:55:30,041 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('12345','2020-10-19 14:55:30','ERROR:Terminating Job , DB update failed...','None')
+2020-10-19 14:55:30,056 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('12345','2020-10-19 14:55:30','ERROR:Init failed','None')
+2020-10-19 14:55:30,070 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('12345','2020-10-19 14:55:30','ERROR:Init failed','None')
+2020-10-19 14:55:30,084 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='',E_DATE='2020-10-19 14:55:30' where NAME='12345'
+2020-10-19 14:55:30,085 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('12345','2020-10-19 14:55:30','INFO:==== Completed ====','None')
+2020-10-19 14:57:18,475 > INFO > DB Managenet imported
+2020-10-19 16:03:30,027 > INFO > DB Managenet imported
+2020-10-19 16:04:27,637 > INFO > DB Managenet imported
+2020-10-19 16:04:29,936 > INFO > DB Managenet imported
+2020-10-19 16:04:44,953 > INFO > DB Managenet imported
+2020-10-19 16:09:03,202 > INFO > DB Managenet imported
+2020-10-19 16:12:08,189 > INFO > DB Managenet imported
+2020-10-19 16:12:26,498 > INFO > DB Managenet imported
+2020-10-19 16:12:34,330 > INFO > DB Managenet imported
+2020-10-19 16:16:06,199 > INFO > DB Managenet imported
+2020-10-19 16:16:29,554 > INFO > DB Managenet imported
+2020-10-19 16:16:55,081 > INFO > DB Managenet imported
+2020-10-19 16:17:43,492 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603104463_492613','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-19 16:17:43','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-19 16:17:43,693 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603104463_492613'
+2020-10-19 16:17:43,709 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:17:43','INFO:Running: 1603104463_492613 Type:precheck','None')
+2020-10-19 16:17:43,724 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:17:43','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-19 16:17:43,973 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:17:43','IN:Are you sure want to start the precheck','1603104463.9728904')
+2020-10-19 16:17:46,476 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:17:46','yes','1603104463.9728904')
+2020-10-19 16:17:47,992 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:17:47','INFO:Starting precheck','None')
+2020-10-19 16:17:48,007 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:17:48','INFO:Executing Precheck','None')
+2020-10-19 16:17:53,752 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:17:53','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-19 16:18:02,505 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:18:02','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-19 16:18:06,373 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:18:06','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-19 16:18:09,334 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:18:09','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-19 16:18:11,681 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:18:11','INFO:Precheck Completed','None')
+2020-10-19 16:18:11,865 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-19 16:18:11' where NAME='1603104463_492613'
+2020-10-19 16:18:12,123 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603104463_492613','2020-10-19 16:18:12','INFO:==== Completed ====','None')
+2020-10-20 16:40:00,662 > INFO > DB Managenet imported
+2020-10-20 16:40:03,609 > INFO > DB Managenet imported
+2020-10-20 16:42:47,704 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603192367_7045472','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-20 16:42:47','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-20 16:42:49,270 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603192367_7045472'
+2020-10-20 16:42:49,529 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:42:49','INFO:Running: 1603192367_7045472 Type:precheck','None')
+2020-10-20 16:42:49,835 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:42:49','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-20 16:42:50,977 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:42:50','IN:Are you sure want to start the precheck','1603192370.977958')
+2020-10-20 16:42:53,188 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:42:53','yes','1603192370.977958')
+2020-10-20 16:42:53,405 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:42:53','INFO:Starting precheck','None')
+2020-10-20 16:42:53,490 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:42:53','INFO:Executing Precheck','None')
+2020-10-20 16:43:00,610 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:43:00','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-20 16:43:10,261 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:43:10','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-20 16:43:16,121 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:43:16','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-20 16:43:20,344 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:43:20','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-20 16:43:25,239 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','current boot partition','None','Precheck')
+2020-10-20 16:43:25,240 > ERROR > checklist_update
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\db_management.py", line 100, in checklist_update
+    cursor.execute(cmd)
+sqlite3.OperationalError: table CHECKLIST has no column named host
+2020-10-20 16:43:25,351 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:43:25','INFO:Precheck Completed','None')
+2020-10-20 16:43:25,485 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-20 16:43:25' where NAME='1603192367_7045472'
+2020-10-20 16:43:25,638 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603192367_7045472','2020-10-20 16:43:25','INFO:==== Completed ====','None')
+2020-10-20 16:55:13,996 > INFO > DB Managenet imported
+2020-10-20 16:55:33,622 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603193133_6220608','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-20 16:55:33','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-20 16:55:33,935 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603193133_6220608'
+2020-10-20 16:55:33,949 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:33','INFO:Running: 1603193133_6220608 Type:precheck','None')
+2020-10-20 16:55:33,964 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:33','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-20 16:55:34,022 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:34','IN:Are you sure want to start the precheck','1603193134.0229626')
+2020-10-20 16:55:38,773 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:38','yes','1603193134.0229626')
+2020-10-20 16:55:40,042 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:40','INFO:Starting precheck','None')
+2020-10-20 16:55:40,067 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:40','INFO:Executing Precheck','None')
+2020-10-20 16:55:43,067 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:43','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-20 16:55:49,717 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:49','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-20 16:55:54,131 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:54','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-20 16:55:57,414 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:55:57','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-20 16:56:00,835 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','current boot partition','None','Precheck')
+2020-10-20 16:56:00,836 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','first partition version','None','Precheck')
+2020-10-20 16:56:00,837 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','first partition build','None','Precheck')
+2020-10-20 16:56:00,837 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','second partition version','None','Precheck')
+2020-10-20 16:56:00,837 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','second partition build','None','Precheck')
+2020-10-20 16:56:00,837 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','current boot partition','None','Precheck')
+2020-10-20 16:56:00,837 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','first partition version','None','Precheck')
+2020-10-20 16:56:00,837 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','first partition build','None','Precheck')
+2020-10-20 16:56:00,838 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','second partition version','None','Precheck')
+2020-10-20 16:56:00,838 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','second partition build','None','Precheck')
+2020-10-20 16:56:00,838 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','disk /dev/sdb1 usage','Good','Precheck')
+2020-10-20 16:56:00,838 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','disk /dev/sdb1 used percent','None','Precheck')
+2020-10-20 16:56:00,838 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','disk /dev/sda5 usage','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-20 16:56:00,839 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','disk /dev/sda5 used percent','None','Precheck')
+2020-10-20 16:56:00,839 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','disk /dev/sda6 usage','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-20 16:56:00,839 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','disk /dev/sda6 used percent','None','Precheck')
+2020-10-20 16:56:00,839 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','free cpu percent','Good','Precheck')
+2020-10-20 16:56:00,839 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.220:4343','None','MM','free memory bytes','None','Precheck')
+2020-10-20 16:56:00,839 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','disk /dev/sdb1 usage','Good','Precheck')
+2020-10-20 16:56:00,840 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','disk /dev/sdb1 used percent','None','Precheck')
+2020-10-20 16:56:00,840 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','disk /dev/sda5 usage','Good','Precheck')
+2020-10-20 16:56:00,840 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','disk /dev/sda5 used percent','None','Precheck')
+2020-10-20 16:56:00,840 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','disk /dev/sda6 usage','Good','Precheck')
+2020-10-20 16:56:00,840 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','disk /dev/sda6 used percent','None','Precheck')
+2020-10-20 16:56:00,840 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','free cpu percent','Good','Precheck')
+2020-10-20 16:56:00,841 > INFO > INSERT INTO CHECKLIST (host,host_name,device_type,validation,status,report_name) VALUES ('10.17.84.221:4343','None','MD','free memory bytes','None','Precheck')
+2020-10-20 16:56:00,877 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:56:00','INFO:Precheck Completed','None')
+2020-10-20 16:56:00,891 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-20 16:56:00' where NAME='1603193133_6220608'
+2020-10-20 16:56:00,907 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193133_6220608','2020-10-20 16:56:00','INFO:==== Completed ====','None')
+2020-10-20 16:58:55,019 > INFO > DB Managenet imported
+2020-10-20 16:59:06,994 > INFO > DB Managenet imported
+2020-10-20 16:59:32,638 > INFO > DB Managenet imported
+2020-10-20 16:59:37,961 > INFO > DB Managenet imported
+2020-10-20 17:01:31,028 > INFO > DB Managenet imported
+2020-10-20 17:02:08,541 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603193528_5410407','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-20 17:02:08','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-20 17:02:08,664 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603193528_5410407'
+2020-10-20 17:02:08,677 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:02:08','INFO:Running: 1603193528_5410407 Type:precheck','None')
+2020-10-20 17:02:08,693 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:02:08','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-20 17:02:08,760 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:02:08','IN:Are you sure want to start the precheck','1603193528.759441')
+2020-10-20 17:07:19,455 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:07:19','yes','1603193528.759441')
+2020-10-20 17:07:21,121 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:07:21','INFO:Starting precheck','None')
+2020-10-20 17:07:21,136 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:07:21','INFO:Executing Precheck','None')
+2020-10-20 17:07:24,095 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:07:24','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-20 17:07:30,652 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:07:30','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-20 17:07:35,028 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:07:35','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-20 17:07:38,231 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:07:38','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-20 17:07:40,655 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','current boot partition','0','None','Precheck')
+2020-10-20 17:07:41,021 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-20 17:07:41,022 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition build','76207','None','Precheck')
+2020-10-20 17:07:41,022 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-20 17:07:41,022 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition build','76207','None','Precheck')
+2020-10-20 17:07:41,022 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','current boot partition','1','None','Precheck')
+2020-10-20 17:07:41,022 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-20 17:07:41,022 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition build','76207','None','Precheck')
+2020-10-20 17:07:41,023 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-20 17:07:41,023 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition build','76207','None','Precheck')
+2020-10-20 17:07:41,023 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 usage','4.1G','Good','Precheck')
+2020-10-20 17:07:41,023 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 used percent','24','None','Precheck')
+2020-10-20 17:07:41,023 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 usage','983.3M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-20 17:07:41,023 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 used percent','30','None','Precheck')
+2020-10-20 17:07:41,023 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 usage','982.8M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-20 17:07:41,023 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 used percent','30','None','Precheck')
+2020-10-20 17:07:41,024 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free cpu percent','87','Good','Precheck')
+2020-10-20 17:07:41,024 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free memory bytes','2706716','None','Precheck')
+2020-10-20 17:07:41,024 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 usage','5.1G','Good','Precheck')
+2020-10-20 17:07:41,024 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 used percent','8','None','Precheck')
+2020-10-20 17:07:41,024 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 usage','1.1G','Good','Precheck')
+2020-10-20 17:07:41,024 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 used percent','19','None','Precheck')
+2020-10-20 17:07:41,024 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 usage','1.1G','Good','Precheck')
+2020-10-20 17:07:41,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 used percent','20','None','Precheck')
+2020-10-20 17:07:41,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free cpu percent','96','Good','Precheck')
+2020-10-20 17:07:41,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free memory bytes','1635092','None','Precheck')
+2020-10-20 17:07:41,038 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:07:41','INFO:Precheck Completed','None')
+2020-10-20 17:07:41,053 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-20 17:07:41' where NAME='1603193528_5410407'
+2020-10-20 17:07:41,067 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603193528_5410407','2020-10-20 17:07:41','INFO:==== Completed ====','None')
+2020-10-20 20:26:43,007 > INFO > DB Managenet imported
+2020-10-20 20:26:48,589 > INFO > DB Managenet imported
+2020-10-22 16:25:54,842 > INFO > DB Managenet imported
+2020-10-22 16:25:57,469 > INFO > DB Managenet imported
+2020-10-22 16:26:49,118 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603364209_118293','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 16:26:49','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 16:26:49,203 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603364209_118293'
+2020-10-22 16:26:49,218 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:26:49','INFO:Running: 1603364209_118293 Type:precheck','None')
+2020-10-22 16:26:49,232 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:26:49','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 16:26:49,320 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:26:49','IN:Are you sure want to start the precheck','1603364209.3201988')
+2020-10-22 16:26:52,167 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:26:52','yes','1603364209.3201988')
+2020-10-22 16:26:53,336 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:26:53','INFO:Starting precheck','None')
+2020-10-22 16:26:53,357 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:26:53','INFO:Executing Precheck','None')
+2020-10-22 16:27:14,421 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:27:14','ERROR:Login error : 10.17.84.220:4343','None')
+2020-10-22 16:27:14,443 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:27:14','ERROR:Login error : 10.17.84.220:4343','None')
+2020-10-22 16:27:35,515 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:27:35','ERROR:Login error : 10.17.84.221:4343','None')
+2020-10-22 16:27:36,371 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:27:36','ERROR:Login error : 10.17.84.221:4343','None')
+2020-10-22 16:27:57,397 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:27:57','ERROR:Login error : 10.17.84.220:4343','None')
+2020-10-22 16:27:57,411 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:27:57','ERROR:Login error : 10.17.84.220:4343','None')
+2020-10-22 16:28:18,433 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:28:18','ERROR:Login error : 10.17.84.221:4343','None')
+2020-10-22 16:28:18,453 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:28:18','ERROR:Login error : 10.17.84.221:4343','None')
+2020-10-22 16:28:39,475 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:28:39','ERROR:Login error : 10.17.84.220:4343','None')
+2020-10-22 16:28:39,497 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:28:39','ERROR:Login error : 10.17.84.220:4343','None')
+2020-10-22 16:29:00,523 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:29:00','ERROR:Login error : 10.17.84.221:4343','None')
+2020-10-22 16:29:00,541 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:29:00','ERROR:Login error : 10.17.84.221:4343','None')
+2020-10-22 16:29:00,558 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:29:00','INFO:Precheck Completed','None')
+2020-10-22 16:29:00,571 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 16:29:00' where NAME='1603364209_118293'
+2020-10-22 16:29:00,584 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364209_118293','2020-10-22 16:29:00','INFO:==== Completed ====','None')
+2020-10-22 16:32:14,188 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603364534_1880362','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 16:32:14','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 16:32:14,284 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603364534_1880362'
+2020-10-22 16:32:14,299 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:14','INFO:Running: 1603364534_1880362 Type:precheck','None')
+2020-10-22 16:32:14,311 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:14','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 16:32:14,383 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:14','IN:Are you sure want to start the precheck','1603364534.3828304')
+2020-10-22 16:32:17,250 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:17','yes','1603364534.3828304')
+2020-10-22 16:32:18,403 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:18','INFO:Starting precheck','None')
+2020-10-22 16:32:18,997 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:18','INFO:Executing Precheck','None')
+2020-10-22 16:32:24,693 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:24','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-22 16:32:29,815 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:29','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-22 16:32:33,223 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:33','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 16:32:35,800 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:35','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 16:32:38,516 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:38','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 16:32:40,735 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:40','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 16:32:42,091 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','current boot partition','0','None','Precheck')
+2020-10-22 16:32:42,092 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 16:32:42,093 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition build','76207','None','Precheck')
+2020-10-22 16:32:42,093 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 16:32:42,093 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition build','76207','None','Precheck')
+2020-10-22 16:32:42,093 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','current boot partition','1','None','Precheck')
+2020-10-22 16:32:42,093 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 16:32:42,093 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition build','76207','None','Precheck')
+2020-10-22 16:32:42,093 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 16:32:42,093 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition build','76207','None','Precheck')
+2020-10-22 16:32:42,093 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 usage','4.1G','Good','Precheck')
+2020-10-22 16:32:42,094 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 used percent','24','None','Precheck')
+2020-10-22 16:32:42,094 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 usage','983.3M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 16:32:42,094 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 used percent','30','None','Precheck')
+2020-10-22 16:32:42,094 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 usage','982.8M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 16:32:42,094 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 used percent','30','None','Precheck')
+2020-10-22 16:32:42,094 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free cpu percent','88','Good','Precheck')
+2020-10-22 16:32:42,094 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free memory bytes','2688076','None','Precheck')
+2020-10-22 16:32:42,094 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 usage','5.1G','Good','Precheck')
+2020-10-22 16:32:42,094 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 used percent','8','None','Precheck')
+2020-10-22 16:32:42,095 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 usage','1.1G','Good','Precheck')
+2020-10-22 16:32:42,095 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 used percent','19','None','Precheck')
+2020-10-22 16:32:42,095 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 usage','1.1G','Good','Precheck')
+2020-10-22 16:32:42,095 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 used percent','20','None','Precheck')
+2020-10-22 16:32:42,096 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free cpu percent','98','Good','Precheck')
+2020-10-22 16:32:42,096 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free memory bytes','1622152','None','Precheck')
+2020-10-22 16:32:42,141 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:42','INFO:Precheck Completed','None')
+2020-10-22 16:32:42,165 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 16:32:42' where NAME='1603364534_1880362'
+2020-10-22 16:32:42,189 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364534_1880362','2020-10-22 16:32:42','INFO:==== Completed ====','None')
+2020-10-22 16:37:03,086 > INFO > DB Managenet imported
+2020-10-22 16:37:22,599 > INFO > DB Managenet imported
+2020-10-22 16:37:43,718 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603364863_7181737','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 16:37:43','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 16:37:43,842 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603364863_7181737'
+2020-10-22 16:37:43,856 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:37:43','INFO:Running: 1603364863_7181737 Type:precheck','None')
+2020-10-22 16:37:43,869 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:37:43','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 16:37:43,929 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:37:43','IN:Are you sure want to start the precheck','1603364863.9296377')
+2020-10-22 16:37:46,701 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:37:46','yes','1603364863.9296377')
+2020-10-22 16:37:47,946 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:37:47','INFO:Starting precheck','None')
+2020-10-22 16:37:47,971 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:37:47','INFO:Executing Precheck','None')
+2020-10-22 16:37:50,128 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:37:50','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-22 16:37:55,061 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:37:55','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-22 16:37:58,483 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:37:58','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 16:38:01,214 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:38:01','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 16:38:03,883 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:38:03','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 16:38:05,480 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:38:05','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 16:38:06,243 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','current boot partition','0','None','Precheck')
+2020-10-22 16:38:06,246 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 16:38:06,246 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition build','76207','None','Precheck')
+2020-10-22 16:38:06,246 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 16:38:06,247 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition build','76207','None','Precheck')
+2020-10-22 16:38:06,247 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','current boot partition','1','None','Precheck')
+2020-10-22 16:38:06,247 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 16:38:06,247 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition build','76207','None','Precheck')
+2020-10-22 16:38:06,247 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 16:38:06,248 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition build','76207','None','Precheck')
+2020-10-22 16:38:06,248 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 usage','4.1G','Good','Precheck')
+2020-10-22 16:38:06,248 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 used percent','24','None','Precheck')
+2020-10-22 16:38:06,248 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 usage','983.3M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 16:38:06,249 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 used percent','30','None','Precheck')
+2020-10-22 16:38:06,249 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 usage','982.8M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 16:38:06,249 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 used percent','30','None','Precheck')
+2020-10-22 16:38:06,249 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free cpu percent','84','Good','Precheck')
+2020-10-22 16:38:06,249 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free memory bytes','2687844','None','Precheck')
+2020-10-22 16:38:06,250 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 usage','5.1G','Good','Precheck')
+2020-10-22 16:38:06,250 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 used percent','8','None','Precheck')
+2020-10-22 16:38:06,250 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 usage','1.1G','Good','Precheck')
+2020-10-22 16:38:06,250 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 used percent','19','None','Precheck')
+2020-10-22 16:38:06,251 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 usage','1.1G','Good','Precheck')
+2020-10-22 16:38:06,251 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 used percent','20','None','Precheck')
+2020-10-22 16:38:06,251 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free cpu percent','98','Good','Precheck')
+2020-10-22 16:38:06,251 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free memory bytes','1622052','None','Precheck')
+2020-10-22 16:38:06,251 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','running version','Version 8.5.0.10-FIPS','None','Precheck')
+2020-10-22 16:38:06,251 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','running version','Version 8.6.0.5','None','Precheck')
+2020-10-22 16:38:06,365 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:38:06','INFO:Precheck Completed','None')
+2020-10-22 16:38:06,544 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 16:38:06' where NAME='1603364863_7181737'
+2020-10-22 16:38:06,648 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603364863_7181737','2020-10-22 16:38:06','INFO:==== Completed ====','None')
+2020-10-22 17:03:17,953 > INFO > DB Managenet imported
+2020-10-22 17:03:36,781 > INFO > DB Managenet imported
+2020-10-22 17:04:26,650 > INFO > DB Managenet imported
+2020-10-22 17:05:15,447 > INFO > DB Managenet imported
+2020-10-22 17:06:02,074 > INFO > DB Managenet imported
+2020-10-22 17:07:02,985 > INFO > DB Managenet imported
+2020-10-22 17:07:13,856 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603366633_8561254','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 17:07:13','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 17:07:13,966 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603366633_8561254'
+2020-10-22 17:07:13,982 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:13','INFO:Running: 1603366633_8561254 Type:precheck','None')
+2020-10-22 17:07:13,997 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:13','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 17:07:14,057 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:14','IN:Are you sure want to start the precheck','1603366634.056152')
+2020-10-22 17:07:16,354 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:16','yes','1603366634.056152')
+2020-10-22 17:07:18,074 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:18','INFO:Starting precheck','None')
+2020-10-22 17:07:18,101 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:18','INFO:Executing Precheck','None')
+2020-10-22 17:07:18,126 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:18','ERROR:Check execution error','None')
+2020-10-22 17:07:18,157 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:18','ERROR:Check execution error','None')
+2020-10-22 17:07:18,184 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:18','INFO:Precheck Completed','None')
+2020-10-22 17:07:18,214 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 17:07:18' where NAME='1603366633_8561254'
+2020-10-22 17:07:18,237 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366633_8561254','2020-10-22 17:07:18','INFO:==== Completed ====','None')
+2020-10-22 17:08:17,446 > INFO > DB Managenet imported
+2020-10-22 17:08:31,814 > INFO > DB Managenet imported
+2020-10-22 17:08:45,860 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603366725_860872','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 17:08:45','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 17:08:46,259 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603366725_860872'
+2020-10-22 17:08:46,451 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:08:46','INFO:Running: 1603366725_860872 Type:precheck','None')
+2020-10-22 17:08:46,478 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:08:46','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 17:08:46,573 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:08:46','IN:Are you sure want to start the precheck','1603366726.572942')
+2020-10-22 17:08:49,569 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:08:49','yes','1603366726.572942')
+2020-10-22 17:08:50,600 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:08:50','INFO:Starting precheck','None')
+2020-10-22 17:08:50,617 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:08:50','INFO:Executing Precheck','None')
+2020-10-22 17:08:53,103 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:08:53','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-22 17:08:58,389 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:08:58','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-22 17:09:01,902 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:09:01','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 17:09:04,662 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:09:04','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 17:09:07,612 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:09:07','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 17:09:09,050 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:09:09','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 17:09:09,777 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','current boot partition','0','None','Precheck')
+2020-10-22 17:09:09,778 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 17:09:09,778 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition build','76207','None','Precheck')
+2020-10-22 17:09:09,778 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 17:09:09,779 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition build','76207','None','Precheck')
+2020-10-22 17:09:09,779 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','current boot partition','1','None','Precheck')
+2020-10-22 17:09:09,779 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 17:09:09,779 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition build','76207','None','Precheck')
+2020-10-22 17:09:09,779 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 17:09:09,779 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition build','76207','None','Precheck')
+2020-10-22 17:09:09,780 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 usage','4.1G','Good','Precheck')
+2020-10-22 17:09:09,780 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 used percent','24','None','Precheck')
+2020-10-22 17:09:09,781 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 usage','983.3M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 17:09:09,781 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 used percent','30','None','Precheck')
+2020-10-22 17:09:09,781 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 usage','982.8M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 17:09:09,781 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 used percent','30','None','Precheck')
+2020-10-22 17:09:09,781 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free cpu percent','87','Good','Precheck')
+2020-10-22 17:09:09,781 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free memory bytes','2688004','None','Precheck')
+2020-10-22 17:09:09,781 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 usage','5.1G','Good','Precheck')
+2020-10-22 17:09:09,781 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 used percent','8','None','Precheck')
+2020-10-22 17:09:09,782 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 usage','1.1G','Good','Precheck')
+2020-10-22 17:09:09,782 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 used percent','19','None','Precheck')
+2020-10-22 17:09:09,782 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 usage','1.1G','Good','Precheck')
+2020-10-22 17:09:09,782 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 used percent','20','None','Precheck')
+2020-10-22 17:09:09,782 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free cpu percent','98','Good','Precheck')
+2020-10-22 17:09:09,782 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free memory bytes','1621812','None','Precheck')
+2020-10-22 17:09:09,782 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','running version','Version 8.5.0.10-FIPS','None','Precheck')
+2020-10-22 17:09:09,782 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','running version','Version 8.6.0.5','None','Precheck')
+2020-10-22 17:09:09,806 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:09:09','INFO:Precheck Completed','None')
+2020-10-22 17:09:09,830 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 17:09:09' where NAME='1603366725_860872'
+2020-10-22 17:09:09,862 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603366725_860872','2020-10-22 17:09:09','INFO:==== Completed ====','None')
+2020-10-22 17:57:09,426 > INFO > DB Managenet imported
+2020-10-22 18:04:15,215 > INFO > DB Managenet imported
+2020-10-22 18:04:25,145 > INFO > DB Managenet imported
+2020-10-22 18:05:16,546 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603370116_5462894','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 18:05:16','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 18:05:16,765 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603370116_5462894'
+2020-10-22 18:05:16,781 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:05:16','INFO:Running: 1603370116_5462894 Type:precheck','None')
+2020-10-22 18:05:16,798 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:05:16','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 18:05:16,866 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:05:16','IN:Are you sure want to start the precheck','1603370116.8654742')
+2020-10-22 18:05:54,601 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:05:54','yes','1603370116.8654742')
+2020-10-22 18:05:54,916 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:05:54','INFO:Starting precheck','None')
+2020-10-22 18:05:54,943 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:05:54','INFO:Executing Precheck','None')
+2020-10-22 18:06:00,382 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:06:00','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-22 18:06:09,652 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:06:09','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-22 18:06:13,091 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:06:13','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:06:15,808 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:06:15','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:06:19,289 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:06:19','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:06:21,507 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:06:21','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:06:22,602 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','current boot partition','0','None','Precheck')
+2020-10-22 18:06:22,605 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:06:22,606 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition build','76207','None','Precheck')
+2020-10-22 18:06:22,606 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:06:22,606 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition build','76207','None','Precheck')
+2020-10-22 18:06:22,606 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','current boot partition','1','None','Precheck')
+2020-10-22 18:06:22,607 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:06:22,607 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition build','76207','None','Precheck')
+2020-10-22 18:06:22,607 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:06:22,607 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition build','76207','None','Precheck')
+2020-10-22 18:06:22,608 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 usage','4.1G','Good','Precheck')
+2020-10-22 18:06:22,608 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 used percent','24','None','Precheck')
+2020-10-22 18:06:22,608 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 usage','983.3M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:06:22,609 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 used percent','30','None','Precheck')
+2020-10-22 18:06:22,609 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 usage','982.8M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:06:22,609 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 used percent','30','None','Precheck')
+2020-10-22 18:06:22,610 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free cpu percent','88','Good','Precheck')
+2020-10-22 18:06:22,610 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free memory bytes','2688216','None','Precheck')
+2020-10-22 18:06:22,610 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 usage','5.1G','Good','Precheck')
+2020-10-22 18:06:22,610 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 used percent','8','None','Precheck')
+2020-10-22 18:06:22,611 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 usage','1.1G','Good','Precheck')
+2020-10-22 18:06:22,611 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 used percent','19','None','Precheck')
+2020-10-22 18:06:22,611 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 usage','1.1G','Good','Precheck')
+2020-10-22 18:06:22,611 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 used percent','20','None','Precheck')
+2020-10-22 18:06:22,611 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free cpu percent','98','Good','Precheck')
+2020-10-22 18:06:22,612 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free memory bytes','1621560','None','Precheck')
+2020-10-22 18:06:22,612 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','running version','Version 8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:06:22,612 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','running version','Version 8.6.0.5','None','Precheck')
+2020-10-22 18:06:23,315 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:06:23','INFO:Precheck Completed','None')
+2020-10-22 18:06:23,352 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 18:06:23' where NAME='1603370116_5462894'
+2020-10-22 18:06:23,373 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370116_5462894','2020-10-22 18:06:23','INFO:==== Completed ====','None')
+2020-10-22 18:06:49,882 > INFO > DB Managenet imported
+2020-10-22 18:06:56,470 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603370216_470434','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 18:06:56','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 18:06:56,630 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603370216_470434'
+2020-10-22 18:06:56,658 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:06:56','INFO:Running: 1603370216_470434 Type:precheck','None')
+2020-10-22 18:06:56,690 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:06:56','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 18:06:56,798 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:06:56','IN:Are you sure want to start the precheck','1603370216.7980733')
+2020-10-22 18:07:04,606 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:04','yes','1603370216.7980733')
+2020-10-22 18:07:04,835 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:04','INFO:Starting precheck','None')
+2020-10-22 18:07:04,873 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:04','INFO:Executing Precheck','None')
+2020-10-22 18:07:07,039 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:07','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-22 18:07:11,950 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:11','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-22 18:07:15,454 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:15','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:07:18,146 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:18','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:07:20,767 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:20','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:07:22,324 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:22','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:07:23,608 > ERROR > update_upgrade_status_by_device_host
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\db_management.py", line 192, in update_upgrade_status_by_device_host
+    cursor.execute("UPDATE JOBS set STATUS='{}', MSG='{}' where HOST='{}'".format(status,msg,host))
+sqlite3.OperationalError: near "hostname": syntax error
+2020-10-22 18:07:23,611 > ERROR > update_upgrade_status_by_device_host
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\db_management.py", line 192, in update_upgrade_status_by_device_host
+    cursor.execute("UPDATE JOBS set STATUS='{}', MSG='{}' where HOST='{}'".format(status,msg,host))
+sqlite3.OperationalError: near "hostname": syntax error
+2020-10-22 18:07:23,613 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','current boot partition','0','None','Precheck')
+2020-10-22 18:07:23,615 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:07:23,615 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition build','76207','None','Precheck')
+2020-10-22 18:07:23,615 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:07:23,615 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition build','76207','None','Precheck')
+2020-10-22 18:07:23,615 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','current boot partition','1','None','Precheck')
+2020-10-22 18:07:23,615 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:07:23,616 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition build','76207','None','Precheck')
+2020-10-22 18:07:23,616 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:07:23,616 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition build','76207','None','Precheck')
+2020-10-22 18:07:23,616 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 usage','4.1G','Good','Precheck')
+2020-10-22 18:07:23,616 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 used percent','24','None','Precheck')
+2020-10-22 18:07:23,616 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 usage','983.3M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:07:23,616 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 used percent','30','None','Precheck')
+2020-10-22 18:07:23,617 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 usage','982.8M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:07:23,617 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 used percent','30','None','Precheck')
+2020-10-22 18:07:23,617 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free cpu percent','87','Good','Precheck')
+2020-10-22 18:07:23,617 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free memory bytes','2688256','None','Precheck')
+2020-10-22 18:07:23,617 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 usage','5.1G','Good','Precheck')
+2020-10-22 18:07:23,617 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 used percent','8','None','Precheck')
+2020-10-22 18:07:23,617 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 usage','1.1G','Good','Precheck')
+2020-10-22 18:07:23,617 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 used percent','19','None','Precheck')
+2020-10-22 18:07:23,618 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 usage','1.1G','Good','Precheck')
+2020-10-22 18:07:23,618 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 used percent','20','None','Precheck')
+2020-10-22 18:07:23,618 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free cpu percent','98','Good','Precheck')
+2020-10-22 18:07:23,618 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free memory bytes','1621344','None','Precheck')
+2020-10-22 18:07:23,618 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','running version','Version 8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:07:23,618 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','running version','Version 8.6.0.5','None','Precheck')
+2020-10-22 18:07:23,652 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:23','INFO:Precheck Completed','None')
+2020-10-22 18:07:23,675 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 18:07:23' where NAME='1603370216_470434'
+2020-10-22 18:07:23,698 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370216_470434','2020-10-22 18:07:23','INFO:==== Completed ====','None')
+2020-10-22 18:08:06,470 > INFO > DB Managenet imported
+2020-10-22 18:08:39,647 > INFO > DB Managenet imported
+2020-10-22 18:09:12,765 > INFO > DB Managenet imported
+2020-10-22 18:09:30,413 > INFO > DB Managenet imported
+2020-10-22 18:10:19,392 > INFO > DB Managenet imported
+2020-10-22 18:10:33,872 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603370433_8723054','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 18:10:33','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 18:10:34,223 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603370433_8723054'
+2020-10-22 18:10:34,247 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:34','INFO:Running: 1603370433_8723054 Type:precheck','None')
+2020-10-22 18:10:34,271 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:34','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 18:10:34,360 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:34','IN:Are you sure want to start the precheck','1603370434.360199')
+2020-10-22 18:10:37,726 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:37','yes','1603370434.360199')
+2020-10-22 18:10:38,395 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:38','INFO:Starting precheck','None')
+2020-10-22 18:10:38,427 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:38','INFO:Executing Precheck','None')
+2020-10-22 18:10:40,593 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:40','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-22 18:10:45,948 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:45','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-22 18:10:49,402 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:49','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:10:52,102 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:52','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:10:55,041 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:55','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:10:56,489 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:56','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:10:57,190 > ERROR > update_upgrade_status_by_device_host
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\db_management.py", line 192, in update_upgrade_status_by_device_host
+    cursor.execute("UPDATE JOBS set STATUS='{}', MSG='{}' where HOST='{}'".format(status,msg,host))
+sqlite3.OperationalError: near "hostname": syntax error
+2020-10-22 18:10:57,192 > ERROR > update_upgrade_status_by_device_host
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\db_management.py", line 192, in update_upgrade_status_by_device_host
+    cursor.execute("UPDATE JOBS set STATUS='{}', MSG='{}' where HOST='{}'".format(status,msg,host))
+sqlite3.OperationalError: near "hostname": syntax error
+2020-10-22 18:10:57,192 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','current boot partition','0','None','Precheck')
+2020-10-22 18:10:57,194 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:10:57,194 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition build','76207','None','Precheck')
+2020-10-22 18:10:57,194 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:10:57,194 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition build','76207','None','Precheck')
+2020-10-22 18:10:57,194 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','current boot partition','1','None','Precheck')
+2020-10-22 18:10:57,194 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:10:57,194 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition build','76207','None','Precheck')
+2020-10-22 18:10:57,194 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:10:57,195 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition build','76207','None','Precheck')
+2020-10-22 18:10:57,195 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 usage','4.1G','Good','Precheck')
+2020-10-22 18:10:57,195 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 used percent','24','None','Precheck')
+2020-10-22 18:10:57,195 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 usage','983.3M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:10:57,195 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 used percent','30','None','Precheck')
+2020-10-22 18:10:57,195 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 usage','982.8M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:10:57,195 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 used percent','30','None','Precheck')
+2020-10-22 18:10:57,195 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free cpu percent','87','Good','Precheck')
+2020-10-22 18:10:57,195 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free memory bytes','2687892','None','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 usage','5.1G','Good','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 used percent','8','None','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 usage','1.1G','Good','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 used percent','19','None','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 usage','1.1G','Good','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 used percent','20','None','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free cpu percent','98','Good','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free memory bytes','1621000','None','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','running version','Version 8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:10:57,196 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','running version','Version 8.6.0.5','None','Precheck')
+2020-10-22 18:10:57,221 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:57','INFO:Precheck Completed','None')
+2020-10-22 18:10:57,244 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 18:10:57' where NAME='1603370433_8723054'
+2020-10-22 18:10:57,269 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603370433_8723054','2020-10-22 18:10:57','INFO:==== Completed ====','None')
+2020-10-22 18:12:50,392 > INFO > DB Managenet imported
+2020-10-22 18:20:49,818 > INFO > DB Managenet imported
+2020-10-22 18:21:05,222 > INFO > DB Managenet imported
+2020-10-22 18:21:08,876 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603371068_8763216','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 18:21:08','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 18:21:09,111 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603371068_8763216'
+2020-10-22 18:21:09,142 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:09','INFO:Running: 1603371068_8763216 Type:precheck','None')
+2020-10-22 18:21:09,167 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:09','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 18:21:09,264 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:09','IN:Are you sure want to start the precheck','1603371069.2631452')
+2020-10-22 18:21:13,927 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:13','yes','1603371069.2631452')
+2020-10-22 18:21:15,302 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:15','INFO:Starting precheck','None')
+2020-10-22 18:21:16,575 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:16','INFO:Executing Precheck','None')
+2020-10-22 18:21:19,148 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:19','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-22 18:21:27,881 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:27','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-22 18:21:31,470 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:31','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:21:34,086 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:34','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:21:36,726 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:36','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:21:38,144 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:38','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:21:39,023 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','current boot partition','0','None','Precheck')
+2020-10-22 18:21:39,024 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:21:39,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition build','76207','None','Precheck')
+2020-10-22 18:21:39,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:21:39,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition build','76207','None','Precheck')
+2020-10-22 18:21:39,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','current boot partition','1','None','Precheck')
+2020-10-22 18:21:39,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:21:39,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition build','76207','None','Precheck')
+2020-10-22 18:21:39,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:21:39,025 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition build','76207','None','Precheck')
+2020-10-22 18:21:39,026 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 usage','4.1G','Good','Precheck')
+2020-10-22 18:21:39,026 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 used percent','24','None','Precheck')
+2020-10-22 18:21:39,026 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 usage','983.3M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:21:39,026 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 used percent','30','None','Precheck')
+2020-10-22 18:21:39,026 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 usage','982.8M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:21:39,026 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 used percent','30','None','Precheck')
+2020-10-22 18:21:39,026 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free cpu percent','87','Good','Precheck')
+2020-10-22 18:21:39,027 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free memory bytes','2687512','None','Precheck')
+2020-10-22 18:21:39,027 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 usage','5.1G','Good','Precheck')
+2020-10-22 18:21:39,027 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 used percent','8','None','Precheck')
+2020-10-22 18:21:39,027 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 usage','1.1G','Good','Precheck')
+2020-10-22 18:21:39,027 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 used percent','19','None','Precheck')
+2020-10-22 18:21:39,027 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 usage','1.1G','Good','Precheck')
+2020-10-22 18:21:39,028 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 used percent','20','None','Precheck')
+2020-10-22 18:21:39,028 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free cpu percent','98','Good','Precheck')
+2020-10-22 18:21:39,028 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free memory bytes','1620652','None','Precheck')
+2020-10-22 18:21:39,028 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','running version','Version 8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:21:39,028 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','running version','Version 8.6.0.5','None','Precheck')
+2020-10-22 18:21:39,045 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:39','INFO:Precheck Completed','None')
+2020-10-22 18:21:39,070 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 18:21:39' where NAME='1603371068_8763216'
+2020-10-22 18:21:39,089 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371068_8763216','2020-10-22 18:21:39','INFO:==== Completed ====','None')
+2020-10-22 18:32:23,187 > INFO > INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '1603371743_1871245','LAB WIRELESS UPGRADE 8.5','STARTING','2020-10-22 18:32:23','','' WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));
+2020-10-22 18:32:23,808 > INFO > UPDATE HISTORY set STATUS='RUNNING',MSG='',E_DATE='' where NAME='1603371743_1871245'
+2020-10-22 18:32:23,940 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:23','INFO:Running: 1603371743_1871245 Type:precheck','None')
+2020-10-22 18:32:23,971 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:23','INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation','None')
+2020-10-22 18:32:24,086 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:24','IN:Are you sure want to start the precheck','1603371744.0865116')
+2020-10-22 18:32:28,335 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:28','yes','1603371744.0865116')
+2020-10-22 18:32:30,120 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:30','INFO:Starting precheck','None')
+2020-10-22 18:32:30,149 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:30','INFO:Executing Precheck','None')
+2020-10-22 18:32:32,740 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:32','INFO:Login Success => 10.17.84.220:4343','None')
+2020-10-22 18:32:38,291 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:38','INFO:Login Success => 10.17.84.221:4343','None')
+2020-10-22 18:32:41,947 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:41','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:32:44,781 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:44','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:32:47,481 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:47','INFO:Session Valid : 10.17.84.220:4343','None')
+2020-10-22 18:32:48,915 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:48','INFO:Session Valid : 10.17.84.221:4343','None')
+2020-10-22 18:32:49,682 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','current boot partition','0','None','Precheck')
+2020-10-22 18:32:49,683 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:32:49,683 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','first partition build','76207','None','Precheck')
+2020-10-22 18:32:49,683 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','second partition build','76207','None','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','current boot partition','1','None','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','first partition build','76207','None','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition version','8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','second partition build','76207','None','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 usage','4.1G','Good','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sdb1 used percent','24','None','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 usage','983.3M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:32:49,684 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda5 used percent','30','None','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 usage','982.8M','Warning: Avaliable disk less than 200 MB','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','disk /dev/sda6 used percent','30','None','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free cpu percent','88','Good','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','free memory bytes','2687616','None','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 usage','5.1G','Good','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sdb1 used percent','8','None','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 usage','1.1G','Good','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda5 used percent','19','None','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 usage','1.1G','Good','Precheck')
+2020-10-22 18:32:49,685 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','disk /dev/sda6 used percent','20','None','Precheck')
+2020-10-22 18:32:49,686 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free cpu percent','98','Good','Precheck')
+2020-10-22 18:32:49,686 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','free memory bytes','1619588','None','Precheck')
+2020-10-22 18:32:49,686 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.220:4343','NaaS-MM-1','MM','running version','Version 8.5.0.10-FIPS','None','Precheck')
+2020-10-22 18:32:49,686 > INFO > INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('10.17.84.221:4343','NaaS-VMC-1','MD','running version','Version 8.6.0.5','None','Precheck')
+2020-10-22 18:32:49,714 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:49','INFO:Precheck Completed','None')
+2020-10-22 18:32:49,922 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-22 18:32:49' where NAME='1603371743_1871245'
+2020-10-22 18:32:49,946 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603371743_1871245','2020-10-22 18:32:49','INFO:==== Completed ====','None')
+2020-10-22 19:03:42,688 > INFO > DB Managenet imported
+2020-10-22 19:04:07,817 > INFO > DB Managenet imported
+2020-10-22 19:05:06,154 > INFO > DB Managenet imported
+2020-10-22 19:06:10,435 > INFO > DB Managenet imported
+2020-10-22 19:06:20,473 > INFO > DB Managenet imported
+2020-10-22 19:07:03,753 > INFO > DB Managenet imported

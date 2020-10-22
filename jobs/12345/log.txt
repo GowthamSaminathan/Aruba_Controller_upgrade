@@ -1,0 +1,10 @@
+2020-10-19 14:55:29,917 > INFO > JOBNAME:12345
+2020-10-19 14:55:29,918 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\configuration_2.yaml
+2020-10-19 14:55:29,991 > INFO > Starting Job
+2020-10-19 14:55:29,997 > WARNING > WARNING:Running status not updated in DB (Bug)
+2020-10-19 14:55:30,013 > DEBUG > WARNING:Running status not updated in DB (Bug)
+2020-10-19 14:55:30,027 > ERROR > ERROR:Terminating Job , DB update failed...
+2020-10-19 14:55:30,040 > DEBUG > ERROR:Terminating Job , DB update failed...
+2020-10-19 14:55:30,055 > ERROR > ERROR:Init failed
+2020-10-19 14:55:30,070 > DEBUG > ERROR:Init failed
+2020-10-19 14:55:30,085 > INFO > INFO:==== Completed ====

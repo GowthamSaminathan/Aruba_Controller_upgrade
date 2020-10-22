@@ -67,8 +67,9 @@ def async_create_event_db(db_path):
 
 def create_pre_post_db(db_path):
 	conn = sqlite3.connect(db_path)
-	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,DEVICE_TYPE NAME TEXT NOT NULL,HOST_NAME TEXT NOT NULL,HOST TEXT NOT NULL,"
-	cmd = cmd+"VALIDATION TEXT NOT NULL,STATUS TEXT,REPORT_NAME TEXT"
+	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,host NAME TEXT NOT NULL,hostname NAME TEXT NOT NULL,"
+	cmd = cmd + "device_type NAME TEXT NOT NULL,validation NAME TEXT,value NAME TEXT,status NAME TEXT,report_name NAME TEXT"
+
 	try:
 		conn.execute('''CREATE TABLE CHECKLIST({});'''.format(cmd))
 		print("CHECKLIST table created successfully")
@@ -86,17 +87,18 @@ def checklist_update(db_path,all_data,report_name):
 		for data in all_data:
 
 			host_type = data.get("device_type")
-			host_name = data.get("host_name")
+			hostname = data.get("hostname")
 			host = data.get("host")
 			validation = data.get("validation")
+			status = data.get("status")
+			value = data.get("value")
+			#report_name = data.get("report_name")
 
-			for validation in data.get("report"):
-				status = data.get(validation)
-				cmd = "INSERT INTO CHECKLIST (DEVICE_TYPE,HOST_NAME,HOST,VALIDATION,STATUS,REPORT_NAME) VALUES ('{}','{}','{}','{}','{}','{}')"
-				cmd = cmd.format(host_type,host_name,host,validation,status,report_name)
-				logger.info(cmd)
-			
-				cursor.execute(cmd)
+			cmd = "INSERT INTO CHECKLIST (host,hostname,device_type,validation,value,status,report_name) VALUES ('{}','{}','{}','{}','{}','{}','{}')"
+			cmd = cmd.format(host,hostname,host_type,validation,value,status,report_name)
+			logger.info(cmd)
+		
+			cursor.execute(cmd)
 		
 		conn.commit()
 		

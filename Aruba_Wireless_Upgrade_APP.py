@@ -30,6 +30,8 @@ import pickle
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 requests.adapters.DEFAULT_RETRIES = 0
 
+report_data = dict()
+
 
 
 class Aruba_Wireless_upgrade():
@@ -307,7 +309,6 @@ class Aruba_Wireless_upgrade():
 
 			finally:
 				data = {"device_type":host_type,"host_name":host_name,"host":host_ip,"validation":"Alternative Disk","precheck":str(disk),"precheck_remark":_status,"precheck_note":_status}
-				db_management.checklist_update(self.validation_db,data,"Precheck")
 				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,_status,"Auto detected alternative disk {}".format(disk))
 
 				self.user_pause_terminate()
@@ -335,8 +336,11 @@ class Aruba_Wireless_upgrade():
 				print("Starting precheck..........1")
 				wgen = wireless_validation.gen_report()
 				phase1_report = wgen.run_checklist(self,hosts)
-				for p in phase1_report:
-					print(p)
+				db_management.checklist_update(self.validation_db,phase1_report,check_type)
+				#report_file = os.path.join(self.job_path,"Reports",check_type)
+				#rf = open(report_file,"wb")
+				#pickle.dump(phase1_report,rf)
+				#rf.close()
 
 			return True
 			# Phase 2 Precheck
@@ -1276,6 +1280,7 @@ class main_model():
 
 	def main_run(self,job_name,config_file,job_list):
 		try:
+			global report_data
 			self.print = pprint.PrettyPrinter(indent=4)
 			self.final_status = ["COMPLETED",""]
 			self.job_name = str(job_name)
@@ -1291,6 +1296,7 @@ class main_model():
 				os.makedirs(os.path.join(job_path,"Precheck"))
 				os.makedirs(os.path.join(job_path,"Postcheck"))
 				os.makedirs(os.path.join(job_path,"Upgrade"))
+				os.makedirs(os.path.join(job_path,"Reports"))
 			else:
 				print("Job Path already exist (terminating job): "+str(job_path))
 				return None
@@ -1406,6 +1412,7 @@ class main_model():
 
 
 if __name__ == '__main__':
-	mm = main_model()
-	mm.main_run(12345,"configuration_2.yaml",["precheck"])
+	pass
+	#mm = main_model()
+	#mm.main_run(12345,"configuration_2.yaml",["precheck"])
 	#print("Direct call not supported...")
