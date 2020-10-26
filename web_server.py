@@ -179,6 +179,7 @@ def get_all_jobs():
 	except Exception:
 		logger.exception("get_all_jobs")
 
+
 @app.route('/portal/read_last_events',methods = ['GET'])
 def read_last_events():
 	try:
@@ -310,6 +311,23 @@ def read_all_jobs():
 	except Exception :
 		logger.exception("read_all_jobs")
 		return jsonify({"results":"error","message":"Check server log"})
+
+
+@app.route('/portal/get_report',methods = ['GET'])
+def get_report():
+	try:
+		if request.method == 'GET':
+			job_name = request.args.get('job_name')
+			report_name = request.args.get('report_name')
+			#download = request.args.get('download')
+
+			report = os.path.join(app.config['JOBS_FILES'],str(job_name),"Reports",report_name)
+			return open(report).read()
+
+	except Exception :
+		logger.exception("get_report")
+		return jsonify({"results":"error","message":"Check server log"})
+
 
 @app.route('/portal/start_execution',methods = ['POST'])
 def start_execution():

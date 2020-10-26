@@ -14,6 +14,41 @@ import re
 import db_management
 
 
+def validating_login(obj,hosts):
+	results = []
+	
+	for single_host in hosts:
+		hostname = single_host.get("hostname")
+		host = single_host.get("host")
+		device_type = single_host.get("device_type")
+
+		device_info = {"hostname":hostname}
+		device_info.update({"host":host})
+		device_info.update({"device_type":device_type})
+		db_management.update_upgrade_status_by_device_host(obj.upgrade_db,host,"RUNNING Checklist","Validating login")
+		_d = dict()
+		try:
+			cmd_out = obj.execute_cmd(single_host,["show clock"],True)
+			if type(cmd_out) == dict:
+				clock = cmd_out.get("show clock")
+				_d = {"validation":"Login","value":"Success","status":"Good"}
+				_d.update(device_info)
+				results.append(_d)
+			else:
+				if cmd_out[0] == False:
+					_d = {"validation":"Login","value":"Authentication failed","status":"Failed"}
+				else:
+					_d = {"validation":"Login","value":"Request timeout","status":"Failed"}
+				_d.update(device_info)
+				results.append(_d)
+
+		except Exception:
+			#obj.eprint("error","Upload Image Error For : {} - {}".format(host_name,host_ip))
+			obj.logger.exception("get_version")
+
+	return results
+
+
 def get_version(obj,hosts):
 	""" Get the show version output """
 	results = []
@@ -188,6 +223,13 @@ def get_system_health(obj,hosts):
 class gen_report():
 	def __init__(self):
 		pass
+
+	def update_completed_status(self):
+		for single_host in self.hosts:
+			host = single_host.get("host")
+			db_management.update_upgrade_status_by_device_host(self.obj.upgrade_db,host,"COMPLETED","Checklist")
+
+
 	def run_checklist(self,obj,hosts):
 		#self.report_location = report_location
 		#self.report_data = report_data
@@ -195,6 +237,14 @@ class gen_report():
 		self.hosts = hosts
 		all_reports = []
 		
+		#If login failed , then don't run other precheck for any devices
+		result = validating_login(self.obj,self.hosts)
+		all_reports = all_reports + result
+		for res in result:
+			if res.get("status") != "Good":
+				self.update_completed_status()
+				return all_reports
+
 		result = get_disk_images(self.obj,self.hosts)
 		report = self.validate_system_image(result)
 		all_reports = all_reports + report
@@ -207,9 +257,7 @@ class gen_report():
 		report = result
 		all_reports = all_reports + report
 
-		for single_host in self.hosts:
-			host = single_host.get("host")
-			db_management.update_upgrade_status_by_device_host(self.obj.upgrade_db,host,"COMPLETED","Checklist")
+		self.update_completed_status()
 
 		return all_reports
 

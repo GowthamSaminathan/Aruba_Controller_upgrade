@@ -382,6 +382,18 @@ def insert_if_lastjob_completed(db_path,data):
 		logger.exception("insert_if_lastjob_completed")
 
 
+def get_checklist(db_path,report_name):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		evnt = conn.execute("SELECT device_type,hostname,host,validation,value,status,report_name FROM CHECKLIST WHERE report_name='{}'"
+			.format(report_name))
+		evnt = evnt.fetchall()
+		conn.close()
+		return evnt
+	except Exception:
+		logger.exception("get_checklist")
+
 
 #data = {"NAME":"test","CONF_FILE":"fff","STATUS":"running","S_DATE":"dddd","E_DATE":"dsdsd","MSG":"ok"}
 

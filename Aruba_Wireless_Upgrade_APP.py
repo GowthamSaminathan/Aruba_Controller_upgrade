@@ -25,6 +25,7 @@ import time
 import pprint
 import wireless_validation
 import pickle
+import reports
 
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -521,7 +522,7 @@ class Aruba_Wireless_upgrade():
 			self.logger.exception("validate_all_sync")
 			return False
 
-	def execute_cmd(self,single_host,cmds):
+	def execute_cmd(self,single_host,cmds,debug=False):
 		try:
 			self.user_pause_terminate()
 			out_cmd = {}
@@ -546,8 +547,11 @@ class Aruba_Wireless_upgrade():
 
 				#self.logout(session,host_ip)
 				return out_cmd
+
+			if debug == True:
+				return login_status
 		except Exception:
-			self.logger.exception("get_image_details: ")
+			self.logger.exception("execute_cmd: ")
 
 	def upload_image_http(self,single_host):
 		try:
@@ -1187,11 +1191,12 @@ class main_model():
 
 
 	def insert_hosts_details_to_db(self):
+		global report_data
 		try:
 
 			self.logger.info("Inserting upgrade list to upgrade.db")
 			upgrade = self.gen_config.get("Upgrade")
-
+			report_data.update({"Upgrade":upgrade})
 			for host in upgrade:
 				db_management.insert_to_upgrade(self.upgrade_db,self.job_name,self.config_file_name,host)
 
@@ -1269,14 +1274,24 @@ class main_model():
 		except Exception:
 			self.logger.exception("init_upgrade")
 
+	def create_report(self,report_type):
+		try:
+			r_gen = reports.report_gen(report_data,report_type)
+			report = r_gen.create_report()
+			report_file = os.path.join(self.job_path,"Reports",report_type+".html")
+			open(report_file,"w").write(report)
+		except Exception as e:
+			self.logger.exception("create_report")
+
+
 	def finish_upgrade(self,status,msg):
 		try:
 			E_DATE = str(datetime.datetime.now()).split(".")[0]
+			report_data.update({"completed status":status,"completed msg":msg})
 			db_management.update_job_status_by_name(self.job_history_db,status,self.job_name,msg,E_DATE)
 			self.eprint("info","==== Completed ====")
 		except Exception:
 			self.logger.exception("finish_upgrade")
-
 
 	def main_run(self,job_name,config_file,job_list):
 		try:
@@ -1288,8 +1303,12 @@ class main_model():
 			self.config_file = os.path.join(os.getcwd(),"conf_files",config_file)
 			self.job_list = job_list
 
+			report_data.update({"Job_name":self.job_name})
+			report_data.update({"Configuration_file":self.config_file_name})
+
 			job_path = os.path.join(os.getcwd(),"jobs",self.job_name)
 			self.job_path = job_path
+			report_data.update({"job_path":self.job_path})
 
 			if not os.path.exists(job_path):
 				os.makedirs(job_path)
@@ -1319,6 +1338,8 @@ class main_model():
 			self.async_event_db = os.path.join(os.getcwd(),"jobs",self.job_name,"async_event.db")
 			self.validation_db = os.path.join(os.getcwd(),"jobs",self.job_name,"validation.db")
 
+			report_data.update({"validation_db":self.validation_db})
+
 			if self.init_upgrade() == True:
 				self.eprint("info","Starting Configuration {} Validation".format(config_file))
 				config_status = self.validate_configuration()
@@ -1327,6 +1348,7 @@ class main_model():
 				return False
 
 			if config_status == True:
+				report_data.update({"configuration":self.gen_config})
 				ar_upgrade = Aruba_Wireless_upgrade(self)
 
 				# Start the precheck
@@ -1335,8 +1357,11 @@ class main_model():
 				self.logger.info(res)
 				pre_check_valid = False
 				if res == "yes":
+					report_data.update({"precheck_start_time":datetime.datetime.now()})
 					self.eprint("info","Starting precheck")
 					pre_check_valid = ar_upgrade.Pre_Post_check("Precheck")
+					report_data.update({"precheck_end_time":datetime.datetime.now()})
+					self.create_report("Precheck")
 				else:
 					self.eprint("warning","TERMINATED User aborted the precheck")
 					self.final_status = ["TERMINATED","User aborted the precheck"]
@@ -1351,7 +1376,9 @@ class main_model():
 						res = self.get_user_input("Are you sure want to start the AOS Upgrade",["yes","no"])
 						if res == "yes":
 							self.user_pause_terminate()
+							report_data.update({"Upload start time":datetime.datetime.now()})
 							upgrade_valid = ar_upgrade.Upload_Images()
+							report_data.update({"Upload end time":datetime.datetime.now()})
 							self.eprint("info","Starting Upgrade")
 						else:
 							self.eprint("warning","TERMINATED User aborted the upgrade")
@@ -1372,8 +1399,10 @@ class main_model():
 					res = self.get_user_input("Are you sure want to start the Reboot",["yes","no"])
 					if res == "yes":
 						self.user_pause_terminate()
+						report_data.update({"reboot start time":datetime.datetime.now()})
 						self.eprint("info","Starting reboot")
 						ar_upgrade.ReBoot_Controller()
+						report_data.update({"reboot end time":datetime.datetime.now()})
 					else:
 						self.eprint("warning","TERMINATED User aborted the reboot")
 						self.final_status = ["TERMINATED","User aborted the reboot"]
@@ -1387,6 +1416,7 @@ class main_model():
 				if res == "yes":
 					self.eprint("info","Starting postcheck")
 					post_check_valid = ar_upgrade.Pre_Post_check("Postcheck")
+					self.create_report("Upgrade")
 				else:
 					self.eprint("warning","TERMINATED User aborted the postcheck")
 					self.final_status = ["TERMINATED","User aborted the postcheck"]
@@ -1404,8 +1434,8 @@ class main_model():
 			#self.logger.exception("main_run")
 		finally:
 			# Update the job status as completed with message
-			print("===============>>>>")
 			self.finish_upgrade(self.final_status[0],self.final_status[1])
+			print("=============== Completed =================")
 
 
 
