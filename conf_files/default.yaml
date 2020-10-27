@@ -81,5 +81,4 @@ default_settings:
   Validate_Image_before_upgrade: True
   Validate_controller_sync_before_upgrade: True
   Validate_controller_up_before_upgrade: True
-  Validate_Image_before_upgrade: True
 

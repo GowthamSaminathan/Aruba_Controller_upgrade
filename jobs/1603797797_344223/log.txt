@@ -1,0 +1,9 @@
+2020-10-27 16:53:17,366 > INFO > JOBNAME:1603797797_344223
+2020-10-27 16:53:17,366 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\test123
+2020-10-27 16:53:17,430 > INFO > Starting Job
+2020-10-27 16:53:17,445 > INFO > INFO:Running: 1603797797_344223 Type:precheck
+2020-10-27 16:53:17,459 > INFO > INFO:Starting Configuration test123 Validation
+2020-10-27 16:53:17,513 > INFO > Inserting upgrade list to upgrade.db
+2020-10-27 16:53:19,564 > INFO > yes
+2020-10-27 16:53:19,564 > INFO > INFO:Starting precheck
+2020-10-27 16:53:19,579 > INFO > INFO:Executing Precheck

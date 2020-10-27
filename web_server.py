@@ -142,6 +142,41 @@ def read_config():
 		logger.exception("read_config")
 		return jsonify({"results":"error","message":"Check server log"})
 
+@app.route('/portal/save_config',methods = ['POST'])
+def save_config():
+	try:
+		if request.method == 'POST':
+			request_data = request.get_json()
+			config_name = request_data.get('config_name')
+			config_json = request_data.get('config_json')
+			#download = request.args.get('download')
+
+			conf_file = os.path.join(app.config['CONF_FILES'],config_name)
+
+			
+			config_yaml = yaml.safe_dump(config_json,default_flow_style=False)
+			config = config_file_generator.validate_create_yaml(config_yaml,logger)
+
+			if type(config) == dict:
+				if config.get("status") == "success":
+					try:
+						config_yaml = config.get("config_yaml")
+						open(conf_file,"w").write(config_yaml)
+						return jsonify({"results":"success","data":"Saved: "+config_name})
+					except Exception:
+						logger.exception("Writing gen_config.yaml failed")
+						return  jsonify({"results":"failed","message":"Failed to save"})
+				else:
+					error = config.get("error")
+					return  jsonify({"results":"error","data":error})
+
+			else:
+				return  jsonify({"results":"failed","message":"Failed to save"})
+
+	except Exception :
+		logger.exception("read_config")
+		return jsonify({"results":"failed","message":"Check server log"})
+
 
 def get_last_job():
 	try:

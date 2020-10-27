@@ -1,0 +1,109 @@
+<script>
+function save_execution(){
+
+
+file_name = $("#p2_upgrade_name").val();
+aos_source = $("#p2_upgrade_source").val();
+
+if(aos_source_device_type == "local")
+{
+source_server = $("#p2_upgrade_source").val();
+source_server_path = $("#p2_upgrade_path").val();
+AOS_Source = {"device_type":source_server,"local_path":source_server_path}
+}
+
+if(aos_source_device_type == "ftp")
+{
+source_server = $("#p2_upgrade_source").val();
+source_server_host = $("#p2_upgrade_host").val();
+source_server_path = $("#p2_upgrade_path").val();
+source_server_uname = $("#p2_upgrade_uname").val();
+source_server_pass = $("#p2_upgrade_password").val();
+AOS_Source = {"device_type":source_server,"ftp_host":source_server_host,"ftp_username":source_server_uname,"ftp_password":source_server_pass,"ftp_path":source_server_path}
+}
+
+if(aos_source_device_type == "scp")
+{
+source_server = $("#p2_upgrade_source").val();
+source_server_host $("#p2_upgrade_host").val();
+source_server_path = $("#p2_upgrade_path").val();
+source_server_uname = $("#p2_upgrade_uname").val();
+source_server_pass = $("#p2_upgrade_password").val();
+AOS_Source = {"device_type":source_server,"scp_host":source_server_host,"scp_username":source_server_uname,"scp_password":source_server_pass,"scp_path":source_server_path}
+}
+
+if(aos_source_device_type == "tftp")
+{
+source_server = $("#p2_upgrade_source").val();
+source_server_host $("#p2_upgrade_host").val();
+source_server_path = $("#p2_upgrade_path").val();
+AOS_Source = {"device_type":source_server,"tftp_host":source_server_host,"tftp_path":source_server_path}
+}
+
+
+max_ap_preload = $("#max_ap_preload").val();
+md_precheck_cmd = $("#md_precheck_cmd").val();
+mm_precheck_cmd = $("#mm_precheck_cmd").val();
+
+p2_mm_aso_file = $("#p2_mm_aso_file").val();
+p2_mm_aso_version = $("#p2_mm_aso_version").val();
+p2_mm_aso_build = $("#p2_mm_aso_build").val();
+
+p2_md_aso_file = $("#p2_md_aso_file").val();
+p2_md_aso_version = $("#p2_md_aso_version").val();
+p2_md_aso_build = $("#p2_md_aso_build").val();
+
+p2_hosts_uname = $("#p2_hosts_uname").val();
+p2_hosts_password = $("#p2_hosts_password").val();
+
+v_c_u_b_u = $("#v_c_u_b_u").prop("checked");
+v_c_s_b_u = $("#v_c_s_b_u").prop("checked");
+b_f_b_u = $("#b_f_b_u").prop("checked");
+b_c_b_u = $("#b_c_b_u").prop("checked");
+b_l_b_u = $("#b_l_b_u").prop("checked");
+
+
+all_devices = [];
+all_tr = $("#p2_new_host_rows").find('> tr');
+
+jQuery.each(all_tr, function(i, val){
+	//Get all the devices and add it to this
+	if (i > 0)
+	{
+
+	//Single host tr
+	row = val.id.split("_")[0];
+	row_device = row+"_"+"device";
+	row_hostname = row+"_"+"hostname";
+	row_hostip = row+"_"+"hostip";
+
+	device_type = $("#"+row_device);
+	hostname = $("#"+row_hostname);
+	host = $("#"+row_hostip);
+	all_devices.push({"device_type":device_type,"hostname":hostname,"host":host})
+
+	}}
+
+MM = {"image_file_name":p2_mm_aso_file,"image_version":p2_mm_aso_version,"image_build":p2_mm_aso_build,"upgrade_disk": "Auto","CheckList":mm_precheck_cmd}
+
+MD = {"image_file_name":p2_md_aso_file,"image_version":p2_md_aso_version,"image_build":p2_md_aso_build,"upgrade_disk": "Auto","CheckList":md_precheck_cmd}
+
+//Start
+upgrade_json = {"Upgrade":all_devices,"default_settings":{
+	"AOS_Source":AOS_Source,
+	"MM":MM,
+	"MD":MD,
+	"Authentication":{"username":p2_hosts_uname,"password":p2_hosts_password}
+	"Validate_controller_sync_before_upgrade":v_c_s_b_u,
+	"Validate_controller_up_before_upgrade": v_c_u_b_u,
+	"Validate_Image_before_upgrade": true
+}
+}//End
+
+
+}
+
+
+
+
+</script>

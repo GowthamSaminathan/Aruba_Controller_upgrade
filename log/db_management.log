@@ -22122,3 +22122,22 @@ sqlite3.OperationalError: no such table: EVENTS
 2020-10-26 22:28:39,592 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603731472_8363607','2020-10-26 22:28:39','INFO:Precheck Completed','None')
 2020-10-26 22:28:39,617 > INFO > UPDATE HISTORY set STATUS='COMPLETED',MSG='Precheck Valid',E_DATE='2020-10-26 22:28:39' where NAME='1603731472_8363607'
 2020-10-26 22:28:39,649 > INFO > INSERT INTO EVENTS (NAME,E_DATE,MSG,E_ID) VALUES ('1603731472_8363607','2020-10-26 22:28:39','INFO:==== Completed ====','None')
+2020-10-27 11:14:02,557 > INFO > DB Managenet imported
+2020-10-27 11:14:04,692 > INFO > DB Managenet imported
+2020-10-27 15:44:18,140 > INFO > DB Managenet imported
+2020-10-27 15:45:19,783 > INFO > DB Managenet imported
+2020-10-27 15:47:10,119 > INFO > DB Managenet imported
+2020-10-27 15:47:46,538 > INFO > DB Managenet imported
+2020-10-27 15:48:19,389 > INFO > DB Managenet imported
+2020-10-27 15:51:53,562 > INFO > DB Managenet imported
+2020-10-27 15:56:39,834 > INFO > DB Managenet imported
+2020-10-27 15:56:49,096 > INFO > DB Managenet imported
+2020-10-27 15:57:28,406 > INFO > DB Managenet imported
+2020-10-27 15:58:25,521 > INFO > DB Managenet imported
+2020-10-27 15:58:52,599 > INFO > DB Managenet imported
+2020-10-27 15:59:34,056 > INFO > DB Managenet imported
+2020-10-27 15:59:56,793 > INFO > DB Managenet imported
+2020-10-27 16:00:00,629 > INFO > DB Managenet imported
+2020-10-27 16:01:26,859 > INFO > DB Managenet imported
+2020-10-27 16:03:01,893 > INFO > DB Managenet imported
+2020-10-27 16:10:59,037 > INFO > DB Managenet imported

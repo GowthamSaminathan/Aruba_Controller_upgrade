@@ -1259,3 +1259,73 @@ TypeError: 'NoneType' object is not subscriptable
 2020-10-26 22:15:33,847 > INFO > 
  ==> Starting WEB server ...
 
+2020-10-27 11:14:02,650 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 11:14:04,717 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:44:18,169 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:45:19,813 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:47:10,152 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:47:46,573 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:48:19,421 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:51:53,592 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:56:39,862 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:56:49,127 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:57:28,436 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:58:25,549 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:58:52,629 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:59:34,085 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 15:59:56,823 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 16:00:00,660 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 16:01:26,888 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 16:03:01,923 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 16:08:26,637 > ERROR > read_config
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 148, in save_config
+    if request.method == 'POST':
+UnboundLocalError: local variable 'request' referenced before assignment
+2020-10-27 16:08:41,755 > ERROR > read_config
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 148, in save_config
+    if request.method == 'POST':
+UnboundLocalError: local variable 'request' referenced before assignment
+2020-10-27 16:10:59,066 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 16:11:14,033 > INFO > 
+ ==> Starting WEB server ...
+

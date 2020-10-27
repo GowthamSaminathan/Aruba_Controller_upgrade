@@ -308,6 +308,16 @@
 <div class="row" style="margin-right: 0px">  
 <div class="col-sm-8">
 
+<div class="alert alert-danger alert-dismissible" id="save_fai_alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Failed!</strong> <p id="save_failed_alrt"></p>
+</div>
+
+<div class="alert alert-success alert-dismissible" id="save_suc_alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Success!</strong> <p id="save_success_alrt"></p>
+</div>
+
 <form>
   <div class="input-group mb-3 input-group-sm">
      <div class="input-group-prepend">
@@ -420,11 +430,11 @@
 
 <thead id="p2_new_host_rows">
 <tr id="p2_new_host_row">
-<th>#</th>
+<!--<th>#</th>-->
 <th>Device</th>
 <th>Hostname</th>
 <th>Host IP</th>
-<th>Custome</th>
+<!--<th>Custome</th>-->
 <th>Remove/Add </th>
 <button type="button" class="btn btn-light btn-sm" id="p2_show_excell_upload" onclick="host_excell_upload()" style="font-weight: bold;display:none">Upload hosts from CSV</button>
 </tr>
@@ -460,7 +470,7 @@
 <div class="d-flex justify-content-center">
   <button type="button" class="btn btn-primary" id="p2_custome_setting_exe" onclick="custome_settings()">Modify Custome Settings</button>&nbsp;&nbsp;&nbsp;
   <button type="button" class="btn btn-warning" id="p2_save_reset" onclick="new_execution()">Reset</button>&nbsp;&nbsp;&nbsp;
-  <button type="button" class="btn btn-success" id="p2_save_all">Save All</button>
+  <button type="button" class="btn btn-success" id="p2_save_all" onclick="save_execution()">Save All</button>
 </div>
 <br>
 <br>
@@ -529,15 +539,15 @@
           <tbody >
           <tr>
             <td><h5><span class="badge badge-light">Maximum AP image load: </span></h5></td>
-            <td><input type="number" value="10" min="1" max="1000" step="10"/></td>
+            <td><input type="number" value="10" min="1" max="1000" step="10" id="max_ap_preload" /></td>
             <td><span class="badge badge-light">Number of APs that can simultaneously download their image from the controller</span></td>
           </tr>
 
             <tr>
             <td><h5><span class="badge badge-light">Validate controller sync before upgrade: </span></h5></td>
             <td> <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="switch1" name="example" enable>
-            <label class="custom-control-label" for="switch1"></label>
+            <input type="checkbox" class="custom-control-input" id="v_c_s_b_u" name="example" enable>
+            <label class="custom-control-label" for="v_c_s_b_u"></label>
             </div></td>
             <td> <span class="badge badge-light">Validate the controller switch sync status</span></td>
           </tr>
@@ -545,31 +555,31 @@
             <tr>
             <td><h5><span class="badge badge-light">Validate controller up before upgrade: </span></h5></td>
             <td> <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="switch2" name="example">
-            <label class="custom-control-label" for="switch2"></label>
+            <input type="checkbox" class="custom-control-input" id="v_c_u_b_u" name="example">
+            <label class="custom-control-label" for="v_c_u_b_u"></label>
             </div></td>
             <td> <span class="badge badge-light">Validate all the connected switch up/down status</span></td></tr>
 
             <td><h5><span class="badge badge-light">Backup flash before upgrade: </span></h5></td>
             <td><div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="switch3" name="example">
-            <label class="custom-control-label" for="switch3"></label>
+            <input type="checkbox" class="custom-control-input" id="b_f_b_u" name="example">
+            <label class="custom-control-label" for="b_f_b_u"></label>
             </div> </td>
             <td><span class="badge badge-light">Recommended to backup the flash before upgrade</span></td></tr>
 
             <tr>
             <td><h5><span class="badge badge-light">Backup configuration before upgrade: </span></h5></td>
             <td><div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="switch4" name="example">
-            <label class="custom-control-label" for="switch4"></label>
+            <input type="checkbox" class="custom-control-input" id="b_c_b_u" name="example">
+            <label class="custom-control-label" for="b_c_b_u"></label>
             </div></td>
             <td> <span class="badge badge-light">Recommended to backup the configuration before upgrade</span></td></tr>
 
             <tr>
             <td><h5><span class="badge badge-light">Backup license before upgrade: </span></h5></td>
             <td><div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="switch5" name="example">
-            <label class="custom-control-label" for="switch5"></label>
+            <input type="checkbox" class="custom-control-input" id="b_l_b_u" name="example">
+            <label class="custom-control-label" for="b_l_b_u"></label>
             </div> </td>
             <td> <span class="badge badge-light">Recommended to backup the license before upgrade</span></td></tr>
 
@@ -1474,6 +1484,9 @@ md_device = "";
 hostname = "";
 hostip = "";
 
+//<td><button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" onclick="host_settings(${id_name})"><i class="fa fa-edit"></i></button></td>
+
+
 if(t_data["device"] == "MM")
 {
 mm_device = 'selected="selected"'
@@ -1500,13 +1513,14 @@ hostip = t_data["hostip"]
     `
 
 <tr role="row" id="${id_name}_new_device">
-<<td ></td>
+
 <td ><select class="form-control input-sm" id="${id_name}_device" data-live-search="true"><option ${mm_device}>MM</option><option ${md_device}>MD</option><option>Select Device</option>MD</select></td>
 
 <td><input value="${hostname}" type="text" class="form-control input-sm" placeholder="Host name" name="host_name" required="" id="${id_name}_hostname"></td>
 
 <td><input value="${hostip}" type="text" class="form-control input-sm" placeholder="Host IP" name="host_ip" required="" id="${id_name}_hostip"></td>
-<td><button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" onclick="host_settings(${id_name})"><i class="fa fa-edit"></i></button></td>
+
+
 <td><ul class="list-inline m-0">
 <li class="list-inline-item">
 </li>
@@ -1526,6 +1540,7 @@ hostip = t_data["hostip"]
 
 function reset_settings(){
 
+$(".alert").alert('close')
 console.log("Resetting host settings....")
 //$("#p2_upgrade_hosts_list").empty();
 $("#p2_new_host_rows").find("tr:gt(0)").remove();
@@ -1724,6 +1739,171 @@ $("#history").attr('class', 'btn btn-outline-primary');
 
 
 }
+
+
+function save_execution(){
+
+
+file_name = $("#p2_upgrade_name").val();
+aos_source = $("#p2_upgrade_source").val();
+
+if(aos_source == "local")
+{
+source_server = $("#p2_upgrade_source").val();
+source_server_path = $("#p2_upgrade_path").val();
+AOS_Source = {"device_type":source_server,"local_path":source_server_path}
+}
+
+if(aos_source == "ftp")
+{
+source_server = $("#p2_upgrade_source").val();
+source_server_host = $("#p2_upgrade_host").val();
+source_server_path = $("#p2_upgrade_path").val();
+source_server_uname = $("#p2_upgrade_uname").val();
+source_server_pass = $("#p2_upgrade_password").val();
+AOS_Source = {"device_type":source_server,"ftp_host":source_server_host,"ftp_username":source_server_uname,"ftp_password":source_server_pass,"ftp_path":source_server_path}
+}
+
+if(aos_source == "scp")
+{
+source_server = $("#p2_upgrade_source").val();
+source_server_host = $("#p2_upgrade_host").val();
+source_server_path = $("#p2_upgrade_path").val();
+source_server_uname = $("#p2_upgrade_uname").val();
+source_server_pass = $("#p2_upgrade_password").val();
+AOS_Source = {"device_type":source_server,"scp_host":source_server_host,"scp_username":source_server_uname,"scp_password":source_server_pass,"scp_path":source_server_path}
+}
+
+if(aos_source == "tftp")
+{
+source_server = $("#p2_upgrade_source").val();
+source_server_host = $("#p2_upgrade_host").val();
+source_server_path = $("#p2_upgrade_path").val();
+AOS_Source = {"device_type":source_server,"tftp_host":source_server_host,"tftp_path":source_server_path}
+}
+
+
+max_ap_preload = $("#max_ap_preload").val();
+md_precheck_cmd = $("#md_precheck_cmd").val();
+mm_precheck_cmd = $("#mm_precheck_cmd").val();
+
+p2_mm_aso_file = $("#p2_mm_aso_file").val();
+p2_mm_aso_version = $("#p2_mm_aso_version").val();
+p2_mm_aso_build = $("#p2_mm_aso_build").val();
+
+p2_md_aso_file = $("#p2_md_aso_file").val();
+p2_md_aso_version = $("#p2_md_aso_version").val();
+p2_md_aso_build = $("#p2_md_aso_build").val();
+
+p2_hosts_uname = $("#p2_hosts_uname").val();
+p2_hosts_password = $("#p2_hosts_password").val();
+
+v_c_u_b_u = $("#v_c_u_b_u").prop("checked");
+v_c_s_b_u = $("#v_c_s_b_u").prop("checked");
+b_f_b_u = $("#b_f_b_u").prop("checked");
+b_c_b_u = $("#b_c_b_u").prop("checked");
+b_l_b_u = $("#b_l_b_u").prop("checked");
+
+
+md_precheck_cmd_n = md_precheck_cmd.split("\n");
+md_precheck_cmd = []
+jQuery.each(md_precheck_cmd_n, function(i, val){
+
+md_precheck_cmd.push({"show":val});
+
+});
+
+mm_precheck_cmd_n = mm_precheck_cmd.split("\n");
+mm_precheck_cmd = []
+jQuery.each(mm_precheck_cmd_n, function(i, val){
+
+mm_precheck_cmd.push({"show":val});
+
+});
+
+
+all_devices = [];
+all_tr = $("#p2_new_host_rows").find('> tr');
+
+jQuery.each(all_tr, function(i, val){
+  //Get all the devices and add it to this
+  if (i > 0)
+  {
+
+  //Single host tr
+  row = val.id.split("_")[0];
+  row_device = row+"_"+"device";
+  row_hostname = row+"_"+"hostname";
+  row_hostip = row+"_"+"hostip";
+
+  device_type = $("#"+row_device).val();
+  hostname = $("#"+row_hostname).val();
+  host = $("#"+row_hostip).val();
+  all_devices.push({"device_type":device_type,"hostname":hostname,"host":host})
+
+  }});
+
+MM = {"image_file_name":p2_mm_aso_file,"image_version":p2_mm_aso_version,"image_build":p2_mm_aso_build,"upgrade_disk": "Auto","CheckList":mm_precheck_cmd}
+
+MD = {"image_file_name":p2_md_aso_file,"image_version":p2_md_aso_version,"image_build":p2_md_aso_build,"upgrade_disk": "Auto","CheckList":md_precheck_cmd,"Pre_image_AP":true,"max_ap_image_load":max_ap_preload}
+
+//Start
+upgrade_json = {"Upgrade":all_devices,"default_settings":{
+  "AOS_Source":AOS_Source,
+  "MM":MM,
+  "MD":MD,
+  "Authentication":{"username":p2_hosts_uname,"password":p2_hosts_password},
+  "Validate_controller_sync_before_upgrade":v_c_s_b_u,
+  "Validate_controller_up_before_upgrade": v_c_u_b_u,
+  "Validate_Image_before_upgrade": true
+}
+}//End
+
+jdata = {"config_name":file_name,"config_json":upgrade_json}
+
+$.ajax({
+    type: 'POST',data:JSON.stringify(jdata),url: '/portal/save_config',contentType: "application/json",dataType: 'json',    
+    success:function(results){
+      console.log(results);
+      res_results = results["results"];
+
+      message = results["message"];
+      data = results["data"];
+
+      if (res_results == "success"){
+        alert(data);
+        //$('#save_suc_alert').alert();
+        //$("#save_success_alrt").val(data);
+        console.log(data);
+
+      }else if (res_results == "error"){
+
+        alert(data);
+      //$('#save_fai_alert').alert();
+      //$("#save_success_alrt").val(data);
+      console.log(data);
+
+      }else if (res_results == "failed"){
+
+        //$('#save_fai_alert').alert();
+        alert("Failed to save");
+        //$("#save_failed_alrt").val("Failed to save");
+        console.log(data);
+      }
+
+
+    } ,error: function(xhr, ajaxOptions, thrownError){
+
+      console.log("** Error save_config");
+
+
+    }});
+
+console.log(upgrade_json)
+
+
+}
+
 
 
 // Creating new execution 
