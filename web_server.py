@@ -99,11 +99,13 @@ def manage_file():
 					if f_type == "delete":
 
 						try:
+							if f_name in ["default","default.yaml"]:
+								return jsonify({"status":"failed","message":"Default file is not deletable"})
 							os.remove(check_file)
 							name = os.listdir(app.config['CONF_FILES'])
-							return jsonify({"status":"success","current_files":name})
+							return jsonify({"status":"success","current_files":name,"message":"Deleted "+f_name})
 						except:
-							return jsonify({"status":"failed","message":"not deleted"})
+							return jsonify({"status":"failed","message":"Not deleted "+f_name})
 
 					if f_type == "download":
 						return send_file(check_file, as_attachment=True)
@@ -141,6 +143,21 @@ def read_config():
 	except Exception :
 		logger.exception("read_config")
 		return jsonify({"results":"error","message":"Check server log"})
+
+@app.route('/portal/upload_yaml', methods=['POST'])
+def upload_yaml():
+	if request.method == 'POST':
+		file = request.files['file']
+		# if user does not select file, browser also
+		# submit an empty part without filename
+		if file.filename == '':
+			return jsonify({"results":"error","message":"Please upload valid file"})
+		
+		filename = secure_filename(file.filename)
+		file.save(os.path.join(app.config['CONF_FILES'], filename))
+		return jsonify({"results":"success","message":"Uploaded "+file.filename})
+
+
 
 @app.route('/portal/save_config',methods = ['POST'])
 def save_config():

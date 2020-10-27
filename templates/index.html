@@ -84,7 +84,7 @@
     <div class="dropdown-menu">
       <a class="dropdown-item" onclick="start_upgrade()">Start Upgrade</a>
       <a class="dropdown-item" onclick="new_execution()">Create New Upgrade POA</a>
-      <a class="dropdown-item" href="#">Manage Existing Upgrade POA</a>
+      <a class="dropdown-item" onclick="manage_poa_list('list')">Manage Existing Upgrade POA</a>
     </div>
     <button type="button" class="btn btn-primary" id="history" onclick="show_history()">Upgrade History</button>
   </div>
@@ -123,7 +123,7 @@
             <div class="col-sm-12" style="background-color:#f8f9fa">
         
             <div class="form-group">
-            <label for="sel1">Slect POA:</label>
+            <label for="sel1"><b>Select POA:</b></label>
             <select class="form-control" id="job_file_list">
               <option value="none">Please select</option>
             </select>
@@ -151,7 +151,7 @@
 
              <div class="d-flex justify-content-end">
 
-              <button type="button" class="btn btn-warning btn-md" id="start_new_upgrade" onclick="start_new_upgrade()">Start Upgrade</button>
+              <button type="button" class="btn btn-warning btn-md" id="start_new_upgrade" onclick="start_new_upgrade()"><b id="start_new_upgrade_bold">Start Upgrade</b></button>
               
              </div>
 
@@ -167,6 +167,85 @@
         
         <!-- Modal footer -->
         <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<!-- Manage file -  Modal -->
+  <div class="modal fade" id="manage_file">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Manage POA</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         
+            <div class="container">
+            <div class="row" style="margin-right: 0px"> 
+            
+            <div class="col-sm-6" style="background-color:#f8f9fa">
+            <div class="form-group">
+            <b><p>Select POA </p></b>
+            <select class="form-control" id="select_poa">
+              <option value="none">Please select</option>
+            </select>
+          </div>
+          </div>
+
+          <div class="col-sm-6" style="background-color:#f8f9fa">
+              <p style="visibility:hidden;">Edit Download Delete</p>
+              <button type="button" class="btn btn-warning btn-md" onclick="manage_poa_list('edit')"><i class="fa fa-edit" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-primary btn-md" onclick="manage_poa_list('download')"><i class="fa fa-download" aria-hidden="true"></i></button>
+              <button type="button" class="btn btn-danger btn-md" onclick="manage_poa_list('delete')"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            
+         
+          </div>
+          
+
+        <h5><span class="badge badge-light">
+          Select Existing POA:
+        </span></h5>
+
+          <div class="d-flex justify-content-left">
+          
+          
+         <form id="poa_upload_id" enctype="multipart/form-data">
+          <input name="file" type="file" />
+          <input type="button" value="Upload" />
+        </form>
+
+
+
+          
+        </div>
+
+          
+
+
+          </div>
+          </div>
+          </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <div class="d-flex justify-content-end">
+           
+            <h6><span class="badge badge-warning" id="manage_poa_msg"></span></h6>
+             
+            </div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
         
@@ -1437,6 +1516,40 @@ $.ajax({
 //////////////// PAGE -2 START ////////////////////////////////////////////// 
 
 
+$("#precheck_only").click(function() {
+if($("#precheck_only").prop("checked")){
+
+  $("#start_new_upgrade_bold").text("Start Precheck");
+
+}else{$("#start_new_upgrade_bold").text("Start Upgrade");}
+});
+
+
+$('#poa_upload_id').on('click', function () {
+  $("#manage_poa_msg").text("Uploading...");
+  $.ajax({
+    // Your server script to process the upload
+    url: '/portal/upload_yaml',
+    type: 'POST',
+    success:function(results){
+      manage_poa_list("list")
+    $("#manage_poa_msg").text(results["message"]);
+    },
+
+    // Form data
+    data: new FormData($('form')[0]),
+
+    // Tell jQuery not to process data or worry about content-type
+    // You *must* include these options!
+    cache: false,
+    contentType: false,
+    processData: false,
+
+    // Custom XMLHttpRequest
+  });
+});
+
+
 // AOS source selection action
 $(document).ready(function(){
   $("#p2_upgrade_source").click(function(){
@@ -2002,14 +2115,83 @@ $("#p2_host_setting").modal({backdrop: "static"})
 }
 
 
+function manage_poa_list(poa_action)
+
+{
+
+
+
+f_name = $("#select_poa").val();
+$("#manage_poa_msg").text("");
+
+if (poa_action == "list"){
+  $("#manage_file").modal({backdrop: "static"})
+  $('#select_poa').find('option').remove();
+  poa_url = '/portal/manage_file'
+}
+
+if (poa_action == "delete"){
+  if(confirm('Are you sure you want to delete POA :'+f_name+' ?')){
+    poa_url = '/portal/manage_file?type=delete&file_name='+f_name;
+  }else{
+
+    console.log("User say no to delete");
+  }
+  
+}
+
+if (poa_action == "download"){
+  poa_url = '/portal/manage_file?type=download&file_name='+f_name;
+  window.open(poa_url, 'name'); 
+  return "";
+}
+
+if (poa_action == "edit"){
+
+$("#manage_file").modal('hide');
+new_execution(f_name);
+return "";
+
+}
+
+$.ajax({
+    type: 'GET',url: poa_url,contentType: false,cache: false,processData:false,
+    success:function(results){
+      console.log(results);
+      status = results["status"]
+      msg = results["message"]
+      $("#manage_poa_msg").text(msg);
+      current_files = results["current_files"]
+      if (jQuery.isEmptyObject(current_files) == false){
+      $('#select_poa').find('option').remove();
+      jQuery.each(current_files,function(i, val){
+        $('#select_poa').append('<option value="'+val+'">'+val+'</option>');
+      });
+    }
+
+
+    } ,error: function(xhr, ajaxOptions, thrownError){
+
+
+      console.log("** Getting job files failed for URL : /portal/manage_file");
+
+
+    }});
+
+
+
+}
+
+
 
 function start_upgrade(){
 
 try{
-
+upgrade();
 console.log("start_upgrade clicked...")
 $("#select_upgrade").modal({backdrop: "static"});
-$("#start_new_upgrade_badge").text("")
+$("#start_new_upgrade_badge").text("");
+$("#start_new_upgrade_bold").text("Start Upgrade");
 
 $('#job_file_list').find('option').not(':first').remove();
 $('#precheck_only').prop("checked",false);
