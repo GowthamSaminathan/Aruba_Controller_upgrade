@@ -2336,6 +2336,11 @@ try{
       //console.log(only_data);
       jQuery.each(only_data, function(i, val){
       evnt_msg = val[3];
+      pre_report = "/portal/get_report?job_name="+val[1]+"&report_name=Precheck.html"
+      post_report = "/portal/get_report?job_name="+val[1]+"&report_name=Upgrade.html"
+      log_files = "/portal/get_report?job_name="+val[1]+"&report_name=all_logs"
+
+      val[7] = '<a href='+pre_report+' target="_blank">Precheck</a><br>' + '<a href='+post_report+' target="_blank">Upgrade</a><br>' + '<a href='+log_files+' target="_blank">Log files</a>'
       style_val = 'style="text-align:left;white-space=nowrap"'
       if (evnt_msg.indexOf("ERROR") == 0)
       {
@@ -2404,9 +2409,10 @@ $(document).ready(function() {
             { title: "Status" },
             { title: "Start Date" },
             { title: "Completed Date" },
-            { title: "Note" }
+            { title: "Note" },
+            { title: "Download Report" }
         ],
-        "scrollY":        "500px",
+        "scrollY":        "350px",
         "columnDefs": [{ "visible": false, "targets": [1] }],
         "scrollCollapse": true,
         "responsive":true,

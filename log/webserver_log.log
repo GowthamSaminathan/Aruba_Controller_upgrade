@@ -1373,3 +1373,141 @@ FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba
 2020-10-27 19:22:41,079 > INFO > 
  ==> Starting WEB server ...
 
+2020-10-27 21:21:12,421 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 21:34:44,534 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 377, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1599993924_0972588\\Reports\\Precheck.html'
+2020-10-27 21:41:38,825 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 377, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1600046333_7311924\\Reports\\Upgrade.html'
+2020-10-27 21:42:17,842 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 377, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1599996597_621508\\Reports\\Precheck.html'
+2020-10-27 21:55:20,357 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 377, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603797797_344223\\Reports\\all_logs'
+2020-10-27 21:55:35,726 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 377, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603797819_9986272\\Reports\\all_logs'
+2020-10-27 21:55:39,958 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 377, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603812978_9564366\\Reports\\Upgrade.html'
+2020-10-27 21:55:43,667 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 377, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603812978_9564366\\Reports\\all_logs'
+2020-10-27 21:58:00,434 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 377, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1599996597_621508\\Reports\\all_logs'
+2020-10-27 22:11:53,675 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:11:56,535 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:12:18,148 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:12:22,292 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:12:28,305 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 381, in get_report
+    for f_name in all_logs.iterdir():
+AttributeError: 'str' object has no attribute 'iterdir'
+2020-10-27 22:12:56,375 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:12:57,613 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 381, in get_report
+    for f_name in all_logs.iterdir():
+AttributeError: 'str' object has no attribute 'iterdir'
+2020-10-27 22:14:13,956 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:20:45,293 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:21:22,538 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:22:56,761 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:23:10,730 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:23:35,943 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:25:15,743 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:25:27,315 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:28:03,752 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:28:11,161 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:28:12,362 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 381, in get_report
+    return send_file(data,mimetype='application/zip',as_attachment=True,attachment_filename=job_name+'.zip')
+  File "D:\scripts\py\lib\site-packages\flask\helpers.py", line 629, in send_file
+    file = open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\'
+2020-10-27 22:28:59,280 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 381, in get_report
+    return send_file(data,mimetype='application/zip',as_attachment=True,attachment_filename=job_name+'.zip')
+  File "D:\scripts\py\lib\site-packages\flask\helpers.py", line 629, in send_file
+    file = open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\'
+2020-10-27 22:31:47,843 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:31:50,325 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:31:51,348 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 381, in get_report
+    data = open(tmp_file+".zip").read()
+  File "D:\scripts\py\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 224: character maps to <undefined>
+2020-10-27 22:33:27,569 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-27 22:33:30,590 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 382, in get_report
+    data = open(tmp_file+".zip").read()
+  File "D:\scripts\py\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x90 in position 224: character maps to <undefined>
+2020-10-27 22:35:59,923 > INFO > 
+ ==> Starting WEB server ...
+

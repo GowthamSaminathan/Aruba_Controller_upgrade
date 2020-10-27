@@ -5,6 +5,8 @@ from werkzeug.utils import secure_filename
 
 
 import os
+import io
+import shutil
 import time
 import json
 import logging
@@ -372,9 +374,14 @@ def get_report():
 			job_name = request.args.get('job_name')
 			report_name = request.args.get('report_name')
 			#download = request.args.get('download')
-
-			report = os.path.join(app.config['JOBS_FILES'],str(job_name),"Reports",report_name)
-			return open(report).read()
+			if report_name == "all_logs":
+				tmp_file = os.path.join(os.getcwd(),"tmp",job_name)
+				all_logs = os.path.join(app.config['JOBS_FILES'],str(job_name))
+				shutil.make_archive(tmp_file, 'zip', all_logs)
+				return send_file(tmp_file+".zip",mimetype='application/zip',as_attachment=True,attachment_filename=job_name+'.zip')
+			else:
+				report = os.path.join(app.config['JOBS_FILES'],str(job_name),"Reports",report_name)
+				return open(report).read()
 
 	except Exception :
 		logger.exception("get_report")
