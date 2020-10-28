@@ -227,12 +227,13 @@ class gen_report():
 	def update_completed_status(self):
 		for single_host in self.hosts:
 			host = single_host.get("host")
-			db_management.update_upgrade_status_by_device_host(self.obj.upgrade_db,host,"COMPLETED","Checklist")
+			#db_management.update_upgrade_status_by_device_host(self.obj.upgrade_db,host,"COMPLETED","Checklist")
 
 
-	def run_checklist(self,obj,hosts):
+	def run_checklist(self,obj,hosts,check_type):
 		#self.report_location = report_location
 		#self.report_data = report_data
+		self.check_type = check_type
 		self.obj = obj
 		self.hosts = hosts
 		all_reports = []

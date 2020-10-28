@@ -89,6 +89,7 @@ class report_gen():
 		if self.report_type == "Precheck":
 			self.precheck_gen()
 		if self.report_type == "Upgrade":
+			self.precheck_gen()
 			self.upgrade_gen()
 		#job_path = self.report_data.get("job_path")
 		self.create_footer()

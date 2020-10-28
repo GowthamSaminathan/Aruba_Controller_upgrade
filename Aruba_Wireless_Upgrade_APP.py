@@ -61,9 +61,9 @@ class Aruba_Wireless_upgrade():
 		self.logger = conf.logger
 		self.get_user_input = conf.get_user_input
 		self.get_user_input_async = conf.get_user_input_async
+		self.update_devices_status_in_db = conf.update_devices_status_in_db
 		self.eprint = conf.eprint
 		self.local_aos_file_path = os.path.join(os.getcwd(),"aos")
-
 		self.print = conf.print
 
 	def get_session(self,single_host,new_session=False):
@@ -260,6 +260,7 @@ class Aruba_Wireless_upgrade():
 
 	def find_alternative_partition(self):
 		self.user_pause_terminate()
+		hosts_find_alternative_partition = []
 		hosts = self.gen_config.get("Upgrade")
 		for single_host in hosts:
 			try:
@@ -270,6 +271,10 @@ class Aruba_Wireless_upgrade():
 				host_ip = single_host.get("host")
 				upgrade_disk =  single_host.get("upgrade_disk")
 
+				device_info = {"hostname":host_name}
+				device_info.update({"host":host_ip})
+				device_info.update({"device_type":host_type})
+
 				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING","Finding alternative partition")
 
 				disk = None
@@ -277,6 +282,8 @@ class Aruba_Wireless_upgrade():
 				if upgrade_disk != "Auto":
 					self.eprint("info","Installation Disk {} provided by user for host {} , Skiping auto detect".format(upgrade_disk,host_ip))
 					single_host.update({"disk":upgrade_disk})
+					device_info.update({"validation":"Upgrade disk partition","value":upgrade_disk ,"status":"Ok"})
+					hosts_find_alternative_partition.append(device_info)
 					continue
 				else:
 					self.eprint("info","Installation Disk {} not provided for {} , Trying to auto detect".format(upgrade_disk,host_ip))
@@ -296,13 +303,18 @@ class Aruba_Wireless_upgrade():
 
 					if disk != None:
 						single_host.update({"disk":disk})
+						device_info.update({"validation":"Upgrade disk partition","value":disk ,"status":"Ok"})
+						hosts_find_alternative_partition.append(device_info)
 						_status = "COMPLETED"
 					else:
+						device_info.update({"validation":"Upgrade disk partition","value":"Failed to get alternative partition" ,"status":"Failed"})
 						_status = "FAILED"
 
 					self.eprint("info","{}-{} :Auto detect alternative partition: {}".format(host_name,host_ip,disk))
 			
 			except Exception:
+				device_info.update({"validation":"Upgrade disk partition","value":"Failed to get alternative partition" ,"status":"Failed"})
+				hosts_find_alternative_partition.append(device_info)
 				_status = "FAILED"
 				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,_status,"Auto detect alternative disk")
 				self.eprint("error","{}-{} : Auto detect alternative partition failed".format(host_name,host_ip))
@@ -313,6 +325,8 @@ class Aruba_Wireless_upgrade():
 				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,_status,"Auto detected alternative disk {}".format(disk))
 
 				self.user_pause_terminate()
+
+		return hosts_find_alternative_partition
 
 
 
@@ -327,23 +341,30 @@ class Aruba_Wireless_upgrade():
 
 			self.eprint("info","Executing "+check_type)
 			hosts = self.gen_config.get("Upgrade")
-			summary_data = []
 
 			self.user_pause_terminate()
 			
 
 			# Phase 1 Precheck
 			if check_type == "Precheck":
-				print("Starting precheck..........1")
+				print("Starting precheck......")
 				wgen = wireless_validation.gen_report()
-				phase1_report = wgen.run_checklist(self,hosts)
+				phase1_report = wgen.run_checklist(self,hosts,check_type)
+				alternative_part = self.find_alternative_partition()
+				phase1_report = phase1_report + alternative_part
 				db_management.checklist_update(self.validation_db,phase1_report,check_type)
-				#report_file = os.path.join(self.job_path,"Reports",check_type)
-				#rf = open(report_file,"wb")
-				#pickle.dump(phase1_report,rf)
-				#rf.close()
 
-			return True
+			# Phase 1 Postcheck
+			if check_type == "Postcheck":
+				print("Starting postcheck......")
+				wgen = wireless_validation.gen_report()
+				phase1_report = wgen.run_checklist(self,hosts,check_type)
+				db_management.checklist_update(self.validation_db,phase1_report,check_type)
+
+
+			print("Running Phase2.........")
+			self.update_devices_status_in_db("PENDING: Collecting show commands","Completed "+check_type)
+			print("Completed Phase2.........")
 			# Phase 2 Precheck
 			for single_host in hosts:
 				try:
@@ -406,10 +427,6 @@ class Aruba_Wireless_upgrade():
 							
 							else:
 								self.eprint("warning","Not Implemented for: "+str(cmd))
-						
-						
-						s_data = self.validating_pre_check(single_host,host_output)
-						summary_data.append(s_data)
 						
 					else:
 						_status = "LOGIN FAILED"
@@ -674,6 +691,12 @@ class Aruba_Wireless_upgrade():
 		image_version = single_host.get("image_version")
 		host_type = single_host.get("device_type")
 
+		if self.validate_image_upload(single_host) == True:
+			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: Required image already present in disk","AOS:{} Build:{} in Disk:{}"
+						.format(image_version,image_build,upgrade_disk))
+			return True
+
+
 		msg = "Do you want to install: "
 		self.user_pause_terminate()
 		if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "no":
@@ -703,20 +726,23 @@ class Aruba_Wireless_upgrade():
 					self.eprint("error","No valid file upload type found "+str(upload_type))
 				
 				if upload_status == True:
-					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: NEW IMAGE PRESENT","{} Build:{} in Disk:{}"
+					db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: NEW IMAGE INSTALLED","{} Build:{} in Disk:{}"
 						.format(image_version,image_build,upgrade_disk))
 					upload_not_required = True
+					return True
 				else:
 					self.user_pause_terminate()
 					msg = "Retry Image Upload, "
 					if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "no":
 						self.eprint("warning","User aborted for retry image upload")
 						upload_not_required = True
+						return False
 
 			else:
-				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: NEW IMAGE PRESENT","{} Build:{} in Disk:{}"
+				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: NEW IMAGE INSTALLED","{} Build:{} in Disk:{}"
 					.format(image_version,image_build,upgrade_disk))
 				upload_not_required = True
+				return True
 
 	def validate_running_image(self,single_host,version,build):
 		try:
@@ -844,10 +870,10 @@ class Aruba_Wireless_upgrade():
 						self.eprint("error","*** Warning : Failed to get reboot info (Please check manualy...)")
 					#self.validate_controller_up(host_ip)
 					# Validate config sync and up status
-					if self.validate_running_image(host_ip,image_version,image_build) == False:
+					if self.validate_running_image(single_host,image_version,image_build) == False:
 						self.eprint("error","**=> ({}) {}-{} Not booted from new image".format(host_type,host_name,host_ip))
 					else:
-						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED","Upgrade")
+						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED: AOS Upgrade","Pending Postcheck")
 						self.eprint("info","=>({}) {}-{} {}:{} : NEW IMAGE UPGRADE SUCCESS".format(host_type,host_name,host_ip,image_version,image_build))
 
 
@@ -1032,9 +1058,11 @@ class Aruba_Wireless_upgrade():
 			self.get_user_input_async("Completed",eid,"completed")
 
 
+
 	def Upload_Images(self):
 		try:
 			#Read upgrade host details from configuration
+			upload_success = False
 			upgrade_hosts = self.gen_config.get("Upgrade")
 			self.eprint("info","Total upgrade hosts:{}".format(len(upgrade_hosts)))
 
@@ -1053,12 +1081,16 @@ class Aruba_Wireless_upgrade():
 					# Start the MM Upgrade
 					self.eprint("info","MM: Preparing for host {} IP: {}".format(host_name,host_ip))
 					#self.validate_image_upload(host_ip,disk,image_version,image_build)
-					self.MM_MD_Upload(single_host)
+					upload_status = self.MM_MD_Upload(single_host)
+					if upload_status != True:
+						return False
 					#self.validate_running_image(host_ip,image_version,image_build)
 					
 				elif single_host.get("device_type") == "MD":
 					self.eprint("info","MD: Preparing for host {} IP: {}".format(host_name,host_ip))
-					self.MM_MD_Upload(single_host)
+					upload_status = self.MM_MD_Upload(single_host)
+					if upload_status != True:
+						return False
 				else:
 					self.eprint("error","Upgrade type invalid ({})".format(single_host.get("device_type")))
 
@@ -1140,7 +1172,11 @@ class main_model():
 		except Exception:
 			self.logger.exception("user_pause_terminate")
 
-
+	def update_devices_status_in_db(self,status,msg):
+		upgrade_hosts = self.gen_config.get("Upgrade")
+		for single_host in upgrade_hosts:
+			host_ip = single_host.get("host")
+			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,status,msg)
 
 	def get_user_input(self,msg,expected=None):
 		# Ask User conformation using event DB
@@ -1353,7 +1389,7 @@ class main_model():
 
 				# Start the precheck
 				self.user_pause_terminate()
-				res = self.get_user_input("Are you sure want to start the precheck",["yes","no"])
+				res = self.get_user_input("Start the precheck",["yes","no"])
 				self.logger.info(res)
 				pre_check_valid = False
 				if res == "yes":
@@ -1375,22 +1411,24 @@ class main_model():
 				# Start the Installation
 				#pre_check_valid = True
 				upgrade_valid = False
+				pre_check_valid = True
 				if pre_check_valid == True:
 					if job_list == "Upgrade":
 						self.user_pause_terminate()
-						res = self.get_user_input("Are you sure want to start the AOS Upgrade",["yes","no"])
+						res = self.get_user_input("Are you sure want to start the AOS Upload",["yes","no"])
 						if res == "yes":
 							self.user_pause_terminate()
 							report_data.update({"Upload start time":datetime.datetime.now()})
+							self.update_devices_status_in_db("PENDING: AOS IMAGE UPLOAD","Precheck Completed")
 							upgrade_valid = ar_upgrade.Upload_Images()
 							report_data.update({"Upload end time":datetime.datetime.now()})
 							self.eprint("info","Starting Upgrade")
 						else:
-							self.eprint("warning","TERMINATED User aborted the upgrade")
-							self.final_status = ["TERMINATED","User aborted the upgrade"]
+							self.eprint("warning","TERMINATED User aborted the AOS Upload")
+							self.final_status = ["TERMINATED","User aborted the AOS Upload"]
 							return False
 					else:
-						self.final_status = ["COMPLETED","Precheck Valid"]
+						self.final_status = ["COMPLETED","Precheck"]
 						return True
 				else:
 					self.final_status = ["TERMINATED","Precheck Validation failed"]
@@ -1406,22 +1444,29 @@ class main_model():
 						self.user_pause_terminate()
 						report_data.update({"reboot start time":datetime.datetime.now()})
 						self.eprint("info","Starting reboot")
+						self.update_devices_status_in_db("PENDING: DEVICE REBOOT","AOS upload completed")
 						ar_upgrade.ReBoot_Controller()
 						report_data.update({"reboot end time":datetime.datetime.now()})
 					else:
 						self.eprint("warning","TERMINATED User aborted the reboot")
 						self.final_status = ["TERMINATED","User aborted the reboot"]
 						return False
+				else:
+					self.eprint("warning","TERMINATED AOS upload failed")
+					self.final_status = ["TERMINATED","AOS upload failed"]
+					return False
 
 				# Starting Post check
 				self.user_pause_terminate()
-				res = self.get_user_input("Are you sure want to start the postcheck",["yes","no"])
+				res = self.get_user_input("Start the postcheck",["yes","no"])
 				self.logger.info(res)
 				post_check_valid = False
 				if res == "yes":
 					self.eprint("info","Starting postcheck")
+					self.update_devices_status_in_db("PENDING: POSTCHECK","Waiting...")
 					post_check_valid = ar_upgrade.Pre_Post_check("Postcheck")
 					self.create_report("Upgrade")
+					self.find_alternative_partition("COMPLETED: Postcheck","Finished POA")
 				else:
 					self.eprint("warning","TERMINATED User aborted the postcheck")
 					self.final_status = ["TERMINATED","User aborted the postcheck"]

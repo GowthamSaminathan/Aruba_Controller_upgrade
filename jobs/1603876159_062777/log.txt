@@ -1,0 +1,24 @@
+2020-10-28 14:39:19,783 > INFO > JOBNAME:1603876159_062777
+2020-10-28 14:39:19,785 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-28 14:39:19,861 > INFO > Starting Job
+2020-10-28 14:39:19,878 > INFO > INFO:Running: 1603876159_062777 Type:Precheck
+2020-10-28 14:39:19,892 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-28 14:39:19,924 > INFO > Inserting upgrade list to upgrade.db
+2020-10-28 14:39:31,980 > INFO > yes
+2020-10-28 14:39:31,981 > INFO > INFO:Starting precheck
+2020-10-28 14:39:32,023 > INFO > INFO:Executing Precheck
+2020-10-28 14:39:34,260 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-28 14:39:39,902 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-28 14:39:42,751 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 14:39:44,821 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 14:39:48,589 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 14:39:51,291 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 14:39:53,927 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 14:39:55,417 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 14:39:56,217 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-28 14:39:56,892 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 14:39:57,602 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-10-28 14:39:58,273 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-28 14:39:58,953 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 14:39:59,687 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-10-28 14:39:59,799 > INFO > INFO:Precheck Completed

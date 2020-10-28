@@ -1,0 +1,47 @@
+2020-10-28 15:44:21,492 > INFO > JOBNAME:1603880061_3928373
+2020-10-28 15:44:21,493 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-28 15:44:21,587 > INFO > Starting Job
+2020-10-28 15:44:21,650 > INFO > INFO:Running: 1603880061_3928373 Type:Upgrade
+2020-10-28 15:44:21,676 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-28 15:44:21,720 > INFO > Inserting upgrade list to upgrade.db
+2020-10-28 15:44:23,837 > INFO > yes
+2020-10-28 15:44:23,838 > INFO > INFO:Starting precheck
+2020-10-28 15:44:23,863 > INFO > INFO:Executing Precheck
+2020-10-28 15:44:29,361 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-28 15:44:36,970 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-28 15:44:39,874 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 15:44:41,907 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 15:44:43,919 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 15:44:46,575 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 15:44:49,241 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 15:44:50,661 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 15:44:51,433 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-28 15:44:52,096 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 15:44:52,793 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-10-28 15:44:52,854 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-28 15:44:53,511 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 15:44:54,199 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-10-28 15:44:54,378 > INFO > INFO:Precheck Completed
+2020-10-28 15:45:28,510 > INFO > INFO:Total upgrade hosts:2
+2020-10-28 15:45:28,533 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-10-28 15:45:30,701 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 15:45:31,396 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 15:45:31,421 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 15:45:37,507 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 15:45:37,529 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 15:45:38,196 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 15:45:38,870 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 15:45:38,891 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 15:45:38,912 > INFO > INFO:User accepted : Do you want to install: Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 15:45:39,569 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 15:45:39,610 > INFO > INFO:NaaS-MM-1:10.17.84.220:4343- Installing AOS: ArubaOS_MM_8.5.0.10-FIPS_76207 from ftp server:10.17.84.225
+2020-10-28 15:46:20,355 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 15:46:20,401 > WARNING > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK 1 ArubaOS_MM_8.5.0.10-FIPS_76207
+2020-10-28 15:46:20,425 > DEBUG > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK 1 ArubaOS_MM_8.5.0.10-FIPS_76207
+2020-10-28 15:46:20,449 > ERROR > b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 15:46:26,479 > WARNING > WARNING:User aborted for retry image upload
+2020-10-28 15:46:26,512 > DEBUG > WARNING:User aborted for retry image upload
+2020-10-28 15:46:26,534 > INFO > INFO:Starting Upgrade
+2020-10-28 15:46:26,556 > WARNING > WARNING:TERMINATED AOS upload failed
+2020-10-28 15:46:26,590 > DEBUG > WARNING:TERMINATED AOS upload failed
+2020-10-28 15:46:26,632 > INFO > INFO:==== Completed ====

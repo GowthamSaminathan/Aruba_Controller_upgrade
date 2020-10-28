@@ -1,0 +1,74 @@
+2020-10-28 13:07:30,034 > INFO > JOBNAME:1603870649_9409852
+2020-10-28 13:07:30,034 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.6
+2020-10-28 13:07:30,100 > INFO > Starting Job
+2020-10-28 13:07:30,359 > INFO > INFO:Running: 1603870649_9409852 Type:Upgrade
+2020-10-28 13:07:30,384 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.6 Validation
+2020-10-28 13:07:30,471 > INFO > Inserting upgrade list to upgrade.db
+2020-10-28 13:07:34,563 > INFO > yes
+2020-10-28 13:07:34,563 > INFO > INFO:Starting precheck
+2020-10-28 13:07:34,577 > INFO > INFO:Executing Precheck
+2020-10-28 13:07:40,105 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-28 13:07:50,209 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-28 13:07:56,227 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 13:08:00,533 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 13:08:02,612 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 13:08:05,449 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 13:08:08,328 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 13:08:09,750 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 13:08:11,040 > INFO > INFO:Precheck Completed
+2020-10-28 13:09:59,252 > INFO > INFO:Total upgrade hosts:2
+2020-10-28 13:09:59,270 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-10-28 13:10:05,330 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 13:10:05,354 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 13:10:08,435 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 13:10:09,332 > ERROR > validate_image_upload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 464, in validate_image_upload
+    if int(disk) == int(first_partition):
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+2020-10-28 13:10:09,335 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 13:10:10,111 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 13:10:10,135 > INFO > INFO:NaaS-MM-1:10.17.84.220:4343- Installing AOS: ArubaOS_MM_8.6.0.5_75979 from ftp server:10.17.84.225
+2020-10-28 13:10:55,478 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 13:10:55,513 > WARNING > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK None ArubaOS_MM_8.6.0.5_75979
+2020-10-28 13:10:55,526 > DEBUG > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK None ArubaOS_MM_8.6.0.5_75979
+2020-10-28 13:10:55,540 > ERROR > b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 13:11:03,565 > WARNING > WARNING:User aborted for retry image upload
+2020-10-28 13:11:03,585 > DEBUG > WARNING:User aborted for retry image upload
+2020-10-28 13:11:03,600 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-10-28 13:11:09,653 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-VMC-1:10.17.84.221:4343
+2020-10-28 13:11:09,669 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-VMC-1:10.17.84.221:4343
+2020-10-28 13:11:11,996 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 13:11:12,721 > ERROR > validate_image_upload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 464, in validate_image_upload
+    if int(disk) == int(first_partition):
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+2020-10-28 13:11:12,722 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-VMC-1:10.17.84.221:4343
+2020-10-28 13:11:13,388 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 13:11:13,415 > INFO > INFO:NaaS-VMC-1:10.17.84.221:4343- Installing AOS: ArubaOS_VMC_8.6.0.5_75979 from ftp server:10.17.84.225
+2020-10-28 13:11:54,753 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 13:11:54,785 > WARNING > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK None ArubaOS_VMC_8.6.0.5_75979
+2020-10-28 13:11:54,799 > DEBUG > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK None ArubaOS_VMC_8.6.0.5_75979
+2020-10-28 13:11:54,813 > ERROR > b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 13:12:01,530 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 13:12:02,232 > ERROR > validate_image_upload
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 464, in validate_image_upload
+    if int(disk) == int(first_partition):
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+2020-10-28 13:12:02,232 > INFO > INFO:User accepted : Retry Image Upload, Image Version:8.6.0.5-75979 on Disk:None Host:NaaS-VMC-1:10.17.84.221:4343
+2020-10-28 13:12:02,925 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 13:12:02,979 > INFO > INFO:NaaS-VMC-1:10.17.84.221:4343- Installing AOS: ArubaOS_VMC_8.6.0.5_75979 from ftp server:10.17.84.225
+2020-10-28 13:12:43,978 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 13:12:44,012 > WARNING > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK None ArubaOS_VMC_8.6.0.5_75979
+2020-10-28 13:12:44,029 > DEBUG > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK None ArubaOS_VMC_8.6.0.5_75979
+2020-10-28 13:12:44,043 > ERROR > b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 13:13:12,093 > WARNING > WARNING:User aborted for retry image upload
+2020-10-28 13:13:12,288 > DEBUG > WARNING:User aborted for retry image upload
+2020-10-28 13:13:26,338 > WARNING > WARNING:Skipping AP's preimage....
+2020-10-28 13:13:26,354 > DEBUG > WARNING:Skipping AP's preimage....
+2020-10-28 13:13:26,381 > INFO > INFO:Starting Upgrade
+2020-10-28 13:13:32,417 > WARNING > WARNING:TERMINATED User aborted the reboot
+2020-10-28 13:13:33,737 > DEBUG > WARNING:TERMINATED User aborted the reboot
+2020-10-28 13:13:33,766 > INFO > INFO:==== Completed ====

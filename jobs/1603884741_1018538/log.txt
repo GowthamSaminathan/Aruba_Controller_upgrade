@@ -1,0 +1,34 @@
+2020-10-28 17:02:21,230 > INFO > JOBNAME:1603884741_1018538
+2020-10-28 17:02:21,230 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-28 17:02:22,327 > INFO > Starting Job
+2020-10-28 17:02:22,348 > INFO > INFO:Running: 1603884741_1018538 Type:Upgrade
+2020-10-28 17:02:22,565 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-28 17:02:22,600 > INFO > Inserting upgrade list to upgrade.db
+2020-10-28 17:02:28,686 > INFO > yes
+2020-10-28 17:02:28,686 > INFO > INFO:Starting precheck
+2020-10-28 17:02:28,712 > INFO > INFO:Executing Precheck
+2020-10-28 17:02:31,156 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-28 17:02:35,854 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-28 17:02:39,161 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 17:02:41,200 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 17:02:43,260 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 17:02:45,960 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 17:02:48,697 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 17:02:50,918 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 17:02:52,406 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-28 17:02:53,062 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 17:02:53,757 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-10-28 17:02:53,867 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-28 17:02:54,553 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 17:02:55,752 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-10-28 17:02:57,090 > ERROR > ERROR:Check execution error
+2020-10-28 17:02:57,118 > DEBUG > ERROR:Check execution error
+2020-10-28 17:02:57,141 > ERROR > Pre_Post_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 366, in Pre_Post_check
+    self.find_alternative_partition("PENDING: Collecting show commands","Completed "+check_type)
+TypeError: find_alternative_partition() takes 1 positional argument but 3 were given
+2020-10-28 17:02:57,142 > INFO > INFO:Precheck Completed
+2020-10-28 17:03:09,248 > ERROR > ERROR:Precheck validation failed
+2020-10-28 17:03:09,533 > DEBUG > ERROR:Precheck validation failed
+2020-10-28 17:03:09,598 > INFO > INFO:==== Completed ====

@@ -1,0 +1,47 @@
+2020-10-28 17:11:02,309 > INFO > JOBNAME:1603885262_2795403
+2020-10-28 17:11:02,309 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-28 17:11:02,489 > INFO > Starting Job
+2020-10-28 17:11:02,517 > INFO > INFO:Running: 1603885262_2795403 Type:Upgrade
+2020-10-28 17:11:02,545 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-28 17:11:02,584 > INFO > Inserting upgrade list to upgrade.db
+2020-10-28 17:11:06,678 > INFO > yes
+2020-10-28 17:11:06,678 > INFO > INFO:Starting precheck
+2020-10-28 17:11:06,709 > INFO > INFO:Executing Precheck
+2020-10-28 17:11:09,018 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-28 17:11:13,639 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-28 17:11:16,524 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 17:11:23,126 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 17:11:29,075 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 17:11:33,342 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 17:11:42,287 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 17:11:43,858 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 17:11:44,729 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-28 17:11:45,391 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 17:11:46,092 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-10-28 17:11:46,170 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-28 17:11:46,826 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 17:11:47,479 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-10-28 17:11:47,635 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-10-28 17:11:48,326 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 17:11:48,411 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-10-28 17:11:49,070 > ERROR > ERROR:Validation failed for: NaaS-MM-1
+2020-10-28 17:11:49,100 > DEBUG > ERROR:Validation failed for: NaaS-MM-1
+2020-10-28 17:11:49,124 > ERROR > validating_pre_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 249, in validating_pre_check
+    running_disk = str(running_disk).split("PARTITION ")[1]
+IndexError: list index out of range
+2020-10-28 17:11:49,196 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-10-28 17:11:49,867 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 17:11:49,964 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-10-28 17:11:50,692 > ERROR > ERROR:Validation failed for: NaaS-VMC-1
+2020-10-28 17:11:50,757 > DEBUG > ERROR:Validation failed for: NaaS-VMC-1
+2020-10-28 17:11:50,781 > ERROR > validating_pre_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 249, in validating_pre_check
+    running_disk = str(running_disk).split("PARTITION ")[1]
+IndexError: list index out of range
+2020-10-28 17:11:50,805 > INFO > INFO:Precheck Completed
+2020-10-28 17:12:02,900 > ERROR > ERROR:Precheck validation failed
+2020-10-28 17:12:02,931 > DEBUG > ERROR:Precheck validation failed
+2020-10-28 17:12:02,986 > INFO > INFO:==== Completed ====

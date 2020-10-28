@@ -1,0 +1,238 @@
+2020-10-28 16:10:28,221 > INFO > JOBNAME:1603881628_0769553
+2020-10-28 16:10:28,221 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-28 16:10:28,363 > INFO > Starting Job
+2020-10-28 16:10:28,396 > INFO > INFO:Running: 1603881628_0769553 Type:Upgrade
+2020-10-28 16:10:28,422 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-28 16:10:28,472 > INFO > Inserting upgrade list to upgrade.db
+2020-10-28 16:10:32,588 > INFO > yes
+2020-10-28 16:10:32,589 > INFO > INFO:Starting precheck
+2020-10-28 16:10:32,621 > INFO > INFO:Executing Precheck
+2020-10-28 16:10:35,048 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-28 16:10:39,662 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-28 16:10:42,478 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:10:44,947 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:10:46,926 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:10:49,663 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:10:52,454 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:10:54,054 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:10:54,845 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-28 16:10:55,515 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:10:56,213 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-10-28 16:10:56,421 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-28 16:10:57,083 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:10:57,763 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-10-28 16:10:57,847 > INFO > INFO:Precheck Completed
+2020-10-28 16:11:08,060 > INFO > INFO:Total upgrade hosts:2
+2020-10-28 16:11:08,092 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-10-28 16:11:08,812 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:11:09,513 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:11:09,541 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:11:21,861 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 16:11:21,910 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 16:11:22,581 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:11:23,273 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:11:23,303 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:11:23,335 > INFO > INFO:User accepted : Do you want to install: Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 16:11:24,004 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:11:24,055 > INFO > INFO:NaaS-MM-1:10.17.84.220:4343- Installing AOS: ArubaOS_MM_8.5.0.10-FIPS_76207 from ftp server:10.17.84.225
+2020-10-28 16:12:04,775 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 16:12:04,872 > WARNING > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK 1 ArubaOS_MM_8.5.0.10-FIPS_76207
+2020-10-28 16:12:04,892 > DEBUG > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK 1 ArubaOS_MM_8.5.0.10-FIPS_76207
+2020-10-28 16:12:04,915 > ERROR > b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 16:12:17,578 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:12:19,576 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:12:19,598 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:12:19,620 > INFO > INFO:User accepted : Retry Image Upload, Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 16:12:20,308 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:12:21,767 > INFO > INFO:NaaS-MM-1:10.17.84.220:4343- Installing AOS: ArubaOS_MM_8.5.0.10-FIPS_76207 from ftp server:10.17.84.225
+2020-10-28 16:13:02,489 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 16:13:03,344 > WARNING > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK 1 ArubaOS_MM_8.5.0.10-FIPS_76207
+2020-10-28 16:13:03,546 > DEBUG > WARNING:File copy completed Failed: UPLOADED IMAGE TO DISK 1 ArubaOS_MM_8.5.0.10-FIPS_76207
+2020-10-28 16:13:03,579 > ERROR > b'<html>  <script>  top.(null)("<re><ERROR>ncftpget: cannot open 10.17.84.225: remote host refused connection. </ERROR></re>", "image");  </script></html>'
+2020-10-28 16:13:09,616 > WARNING > WARNING:User aborted for retry image upload
+2020-10-28 16:13:09,693 > DEBUG > WARNING:User aborted for retry image upload
+2020-10-28 16:13:09,714 > INFO > INFO:Starting Upgrade
+2020-10-28 16:13:09,734 > WARNING > WARNING:TERMINATED AOS upload failed
+2020-10-28 16:13:09,755 > DEBUG > WARNING:TERMINATED AOS upload failed
+2020-10-28 16:13:09,798 > INFO > INFO:==== Completed ====
+2020-10-28 16:17:17,963 > INFO > JOBNAME:1603882037_9334047
+2020-10-28 16:17:17,963 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-28 16:17:18,246 > INFO > Starting Job
+2020-10-28 16:17:18,273 > INFO > INFO:Running: 1603882037_9334047 Type:Upgrade
+2020-10-28 16:17:18,295 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-28 16:17:18,339 > INFO > Inserting upgrade list to upgrade.db
+2020-10-28 16:17:22,421 > INFO > yes
+2020-10-28 16:17:22,421 > INFO > INFO:Starting precheck
+2020-10-28 16:17:22,441 > INFO > INFO:Executing Precheck
+2020-10-28 16:17:24,628 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-28 16:17:29,488 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-28 16:17:32,321 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:17:34,570 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:17:36,542 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:17:39,211 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:17:41,873 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:17:43,249 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:17:44,091 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-28 16:17:44,742 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:17:45,548 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-10-28 16:17:45,608 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-28 16:17:46,270 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:17:46,965 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-10-28 16:17:47,074 > INFO > INFO:Precheck Completed
+2020-10-28 16:18:02,789 > INFO > INFO:Total upgrade hosts:2
+2020-10-28 16:18:02,811 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-10-28 16:18:05,065 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:18:05,753 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:18:05,787 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:18:09,889 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 16:18:09,921 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 16:18:10,601 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:18:11,298 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:18:11,425 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.5.0.10 Build:76207
+2020-10-28 16:18:11,450 > INFO > INFO:User accepted : Do you want to install: Image Version:8.5.0.10-76207 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-28 16:18:12,133 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:18:12,186 > INFO > INFO:NaaS-MM-1:10.17.84.220:4343- Installing AOS: ArubaOS_MM_8.5.0.10-FIPS_76207 from ftp server:10.17.84.225
+2020-10-28 16:23:25,818 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-10-28 16:23:25,867 > INFO > INFO:File copy completed COMPLETED: UPLOADED IMAGE TO DISK 1 ArubaOS_MM_8.5.0.10-FIPS_76207
+2020-10-28 16:23:25,892 > INFO > b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-10-28 16:23:25,915 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-10-28 16:23:28,341 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:23:29,018 > DEBUG > SUCCESS:New Image Installed for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 Disk:0 Version:8.5.0.10 Build:76207
+2020-10-28 16:23:46,303 > INFO > INFO:STARTING AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343 FROM DISK:0 MAX AP:1
+2020-10-28 16:23:48,549 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:26:29,152 > DEBUG > SUCCESS:AP Pre-load Executed:NaaS-VMC-1-10.17.84.221:4343 => Success
+2020-10-28 16:26:32,870 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:26:34,209 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:26:37,927 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:26:39,412 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:26:43,140 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:26:44,449 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:26:48,301 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:26:49,609 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:26:53,313 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:26:54,606 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:26:58,303 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:26:59,827 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:04,521 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:05,851 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:09,562 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:10,867 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:14,582 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:15,889 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:19,591 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:20,881 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:24,632 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:25,916 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:29,646 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:30,951 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:34,733 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:36,038 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:39,739 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:41,041 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:45,538 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:47,538 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:51,446 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:52,774 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:27:56,497 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:27:57,795 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:01,542 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:02,860 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:06,589 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:07,899 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:11,612 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:12,912 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:16,632 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:17,964 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:21,751 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:23,067 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:26,833 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:28,162 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:31,884 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:33,170 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:36,863 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:38,149 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:42,369 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:43,999 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:48,438 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:50,790 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:54,487 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:28:55,791 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:28:59,513 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:00,861 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:04,572 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:05,943 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:09,956 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:11,249 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:14,966 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:17,736 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:21,465 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:22,766 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:26,500 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:27,791 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:31,555 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:32,849 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:36,552 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:37,868 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:41,598 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:42,891 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:46,606 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:47,913 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:51,610 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:29:54,256 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:29:59,108 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-28 16:30:00,512 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-28 16:30:03,594 > WARNING > WARNING:USER SKIPPED AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343
+2020-10-28 16:30:03,624 > DEBUG > WARNING:USER SKIPPED AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343
+2020-10-28 16:30:06,790 > INFO > INFO:Starting Upgrade
+2020-10-28 16:30:38,864 > INFO > INFO:Starting reboot
+2020-10-28 16:30:47,671 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-28 16:31:01,217 > WARNING > WARNING:=> Reloading MM: NaaS-MM-1 - 10.17.84.220:4343
+2020-10-28 16:31:01,239 > DEBUG > WARNING:=> Reloading MM: NaaS-MM-1 - 10.17.84.220:4343
+2020-10-28 16:31:10,373 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-28 16:31:15,123 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-28 16:31:19,299 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-28 16:31:24,782 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-28 16:31:30,196 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-28 16:32:53,053 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:33:17,245 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:33:41,497 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:34:05,859 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:34:29,984 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:34:54,056 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:35:18,241 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:35:42,293 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:36:06,345 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:36:30,402 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:36:54,454 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:37:18,504 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:37:42,589 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:38:06,646 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:38:30,698 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:38:54,748 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:39:18,799 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:39:42,872 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:40:06,951 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:40:31,005 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:40:55,084 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:41:19,137 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:41:43,200 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:42:07,281 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:42:31,367 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:42:55,424 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:43:19,495 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:43:43,545 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:44:07,598 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:44:31,664 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-28 16:44:34,689 > ERROR > ERROR:*** Warning : Failed to get reboot info (Please check manualy...)
+2020-10-28 16:44:34,891 > DEBUG > ERROR:*** Warning : Failed to get reboot info (Please check manualy...)
+2020-10-28 16:44:34,915 > ERROR > validate_running_image: 
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 744, in validate_running_image
+    host_ip = single_host.get("host")
+AttributeError: 'str' object has no attribute 'get'
+2020-10-28 16:44:34,961 > INFO > INFO:=>(MM) NaaS-MM-1-10.17.84.220:4343 8.5.0.10:76207 : NEW IMAGE UPGRADE SUCCESS
+2020-10-28 16:44:49,077 > INFO > yes
+2020-10-28 16:44:49,077 > INFO > INFO:Starting postcheck
+2020-10-28 16:44:49,882 > INFO > INFO:Executing Postcheck
+2020-10-28 16:44:49,938 > INFO > INFO:Postcheck Completed
+2020-10-28 16:44:50,236 > INFO > INFO:==== Completed ====
