@@ -1,0 +1,18 @@
+precheck_table_data = {{precheck_table}}
+
+$(document).ready(function() {
+    $('#precheck_table').DataTable( {
+        data: precheck_table_data,
+        paging:         false,
+        columns: [
+            { title: "Device Type" },
+            { title: "Hostname" },
+            { title: "Host" },
+            { title: "Validation" },
+            { title: "result" },
+            { title: "status" },
+            { title: "Report" }
+
+        ]
+    } );
+} );

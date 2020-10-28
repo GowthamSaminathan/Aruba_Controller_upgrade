@@ -1,0 +1,19 @@
+postcheck_table_data = {{postcheck_table}}
+
+$(document).ready(function() {
+    $('#postcheck_table').DataTable( {
+        data: postcheck_table_data,
+        columns: [
+            { title: "Device Type" },
+            { title: "Hostname" },
+            { title: "Host" },
+            { title: "Precheck Validation" },
+            { title: "Precheck result" },
+            { title: "Precheck status" },
+            { title: "Prostcheck Validation" },
+            { title: "Prostcheck result" },
+            { title: "Prostcheck status" }
+        ]
+    } );
+} );
+

@@ -13,13 +13,8 @@
   
 
 
-<script src="/static/papaparse.min.js"></script>
-
-
-  
-  <link rel="stylesheet" type="text/css" href="/static/DataTables/datatables.min.css"/>
- 
-  <script type="text/javascript" src="/static/DataTables/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
 
 
 </head>
@@ -35,7 +30,7 @@
     <h6 style="margin-top: 6px;"><span class="badge badge-light" style="margin-top: 8px;">Aruba Wireless Upgrade</span></h6>
 
     <div class="navbar-nav ml-auto">
-    <h6 style="margin-top: 6px;"><span class="badge badge-info" style="margin-top: 8px;">{{Configuration_file}}:{{report_type}}</span></h6>
+    <h6 style="margin-top: 6px;"><span class="badge badge-info" style="margin-top: 8px;">{{Configuration_file}} -  {{report_type}}</span></h6>
 </div>
 
     <div class="navbar-nav ml-auto">
@@ -51,17 +46,17 @@
 
 
 <div class="container">
-  <h4>{{report_type}} Report</h4>
+  <h4><span class="badge badge-primary">{{report_type}} Report</span></h4>
   
    <div class="d-flex justify-content-between bg-light mb-3">
     <div class="p-2 bg-light">
-    	<h6><span class="badge badge-light">Total devices: {{total_devices}}</span></h6>
+    	<h5><span class="badge badge-info">Total devices: {{total_devices}}</span></h5>
     </div>
     <div class="p-2 bg-light">
-    	<h6><span class="badge badge-light">Mobility Master's: {{total_mm}}</span></h6>
+    	<h5><span class="badge badge-warning">Mobility Master's: {{total_mm}}</span></h5>
     </div>
     <div class="p-2 bg-light">
-    	<h6><span class="badge badge-light">Mobility Controller's: {{total_md}}</span></h6>
+    	<h5><span class="badge badge-warning">Mobility Controller's: {{total_md}}</span></h5>
     </div>
   </div>
 
@@ -70,9 +65,9 @@
     	<h6><span class="badge badge-light">Status:{{status}}</span></h6>
     </div>
     <div class="p-2 bg-light">
-      <h6><span class="badge badge-light">Elasped time:{{elapsed_time}}</span></h6>
-      <h6><span class="badge badge-light">Started:{{start_time}}</span></h6>
-      <h6><span class="badge badge-light">Completed:{{end_time}}</span></h6>
+      <h6><span class="badge badge-info">Elasped time:{{elapsed_time}}</span></h6>
+      <h6><span class="badge badge-info">Started:{{start_time}}</span></h6>
+      <h6><span class="badge badge-info">Completed:{{end_time}}</span></h6>
     </div>
     
   </div>
@@ -91,68 +86,10 @@
 <script>
 // Precheck datasource
 
-precheck_table_data = {{precheck_table}}
-
-$(document).ready(function() {
-    $('#precheck_table').DataTable( {
-        data: precheck_table_data,
-        columns: [
-            { title: "Device Type" },
-            { title: "Hostname" },
-            { title: "Host" },
-            { title: "Validation" },
-            { title: "result" },
-            { title: "status" },
-            { title: "report" }
-
-        ]
-    } );
-} );
-
-
-postcheck_table_data = {{postcheck_table}}
-
-$(document).ready(function() {
-    $('#postcheck_table').DataTable( {
-        data: postcheck_table_data,
-        columns: [
-            { title: "Device Type" },
-            { title: "Hostname" },
-            { title: "Host" },
-            { title: "Precheck Validation" },
-            { title: "Precheck result" },
-            { title: "Precheck status" },
-            { title: "Prostcheck Validation" },
-            { title: "Prostcheck result" },
-            { title: "Prostcheck status" }
-        ]
-    } );
-} );
 
 
 
-upgrade_table_data = {{upgrade_table}}
-
-$(document).ready(function() {
-    $('#upgrade_table').DataTable( {
-        data: upgrade_table_data,
-        columns: [
-            { title: "Device Type" },
-            { title: "Hostname" },
-            { title: "Host" },
-            { title: "Previous Version" },
-            { title: "Current Version" },
-            { title: "Status" },
-            { title: "Started" },
-            { title: "Completed" },
-            { title: "Upgrade time" },
-        ]
-    } );
-} );
 
 
-</script>
 
 
-</body>
-</html>

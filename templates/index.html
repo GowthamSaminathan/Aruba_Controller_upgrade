@@ -284,6 +284,35 @@
   </div>
 
 
+<!-- Get user conformation -->
+  <div class="modal fade" id="user_input2">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" >
+          <h4 class="modal-title" id="user_input_head2">Precheck report</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body" id="user_input_body2">
+           
+          <iframe id="user_input2_iframe"></iframe>
+
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning btn-md" onclick="user_yes_no('yes')">Continue</button>&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-danger btn-md" onclick="user_yes_no('no')">Cancel</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
 
 
 <!-- Get user async conformation -->
@@ -922,6 +951,7 @@ $.ajax({
         $("#user_input_name").text()
         $(".user_yes_no").attr("id","tmp");
         $("#user_input").modal('hide');
+        $("#user_input2").modal('hide');
 
 
       }
@@ -1282,7 +1312,39 @@ try{
          val[3] = '<span class="badge badge-warning"'+style_val+'>'+val[3]+'</span>'
 
         
-      }else if (evnt_msg.indexOf("IN:") == 0){
+      }
+
+      else if (evnt_msg.indexOf("IN:_Precheck") == 0){
+
+         msg = val[3];
+         val[2] = '<span class="badge badge-primary"'+style_val+'>'+val[2]+'</span>'
+         val[3] = '<span class="badge badge-primary"'+style_val+'>'+val[3]+'</span>'
+        
+         if(only_data.length == i+1)
+         {
+
+          
+          msg = msg.split("IN:")[1];
+          $("#user_input_msg").text(msg);
+          console.log("User Input required : "+msg);
+          $("#user_input_eid").text(val[4]);
+          $("#user_input_name").text(val[1]);
+          
+          if (($("#user_input2").data('bs.modal') || {})._isShown != true){
+          pre_url = "/portal/get_report?job_name="+val[1]+"&report_name=Precheck.html"
+          console.log(pre_url)
+          if_d = '<iframe src="'+pre_url+'" style="display:block;height: 65vh;width:80vw;border:none;"></iframe>'
+          $("#user_input_body2").html(if_d);
+
+          $("#user_input2").modal({backdrop: "static"});
+
+        }
+
+         }
+
+        
+      }
+      else if (evnt_msg.indexOf("IN:") == 0){
 
          msg = val[3];
          val[2] = '<span class="badge badge-primary"'+style_val+'>'+val[2]+'</span>'
@@ -2249,7 +2311,7 @@ $("#start_new_upgrade_badge").text("Please select the POA");
 $("#start_new_upgrade_badge").attr('class', 'badge badge-info');
 $("#start_new_upgrade_badge").text("Please Wait");
 
-if (pre_check == true){job_list=["precheck"];}else{job_list=["precheck","all"];}
+if (pre_check == true){job_list="Precheck";}else{job_list="Upgrade";}
 jdata = {"file_name":job_name,"job_list":job_list}
 
 
@@ -2340,7 +2402,7 @@ try{
       post_report = "/portal/get_report?job_name="+val[1]+"&report_name=Upgrade.html"
       log_files = "/portal/get_report?job_name="+val[1]+"&report_name=all_logs"
 
-      val[7] = '<a href='+pre_report+' target="_blank">Precheck</a><br>' + '<a href='+post_report+' target="_blank">Upgrade</a><br>' + '<a href='+log_files+' target="_blank">Log files</a>'
+      val[8] = '<a href='+pre_report+' target="_blank">Precheck</a><br>' + '<a href='+post_report+' target="_blank">Upgrade</a><br>' + '<a href='+log_files+' target="_blank">Log files</a>'
       style_val = 'style="text-align:left;white-space=nowrap"'
       if (evnt_msg.indexOf("ERROR") == 0)
       {
@@ -2410,6 +2472,7 @@ $(document).ready(function() {
             { title: "Start Date" },
             { title: "Completed Date" },
             { title: "Note" },
+            { title: "Execution" },
             { title: "Download Report" }
         ],
         "scrollY":        "350px",

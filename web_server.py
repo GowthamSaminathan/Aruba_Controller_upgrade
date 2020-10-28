@@ -398,7 +398,7 @@ def start_execution():
 			filename = result.get("file_name")
 			job_list = result.get("job_list")
 
-			if all(item in ["precheck","all"] for item in job_list) == False:
+			if job_list in ["Precheck","Upgrade"]  == False:
 				return jsonify({"results":"failed","message":"Job list not valid"})
 
 			
@@ -415,7 +415,7 @@ def start_execution():
 
 				S_DATE = str(datetime.datetime.now()).split(".")[0]
 				job_name = str(time.time()).replace(".","_")
-				data = {"NAME":job_name,"CONF_FILE":filename,"STATUS":"STARTING","S_DATE":S_DATE,"E_DATE":"","MSG":""}
+				data = {"NAME":job_name,"CONF_FILE":filename,"STATUS":"STARTING","S_DATE":S_DATE,"E_DATE":"","MSG":"","JOB_TYPE":job_list}
 				history_db = os.path.join(app.config['DB_LOCATION'],"job_history.db")
 				status = db_management.insert_if_lastjob_completed(history_db,data)
 

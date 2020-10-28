@@ -16,7 +16,7 @@ logger.info("DB Managenet imported")
 
 def create_history_db(db_path):
 	conn = sqlite3.connect(db_path)
-	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT NOT NULL,CONF_FILE NAME TEXT NOT NULL,STATUS TEXT NOT NULL,S_DATE TEXT,E_DATE TEXT,MSG TEXT NOT NULL"
+	cmd = "ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT NOT NULL,CONF_FILE NAME TEXT NOT NULL,STATUS TEXT NOT NULL,S_DATE TEXT,E_DATE TEXT,MSG TEXT NOT NULL,JOB_TYPE TEXT NOT NULL"
 	try:
 		conn.execute('''CREATE TABLE IF NOT EXISTS HISTORY({});'''.format(cmd))
 		print("HISTORY table created successfully")
@@ -209,7 +209,7 @@ def get_last_job(db_path):
 		conn = sqlite3.connect(db_path)
 		#E_DATE = str(datetime.datetime.now()).split(".")[0]
 		cursor = conn.cursor()
-		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG FROM HISTORY ORDER BY ID DESC LIMIT 1")
+		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG,JOB_TYPE FROM HISTORY ORDER BY ID DESC LIMIT 1")
 		result = cursor.fetchone()
 		conn.close()
 		return result
@@ -221,7 +221,7 @@ def get_job_by_name(db_path,name):
 		conn = sqlite3.connect(db_path)
 		#E_DATE = str(datetime.datetime.now()).split(".")[0]
 		cursor = conn.cursor()
-		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG FROM HISTORY WHERE NAME='{}'".format(name))
+		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG,JOB_TYPE FROM HISTORY WHERE NAME='{}'".format(name))
 		result = cursor.fetchone()
 		conn.close()
 		return result
@@ -234,7 +234,7 @@ def get_all_jobs(db_path):
 		conn = sqlite3.connect(db_path)
 		#E_DATE = str(datetime.datetime.now()).split(".")[0]
 		cursor = conn.cursor()
-		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG FROM HISTORY ORDER BY ID DESC")
+		cursor.execute("SELECT ID,NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG,JOB_TYPE FROM HISTORY ORDER BY ID DESC")
 		result = cursor.fetchall()
 		conn.close()
 		return result
@@ -361,8 +361,9 @@ def insert_if_lastjob_completed(db_path,data):
 		S_DATE = data.get("S_DATE")
 		E_DATE = data.get("E_DATE")
 		MSG = data.get("MSG")
+		job = data.get("JOB_TYPE")
 
-		query = "INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG) SELECT '{}','{}','{}','{}','{}','{}'".format(NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG)
+		query = "INSERT INTO HISTORY (NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG,JOB_TYPE) SELECT '{}','{}','{}','{}','{}','{}','{}'".format(NAME,CONF_FILE,STATUS,S_DATE,E_DATE,MSG,job)
 		query = query + " WHERE NOT EXISTS (SELECT * FROM HISTORY WHERE ID = (SELECT MAX(ID) FROM HISTORY) AND (STATUS='RUNNING' OR STATUS='STARTING'));"
 
 		logger.info(query)

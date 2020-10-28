@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LAB WIRELESS UPGRADE 8.5</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous">
+  
+  
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light border-dark">
+    <a href="#" class="navbar-brand">
+        <img src="/static/title.png" height="28" alt="CoolBrand" class="navbar_split_line">
+    </a>
+    
+    <h6 class="navbar_split_line_"></h6>
+    <h6 style="margin-top: 6px;"><span class="badge badge-light" style="margin-top: 8px;">Aruba Wireless Upgrade</span></h6>
+
+    <div class="navbar-nav ml-auto">
+    <h6 style="margin-top: 6px;"><span class="badge badge-info" style="margin-top: 8px;">LAB WIRELESS UPGRADE 8.5 -  Precheck</span></h6>
+</div>
+
+    <div class="navbar-nav ml-auto">
+    <h6 style="margin-top: 6px;"><span class="badge badge-light" style="margin-top: 8px;">Report Date: 10:20:07 28-October-2020</span></h6>
+</div>
+
+    <!--<h6 style="margin-top: 12px;"><span class="badge badge-info" id="total_clients">Total Clients : 5</span></h6>-->
+    &nbsp;&nbsp;&nbsp;
+</nav>
+</br>
+
+
+
+
+<div class="container">
+  <h4><span class="badge badge-primary">Precheck Report</span></h4>
+  
+   <div class="d-flex justify-content-between bg-light mb-3">
+    <div class="p-2 bg-light">
+    	<h5><span class="badge badge-info">Total devices: 2</span></h5>
+    </div>
+    <div class="p-2 bg-light">
+    	<h5><span class="badge badge-warning">Mobility Master's: 1</span></h5>
+    </div>
+    <div class="p-2 bg-light">
+    	<h5><span class="badge badge-warning">Mobility Controller's: 1</span></h5>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between bg-light mb-3">
+    <div class="p-2 bg-light">
+    	<h6><span class="badge badge-light">Status:</span></h6>
+    </div>
+    <div class="p-2 bg-light">
+      <h6><span class="badge badge-info">Elasped time:0:00:42.386209</span></h6>
+      <h6><span class="badge badge-info">Started:10:19:24 28-October-2020</span></h6>
+      <h6><span class="badge badge-info">Completed:10:20:07 28-October-2020</span></h6>
+    </div>
+    
+  </div>
+
+
+<table id="upgrade_table" class="display" width="100%"></table>
+<table id="precheck_table" class="display" width="100%"></table>
+<table id="postcheck_table" class="display" width="100%"></table>
+
+
+
+</div>
+
+
+
+<script>
+// Precheck datasource
+
+
+
+
+
+
+
+
+precheck_table_data = [['MM', 'NaaS-MM-1', '10.17.84.220:4343', 'Login', 'Request timeout', '<span class="badge badge-danger">Failed</span>', 'Precheck'], ['MD', 'NaaS-VMC-1', '10.17.84.221:4343', 'Login', 'Request timeout', '<span class="badge badge-danger">Failed</span>', 'Precheck']]
+
+$(document).ready(function() {
+    $('#precheck_table').DataTable( {
+        data: precheck_table_data,
+        paging:         false,
+        columns: [
+            { title: "Device Type" },
+            { title: "Hostname" },
+            { title: "Host" },
+            { title: "Validation" },
+            { title: "result" },
+            { title: "status" },
+            { title: "Report" }
+
+        ]
+    } );
+} );
+
+</script>
+</body>
+</html>

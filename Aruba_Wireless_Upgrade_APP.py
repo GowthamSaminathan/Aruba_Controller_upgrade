@@ -1276,7 +1276,7 @@ class main_model():
 
 	def create_report(self,report_type):
 		try:
-			r_gen = reports.report_gen(report_data,report_type)
+			r_gen = reports.report_gen(report_data,self.job_list)
 			report = r_gen.create_report()
 			report_file = os.path.join(self.job_path,"Reports",report_type+".html")
 			open(report_file,"w").write(report)
@@ -1367,11 +1367,16 @@ class main_model():
 					self.final_status = ["TERMINATED","User aborted the precheck"]
 					return False
 
+				res = self.get_user_input("_Precheck",["yes","no"])
+				if res != "yes":
+					self.final_status = ["COMPLETED","Precheck Failed"]
+					return True
+
 				# Start the Installation
-				pre_check_valid = True
+				#pre_check_valid = True
 				upgrade_valid = False
 				if pre_check_valid == True:
-					if "all" in job_list:
+					if job_list == "Upgrade":
 						self.user_pause_terminate()
 						res = self.get_user_input("Are you sure want to start the AOS Upgrade",["yes","no"])
 						if res == "yes":
