@@ -69,7 +69,7 @@ def get_version(obj,hosts):
 				_version = cmd_out.get("show version")
 				_version = _version.get("_data")[0]
 				run_version = re.findall(r'Version.*',_version)[0]
-				_d = {"validation":"running version","value":run_version}
+				_d = {"validation":"running version","value":run_version ,"status":"Ok"}
 				_d.update(device_info)
 				results.append(_d)
 		except Exception:
@@ -111,7 +111,7 @@ def get_disk_images(obj,hosts):
 				current_boot_partition = _boot[0].split("PARTITION ")[1]
 				current_boot_partition = int(current_boot_partition)
 
-				_d = {"validation":"current boot partition","value":current_boot_partition}
+				_d = {"validation":"current boot partition","value":current_boot_partition,"status":"Ok"}
 				_d.update(device_info)
 				results.append(_d)
 
@@ -125,10 +125,10 @@ def get_disk_images(obj,hosts):
 				first_version = first_version.split("ArubaOS ")[1].split(" ")[0]
 				first_build = part[3].split(" : ")[1].split(" ")[0]
 
-				_d = {"validation":"first partition version","value":first_version}
+				_d = {"validation":"first partition version","value":first_version,"status":"Ok"}
 				_d.update(device_info)
 				results.append(_d)
-				_d = {"validation":"first partition build","value":first_build}
+				_d = {"validation":"first partition build","value":first_build,"status":"Ok"}
 				_d.update(device_info)
 				results.append(_d)
 
@@ -138,10 +138,10 @@ def get_disk_images(obj,hosts):
 				second_version = second_version.split("ArubaOS ")[1].split(" ")[0]
 				second_build = part[9].split(" : ")[1].split(" ")[0]
 
-				_d = {"validation":"second partition version","value":first_version}
+				_d = {"validation":"second partition version","value":first_version,"status":"Ok"}
 				_d.update(device_info)
 				results.append(_d)
-				_d = {"validation":"second partition build","value":first_build}
+				_d = {"validation":"second partition build","value":first_build,"status":"Ok"}
 				_d.update(device_info)
 				results.append(_d)
 
@@ -177,7 +177,7 @@ def get_system_health(obj,hosts):
 					for t in re.findall(r'/dev.*',out):
 						t = t.split(" ")
 						used_disk = list(filter(None, t))
-						_d = {"validation":"disk "+used_disk[0]+" usage","value":used_disk[3]}
+						_d = {"validation":"disk "+used_disk[0]+" available","value":used_disk[3]}
 						_d.update(device_info)
 						results.append(_d)
 						_d = {"validation":"disk "+used_disk[0]+" used percent","value":used_disk[4].split("%")[0]}
@@ -206,7 +206,7 @@ def get_system_health(obj,hosts):
 					o = re.findall(r'free.*',out)[0]
 					o = o.split("free:")[1]
 					#xlw.append({"HOSTNAME":hostname,"IP":host_ip,"CMD":"Free Memory","VALUE":o})
-					_d = {"validation":"free memory bytes","value":o.strip()}
+					_d = {"validation":"free memory (Kb)","value":o.strip()}
 					_d.update(device_info)
 					results.append(_d)
 				except Exception:
@@ -278,15 +278,30 @@ class gen_report():
 						r1.update({"status":"Good"})
 					elif value.find("M") != -1:
 						value = float(value.split("M")[0])
-						if value > 200:
+						if value < 200:
 						# Space required 200 MB
 							r1.update({"status":"Warning: Avaliable disk less than 200 MB"})
+						else:
+							r1.update({"status":"Good"})
+					elif validation.find("used percent") != -1:
+						if float(value) > 80:
+							r1.update({"status":"Warning: Used disk is more than 80%"})
+						else:
+							r1.update({"status":"Good"})
+
 				elif validation.find("free cpu percent") != -1:
 					print("Validating cpu")
 					if float(value) > 20:
 						r1.update({"status":"Good"})
 					else:
 						r1.update({"status":"Warning: CPU utilization is more than 80%"})
+
+				elif validation.find("free memory") != -1:
+					if float(value) < 1000000:
+						r1.update({"status":"Warning: Memory is less than 1Gb"})
+					else:
+						r1.update({"status":"Good"})
+
 
 			except Exception:
 				self.obj.logger.exception("validate_system_health")

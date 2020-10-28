@@ -1261,7 +1261,7 @@ class main_model():
 				
 				
 				if status == True:
-					self.eprint("info","Running: "+str(self.job_name)+" Type:"+str(",".join(self.job_list)))
+					self.eprint("info","Running: "+str(self.job_name)+" Type:"+str(self.job_list))
 					return True
 				else:
 					self.eprint("error","Terminating Job , DB update failed...")
