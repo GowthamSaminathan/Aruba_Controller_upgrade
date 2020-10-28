@@ -17,14 +17,49 @@ class report_gen():
 		
 
 	def upgrade_gen(self):
-		pass;
-
-	def precheck_gen(self):
-		self.template = self.template + open(self.template_precheck_path).read()
+		upgrade_data = []
 		validation_db = self.report_data.get("validation_db")
 		precheck_data = db_management.get_checklist(validation_db,"Precheck")
+		precheck_data = db_management.get_checklist(validation_db,"Postcheck")
+		hosts = self.report_data.get("Upgrade")
+		div = 0
+		for single_host in hosts:
+			
+			div = div+1
+			device_type = single_host.get("device_type")
+			host = single_host.get("host")
+			hostname = single_host.get("hostname")
+
+			q = "report_name='Precheck' AND validation='running version' AND host='{}' ".format(host)
+			pre_version = db_management.get_checklist_by_val(validation_db,q)
+			try:
+				pre_version = pre_version[0][4]
+			except:
+				pre_version = "Na"
+				pass;
+
+			q = "report_name='Postcheck' AND validation='running version' AND host='{}' ".format(host)
+			post_version = db_management.get_checklist_by_val(validation_db,q)
+
+			try:
+				post_version = post_version[0][4]
+			except:
+				post_version = "Na"
+				pass;
+			
+			upgrade_data.append([div,device_type,host,hostname,pre_version,post_version])
+
+
+		print(upgrade_data)
+		self.template = self.template + open(self.template_upgrade_path).read()
+		self.report_data.update({"upgrade_table":upgrade_data})
+
+
+	def precheck_gen(self,check_type):
+		self.template = self.template + open(self.template_precheck_path).read()
+		validation_db = self.report_data.get("validation_db")
+		precheck_data = db_management.get_checklist(validation_db,check_type)
 		precheck_data = list(map(list, precheck_data))
-		print(precheck_data)
 		for chk in precheck_data:
 			if chk[5].find("Warning") == 0:
 				chk[5] = '<span class="badge badge-warning">'+chk[5]+'</span>'
@@ -84,13 +119,13 @@ class report_gen():
 		self.template = Template(self.template)
 		return self.template.render(**self.report_data)
 
-	def create_report(self):
+	def create_report(self,c_type):
 		self.create_header()
-		if self.report_type == "Precheck":
-			self.precheck_gen()
-		if self.report_type == "Upgrade":
-			self.precheck_gen()
+		if c_type == "Precheck":
+			self.precheck_gen("Precheck")
+		if c_type == "Postcheck":
 			self.upgrade_gen()
+			self.precheck_gen("Postcheck")
 		#job_path = self.report_data.get("job_path")
 		self.create_footer()
 		html = self.final_render()

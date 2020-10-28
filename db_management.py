@@ -395,6 +395,19 @@ def get_checklist(db_path,report_name):
 	except Exception:
 		logger.exception("get_checklist")
 
+def get_checklist_by_val(db_path,qry):
+	try:
+		conn = sqlite3.connect(db_path)
+		#E_DATE = str(datetime.datetime.now()).split(".")[0]
+		qry = "SELECT device_type,hostname,host,validation,value,status,report_name FROM CHECKLIST WHERE "+qry
+		print(qry)
+		evnt = conn.execute(qry)
+		evnt = evnt.fetchall()
+		conn.close()
+		return evnt
+	except Exception:
+		logger.exception("get_checklist")
+
 
 #data = {"NAME":"test","CONF_FILE":"fff","STATUS":"running","S_DATE":"dddd","E_DATE":"dsdsd","MSG":"ok"}
 
@@ -406,6 +419,11 @@ def get_checklist(db_path,report_name):
 #print(get_last_job("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\db\\job_history.db"))
 
 #print(get_all_events("D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\12345\\event.db"))
+
+#q = "report_name='Precheck' AND validation='running version' AND host='10.17.84.220:4343' "
+#db_path = "D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603888935_475258\\validation.db"
+#o = get_checklist_by_val(db_path,q)
+#print(o)
 
 
 

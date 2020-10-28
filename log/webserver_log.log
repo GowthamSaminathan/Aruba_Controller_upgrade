@@ -1766,3 +1766,81 @@ Traceback (most recent call last):
   File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 183, in save_config
     open(conf_file,"w").write(config_yaml)
 FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\conf_files\\'
+2020-10-28 18:03:07,569 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 384, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603886817_4899616\\Reports\\Upgrade.html'
+2020-10-28 18:03:13,589 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 384, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603886519_0310771\\Reports\\Upgrade.html'
+2020-10-28 18:11:22,243 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 18:23:23,494 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 18:28:57,652 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 18:32:58,267 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 18:34:29,246 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 18:35:47,879 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 18:39:38,356 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 18:42:39,779 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 19:09:44,688 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 19:09:47,352 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 19:14:48,458 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 19:27:25,201 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 19:27:43,155 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 19:29:20,474 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 19:29:43,546 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 20:47:20,815 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 20:47:23,255 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 20:48:15,299 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 20:51:00,542 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 20:51:34,843 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-28 20:51:36,276 > ERROR > validate_create_yaml
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\config_file_generator.py", line 191, in validate_create_yaml
+    raise ValueError
+ValueError
+2020-10-28 21:16:38,662 > INFO > 
+ ==> Starting WEB server ...
+

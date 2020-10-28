@@ -186,6 +186,9 @@ def validate_create_yaml(config_yaml,logger):
 		config_json = yaml.load(config_yaml,Loader=yaml.Loader)
 		upgrade_host = config_json.get("Upgrade")
 		default_settings = config_json.get("default_settings")
+
+		if len(upgrade_host) < 1:
+			raise ValueError
 		
 		for host in upgrade_host:
 			#print(host)
@@ -251,10 +254,11 @@ def validate_create_yaml(config_yaml,logger):
 		gen_yaml = yaml.safe_dump(config_json,default_flow_style=False)
 		return {"status":"success","config_yaml":gen_yaml,"config_json":config_json}
 	except ValidationError as err:
-		print(err.messages)
+		#print(err.messages)
 		return {"status": "error","error":err.messages}
 		#print(err.valid_data)
 
 	except Exception:
 		logger.exception("validate_create_yaml")
-		print("validate_create_yaml: "+str(e))
+		return {"status": "error","error":"Configuration file not valid"}
+		#print("validate_create_yaml: "+str(e))

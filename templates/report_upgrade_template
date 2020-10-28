@@ -1,18 +1,17 @@
+
 upgrade_table_data = {{upgrade_table}}
 
 $(document).ready(function() {
     $('#upgrade_table').DataTable( {
         data: upgrade_table_data,
         columns: [
+            { title: "#" },
             { title: "Device Type" },
             { title: "Hostname" },
             { title: "Host" },
             { title: "Previous Version" },
-            { title: "Current Version" },
-            { title: "Status" },
-            { title: "Started" },
-            { title: "Completed" },
-            { title: "Upgrade time" },
+            { title: "Current Version" }
         ]
     } );
 } );
+

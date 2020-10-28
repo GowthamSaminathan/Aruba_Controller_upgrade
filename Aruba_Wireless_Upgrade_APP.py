@@ -1310,10 +1310,10 @@ class main_model():
 		except Exception:
 			self.logger.exception("init_upgrade")
 
-	def create_report(self,report_type):
+	def create_report(self,report_type,triger_report):
 		try:
 			r_gen = reports.report_gen(report_data,self.job_list)
-			report = r_gen.create_report()
+			report = r_gen.create_report(triger_report)
 			report_file = os.path.join(self.job_path,"Reports",report_type+".html")
 			open(report_file,"w").write(report)
 		except Exception as e:
@@ -1397,7 +1397,7 @@ class main_model():
 					self.eprint("info","Starting precheck")
 					pre_check_valid = ar_upgrade.Pre_Post_check("Precheck")
 					report_data.update({"precheck_end_time":datetime.datetime.now()})
-					self.create_report("Precheck")
+					self.create_report("Precheck","Precheck")
 				else:
 					self.eprint("warning","TERMINATED User aborted the precheck")
 					self.final_status = ["TERMINATED","User aborted the precheck"]
@@ -1450,11 +1450,11 @@ class main_model():
 					else:
 						self.eprint("warning","TERMINATED User aborted the reboot")
 						self.final_status = ["TERMINATED","User aborted the reboot"]
-						return False
+						#return False
 				else:
 					self.eprint("warning","TERMINATED AOS upload failed")
 					self.final_status = ["TERMINATED","AOS upload failed"]
-					return False
+					#return False
 
 				# Starting Post check
 				self.user_pause_terminate()
@@ -1465,7 +1465,7 @@ class main_model():
 					self.eprint("info","Starting postcheck")
 					self.update_devices_status_in_db("PENDING: POSTCHECK","Waiting...")
 					post_check_valid = ar_upgrade.Pre_Post_check("Postcheck")
-					self.create_report("Upgrade")
+					self.create_report("Upgrade","Postcheck")
 					self.find_alternative_partition("COMPLETED: Postcheck","Finished POA")
 				else:
 					self.eprint("warning","TERMINATED User aborted the postcheck")
