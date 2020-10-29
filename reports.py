@@ -60,16 +60,32 @@ class report_gen():
 		validation_db = self.report_data.get("validation_db")
 		precheck_data = db_management.get_checklist(validation_db,check_type)
 		precheck_data = list(map(list, precheck_data))
+		warning = 0
+		failed = 0
+		status = ""
 		for chk in precheck_data:
 			if chk[5].find("Warning") == 0:
+				warning = warning + 1
 				chk[5] = '<span class="badge badge-warning">'+chk[5]+'</span>'
 			elif chk[5].find("Failed") == 0:
+				failed = failed + 1
 				chk[5] = '<span class="badge badge-danger">'+chk[5]+'</span>'
 			elif chk[5].find("Good") == 0:
 				chk[5] = '<span class="badge badge-success">'+chk[5]+'</span>'
 			else:
 				chk[5] = '<span class="badge badge-info">'+chk[5]+'</span>'
 
+		
+		status = "Good"
+		status_clr = "success"
+		if warning > 0:
+			status_clr = "warning"
+			status = "Warning"
+		if failed > 0:
+			status_clr = "danger"
+			status = "Failed"
+
+		self.report_data.update({"status":status,"status_clr":status_clr,"warning":warning,"failed":failed})
 		self.report_data.update({"precheck_table":precheck_data})
 
 	def create_footer(self):
@@ -86,15 +102,18 @@ class report_gen():
 
 		precheck_start_time = self.report_data.get("precheck_start_time")
 		precheck_end_time = self.report_data.get("precheck_end_time")
-		precheck_elapsed_time = precheck_end_time - precheck_start_time
-
-		self.report_data.update({"elapsed_time":str(precheck_elapsed_time)})
+		
+		elapsed_time = datetime.now() - precheck_start_time
+		self.report_data.update({"elapsed_time":str(elapsed_time).split(".")[0]})
 
 		self.report_data.update({"start_time":precheck_start_time.strftime("%H:%M:%S %d-%B-%Y")})
 		self.report_data.update({"end_time":precheck_end_time.strftime("%H:%M:%S %d-%B-%Y")})
 
 		if self.report_type is "Upgrade":
-			self.report_data.update({"end_time":postcheck_end_time.strftime("%H:%M:%S %d-%B-%Y")})
+			pass;
+			#precheck_elapsed_time = datetime.datetime.now() - precheck_start_time
+			#self.report_data.update({"elapsed_time":str(precheck_elapsed_time).split(".")[0]})
+			#self.report_data.update({"end_time":datetime.datetime.now().strftime("%H:%M:%S %d-%B-%Y")})
 
 		
 		hosts = self.report_data.get("Upgrade")

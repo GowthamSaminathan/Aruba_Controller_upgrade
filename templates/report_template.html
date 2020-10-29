@@ -30,7 +30,7 @@
     <h6 style="margin-top: 6px;"><span class="badge badge-light" style="margin-top: 8px;">Aruba Wireless Upgrade</span></h6>
 
     <div class="navbar-nav ml-auto">
-    <h6 style="margin-top: 6px;"><span class="badge badge-info" style="margin-top: 8px;">{{Configuration_file}} -  {{report_type}}</span></h6>
+    <h5 style="margin-top: 6px;"><span class="badge badge-info" style="margin-top: 8px; background-color:#f58421;">{{Configuration_file}} -  {{report_type}}</span></h5>
 </div>
 
     <div class="navbar-nav ml-auto">
@@ -43,35 +43,27 @@
 </br>
 
 
-
-
 <div class="container">
-  <h4><span class="badge badge-primary">{{report_type}} Report</span></h4>
-  
-   <div class="d-flex justify-content-between bg-light mb-3">
-    <div class="p-2 bg-light">
-    	<h5><span class="badge badge-info">Total devices: {{total_devices}}</span></h5>
-    </div>
-    <div class="p-2 bg-light">
-    	<h5><span class="badge badge-warning">Mobility Master's: {{total_mm}}</span></h5>
-    </div>
-    <div class="p-2 bg-light">
-    	<h5><span class="badge badge-warning">Mobility Controller's: {{total_md}}</span></h5>
-    </div>
-  </div>
 
-  <div class="d-flex justify-content-between bg-light mb-3">
-    <div class="p-2 bg-light">
-    	<h6><span class="badge badge-light">Status:{{status}}</span></h6>
-    </div>
-    <div class="p-2 bg-light">
-      <h6><span class="badge badge-info">Elasped time:{{elapsed_time}}</span></h6>
-      <h6><span class="badge badge-info">Started:{{start_time}}</span></h6>
-      <h6><span class="badge badge-info">Completed:{{end_time}}</span></h6>
-    </div>
-    
-  </div>
+<div class="d-flex sm-3 justify-content-start">
+    <div class="p-2 "><h5><span class="badge badge-{{status_clr}}">Status: {{status}}</span></h5></div>
+    <div class="p-2 "><h5><span class="badge badge-warning">Warnings: {{warning}}</span></h5></div>
+    <div class="p-2 "><h5><span class="badge badge-danger">Failed: {{failed}}</span></h5></div>
+</div>
 
+<div class="d-flex sm-3 ">
+    <div class="p-2 "><h5><span class="badge badge-light">Total devices: {{total_devices}}</span></h5></div>
+    <div class="p-2 "><h5><span class="badge badge-light">Mobility Master's: {{total_mm}}</span></h5></div>
+    <div class="p-2 "><h5><span class="badge badge-light">Mobility Controller's: {{total_md}}</span></h5></div>
+</div>
+
+
+<div class="d-flex sm-3 justify-content-start">
+    <div class="p-2 "><h6><span class="badge badge-light">Elasped time: {{elapsed_time}}</span></h6>
+      <h6><span class="badge badge-light">Started: {{start_time}}</span></h6>
+      <h6><span class="badge badge-light">Completed: {{end_time}}</span></h6>
+    </div>
+</div>
 
 <table id="upgrade_table" class="display" width="100%"></table>
 <table id="precheck_table" class="display" width="100%"></table>
@@ -80,7 +72,6 @@
 
 
 </div>
-
 
 
 <script>

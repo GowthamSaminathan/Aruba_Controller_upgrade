@@ -1864,3 +1864,46 @@ Traceback (most recent call last):
   File "D:\scripts\GIT\Aruba_Controller_upgrade\config_file_generator.py", line 219, in validate_create_yaml
     image_file_name = host_type_settings.get("image_file_name")
 AttributeError: 'NoneType' object has no attribute 'get'
+2020-10-29 13:27:42,163 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 13:28:49,484 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 13:29:27,891 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 13:30:03,442 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 13:30:14,104 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 13:30:18,093 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 13:34:21,737 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 14:40:57,378 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 14:48:34,781 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 384, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603962974_4631488\\Reports\\Precheck.html'
+2020-10-29 14:51:58,545 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 14:52:07,158 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 14:54:40,889 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 384, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603963338_7290754\\Reports\\Precheck.html'
+2020-10-29 14:55:24,293 > INFO > 
+ ==> Starting WEB server ...
+

@@ -1,0 +1,9 @@
+2020-10-29 14:55:51,059 > INFO > JOBNAME:1603963550_90485
+2020-10-29 14:55:51,059 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-29 14:55:52,161 > INFO > Starting Job
+2020-10-29 14:55:52,557 > INFO > INFO:Running: 1603963550_90485 Type:Upgrade
+2020-10-29 14:55:52,648 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-29 14:55:52,845 > INFO > Inserting upgrade list to upgrade.db
+2020-10-29 14:55:57,275 > INFO > yes
+2020-10-29 14:55:57,276 > INFO > INFO:Starting precheck
+2020-10-29 14:55:57,402 > INFO > INFO:Executing Precheck

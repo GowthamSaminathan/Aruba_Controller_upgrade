@@ -1,0 +1,30 @@
+2020-10-29 13:30:48,707 > INFO > JOBNAME:1603958448_1623502
+2020-10-29 13:30:48,707 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-29 13:30:48,820 > INFO > Starting Job
+2020-10-29 13:30:48,836 > INFO > INFO:Running: 1603958448_1623502 Type:Precheck
+2020-10-29 13:30:48,851 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-29 13:30:48,880 > INFO > Inserting upgrade list to upgrade.db
+2020-10-29 13:30:54,927 > INFO > yes
+2020-10-29 13:30:54,927 > INFO > INFO:Starting precheck
+2020-10-29 13:30:54,956 > INFO > INFO:Executing Precheck
+2020-10-29 13:31:00,661 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-29 13:31:08,751 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-29 13:31:12,150 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 13:31:14,349 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 13:31:16,590 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 13:31:19,623 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 13:31:22,722 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 13:31:25,198 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 13:31:26,002 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-29 13:31:26,733 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 13:31:27,513 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-10-29 13:31:27,706 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-29 13:31:28,437 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 13:31:29,210 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-10-29 13:31:29,606 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-10-29 13:31:30,364 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 13:31:30,634 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-10-29 13:31:31,514 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-10-29 13:31:32,295 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 13:31:32,683 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-10-29 13:31:33,563 > INFO > INFO:Precheck Completed
