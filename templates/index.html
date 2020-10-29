@@ -1851,6 +1851,20 @@ MD = default_settings["MD"];
 Validate_Image_before_upgrade = default_settings["Validate_Image_before_upgrade"];
 Validate_controller_sync_before_upgrade = default_settings["Validate_controller_sync_before_upgrade"];
 Validate_controller_up_before_upgrade = default_settings["Validate_controller_up_before_upgrade"];
+
+Backup_flash_before_upgrade = default_settings["Backup_flash_before_upgrade"];
+Backup_configuration_before_upgrade = default_settings["Backup_configuration_before_upgrade"];
+Backup_license_before_upgrade = default_settings["Backup_license_before_upgrade"];
+
+//if(Validate_Image_before_upgrade == true){$("#").prop("checked",true);}else{$("#").prop("checked",false);}
+
+if(Validate_controller_sync_before_upgrade == true){$("#v_c_s_b_u").prop("checked",true);}else{$("#v_c_s_b_u").prop("checked",false);}
+if(Validate_controller_up_before_upgrade == true){$("#v_c_u_b_u").prop("checked",true);}else{$("#v_c_u_b_u").prop("checked",false);}
+
+if(Backup_flash_before_upgrade == true){$("#b_f_b_u").prop("checked",true);}else{$("#b_f_b_u").prop("checked",false);}
+if(Backup_configuration_before_upgrade == true){$("#b_c_b_u").prop("checked",true);}else{$("#b_c_b_u").prop("checked",false);}
+if(Backup_license_before_upgrade == true){$("#b_l_b_u").prop("checked",true);}else{$("#b_l_b_u").prop("checked",false);}
+
 mm_checklist = MM["CheckList"];
 md_checklist = MD["CheckList"];
 mm_checklist_d = ""
@@ -2254,7 +2268,10 @@ upgrade_json = {"Upgrade":all_devices,"default_settings":{
   "Authentication":{"username":p2_hosts_uname,"password":p2_hosts_password},
   "Validate_controller_sync_before_upgrade":v_c_s_b_u,
   "Validate_controller_up_before_upgrade": v_c_u_b_u,
-  "Validate_Image_before_upgrade": true
+  "Validate_Image_before_upgrade": true,
+  "Backup_flash_before_upgrade": b_f_b_u,
+  "Backup_configuration_before_upgrade": b_c_b_u,
+  "Backup_license_before_upgrade": b_l_b_u
 }
 }//End
 

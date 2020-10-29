@@ -1,47 +1,59 @@
----
 Upgrade:
-  - hostname: NaaS-MM-1
-    device_type: MM
-    host: 10.17.84.220:4343
-
-  - hostname: NaaS-VMC-1
-    device_type: MD
-    host: 10.17.84.221:4343
-
-
-default_settings:
-  AOS_Source:
+- AOS_Source: &id001
     device_type: ftp
     ftp_host: 10.17.84.225
-    ftp_username: admin
     ftp_password: admin123456
     ftp_path: /
-
-  MM:
-    image_file_name: ArubaOS_MM_8.5.0.10-FIPS_76207
-    image_version: 8.5.0.10
-    image_build: "76207"
-    upgrade_disk: Auto
-    CheckList:
-      - show: show clock
-
-
+    ftp_username: admin
+  Authentication: &id002
+    password: Aruba@123$
+    username: admin
+  CheckList: &id004
+  - show: show clock
+  Validate_Image_before_upgrade: true
+  Validate_controller_sync_before_upgrade: true
+  Validate_controller_up_before_upgrade: true
+  device_type: MM
+  host: 10.17.84.220:4343
+  hostname: NaaS-MM-1
+  image_build: '76207'
+  image_file_name: ArubaOS_MM_8.5.0.10-FIPS_76207
+  image_version: 8.5.0.10
+  upgrade_disk: Auto
+- AOS_Source: *id001
+  Authentication: *id002
+  CheckList: &id003
+  - show: show clock
+  Pre_image_AP: true
+  Validate_Image_before_upgrade: true
+  Validate_controller_sync_before_upgrade: true
+  Validate_controller_up_before_upgrade: true
+  device_type: MD
+  host: 10.17.84.221:4343
+  hostname: NaaS-VMC-1
+  image_build: '76207'
+  image_file_name: ArubaOS_VMC_8.5.0.10-FIPS_76207
+  image_version: 8.5.0.10
+  max_ap_image_load: '10'
+  upgrade_disk: Auto
+default_settings:
+  AOS_Source: *id001
+  Authentication: *id002
+  Backup_configuration_before_upgrade: false
+  Backup_flash_before_upgrade: false
+  Backup_license_before_upgrade: true
   MD:
+    CheckList: *id003
+    Pre_image_AP: true
+    image_build: '76207'
     image_file_name: ArubaOS_VMC_8.5.0.10-FIPS_76207
     image_version: 8.5.0.10
-    image_build: "76207"
-    upgrade_disk: Auto
-    Pre_image_AP: True
-    max_ap_image_load: 1
-    CheckList:
-      - show: show clock
-
-  Authentication:
-    username: admin
-    password: Aruba@123$
-
-
-  Validate_Image_before_upgrade: False
-  Validate_controller_sync_before_upgrade: False
-  Validate_controller_up_before_upgrade: False
-
+    max_ap_image_load: '10'
+  MM:
+    CheckList: *id004
+    image_build: '76207'
+    image_file_name: ArubaOS_MM_8.5.0.10-FIPS_76207
+    image_version: 8.5.0.10
+  Validate_Image_before_upgrade: true
+  Validate_controller_sync_before_upgrade: true
+  Validate_controller_up_before_upgrade: true
