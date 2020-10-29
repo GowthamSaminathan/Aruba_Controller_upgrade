@@ -2959,3 +2959,7 @@ sqlite3.OperationalError: near "validation": syntax error
 2020-10-28 20:51:00,500 > INFO > DB Managenet imported
 2020-10-28 20:51:34,806 > INFO > DB Managenet imported
 2020-10-28 21:16:38,629 > INFO > DB Managenet imported
+2020-10-29 08:30:37,765 > INFO > DB Managenet imported
+2020-10-29 08:30:39,779 > INFO > DB Managenet imported
+2020-10-29 11:09:52,196 > INFO > DB Managenet imported
+2020-10-29 11:14:24,470 > INFO > DB Managenet imported

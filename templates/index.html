@@ -414,7 +414,7 @@
 <!-- Upgrade name Row -->
 
 <div class="row" style="margin-right: 0px">  
-<div class="col-sm-8">
+<div class="col-sm-12">
 
 <div class="alert alert-danger alert-dismissible" id="save_fai_alert">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -427,7 +427,7 @@
 </div>
 
 <form>
-  <div class="input-group mb-3 input-group-sm">
+  <div class="input-group mb-3 input-group-md">
      <div class="input-group-prepend">
        <span class="input-group-text" style="font-weight: bold">Upgrade Name</span>
     </div>
@@ -437,7 +437,7 @@
 </form>
 
 <form>
-  <div class="input-group mb-3 input-group-sm">
+  <div class="input-group mb-3 input-group-md">
      <div class="input-group-prepend">
        <span class="input-group-text" style="font-weight: bold">AOS Source</span>
     </div>
@@ -451,6 +451,7 @@
     <input type="text" class="form-control" placeholder="Path" id="p2_upgrade_path">
      <input type="text" class="form-control" placeholder="Username" id="p2_upgrade_uname">
       <input type="password" class="form-control" placeholder="Password" id="p2_upgrade_password">
+      <input type="password" class="form-control" placeholder="confirm password" id="p2_upgrade_password2">
   </div>
 </form>
 
@@ -464,7 +465,7 @@
 
 
 <!-- MM details -->
-<h5>MM/MD AOS Details:</h5>
+<h6>MM New AOS Details:</h6>
 <div class="row" style="margin-right: 0px">
       
 <div class="col-sm-12">
@@ -493,7 +494,7 @@
 
 
 <!-- MD details -->
-
+<h6>MD New AOS Details:</h6>
 <div class="row" style="margin-right: 0px">
       
 <div class="col-sm-12">
@@ -528,7 +529,7 @@
 
 
 <!-- host details -->
-
+<h6>Upgrade Hosts</h6>
 <div class="row" style="margin-right: 0px">
       
 <div class="col-sm-12">
@@ -560,14 +561,17 @@
 </div>
 
 <form>
-<div class="input-group mb-3 input-group-sm">
+<div class="input-group mb-3 input-group-md">
    <div class="input-group-prepend">
      <span class="input-group-text" style="font-weight: bold;">Login Credential: </span>
   </div>
    <input type="text" class="form-control" placeholder="Username" id="p2_hosts_uname">
     <input type="password" class="form-control" placeholder="Password" id="p2_hosts_password">
+    <input type="password" class="form-control" placeholder="confirm password" id="p2_hosts_password2">
 </div>
 </form>
+
+
 
 <!-- Save , Modify reset Row -->
 <div class="row" style="margin-right: 0px">
@@ -576,17 +580,35 @@
 
 
 <div class="d-flex justify-content-center">
+  <span class="badge badge-danger" id="save_danger"></span>
+<span class="badge badge-success" id="save_success"></span>
+</div>
+<br>
+</div>
+</div>
+
+
+
+
+<!-- Save , Modify reset Row -->
+<div class="row" style="margin-right: 0px">
+      
+<div class="col-sm-12">
+
+
+<div class="d-flex justify-content-center">
+  <span class="badge badge-danger" id="save_danger"></span>
+<span class="badge badge-success" id="save_success"></span>
   <button type="button" class="btn btn-primary" id="p2_custome_setting_exe" onclick="custome_settings()">Modify Custome Settings</button>&nbsp;&nbsp;&nbsp;
   <button type="button" class="btn btn-warning" id="p2_save_reset" onclick="new_execution()">Reset</button>&nbsp;&nbsp;&nbsp;
   <button type="button" class="btn btn-success" id="p2_save_all" onclick="save_execution()">Save All</button>
 </div>
 <br>
-<br>
+</div>
 </div>
 
 
-
-</div></div>
+</div>
 
 
 <!-- Page 2 Models start -->
@@ -1623,6 +1645,7 @@ $(document).ready(function(){
       $("#p2_upgrade_path").show();
       $("#p2_upgrade_uname").show();
       $("#p2_upgrade_password").show();
+      $("#p2_upgrade_password2").show();
 
     }else if (s_v == "tftp"){
 
@@ -1630,6 +1653,7 @@ $(document).ready(function(){
       $("#p2_upgrade_path").show();
       $("#p2_upgrade_uname").hide();
       $("#p2_upgrade_password").hide();
+      $("#p2_upgrade_password2").hide();
 
     }else if (s_v == "local"){
 
@@ -1637,6 +1661,7 @@ $(document).ready(function(){
       $("#p2_upgrade_path").show();
       $("#p2_upgrade_uname").hide();
       $("#p2_upgrade_password").hide();
+       $("#p2_upgrade_password2").hide();
 
     }else if (s_v == "scp"){
 
@@ -1644,6 +1669,7 @@ $(document).ready(function(){
       $("#p2_upgrade_path").show();
       $("#p2_upgrade_uname").show();
       $("#p2_upgrade_password").show();
+      $("#p2_upgrade_password2").show();
 
     }
   
@@ -1725,6 +1751,7 @@ $("#p2_upgrade_host").val("");
 $("#p2_upgrade_path").val("");
 $("#p2_upgrade_uname").val("");
 $("#p2_upgrade_password").val("");
+$("#p2_upgrade_password2").val("");
 
 $("#p2_mm_aso_file").val("");
 $("#p2_mm_aso_version").val("");
@@ -1736,6 +1763,10 @@ $("#p2_md_aso_build").val("");
 
 $("#p2_hosts_uname").val("");
 $("#p2_hosts_password").val("");
+$("#p2_hosts_password2").val("");
+
+$("#save_danger").text("");
+$("#save_success").text("");
 
 }
 
@@ -1818,6 +1849,7 @@ $("#p2_upgrade_host").val(aos_source_ftp_host);
 $("#p2_upgrade_path").val(aos_source_ftp_path);
 $("#p2_upgrade_uname").val(aos_source_ftp_username);
 $("#p2_upgrade_password").val(aos_source_ftp_password);
+$("#p2_upgrade_password2").val(aos_source_ftp_password);
 }
 
 if(aos_source_device_type == "scp")
@@ -1827,6 +1859,7 @@ $("#p2_upgrade_host").val(aos_source_scp_host);
 $("#p2_upgrade_path").val(aos_source_scp_path);
 $("#p2_upgrade_uname").val(aos_source_scp_username);
 $("#p2_upgrade_password").val(aos_source_scp_password);
+$("#p2_upgrade_password2").val(aos_source_scp_password);
 }
 
 if(aos_source_device_type == "tftp")
@@ -1861,6 +1894,7 @@ if(jQuery.isEmptyObject(Authentication) == false)
 
 $("#p2_hosts_uname").val(Authentication["username"]);
 $("#p2_hosts_password").val(Authentication["password"]);
+$("#p2_hosts_password2").val(Authentication["password"]);
 
 }
 
@@ -1869,6 +1903,7 @@ if(jQuery.isEmptyObject(Authentication) == false)
 
 $("#p2_hosts_uname").val(Authentication["username"]);
 $("#p2_hosts_password").val(Authentication["password"]);
+$("#p2_hosts_password2").val(Authentication["password"]);
 
 }
 
@@ -1920,6 +1955,12 @@ function save_execution(){
 
 
 file_name = $("#p2_upgrade_name").val();
+
+file_name = file_name.trim();
+
+if(file_name.length < 1)
+{$("#save_danger").text("Please provide valid upgrade name");return "";}
+
 aos_source = $("#p2_upgrade_source").val();
 
 if(aos_source == "local")
@@ -1927,6 +1968,13 @@ if(aos_source == "local")
 source_server = $("#p2_upgrade_source").val();
 source_server_path = $("#p2_upgrade_path").val();
 AOS_Source = {"device_type":source_server,"local_path":source_server_path}
+
+    if(source_server.length < 1)
+      {$("#save_danger").text("Please provide valid AOS source server");return "";}
+    if(source_server_path.length < 1)
+      {$("#save_danger").text("Please provide valid AOS source server path");return "";}
+
+
 }
 
 if(aos_source == "ftp")
@@ -1936,7 +1984,28 @@ source_server_host = $("#p2_upgrade_host").val();
 source_server_path = $("#p2_upgrade_path").val();
 source_server_uname = $("#p2_upgrade_uname").val();
 source_server_pass = $("#p2_upgrade_password").val();
+source_server_pass2 = $("#p2_upgrade_password2").val();
+
+if(source_server_pass != source_server_pass2)
+{$("#save_danger").text("FTP Server Password not matched");return "";}
+
+if(source_server_pass != source_server_pass2)
+{$("#save_danger").text("SCP Server Password not matched");return "";}
+
 AOS_Source = {"device_type":source_server,"ftp_host":source_server_host,"ftp_username":source_server_uname,"ftp_password":source_server_pass,"ftp_path":source_server_path}
+
+   if(source_server.length < 1)
+      {$("#save_danger").text("Please provide valid AOS source server");return "";}
+    if(source_server_path.length < 1)
+      {$("#save_danger").text("Please provide valid AOS ftp server path");return "";}
+    if(source_server_host.length < 1)
+      {$("#save_danger").text("Please provide valid AOS ftp server");return "";}
+    if(source_server_uname.length < 1)
+      {$("#save_danger").text("Please provide valid AOS ftp server username");return "";}
+    if(source_server_pass.length < 1)
+      {$("#save_danger").text("Please provide valid AOS ftp server password");return "";}
+
+
 }
 
 if(aos_source == "scp")
@@ -1946,8 +2015,29 @@ source_server_host = $("#p2_upgrade_host").val();
 source_server_path = $("#p2_upgrade_path").val();
 source_server_uname = $("#p2_upgrade_uname").val();
 source_server_pass = $("#p2_upgrade_password").val();
+source_server_pass2 = $("#p2_upgrade_password2").val();
+
+if(source_server_pass != source_server_pass2)
+{$("#save_danger").text("SCP Server Password not matched");return "";}
+
 AOS_Source = {"device_type":source_server,"scp_host":source_server_host,"scp_username":source_server_uname,"scp_password":source_server_pass,"scp_path":source_server_path}
+
+   if(source_server.length < 1)
+      {$("#save_danger").text("Please provide valid AOS source server");return "";}
+    if(source_server_path.length < 1)
+      {$("#save_danger").text("Please provide valid AOS SCP server path");return "";}
+    if(source_server_host.length < 1)
+      {$("#save_danger").text("Please provide valid AOS SCP server");return "";}
+    if(source_server_uname.length < 1)
+      {$("#save_danger").text("Please provide valid AOS SCP server username");return "";}
+    if(source_server_pass.length < 1)
+      {$("#save_danger").text("Please provide valid AOS SCP server password");return "";}
+
 }
+
+
+
+
 
 if(aos_source == "tftp")
 {
@@ -1955,6 +2045,15 @@ source_server = $("#p2_upgrade_source").val();
 source_server_host = $("#p2_upgrade_host").val();
 source_server_path = $("#p2_upgrade_path").val();
 AOS_Source = {"device_type":source_server,"tftp_host":source_server_host,"tftp_path":source_server_path}
+
+  if(source_server.length < 1)
+      {$("#save_danger").text("Please provide valid AOS source server");return "";}
+    if(source_server_path.length < 1)
+      {$("#save_danger").text("Please provide valid AOS TFTP server path");return "";}
+    if(source_server_host.length < 1)
+      {$("#save_danger").text("Please provide valid AOS TFTP server");return "";}
+
+
 }
 
 
@@ -1963,21 +2062,63 @@ md_precheck_cmd = $("#md_precheck_cmd").val();
 mm_precheck_cmd = $("#mm_precheck_cmd").val();
 
 p2_mm_aso_file = $("#p2_mm_aso_file").val();
+p2_mm_aso_file = p2_mm_aso_file.trim()
 p2_mm_aso_version = $("#p2_mm_aso_version").val();
 p2_mm_aso_build = $("#p2_mm_aso_build").val();
 
 p2_md_aso_file = $("#p2_md_aso_file").val();
+p2_md_aso_file = p2_md_aso_file.trim()
 p2_md_aso_version = $("#p2_md_aso_version").val();
 p2_md_aso_build = $("#p2_md_aso_build").val();
 
 p2_hosts_uname = $("#p2_hosts_uname").val();
 p2_hosts_password = $("#p2_hosts_password").val();
+p2_hosts_password2 = $("#p2_hosts_password2").val();
 
 v_c_u_b_u = $("#v_c_u_b_u").prop("checked");
 v_c_s_b_u = $("#v_c_s_b_u").prop("checked");
 b_f_b_u = $("#b_f_b_u").prop("checked");
 b_c_b_u = $("#b_c_b_u").prop("checked");
 b_l_b_u = $("#b_l_b_u").prop("checked");
+
+
+
+ if(p2_mm_aso_file.match("ArubaOS_.?MM_.*_.\d*") == null)
+      {$("#save_danger").text("Please provide valid MM AOS file");return "";}
+
+if(p2_md_aso_file.match("ArubaOS_.?MC_.*_.\d*") == null)
+      {$("#save_danger").text("Please provide valid MD AOS file");return "";}
+
+ if(max_ap_preload < 1)
+      {$("#save_danger").text("MAX AP preload must be greater than one");return "";}
+
+   if(p2_mm_aso_file.length < 1)
+      {$("#save_danger").text("Please provide valid MM AOS filename");return "";}
+
+   if(p2_md_aso_file.length < 1)
+      {$("#save_danger").text("Please provide valid MD AOS filename");return "";}
+
+   if(p2_hosts_uname.length < 1)
+      {$("#save_danger").text("Please provide valid device username");return "";}
+
+    if(p2_hosts_password.length < 1)
+      {$("#save_danger").text("Please provide valid device password");return "";}
+
+    if(p2_hosts_password != p2_hosts_password2)
+      {$("#save_danger").text("Host Password not matched");return "";}
+
+    if(p2_md_aso_version.length < 1)
+      {$("#save_danger").text("Please provide valid MD AOS Version");return "";}
+
+    if(p2_md_aso_build.length < 1)
+      {$("#save_danger").text("Please provide valid MD AOS build");return "";}
+
+    if(p2_mm_aso_version.length < 1)
+      {$("#save_danger").text("Please provide valid MM AOS Version");return "";}
+
+    if(p2_mm_aso_build.length < 1)
+      {$("#save_danger").text("Please provide valid MM AOS build");return "";}
+
 
 
 md_precheck_cmd_n = md_precheck_cmd.split("\n");
@@ -2000,7 +2141,9 @@ mm_precheck_cmd.push({"show":val});
 all_devices = [];
 all_tr = $("#p2_new_host_rows").find('> tr');
 
-jQuery.each(all_tr, function(i, val){
+for (i = 0; i < all_tr.length; i++)
+{
+  val = all_tr[i]
   //Get all the devices and add it to this
   if (i > 0)
   {
@@ -2014,13 +2157,27 @@ jQuery.each(all_tr, function(i, val){
   device_type = $("#"+row_device).val();
   hostname = $("#"+row_hostname).val();
   host = $("#"+row_hostip).val();
+  
+  if(device_type.length < 1)
+      {$("#save_danger").text("Please provide Valid device type");return "no";}
+
+  if(hostname.length < 1)
+      {$("#save_danger").text("Please provide Valid hostname");return "no";}
+
+  if(host.length < 1)
+      {$("#save_danger").text("Please provide Valid host IP");return "no";}
+
   all_devices.push({"device_type":device_type,"hostname":hostname,"host":host})
 
-  }});
+  }}
 
 MM = {"image_file_name":p2_mm_aso_file,"image_version":p2_mm_aso_version,"image_build":p2_mm_aso_build,"upgrade_disk": "Auto","CheckList":mm_precheck_cmd}
 
 MD = {"image_file_name":p2_md_aso_file,"image_version":p2_md_aso_version,"image_build":p2_md_aso_build,"upgrade_disk": "Auto","CheckList":md_precheck_cmd,"Pre_image_AP":true,"max_ap_image_load":max_ap_preload}
+
+
+
+
 
 //Start
 upgrade_json = {"Upgrade":all_devices,"default_settings":{
@@ -2034,6 +2191,7 @@ upgrade_json = {"Upgrade":all_devices,"default_settings":{
 }
 }//End
 
+console.log(upgrade_json);
 jdata = {"config_name":file_name,"config_json":upgrade_json}
 
 $.ajax({
@@ -2359,6 +2517,29 @@ $.ajax({
 }
 
 }
+
+
+// Auto detect MM , MD version and build from image file
+$(document).ready(function() {
+
+$("#p2_mm_aso_file").change(function(){
+mm_file = $("#p2_mm_aso_file").val();
+mm_file_version = mm_file.split("_").slice(-2)[0]
+mm_file_build = mm_file.split("_").slice(-1)[0]
+$("#p2_mm_aso_version").val(mm_file_version);
+$("#p2_mm_aso_build").val(mm_file_build);
+});
+
+
+$("#p2_md_aso_file").change(function(){
+md_file = $("#p2_md_aso_file").val();
+md_file_version = md_file.split("_").slice(-2)[0]
+md_file_build = md_file.split("_").slice(-1)[0]
+$("#p2_md_aso_version").val(md_file_version);
+$("#p2_md_aso_build").val(md_file_build);
+});
+
+})
 
 //////////////// PAGE -2 END ////////////////////////////////////////////// 
 
