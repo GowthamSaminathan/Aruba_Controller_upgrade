@@ -1410,6 +1410,7 @@ class main_model():
 
 				# Start the Installation
 				#pre_check_valid = True
+				report_data.update({"Upgrade_start_time":datetime.datetime.now()})
 				upgrade_valid = False
 				pre_check_valid = True
 				if pre_check_valid == True:
@@ -1467,6 +1468,7 @@ class main_model():
 					post_check_valid = ar_upgrade.Pre_Post_check("Postcheck")
 					self.create_report("Upgrade","Postcheck")
 					self.find_alternative_partition("COMPLETED: Postcheck","Finished POA")
+					self.get_user_input("_Postcheck",["yes","no"])
 				else:
 					self.eprint("warning","TERMINATED User aborted the postcheck")
 					self.final_status = ["TERMINATED","User aborted the postcheck"]

@@ -101,13 +101,12 @@ class report_gen():
 		self.report_data.update({"upgrade_table":[[]]})
 
 		precheck_start_time = self.report_data.get("precheck_start_time")
-		precheck_end_time = self.report_data.get("precheck_end_time")
 		
 		elapsed_time = datetime.now() - precheck_start_time
 		self.report_data.update({"elapsed_time":str(elapsed_time).split(".")[0]})
 
 		self.report_data.update({"start_time":precheck_start_time.strftime("%H:%M:%S %d-%B-%Y")})
-		self.report_data.update({"end_time":precheck_end_time.strftime("%H:%M:%S %d-%B-%Y")})
+		self.report_data.update({"end_time":datetime.now().strftime("%H:%M:%S %d-%B-%Y")})
 
 		if self.report_type is "Upgrade":
 			pass;

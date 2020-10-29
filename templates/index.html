@@ -304,8 +304,8 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-warning btn-md" onclick="user_yes_no('yes')">Continue</button>&nbsp;&nbsp;&nbsp;
-          <button type="button" class="btn btn-danger btn-md" onclick="user_yes_no('no')">Cancel</button>
+          <button type="button" id="popup_yes" class="btn btn-warning btn-md" onclick="user_yes_no('yes')">Continue</button>&nbsp;&nbsp;&nbsp;
+          <button type="button" id="popup_no" class="btn btn-danger btn-md" onclick="user_yes_no('no')">Cancel</button>
         </div>
         
       </div>
@@ -1339,6 +1339,9 @@ try{
 
       else if (evnt_msg.indexOf("IN:_Precheck") == 0){
 
+        $("#popup_yes").show();
+        $("#popup_yes").show();
+
          msg = val[3];
          val[2] = '<span class="badge badge-primary"'+style_val+'>'+val[2]+'</span>'
          val[3] = '<span class="badge badge-primary"'+style_val+'>'+val[3]+'</span>'
@@ -1360,6 +1363,39 @@ try{
           $("#user_input_body2").html(if_d);
 
           $("#user_input2").modal({backdrop: "static"});
+
+        }
+
+         }
+
+        
+      }else if (evnt_msg.indexOf("IN:_Postcheck") == 0){
+        console.log("XX->Postcheck report....");
+        $("#popup_yes").show();
+        $("#popup_yes").hide();
+
+         msg = val[3];
+         val[2] = '<span class="badge badge-primary"'+style_val+'>'+val[2]+'</span>'
+         val[3] = '<span class="badge badge-primary"'+style_val+'>'+val[3]+'</span>'
+        
+         if(only_data.length == i+1)
+         {
+
+          console.log("XX-> Trigred1");
+          msg = msg.split("IN:")[1];
+          $("#user_input_msg").text(msg);
+          console.log("User Input required : "+msg);
+          $("#user_input_eid").text(val[4]);
+          $("#user_input_name").text(val[1]);
+          
+          if (($("#user_input2").data('bs.modal') || {})._isShown != true){
+          pre_url = "/portal/get_report?job_name="+val[1]+"&report_name=Upgrade.html"
+          console.log(pre_url)
+          if_d = '<iframe src="'+pre_url+'" style="display:block;height: 65vh;width:80vw;border:none;"></iframe>'
+          $("#user_input_body2").html(if_d);
+          console.log("XX-> Trigred2");
+          $("#user_input2").modal({backdrop: "static"});
+          console.log("XX-> Trigred3");
 
         }
 
@@ -2692,7 +2728,7 @@ $(document).ready(function() {
         "scrollCollapse": true,
         "responsive":true,
         "paging":         false,
-        //"order": [[ 0, "desc" ]],
+        "order": [[ 0, "desc" ]],
         "ajax": {
         "url": "/portal/read_all_jobs",
         "type": "GET",
