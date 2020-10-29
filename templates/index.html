@@ -674,7 +674,7 @@
             <td><span class="badge badge-light">Number of APs that can simultaneously download their image from the controller</span></td>
           </tr>
 
-            <tr>
+            <tr style="display:none;">
             <td><h5><span class="badge badge-light">Validate controller sync before upgrade: </span></h5></td>
             <td> <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="v_c_s_b_u" name="example" enable>
@@ -683,7 +683,7 @@
             <td> <span class="badge badge-light">Validate the controller switch sync status</span></td>
           </tr>
 
-            <tr>
+            <tr style="display:none;">
             <td><h5><span class="badge badge-light">Validate controller up before upgrade: </span></h5></td>
             <td> <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="v_c_u_b_u" name="example">
@@ -693,7 +693,7 @@
 
             <td><h5><span class="badge badge-light">Backup flash before upgrade: </span></h5></td>
             <td><div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="b_f_b_u" name="example">
+            <input type="checkbox" class="custom-control-input" id="b_f_b_u" name="example" onclick="return false;">
             <label class="custom-control-label" for="b_f_b_u"></label>
             </div> </td>
             <td><span class="badge badge-light">Recommended to backup the flash before upgrade</span></td></tr>
@@ -701,7 +701,7 @@
             <tr>
             <td><h5><span class="badge badge-light">Backup configuration before upgrade: </span></h5></td>
             <td><div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="b_c_b_u" name="example">
+            <input type="checkbox" class="custom-control-input" id="b_c_b_u" name="example" onclick="return false;">
             <label class="custom-control-label" for="b_c_b_u"></label>
             </div></td>
             <td> <span class="badge badge-light">Recommended to backup the configuration before upgrade</span></td></tr>
@@ -709,7 +709,7 @@
             <tr>
             <td><h5><span class="badge badge-light">Backup license before upgrade: </span></h5></td>
             <td><div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="b_l_b_u" name="example">
+            <input type="checkbox" class="custom-control-input" id="b_l_b_u" name="example" onclick="return false;">
             <label class="custom-control-label" for="b_l_b_u"></label>
             </div> </td>
             <td> <span class="badge badge-light">Recommended to backup the license before upgrade</span></td></tr>

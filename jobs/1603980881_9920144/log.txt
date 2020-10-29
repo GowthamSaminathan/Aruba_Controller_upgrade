@@ -1,0 +1,42 @@
+2020-10-29 19:44:42,483 > INFO > JOBNAME:1603980881_9920144
+2020-10-29 19:44:42,484 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-29 19:44:43,864 > INFO > Starting Job
+2020-10-29 19:44:43,998 > INFO > INFO:Running: 1603980881_9920144 Type:Precheck
+2020-10-29 19:44:44,144 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-29 19:44:44,269 > INFO > Inserting upgrade list to upgrade.db
+2020-10-29 19:44:48,697 > INFO > yes
+2020-10-29 19:44:48,698 > INFO > INFO:Starting precheck
+2020-10-29 19:44:48,786 > INFO > INFO:Executing Precheck
+2020-10-29 19:44:51,458 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-29 19:44:57,654 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-29 19:45:00,993 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 19:45:04,871 > ERROR > backup_flask
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 253, in backup_flask
+    open(os.path.join(obj.job_path,"Upgrade",host+"license_backup.txt")).write(str(license))
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603980881_9920144\\Upgrade\\10.17.84.220:4343license_backup.txt'
+2020-10-29 19:45:05,652 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 19:45:10,062 > ERROR > backup_flask
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\wireless_validation.py", line 253, in backup_flask
+    open(os.path.join(obj.job_path,"Upgrade",host+"license_backup.txt")).write(str(license))
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1603980881_9920144\\Upgrade\\10.17.84.221:4343license_backup.txt'
+2020-10-29 19:45:11,239 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 19:45:14,840 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 19:45:17,509 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 19:45:20,432 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 19:45:23,322 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 19:45:25,316 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 19:45:26,510 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-29 19:45:27,253 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 19:45:28,148 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-10-29 19:45:28,485 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-29 19:45:29,215 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 19:45:29,944 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 1
+2020-10-29 19:45:30,374 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-10-29 19:45:31,092 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 19:45:31,395 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-10-29 19:45:32,313 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-10-29 19:45:33,273 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 19:45:33,852 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-10-29 19:45:35,118 > INFO > INFO:Precheck Completed

@@ -10,6 +10,7 @@
 9) Validate the ftp,scp,tftp reachability
 """
 
+import os
 import re
 import db_management
 
@@ -219,6 +220,46 @@ def get_system_health(obj,hosts):
 
 	return results
 
+def backup_flask(obj,hosts):
+	results = []
+	
+	for single_host in hosts:
+		hostname = single_host.get("hostname")
+		host = single_host.get("host")
+		device_type = single_host.get("device_type")
+
+		device_info = {"hostname":hostname}
+		device_info.update({"host":host})
+		device_info.update({"device_type":device_type})
+		db_management.update_upgrade_status_by_device_host(obj.upgrade_db,host,"RUNNING Checklist","Flash backup")
+		_d = dict()
+		try:
+			cmd_out = obj.execute_cmd(single_host,["backup flash script_auto_flah_backup",
+				"backup config script_auto_config_backup","show license"],True)
+			if type(cmd_out) == dict:
+				clock = cmd_out.get("backup flash script_auto_flah_backup")
+				_d = {"validation":"Flash Backup","value":"Success","status":"Good"}
+				_d.update(device_info)
+				results.append(_d)
+
+			if type(cmd_out) == dict:
+				clock = cmd_out.get("backup config script_auto_config_backup")
+				_d = {"validation":"Configuration Backup","value":"Success","status":"Good"}
+				_d.update(device_info)
+				results.append(_d)
+
+			if type(cmd_out) == dict:
+				license = cmd_out.get("show license")
+				open(os.path.join(obj.job_path,"Upgrade",host.replace(":","_")+"license_backup.txt"),"w").write(str(license))
+				_d = {"validation":"Configuration Backup","value":"Success","status":"Good"}
+				_d.update(device_info)
+				results.append(_d)
+		except Exception:
+			#obj.eprint("error","Upload Image Error For : {} - {}".format(host_name,host_ip))
+			obj.logger.exception("backup_flask")
+
+	return results
+
 
 class gen_report():
 	def __init__(self):
@@ -245,6 +286,10 @@ class gen_report():
 			if res.get("status") != "Good":
 				self.update_completed_status()
 				return all_reports
+
+		if self.check_type == "Precheck":
+			result = backup_flask(self.obj,self.hosts)
+			all_reports = all_reports + result
 
 		result = get_disk_images(self.obj,self.hosts)
 		report = self.validate_system_image(result)
