@@ -1856,3 +1856,11 @@ ValueError
 2020-10-29 11:14:24,498 > INFO > 
  ==> Starting WEB server ...
 
+2020-10-29 11:16:31,632 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-29 11:16:48,655 > ERROR > validate_create_yaml
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\config_file_generator.py", line 219, in validate_create_yaml
+    image_file_name = host_type_settings.get("image_file_name")
+AttributeError: 'NoneType' object has no attribute 'get'

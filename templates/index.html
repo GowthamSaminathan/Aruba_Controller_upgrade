@@ -431,8 +431,8 @@
      <div class="input-group-prepend">
        <span class="input-group-text" style="font-weight: bold">Upgrade Name</span>
     </div>
-    <input type="text" class="form-control input-sm" placeholder="Ex: Change CRN20211" id="p2_upgrade_name">
-
+    <input type="text" class="form-control input-sm" placeholder="Ex: Change CRN20211" id="p2_upgrade_name" style="font-weight: bold">
+  </input>
   </div>
 </form>
 
@@ -540,9 +540,10 @@
 <thead id="p2_new_host_rows">
 <tr id="p2_new_host_row">
 <!--<th>#</th>-->
-<th>Device</th>
+<th>Device Type</th>
 <th>Hostname</th>
 <th>Host IP</th>
+<th>Boot Disk</th>
 <!--<th>Custome</th>-->
 <th>Remove/Add </th>
 <button type="button" class="btn btn-light btn-sm" id="p2_show_excell_upload" onclick="host_excell_upload()" style="font-weight: bold;display:none">Upload hosts from CSV</button>
@@ -1684,6 +1685,9 @@ mm_device = "";
 md_device = "";
 hostname = "";
 hostip = "";
+boot_zero = "";
+boot_auto = "";
+boot_one = "";
 
 //<td><button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit" onclick="host_settings(${id_name})"><i class="fa fa-edit"></i></button></td>
 
@@ -1708,6 +1712,21 @@ if(t_data["hostip"] != undefined)
 hostip = t_data["hostip"]
 }
 
+if(t_data["upgrade_disk"] == "Auto")
+{
+boot_auto = 'selected="selected"'
+}
+
+if(t_data["upgrade_disk"] == "0")
+{
+boot_zero = 'selected="selected"'
+}
+
+if(t_data["upgrade_disk"] == "1")
+{
+boot_one = 'selected="selected"'
+}
+
 
 
   make_device_table = (id_name,mm_device,md_device,hostname,hostip) =>
@@ -1720,6 +1739,8 @@ hostip = t_data["hostip"]
 <td><input value="${hostname}" type="text" class="form-control input-sm" placeholder="Host name" name="host_name" required="" id="${id_name}_hostname"></td>
 
 <td><input value="${hostip}" type="text" class="form-control input-sm" placeholder="Host IP" name="host_ip" required="" id="${id_name}_hostip"></td>
+
+<td ><select class="form-control input-sm" id="${id_name}_boot" data-live-search="true"><option  ${boot_auto}>Auto</option><option ${boot_zero}>0</option><option ${boot_one}>1</option></select></td>
 
 
 <td><ul class="list-inline m-0">
@@ -1771,7 +1792,7 @@ $("#save_success").text("");
 }
 
 
-function add_data_to_execution_form(data){
+function add_data_to_execution_form(data,conf_file_name){
 
 // Empty all data
 
@@ -1811,6 +1832,12 @@ md_checklist_d = md_checklist_d+"\n"+val["show"];
 
 });
 
+
+if (conf_file_name != "default.yaml"){
+
+  $("#p2_upgrade_name").val(conf_file_name);
+
+}
 
 $("#mm_precheck_cmd").val(mm_checklist_d.trim());
 $("#md_precheck_cmd").val(md_checklist_d.trim());
@@ -1915,10 +1942,12 @@ jQuery.each(Upgrade, function(i, val){
 hostname = val["hostname"];
 device_type = val["device_type"];
 host = val["host"];
+upgrade_disk = val["upgrade_disk"];
 d ={};
 d["device"] = device_type;
 d["hostname"] = hostname;
 d["hostip"] = host;
+d["upgrade_disk"] = upgrade_disk;
 if (i == 0){add_new_device(i+1,d);}else{
 add_new_device(i+"_new_device",d);}
 
@@ -2153,10 +2182,12 @@ for (i = 0; i < all_tr.length; i++)
   row_device = row+"_"+"device";
   row_hostname = row+"_"+"hostname";
   row_hostip = row+"_"+"hostip";
+  row_boot = row+"_"+"boot";
 
   device_type = $("#"+row_device).val();
   hostname = $("#"+row_hostname).val();
   host = $("#"+row_hostip).val();
+  host_boot = $("#"+row_boot).val();
   
   if(device_type.length < 1)
       {$("#save_danger").text("Please provide Valid device type");return "no";}
@@ -2167,13 +2198,13 @@ for (i = 0; i < all_tr.length; i++)
   if(host.length < 1)
       {$("#save_danger").text("Please provide Valid host IP");return "no";}
 
-  all_devices.push({"device_type":device_type,"hostname":hostname,"host":host})
+  all_devices.push({"device_type":device_type,"hostname":hostname,"host":host,"upgrade_disk":host_boot})
 
   }}
 
-MM = {"image_file_name":p2_mm_aso_file,"image_version":p2_mm_aso_version,"image_build":p2_mm_aso_build,"upgrade_disk": "Auto","CheckList":mm_precheck_cmd}
+MM = {"image_file_name":p2_mm_aso_file,"image_version":p2_mm_aso_version,"image_build":p2_mm_aso_build,"CheckList":mm_precheck_cmd}
 
-MD = {"image_file_name":p2_md_aso_file,"image_version":p2_md_aso_version,"image_build":p2_md_aso_build,"upgrade_disk": "Auto","CheckList":md_precheck_cmd,"Pre_image_AP":true,"max_ap_image_load":max_ap_preload}
+MD = {"image_file_name":p2_md_aso_file,"image_version":p2_md_aso_version,"image_build":p2_md_aso_build,"CheckList":md_precheck_cmd,"Pre_image_AP":true,"max_ap_image_load":max_ap_preload}
 
 
 
@@ -2256,7 +2287,7 @@ $(function(){
         cache: false,   // with this, you can force the browser to not make cache of the retrieved data
         dataType: "json",  // jQuery will infer this, but you can set explicitly
         success: function( data, textStatus, jqXHR ) {
-          add_data_to_execution_form(data);
+          add_data_to_execution_form(data,conf_file);
         },
         error(xhr,status,error){
           console.log("read_config error.....");
