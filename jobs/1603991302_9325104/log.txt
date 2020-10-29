@@ -1,0 +1,74 @@
+2020-10-29 22:38:22,980 > INFO > JOBNAME:1603991302_9325104
+2020-10-29 22:38:22,980 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.6
+2020-10-29 22:38:23,129 > INFO > Starting Job
+2020-10-29 22:38:23,161 > INFO > INFO:Running: 1603991302_9325104 Type:Precheck
+2020-10-29 22:38:23,192 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.6 Validation
+2020-10-29 22:38:23,243 > INFO > Inserting upgrade list to upgrade.db
+2020-10-29 22:38:27,339 > INFO > yes
+2020-10-29 22:38:27,339 > INFO > INFO:Starting precheck
+2020-10-29 22:38:27,352 > INFO > INFO:Executing Precheck
+2020-10-29 22:38:29,603 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-29 22:38:34,410 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-29 22:38:37,303 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:38:41,703 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:38:48,063 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:38:50,083 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:38:52,098 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:38:54,780 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:38:57,440 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:38:59,684 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:39:02,451 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-29 22:39:03,559 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:39:04,258 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-10-29 22:39:04,342 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-29 22:39:05,015 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:39:05,702 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 1
+2020-10-29 22:39:06,063 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-10-29 22:39:06,754 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:39:06,848 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-10-29 22:39:07,584 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-10-29 22:39:08,353 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-10-29 22:39:09,081 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-10-29 22:39:09,802 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-10-29 22:39:10,523 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-10-29 22:39:11,235 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-10-29 22:39:11,948 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-10-29 22:39:12,653 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-10-29 22:39:13,445 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-10-29 22:39:15,302 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-10-29 22:39:16,015 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-10-29 22:39:16,711 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-10-29 22:39:17,751 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-10-29 22:39:19,241 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-10-29 22:39:22,140 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-10-29 22:39:24,342 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:39:24,388 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-10-29 22:39:26,416 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-10-29 22:39:27,143 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-10-29 22:39:28,934 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-10-29 22:39:31,324 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-10-29 22:39:34,568 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-10-29 22:39:36,088 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-10-29 22:39:36,865 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-10-29 22:39:37,585 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-10-29 22:39:38,337 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-10-29 22:39:39,498 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-10-29 22:39:43,376 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-10-29 22:39:44,159 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-10-29 22:39:44,864 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-10-29 22:39:45,587 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-10-29 22:39:46,343 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-10-29 22:39:47,130 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-10-29 22:39:47,972 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-10-29 22:39:48,741 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-10-29 22:39:49,505 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-10-29 22:39:51,522 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-10-29 22:39:52,271 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-10-29 22:39:53,030 > INFO > INFO:Precheck Completed
+2020-10-29 22:39:53,050 > ERROR > ERROR:prepare_rollback
+2020-10-29 22:39:53,076 > DEBUG > ERROR:prepare_rollback
+2020-10-29 22:39:53,093 > ERROR > prepare_rollback
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 343, in prepare_rollback
+    q = "report_name='Precheck' AND validation='current boot partition' AND host='{}' ".format(host.get(host))
+TypeError: unhashable type: 'dict'

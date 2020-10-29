@@ -8,6 +8,34 @@ Upgrade:
   Authentication: &id002
     password: Aruba@123$
     username: admin
+  CheckList: &id004
+  - show: show clock
+  - show: show version
+  - show: show image version
+  - show: show storage
+  - show: show cpuload
+  - show: show memory
+  - show: show boot
+  - show: show switches
+  - show: show switchinfo
+  - show: show boot history
+  - show: show crypto Ipsec sa
+  - show: show master-redundancy
+  - show: show database synchronize
+  - show: show license
+  - show: show running-config
+  Validate_Image_before_upgrade: false
+  Validate_controller_sync_before_upgrade: false
+  Validate_controller_up_before_upgrade: false
+  device_type: MM
+  host: 10.17.84.220:4343
+  hostname: NaaS-MM-1
+  image_build: '75979'
+  image_file_name: ArubaOS_MM_8.6.0.5_75979
+  image_version: 8.6.0.5
+  upgrade_disk: Auto
+- AOS_Source: *id001
+  Authentication: *id002
   CheckList: &id003
   - show: show clock
   - show: show version
@@ -32,22 +60,7 @@ Upgrade:
   - show: show boot
   - show: show version
   Pre_image_AP: true
-  Validate_Image_before_upgrade: true
-  Validate_controller_sync_before_upgrade: false
-  Validate_controller_up_before_upgrade: false
-  device_type: MD
-  host: 10.17.84.220:4343
-  hostname: NaaS-MM-1
-  image_build: '75979'
-  image_file_name: ArubaOS_VMC_8.6.0.5_75979
-  image_version: 8.6.0.5
-  max_ap_image_load: '10'
-  upgrade_disk: '0'
-- AOS_Source: *id001
-  Authentication: *id002
-  CheckList: *id003
-  Pre_image_AP: true
-  Validate_Image_before_upgrade: true
+  Validate_Image_before_upgrade: false
   Validate_controller_sync_before_upgrade: false
   Validate_controller_up_before_upgrade: false
   device_type: MD
@@ -56,8 +69,8 @@ Upgrade:
   image_build: '75979'
   image_file_name: ArubaOS_VMC_8.6.0.5_75979
   image_version: 8.6.0.5
-  max_ap_image_load: '10'
-  upgrade_disk: '1'
+  max_ap_image_load: 1
+  upgrade_disk: Auto
 default_settings:
   AOS_Source: *id001
   Authentication: *id002
@@ -67,27 +80,14 @@ default_settings:
     image_build: '75979'
     image_file_name: ArubaOS_VMC_8.6.0.5_75979
     image_version: 8.6.0.5
-    max_ap_image_load: '10'
+    max_ap_image_load: 1
+    upgrade_disk: Auto
   MM:
-    CheckList:
-    - show: show clock
-    - show: show version
-    - show: show image version
-    - show: show storage
-    - show: show cpuload
-    - show: show memory
-    - show: show boot
-    - show: show switches
-    - show: show switchinfo
-    - show: show boot history
-    - show: show crypto Ipsec sa
-    - show: show master-redundancy
-    - show: show database synchronize
-    - show: show license
-    - show: show running-config
+    CheckList: *id004
     image_build: '75979'
     image_file_name: ArubaOS_MM_8.6.0.5_75979
     image_version: 8.6.0.5
-  Validate_Image_before_upgrade: true
+    upgrade_disk: Auto
+  Validate_Image_before_upgrade: false
   Validate_controller_sync_before_upgrade: false
   Validate_controller_up_before_upgrade: false

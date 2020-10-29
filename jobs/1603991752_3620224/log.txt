@@ -1,0 +1,70 @@
+2020-10-29 22:45:52,474 > INFO > JOBNAME:1603991752_3620224
+2020-10-29 22:45:52,475 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-29 22:45:52,557 > INFO > Starting Job
+2020-10-29 22:45:52,574 > INFO > INFO:Running: 1603991752_3620224 Type:Precheck
+2020-10-29 22:45:52,590 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-29 22:45:52,629 > INFO > Inserting upgrade list to upgrade.db
+2020-10-29 22:45:56,681 > INFO > yes
+2020-10-29 22:45:56,682 > INFO > INFO:Starting precheck
+2020-10-29 22:45:56,696 > INFO > INFO:Executing Precheck
+2020-10-29 22:45:58,936 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-29 22:46:05,907 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-29 22:46:09,220 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:46:13,802 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:46:18,874 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:46:21,310 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:46:23,722 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:46:26,675 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:46:29,801 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:46:31,579 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:46:32,866 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-29 22:46:33,859 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:46:34,822 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-10-29 22:46:36,127 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-29 22:46:36,954 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:46:37,708 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 1
+2020-10-29 22:46:39,909 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-10-29 22:46:40,895 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:46:41,789 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-10-29 22:46:43,430 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-10-29 22:46:44,363 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:46:45,266 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-10-29 22:46:46,731 > INFO > INFO:Precheck Completed
+2020-10-29 22:47:39,735 > INFO > INFO:==== Completed ====
+2020-10-29 22:47:57,142 > INFO > JOBNAME:1603991877_1194618
+2020-10-29 22:47:57,143 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5_ROLLBACK
+2020-10-29 22:47:57,213 > INFO > Starting Job
+2020-10-29 22:47:57,227 > INFO > INFO:Running: 1603991877_1194618 Type:Precheck
+2020-10-29 22:47:57,241 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5_ROLLBACK Validation
+2020-10-29 22:47:57,273 > INFO > Inserting upgrade list to upgrade.db
+2020-10-29 22:48:03,319 > INFO > yes
+2020-10-29 22:48:03,319 > INFO > INFO:Starting precheck
+2020-10-29 22:48:03,352 > INFO > INFO:Executing Precheck
+2020-10-29 22:48:05,539 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-29 22:48:09,863 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-29 22:48:12,750 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:48:17,993 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:48:25,059 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:48:29,068 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:48:31,135 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:48:35,361 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:48:39,319 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:48:40,736 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:48:41,477 > INFO > INFO:Installation Disk 1 provided by user for host 10.17.84.220:4343 , Skiping auto detect
+2020-10-29 22:48:41,508 > ERROR > ERROR:Check execution error
+2020-10-29 22:48:41,533 > DEBUG > ERROR:Check execution error
+2020-10-29 22:48:41,557 > ERROR > Pre_Post_check
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 422, in Pre_Post_check
+    alternative_part = self.find_alternative_partition()
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 326, in find_alternative_partition
+    data = {"device_type":host_type,"host_name":host_name,"host":host_ip,"validation":"Alternative Disk","precheck":str(disk),"precheck_remark":_status,"precheck_note":_status}
+UnboundLocalError: local variable '_status' referenced before assignment
+2020-10-29 22:48:41,558 > INFO > INFO:Precheck Completed
+2020-10-29 22:48:41,600 > ERROR > ERROR:prepare_rollback
+2020-10-29 22:48:41,686 > DEBUG > ERROR:prepare_rollback
+2020-10-29 22:48:41,734 > ERROR > prepare_rollback
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 350, in prepare_rollback
+    if str(_disk) == "1":
+UnboundLocalError: local variable '_disk' referenced before assignment

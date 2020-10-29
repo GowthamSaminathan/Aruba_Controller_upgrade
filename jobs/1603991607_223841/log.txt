@@ -1,0 +1,39 @@
+2020-10-29 22:43:27,274 > INFO > JOBNAME:1603991607_223841
+2020-10-29 22:43:27,274 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.5
+2020-10-29 22:43:27,347 > INFO > Starting Job
+2020-10-29 22:43:27,367 > INFO > INFO:Running: 1603991607_223841 Type:Precheck
+2020-10-29 22:43:27,385 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.5 Validation
+2020-10-29 22:43:27,427 > INFO > Inserting upgrade list to upgrade.db
+2020-10-29 22:43:31,477 > INFO > yes
+2020-10-29 22:43:31,477 > INFO > INFO:Starting precheck
+2020-10-29 22:43:31,494 > INFO > INFO:Executing Precheck
+2020-10-29 22:43:33,742 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-29 22:43:38,147 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-29 22:43:41,003 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:43:48,295 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:43:53,083 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:43:55,669 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:43:59,265 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:44:01,930 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:44:04,610 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:44:09,248 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:44:10,797 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-29 22:44:11,499 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:44:12,380 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-10-29 22:44:12,517 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-29 22:44:13,198 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:44:13,897 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 1
+2020-10-29 22:44:14,151 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-10-29 22:44:14,836 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-29 22:44:14,936 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-10-29 22:44:15,681 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-10-29 22:44:16,361 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-29 22:44:16,457 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-10-29 22:44:17,179 > INFO > INFO:Precheck Completed
+2020-10-29 22:44:17,339 > ERROR > ERROR:prepare_rollback
+2020-10-29 22:44:17,625 > DEBUG > ERROR:prepare_rollback
+2020-10-29 22:44:17,854 > ERROR > prepare_rollback
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 366, in prepare_rollback
+    q = "report_name='Precheck' AND validation='second partition version' AND host='{}' ".format(host.get(host))
+TypeError: unhashable type: 'dict'

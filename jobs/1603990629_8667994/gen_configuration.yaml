@@ -24,7 +24,7 @@ Upgrade:
   - show: show database synchronize
   - show: show license
   - show: show running-config
-  Validate_Image_before_upgrade: true
+  Validate_Image_before_upgrade: false
   Validate_controller_sync_before_upgrade: false
   Validate_controller_up_before_upgrade: false
   device_type: MM
@@ -60,7 +60,7 @@ Upgrade:
   - show: show boot
   - show: show version
   Pre_image_AP: true
-  Validate_Image_before_upgrade: true
+  Validate_Image_before_upgrade: false
   Validate_controller_sync_before_upgrade: false
   Validate_controller_up_before_upgrade: false
   device_type: MD
@@ -69,7 +69,7 @@ Upgrade:
   image_build: '75979'
   image_file_name: ArubaOS_VMC_8.6.0.5_75979
   image_version: 8.6.0.5
-  max_ap_image_load: '10'
+  max_ap_image_load: 1
   upgrade_disk: Auto
 default_settings:
   AOS_Source: *id001
@@ -80,7 +80,7 @@ default_settings:
     image_build: '75979'
     image_file_name: ArubaOS_VMC_8.6.0.5_75979
     image_version: 8.6.0.5
-    max_ap_image_load: '10'
+    max_ap_image_load: 1
     upgrade_disk: Auto
   MM:
     CheckList: *id004
@@ -88,6 +88,6 @@ default_settings:
     image_file_name: ArubaOS_MM_8.6.0.5_75979
     image_version: 8.6.0.5
     upgrade_disk: Auto
-  Validate_Image_before_upgrade: true
+  Validate_Image_before_upgrade: false
   Validate_controller_sync_before_upgrade: false
   Validate_controller_up_before_upgrade: false

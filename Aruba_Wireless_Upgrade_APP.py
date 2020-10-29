@@ -65,6 +65,8 @@ class Aruba_Wireless_upgrade():
 		self.eprint = conf.eprint
 		self.local_aos_file_path = os.path.join(os.getcwd(),"aos")
 		self.print = conf.print
+		self.config_file_name = conf.config_file_name
+		self.rollback_config = conf.rollback_config
 
 	def get_session(self,single_host,new_session=False):
 		try:
@@ -262,6 +264,7 @@ class Aruba_Wireless_upgrade():
 		self.user_pause_terminate()
 		hosts_find_alternative_partition = []
 		hosts = self.gen_config.get("Upgrade")
+		_status = "Error"
 		for single_host in hosts:
 			try:
 
@@ -281,9 +284,10 @@ class Aruba_Wireless_upgrade():
 
 				if upgrade_disk != "Auto":
 					self.eprint("info","Installation Disk {} provided by user for host {} , Skiping auto detect".format(upgrade_disk,host_ip))
-					single_host.update({"disk":upgrade_disk})
-					device_info.update({"validation":"Upgrade disk partition","value":upgrade_disk ,"status":"Ok"})
+					single_host.update({"disk":int(upgrade_disk)})
+					device_info.update({"validation":"Upgrade disk partition","value":int(upgrade_disk) ,"status":"Ok"})
 					hosts_find_alternative_partition.append(device_info)
+					_status = "COMPLETED"
 					continue
 				else:
 					self.eprint("info","Installation Disk {} not provided for {} , Trying to auto detect".format(upgrade_disk,host_ip))
@@ -328,7 +332,74 @@ class Aruba_Wireless_upgrade():
 
 		return hosts_find_alternative_partition
 
+	def prepare_rollback(self):
+		try:
 
+			conf = self.rollback_config
+			print("==============================>>>>")
+			print(conf)
+			print("<<<==============================>>>>")
+			upgrade_host = conf.get("Upgrade")
+			for host in upgrade_host:
+				
+				q = "report_name='Precheck' AND validation='current boot partition' AND host='{}' ".format(host.get("host"))
+				pre_disk = db_management.get_checklist_by_val(self.validation_db,q)
+				try:
+					_disk = pre_disk[0][4]
+				except:
+					pass
+
+				if str(_disk) == "1":
+					q = "report_name='Precheck' AND validation='first partition version' AND host='{}' ".format(host.get("host"))
+					pre_imv = db_management.get_checklist_by_val(self.validation_db,q)
+					try:
+						_imv = pre_imv[0][4]
+					except:
+						pass
+
+					q = "report_name='Precheck' AND validation='first partition build' AND host='{}' ".format(host.get("host"))
+					pre_imb = db_management.get_checklist_by_val(self.validation_db,q)
+					try:
+						_imb = pre_imb[0][4]
+					except:
+						pass
+
+				elif str(_disk) == "0":
+					q = "report_name='Precheck' AND validation='second partition version' AND host='{}' ".format(host.get("host"))
+					pre_imv = db_management.get_checklist_by_val(self.validation_db,q)
+					try:
+						_imv = pre_imv[0][4]
+					except:
+						pass
+
+					q = "report_name='Precheck' AND validation='second partition build' AND host='{}' ".format(host.get("host"))
+					pre_imb = db_management.get_checklist_by_val(self.validation_db,q)
+					try:
+						_imb = pre_imb[0][4]
+					except:
+						pass
+				else:
+					self.logger.error("Failed to generate rollback plan")
+					return None
+
+				host.update({"image_file_name":"NA"})
+				host.update({"image_version":_imv})
+				host.update({"image_build":_imb})
+				host.update({"upgrade_disk":_disk})
+				try:
+					host.pop("disk")
+				except KeyError:
+					pass;
+
+
+			rollback_config_yaml = yaml.safe_dump(conf,default_flow_style=False)
+			rf = os.path.join(os.getcwd(),"conf_files",self.config_file_name+"_ROLLBACK")
+			open(rf,"w").write(rollback_config_yaml)
+
+
+		except Exception:
+			self.eprint("error","prepare_rollback")
+			self.logger.exception("prepare_rollback")
 
 
 
@@ -1259,6 +1330,7 @@ class main_model():
 			if type(config) == dict:
 					if config.get("status") == "success":
 						self.gen_config = config.get("config_json")
+						self.rollback_config = self.gen_config.copy()
 						self.insert_hosts_details_to_db()
 						try:
 							open(os.path.join(self.job_path,"gen_configuration.yaml"),"w").write(config.get("config_yaml"))
@@ -1396,6 +1468,8 @@ class main_model():
 					report_data.update({"precheck_start_time":datetime.datetime.now()})
 					self.eprint("info","Starting precheck")
 					pre_check_valid = ar_upgrade.Pre_Post_check("Precheck")
+					if self.config_file_name.find("_ROLLBACK") == -1:
+						ar_upgrade.prepare_rollback()
 					report_data.update({"precheck_end_time":datetime.datetime.now()})
 					self.create_report("Precheck","Precheck")
 				else:
