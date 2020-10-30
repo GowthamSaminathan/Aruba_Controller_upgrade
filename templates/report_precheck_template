@@ -9,9 +9,9 @@ $(document).ready(function() {
             { title: "Hostname" },
             { title: "Host" },
             { title: "Validation" },
-            { title: "result" },
-            { title: "status" },
-            { title: "Report" }
+            { title: "Result" },
+            { title: "Status" },
+            { title: "Report type" }
 
         ]
     } );

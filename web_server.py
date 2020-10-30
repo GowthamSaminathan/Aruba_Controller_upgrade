@@ -560,4 +560,5 @@ def save_configuration():
 # 	app.run()
 if __name__ == '__main__':
 	aruba_wireless = Aruba_Wireless_Upgrade_APP.main_model()
+	#app.run(ssl_context=('cert.pem', 'key.pem'),host="127.0.0.2", port=int("88888"), debug=True)
 	app.run(host="0.0.0.0", port=int("88888"), debug=True)
