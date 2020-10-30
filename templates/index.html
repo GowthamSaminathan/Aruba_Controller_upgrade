@@ -291,7 +291,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header" >
-          <h4 class="modal-title" id="user_input_head2">Precheck report</h4>
+          <h4 class="modal-title" id="user_input_head2">Please wait...</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -1097,18 +1097,21 @@ try{
        $(".running_status_live").show();
        //$("#message_4").attr('class', 'spinner-border text-primary');
        $("#message_1").attr('class', 'badge badge-primary');
+       $("#message_1").attr('style', 'background-color:#f58421');
 
      }
       else if (job_status.indexOf("TERMINATE") == 0) {
 
         $(".running_status_live").hide();
         $("#message_1").attr('class', 'badge badge-danger');
+        $("#message_1").removeAttr('style', 'background-color:#f58421');
 
       }
       else if (job_status == "COMPLETED") {
 
         $(".running_status_live").hide();
         $("#message_1").attr('class', 'badge badge-success');
+        $("#message_1").removeAttr('style', 'background-color:#f58421');
 
       }else
       {
@@ -1120,6 +1123,7 @@ try{
         $(".running_status_live").show();
         $("#message_1").attr('class', 'badge badge-warning');
         $("#P_or_RUNNING").text("Resume")
+        $("#message_1").removeAttr('style', 'background-color:#f58421');
       }
       else
         {
@@ -1341,6 +1345,7 @@ try{
 
         $("#popup_yes").show();
         $("#popup_yes").show();
+        $("#user_input_head2").text("Precheck Report");
 
          msg = val[3];
          val[2] = '<span class="badge badge-primary"'+style_val+'>'+val[2]+'</span>'
@@ -1373,6 +1378,7 @@ try{
         console.log("XX->Postcheck report....");
         $("#popup_yes").show();
         $("#popup_yes").hide();
+        $("#user_input_head2").text("Postcheck Report");
 
          msg = val[3];
          val[2] = '<span class="badge badge-primary"'+style_val+'>'+val[2]+'</span>'
@@ -2666,9 +2672,13 @@ try{
       pre_report = "/portal/get_report?job_name="+val[1]+"&report_name=Precheck.html"
       post_report = "/portal/get_report?job_name="+val[1]+"&report_name=Upgrade.html"
       log_files = "/portal/get_report?job_name="+val[1]+"&report_name=all_logs"
+      
+      if (val[7] == "Precheck"){_Upgrade=""}else{_Upgrade = '<a href='+post_report+' target="_blank">'+"Upgrade"+'</a><br>'}
 
-      val[8] = '<a href='+pre_report+' target="_blank">Precheck</a><br>' + '<a href='+post_report+' target="_blank">Upgrade</a><br>' + '<a href='+log_files+' target="_blank">Log files</a>'
+      val[8] = '<a href='+pre_report+' target="_blank">Precheck</a><br>' + _Upgrade + '<a href='+log_files+' target="_blank">Log files</a>'
       style_val = 'style="text-align:left;white-space=nowrap"'
+
+      
       if (evnt_msg.indexOf("ERROR") == 0)
       {
 

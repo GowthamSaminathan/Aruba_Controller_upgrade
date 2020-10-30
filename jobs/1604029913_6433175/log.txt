@@ -1,0 +1,463 @@
+2020-10-30 09:21:53,730 > INFO > JOBNAME:1604029913_6433175
+2020-10-30 09:21:53,730 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.6
+2020-10-30 09:21:54,176 > INFO > Starting Job
+2020-10-30 09:21:54,237 > INFO > INFO:Running: 1604029913_6433175 Type:Upgrade
+2020-10-30 09:21:54,300 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.6 Validation
+2020-10-30 09:21:54,373 > INFO > Inserting upgrade list to upgrade.db
+2020-10-30 09:22:00,579 > INFO > yes
+2020-10-30 09:22:00,580 > INFO > INFO:Starting precheck
+2020-10-30 09:22:01,088 > INFO > INFO:Executing Precheck
+2020-10-30 09:22:03,704 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-30 09:22:08,879 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-30 09:22:13,197 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:22:18,587 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:22:24,764 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:22:27,106 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:22:29,455 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:22:32,547 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:22:35,432 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:22:37,077 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:22:37,904 > DEBUG > Alternative part typeAuto
+2020-10-30 09:22:37,905 > DEBUG > Finding alt part10.17.84.220:4343
+2020-10-30 09:22:37,905 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-30 09:22:38,613 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:22:39,334 > DEBUG > Finding alt part{'_data': ['Config ID: 138\n\n\nBoot Partition: PARTITION 0']}
+2020-10-30 09:22:39,334 > DEBUG > Alt part success
+2020-10-30 09:22:39,334 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 1
+2020-10-30 09:22:39,548 > DEBUG > Alternative part typeAuto
+2020-10-30 09:22:39,548 > DEBUG > Finding alt part10.17.84.221:4343
+2020-10-30 09:22:39,548 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-30 09:22:40,369 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:22:41,083 > DEBUG > Finding alt part{'_data': ['Config ID: 99\n\n\nBoot Partition: PARTITION 1']}
+2020-10-30 09:22:41,083 > DEBUG > Alt part success
+2020-10-30 09:22:41,083 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 0
+2020-10-30 09:22:42,702 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-10-30 09:22:43,415 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:22:44,151 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-10-30 09:22:45,080 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-10-30 09:22:46,899 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-10-30 09:22:48,925 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-10-30 09:22:51,467 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-10-30 09:22:53,902 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-10-30 09:22:55,199 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-10-30 09:22:56,460 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-10-30 09:22:57,469 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-10-30 09:22:59,123 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-10-30 09:23:02,118 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-10-30 09:23:03,592 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-10-30 09:23:06,347 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-10-30 09:23:07,731 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-10-30 09:23:09,181 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-10-30 09:23:12,362 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-10-30 09:23:14,617 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:23:15,223 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-10-30 09:23:17,325 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-10-30 09:23:18,741 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-10-30 09:23:19,632 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-10-30 09:23:20,683 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-10-30 09:23:21,507 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-10-30 09:23:22,293 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-10-30 09:23:23,121 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-10-30 09:23:23,906 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-10-30 09:23:25,276 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-10-30 09:23:26,936 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-10-30 09:23:28,024 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-10-30 09:23:28,831 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-10-30 09:23:29,887 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-10-30 09:23:30,803 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-10-30 09:23:31,737 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-10-30 09:23:32,818 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-10-30 09:23:33,726 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-10-30 09:23:34,511 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-10-30 09:23:35,825 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-10-30 09:23:39,157 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-10-30 09:23:40,703 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-10-30 09:23:41,649 > INFO > INFO:Precheck Completed
+2020-10-30 09:24:18,866 > INFO > INFO:Total upgrade hosts:2
+2020-10-30 09:24:19,227 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-10-30 09:24:21,516 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:24:22,238 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.6.0.5 Build:75979
+2020-10-30 09:24:22,318 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.6.0.5 Build:75979
+2020-10-30 09:24:26,998 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-30 09:24:27,231 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-30 09:24:27,991 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:24:28,711 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.6.0.5 Build:75979
+2020-10-30 09:24:29,226 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:1 Version:8.6.0.5 Build:75979
+2020-10-30 09:24:29,289 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:1 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-30 09:24:30,055 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:24:31,334 > INFO > INFO:NaaS-MM-1:10.17.84.220:4343- Installing AOS: ArubaOS_MM_8.6.0.5_75979 from ftp server:10.17.84.225
+2020-10-30 09:27:31,489 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-10-30 09:27:32,672 > INFO > INFO:File copy completed COMPLETED: UPLOADED IMAGE TO DISK 1 ArubaOS_MM_8.6.0.5_75979
+2020-10-30 09:27:32,745 > INFO > b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-10-30 09:27:32,807 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-10-30 09:27:35,383 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:27:36,149 > WARNING > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-10-30 09:27:36,220 > DEBUG > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-10-30 09:27:50,928 > WARNING > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-10-30 09:27:51,157 > DEBUG > WARNING:User aborted to install : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-10-30 09:27:53,745 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:27:54,465 > WARNING > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-10-30 09:27:54,546 > DEBUG > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-10-30 09:27:54,620 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-10-30 09:27:55,322 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:27:55,490 > INFO > INFO:NaaS-VMC-1:10.17.84.221:4343- Installing AOS: ArubaOS_VMC_8.6.0.5_75979 from ftp server:10.17.84.225
+2020-10-30 09:30:34,609 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-10-30 09:30:34,784 > INFO > INFO:File copy completed COMPLETED: UPLOADED IMAGE TO DISK 0 ArubaOS_VMC_8.6.0.5_75979
+2020-10-30 09:30:35,079 > INFO > b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-10-30 09:31:51,867 > INFO > INFO:STARTING AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343 FROM DISK:0 MAX AP:1
+2020-10-30 09:31:55,175 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:34:50,650 > DEBUG > SUCCESS:AP Pre-load Executed:NaaS-VMC-1-10.17.84.221:4343 => Success
+2020-10-30 09:34:54,820 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:34:56,185 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:00,718 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:02,610 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:07,008 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:09,461 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:14,511 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:15,869 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:19,963 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:21,498 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:25,562 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:27,016 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:31,502 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:33,112 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:37,335 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:38,846 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:43,284 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:44,616 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:48,515 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:49,839 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:35:54,788 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:35:56,154 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:00,517 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:02,346 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:06,222 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:07,758 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:12,112 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:13,711 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:17,871 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:19,199 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:23,055 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:24,723 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:28,584 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:30,113 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:34,884 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:36,894 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:41,397 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:43,231 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:47,968 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:50,243 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:36:54,641 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:36:56,535 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:01,018 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:37:02,826 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:07,364 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:37:09,850 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:14,299 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:37:16,145 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:20,901 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:37:23,455 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:28,136 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:37:29,937 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:34,514 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:37:36,191 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:40,425 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:37:41,992 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:46,712 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:37:48,477 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:53,476 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:37:55,237 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:37:59,414 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:38:00,793 > INFO > INFO:Validating AP Preload status for:NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 09:38:03,984 > WARNING > WARNING:USER SKIPPED AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343
+2020-10-30 09:38:04,198 > DEBUG > WARNING:USER SKIPPED AP IMAGE PRELOAD FOR NaaS-VMC-1-10.17.84.221:4343
+2020-10-30 09:38:07,912 > INFO > INFO:Starting Upgrade
+2020-10-30 09:38:16,922 > INFO > INFO:Starting reboot
+2020-10-30 09:38:26,948 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:38:36,672 > WARNING > WARNING:=> Reloading MM: NaaS-MM-1 - 10.17.84.220:4343
+2020-10-30 09:38:37,041 > DEBUG > WARNING:=> Reloading MM: NaaS-MM-1 - 10.17.84.220:4343
+2020-10-30 09:38:49,765 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-30 09:38:53,554 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-30 09:38:57,431 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-30 09:39:02,006 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-30 09:39:07,762 > INFO > INFO:Please wait: (MM) NaaS-MM-1 10.17.84.220:4343 -- Pinging...
+2020-10-30 09:40:29,107 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:40:53,550 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:41:17,668 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:41:42,652 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:42:06,701 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:42:31,150 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:42:55,321 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:43:19,624 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:43:44,186 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:44:08,768 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:44:33,246 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:44:57,755 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:45:22,488 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:45:47,288 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:46:11,801 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:46:36,383 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:47:00,917 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:47:25,560 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:47:50,151 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:48:14,882 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:48:39,570 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:49:04,204 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:49:29,286 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:49:54,018 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:50:19,309 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:50:44,410 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:51:09,053 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:51:33,628 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:51:58,443 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:52:23,139 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:52:48,004 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:53:12,947 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:53:37,923 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:54:02,755 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:54:27,458 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:54:52,206 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:55:17,000 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:55:41,230 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:56:05,299 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:56:29,342 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:56:53,479 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:57:18,217 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:57:43,069 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:58:07,165 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:58:31,205 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:58:55,244 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:59:19,284 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 09:59:43,325 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:00:07,367 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:00:31,405 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:00:55,477 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:01:19,562 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:01:43,602 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:02:07,646 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:02:31,706 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:02:55,755 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:03:19,878 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:03:43,927 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:04:08,013 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:04:32,068 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:04:37,215 > INFO > INFO:Please wait: Trying (MM) NaaS-MM-1 10.17.84.220:4343 -- Request timeout...
+2020-10-30 10:04:43,271 > INFO > INFO:Reload Completed for (MM) NaaS-MM-1 10.17.84.220:4343
+2020-10-30 10:04:47,857 > ERROR > ERROR:Login error : 10.17.84.220:4343
+2020-10-30 10:04:47,874 > DEBUG > ERROR:Login error : 10.17.84.220:4343
+2020-10-30 10:04:47,890 > ERROR > Login error:10.17.84.220:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\scripts\py\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\scripts\py\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 108, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2020-10-30 10:04:47,945 > INFO > INFO:=>(MM) NaaS-MM-1-10.17.84.220:4343 8.6.0.5:75979 : NEW IMAGE UPGRADE SUCCESS
+2020-10-30 10:05:07,138 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-30 10:05:17,295 > WARNING > WARNING:=> Reloading MD: NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 10:05:17,311 > DEBUG > WARNING:=> Reloading MD: NaaS-VMC-1 - 10.17.84.221:4343
+2020-10-30 10:05:21,087 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:05:24,869 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:05:28,898 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:05:33,043 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:05:36,858 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:05:40,530 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:05:44,530 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:05:48,897 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:05:52,585 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:05:56,300 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:06:00,016 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:06:03,720 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:06:07,552 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:06:11,598 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:06:17,225 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:06:22,841 > INFO > INFO:Please wait: (MD) NaaS-VMC-1 10.17.84.221:4343 -- Pinging...
+2020-10-30 10:09:31,053 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:09:55,090 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:10:19,134 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:10:43,186 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:11:07,229 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:11:31,310 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:11:55,351 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:12:20,364 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:12:44,418 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:13:08,462 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:13:32,582 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:13:56,964 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:14:21,730 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:14:46,339 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:15:10,945 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:15:35,631 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:16:00,273 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:16:25,065 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:16:49,568 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:17:14,313 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:17:38,939 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:18:04,491 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:18:28,746 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:18:53,201 > INFO > INFO:Please wait: Trying (MD) NaaS-VMC-1 10.17.84.221:4343 -- Request timeout...
+2020-10-30 10:18:59,530 > INFO > INFO:Reload Completed for (MD) NaaS-VMC-1 10.17.84.221:4343
+2020-10-30 10:19:06,039 > ERROR > ERROR:Login error : 10.17.84.221:4343
+2020-10-30 10:19:06,183 > DEBUG > ERROR:Login error : 10.17.84.221:4343
+2020-10-30 10:19:06,368 > ERROR > Login error:10.17.84.221:4343 
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\scripts\py\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 403, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\scripts\py\lib\site-packages\urllib3\packages\six.py", line 734, in reraise
+    raise value.with_traceback(tb)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 426, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 421, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\scripts\py\lib\http\client.py", line 1321, in getresponse
+    response.begin()
+  File "D:\scripts\py\lib\http\client.py", line 296, in begin
+    version, status, reason = self._read_status()
+  File "D:\scripts\py\lib\http\client.py", line 265, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 108, in get_session
+    res = r_session.post(login_url, data = login_post,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 578, in post
+    return self.request('POST', url, data=data, json=json, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 498, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2020-10-30 10:19:06,539 > INFO > INFO:=>(MD) NaaS-VMC-1-10.17.84.221:4343 8.6.0.5:75979 : NEW IMAGE UPGRADE SUCCESS
+2020-10-30 10:21:47,380 > INFO > yes
+2020-10-30 10:21:47,381 > INFO > INFO:Starting postcheck
+2020-10-30 10:21:48,387 > INFO > INFO:Executing Postcheck
+2020-10-30 10:21:54,131 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-30 10:22:01,454 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-30 10:22:04,760 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 10:22:06,920 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 10:22:10,162 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 10:22:13,385 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 10:22:17,185 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 10:22:19,353 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 10:22:21,398 > INFO > INFO:POSTCHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-10-30 10:22:22,192 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 10:22:22,840 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-10-30 10:22:23,711 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-10-30 10:22:24,814 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-10-30 10:22:25,830 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-10-30 10:22:26,756 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-10-30 10:22:27,594 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-10-30 10:22:28,848 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-10-30 10:22:29,996 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-10-30 10:22:30,979 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-10-30 10:22:32,140 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-10-30 10:22:34,080 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-10-30 10:22:35,397 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-10-30 10:22:36,460 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-10-30 10:22:37,507 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-10-30 10:22:39,195 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-10-30 10:22:43,496 > INFO > INFO:POSTCHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-10-30 10:22:46,127 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 10:22:46,589 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-10-30 10:22:47,418 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-10-30 10:22:48,349 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-10-30 10:22:49,714 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-10-30 10:22:50,733 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-10-30 10:22:52,154 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-10-30 10:22:53,554 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-10-30 10:22:54,952 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-10-30 10:22:55,919 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-10-30 10:22:56,754 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-10-30 10:22:57,969 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-10-30 10:22:58,887 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-10-30 10:22:59,871 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-10-30 10:23:01,861 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-10-30 10:23:03,060 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-10-30 10:23:04,380 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-10-30 10:23:05,666 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-10-30 10:23:06,826 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-10-30 10:23:07,637 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-10-30 10:23:08,510 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-10-30 10:23:11,408 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-10-30 10:23:12,500 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-10-30 10:23:13,528 > INFO > INFO:Postcheck Completed
+2020-10-30 10:24:02,119 > INFO > INFO:==== Completed ====

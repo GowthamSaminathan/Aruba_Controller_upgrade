@@ -1,26 +1,26 @@
 ---
 Upgrade:
-  - hostname: NaaS-MM-1
+  - hostname: ""
     device_type: MM
-    host: 10.17.84.220:4343
+    host: ""
 
-  - hostname: NaaS-VMC-1
+  - hostname: ""
     device_type: MD
-    host: 10.17.84.221:4343
+    host: ""
 
 
 default_settings:
   AOS_Source:
     device_type: ftp
-    ftp_host: 10.17.84.225
-    ftp_username: admin
-    ftp_password: admin123456
+    ftp_host: ""
+    ftp_username: ""
+    ftp_password: ""
     ftp_path: /
 
   MM:
-    image_file_name: ArubaOS_MM_8.6.0.5_75979
-    image_version: 8.6.0.5
-    image_build: "75979"
+    image_file_name: ""
+    image_version: ""
+    image_build: ""
     upgrade_disk: Auto
     CheckList:
       - show: show clock
@@ -42,9 +42,9 @@ default_settings:
 
 
   MD:
-    image_file_name: ArubaOS_VMC_8.6.0.5_75979
-    image_version: 8.6.0.5
-    image_build: "75979"
+    image_file_name: ""
+    image_version: ""
+    image_build: ""
     upgrade_disk: Auto
     Pre_image_AP: True
     max_ap_image_load: 1
@@ -74,8 +74,8 @@ default_settings:
       - show: show version
 
   Authentication:
-    username: admin
-    password: Aruba@123$
+    username: ""
+    password: ""
 
 
   Validate_Image_before_upgrade: True

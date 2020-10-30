@@ -1,0 +1,151 @@
+2020-10-30 08:57:05,879 > INFO > JOBNAME:1604028424_521158
+2020-10-30 08:57:05,880 > INFO > CONFIG FILE:D:\scripts\GIT\Aruba_Controller_upgrade\conf_files\LAB WIRELESS UPGRADE 8.6
+2020-10-30 08:57:07,110 > INFO > Starting Job
+2020-10-30 08:57:07,319 > INFO > INFO:Running: 1604028424_521158 Type:Upgrade
+2020-10-30 08:57:07,382 > INFO > INFO:Starting Configuration LAB WIRELESS UPGRADE 8.6 Validation
+2020-10-30 08:57:07,483 > INFO > Inserting upgrade list to upgrade.db
+2020-10-30 08:57:16,885 > INFO > yes
+2020-10-30 08:57:16,885 > INFO > INFO:Starting precheck
+2020-10-30 08:57:16,971 > INFO > INFO:Executing Precheck
+2020-10-30 08:57:19,385 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-30 08:57:25,135 > INFO > INFO:Login Success => 10.17.84.221:4343
+2020-10-30 08:57:29,765 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 08:57:34,667 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 08:57:39,853 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 08:57:42,028 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 08:57:44,442 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 08:57:47,292 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 08:57:50,627 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 08:57:52,229 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 08:57:53,034 > DEBUG > Alternative part typeAuto
+2020-10-30 08:57:53,034 > DEBUG > Finding alt part10.17.84.220:4343
+2020-10-30 08:57:53,034 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.220:4343 , Trying to auto detect
+2020-10-30 08:57:53,771 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 08:57:54,500 > DEBUG > Finding alt part{'_data': ['Config ID: 138\n\n\nBoot Partition: PARTITION 1']}
+2020-10-30 08:57:54,500 > DEBUG > Alt part success
+2020-10-30 08:57:54,500 > INFO > INFO:NaaS-MM-1-10.17.84.220:4343 :Auto detect alternative partition: 0
+2020-10-30 08:57:54,871 > DEBUG > Alternative part typeAuto
+2020-10-30 08:57:54,871 > DEBUG > Finding alt part10.17.84.221:4343
+2020-10-30 08:57:54,871 > INFO > INFO:Installation Disk Auto not provided for 10.17.84.221:4343 , Trying to auto detect
+2020-10-30 08:57:55,924 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 08:57:56,635 > DEBUG > Finding alt part{'_data': ['Config ID: 99\n\n\nBoot Partition: PARTITION 0']}
+2020-10-30 08:57:56,635 > DEBUG > Alt part success
+2020-10-30 08:57:56,635 > INFO > INFO:NaaS-VMC-1-10.17.84.221:4343 :Auto detect alternative partition: 1
+2020-10-30 08:57:57,799 > INFO > INFO:PRECHECK started for : (MM) NaaS-MM-1:10.17.84.220:4343
+2020-10-30 08:57:58,797 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 08:57:59,573 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show clock
+2020-10-30 08:58:00,911 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show version
+2020-10-30 08:58:01,885 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show image version
+2020-10-30 08:58:02,682 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show storage
+2020-10-30 08:58:04,176 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show cpuload
+2020-10-30 08:58:05,138 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show memory
+2020-10-30 08:58:06,227 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot
+2020-10-30 08:58:07,442 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switches
+2020-10-30 08:58:08,245 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show switchinfo
+2020-10-30 08:58:09,321 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show boot history
+2020-10-30 08:58:11,289 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show crypto ipsec sa
+2020-10-30 08:58:12,112 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show master-redundancy
+2020-10-30 08:58:12,975 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show database synchronize
+2020-10-30 08:58:13,883 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show license
+2020-10-30 08:58:15,203 > INFO > INFO:Executing NaaS-MM-1 - 10.17.84.220:4343 => show running-config
+2020-10-30 08:58:18,773 > INFO > INFO:PRECHECK started for : (MD) NaaS-VMC-1:10.17.84.221:4343
+2020-10-30 08:58:21,176 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 08:58:22,073 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show clock
+2020-10-30 08:58:23,102 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-10-30 08:58:24,602 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show image version
+2020-10-30 08:58:25,546 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show storage
+2020-10-30 08:58:26,565 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show cpuload
+2020-10-30 08:58:27,387 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show memory
+2020-10-30 08:58:28,527 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-10-30 08:58:29,390 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-10-30 08:58:30,197 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switchinfo
+2020-10-30 08:58:31,253 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot history
+2020-10-30 08:58:32,886 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show user
+2020-10-30 08:58:33,761 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap database long
+2020-10-30 08:58:35,226 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap bss-table
+2020-10-30 08:58:36,227 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap essid
+2020-10-30 08:58:37,165 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap active counters
+2020-10-30 08:58:38,280 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show ap debug counters
+2020-10-30 08:58:39,258 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show lc-cluster group-membership
+2020-10-30 08:58:40,364 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show switches
+2020-10-30 08:58:41,913 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show license
+2020-10-30 08:58:43,132 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show running-config
+2020-10-30 08:58:44,298 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show boot
+2020-10-30 08:58:45,776 > INFO > INFO:Executing NaaS-VMC-1 - 10.17.84.221:4343 => show version
+2020-10-30 08:58:47,206 > INFO > INFO:Precheck Completed
+2020-10-30 08:59:06,296 > INFO > INFO:Total upgrade hosts:2
+2020-10-30 08:59:06,533 > INFO > INFO:MM: Preparing for host NaaS-MM-1 IP: 10.17.84.220:4343
+2020-10-30 08:59:13,670 > ERROR > get_session:
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\contrib\pyopenssl.py", line 488, in wrap_socket
+    cnx.do_handshake()
+  File "D:\scripts\py\lib\site-packages\OpenSSL\SSL.py", line 1934, in do_handshake
+    self._raise_ssl_error(self._ssl, result)
+  File "D:\scripts\py\lib\site-packages\OpenSSL\SSL.py", line 1664, in _raise_ssl_error
+    raise SysCallError(-1, "Unexpected EOF")
+OpenSSL.SSL.SysCallError: (-1, 'Unexpected EOF')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 677, in urlopen
+    chunked=chunked,
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 381, in _make_request
+    self._validate_conn(conn)
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 976, in _validate_conn
+    conn.connect()
+  File "D:\scripts\py\lib\site-packages\urllib3\connection.py", line 370, in connect
+    ssl_context=context,
+  File "D:\scripts\py\lib\site-packages\urllib3\util\ssl_.py", line 390, in ssl_wrap_socket
+    return context.wrap_socket(sock)
+  File "D:\scripts\py\lib\site-packages\urllib3\contrib\pyopenssl.py", line 494, in wrap_socket
+    raise ssl.SSLError("bad handshake: %r" % e)
+ssl.SSLError: ("bad handshake: SysCallError(-1, 'Unexpected EOF')",)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\scripts\py\lib\site-packages\urllib3\connectionpool.py", line 725, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "D:\scripts\py\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/configuration/showcommand?command=show%20clock&UIDARUBA=MjRjNjZjYjAtMGYxYS00NWM3LTk3ZWMtNzA3 (Caused by SSLError(SSLError("bad handshake: SysCallError(-1, 'Unexpected EOF')")))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\Aruba_Wireless_Upgrade_APP.py", line 89, in get_session
+    res = r_session.get(get_clock,verify=False)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\scripts\py\lib\site-packages\requests\adapters.py", line 514, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='10.17.84.220', port=4343): Max retries exceeded with url: /v1/configuration/showcommand?command=show%20clock&UIDARUBA=MjRjNjZjYjAtMGYxYS00NWM3LTk3ZWMtNzA3 (Caused by SSLError(SSLError("bad handshake: SysCallError(-1, 'Unexpected EOF')")))
+2020-10-30 08:59:16,245 > INFO > INFO:Login Success => 10.17.84.220:4343
+2020-10-30 08:59:18,558 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-10-30 08:59:19,204 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-10-30 09:00:08,229 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:00:09,303 > WARNING > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-10-30 09:00:09,398 > DEBUG > WARNING:Required image version for (MM) Host:NaaS-MM-1:10.17.84.220:4343 = Disk:0 Version:8.6.0.5 Build:75979
+2020-10-30 09:00:09,450 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:0 Host:NaaS-MM-1:10.17.84.220:4343
+2020-10-30 09:00:10,222 > INFO > INFO:Session Valid : 10.17.84.220:4343
+2020-10-30 09:00:10,862 > INFO > INFO:NaaS-MM-1:10.17.84.220:4343- Installing AOS: ArubaOS_MM_8.6.0.5_75979 from ftp server:10.17.84.225
+2020-10-30 09:08:53,520 > DEBUG > DEBUG:b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-10-30 09:08:53,971 > INFO > INFO:File copy completed COMPLETED: UPLOADED IMAGE TO DISK 0 ArubaOS_MM_8.6.0.5_75979
+2020-10-30 09:08:54,357 > INFO > b'<html>  <script>  top.(null)("<re><SUCCESS>10.17.84.225</SUCCESS></re>", "image");  </script></html>'
+2020-10-30 09:08:54,644 > INFO > INFO:MD: Preparing for host NaaS-VMC-1 IP: 10.17.84.221:4343
+2020-10-30 09:08:57,295 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:08:58,192 > WARNING > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:1 Version:8.6.0.5 Build:75979
+2020-10-30 09:08:58,319 > DEBUG > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:1 Version:8.6.0.5 Build:75979
+2020-10-30 09:13:13,528 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:13:14,585 > WARNING > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:1 Version:8.6.0.5 Build:75979
+2020-10-30 09:13:14,775 > DEBUG > WARNING:Required image version for (MD) Host:NaaS-VMC-1:10.17.84.221:4343 = Disk:1 Version:8.6.0.5 Build:75979
+2020-10-30 09:13:14,859 > INFO > INFO:User accepted : Do you want to install: Image Version:8.6.0.5-75979 on Disk:1 Host:NaaS-VMC-1:10.17.84.221:4343
+2020-10-30 09:13:15,597 > INFO > INFO:Session Valid : 10.17.84.221:4343
+2020-10-30 09:13:16,132 > INFO > INFO:NaaS-VMC-1:10.17.84.221:4343- Installing AOS: ArubaOS_VMC_8.6.0.5_75979 from ftp server:10.17.84.225

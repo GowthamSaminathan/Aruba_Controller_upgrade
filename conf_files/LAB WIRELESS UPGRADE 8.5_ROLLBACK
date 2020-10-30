@@ -1,0 +1,59 @@
+Upgrade:
+- AOS_Source: &id001
+    device_type: ftp
+    ftp_host: 10.17.84.225
+    ftp_password: admin123456
+    ftp_path: /
+    ftp_username: admin
+  Authentication: &id002
+    password: Aruba@123$
+    username: admin
+  CheckList: &id004
+  - show: show clock
+  Validate_Image_before_upgrade: true
+  Validate_controller_sync_before_upgrade: true
+  Validate_controller_up_before_upgrade: true
+  device_type: MM
+  host: 10.17.84.220:4343
+  hostname: NaaS-MM-1
+  image_build: '75979'
+  image_file_name: NA
+  image_version: 8.6.0.5
+  upgrade_disk: '1'
+- AOS_Source: *id001
+  Authentication: *id002
+  CheckList: &id003
+  - show: show clock
+  Pre_image_AP: true
+  Validate_Image_before_upgrade: true
+  Validate_controller_sync_before_upgrade: true
+  Validate_controller_up_before_upgrade: true
+  device_type: MD
+  host: 10.17.84.221:4343
+  hostname: NaaS-VMC-1
+  image_build: '75979'
+  image_file_name: NA
+  image_version: 8.6.0.5
+  max_ap_image_load: '10'
+  upgrade_disk: '0'
+default_settings:
+  AOS_Source: *id001
+  Authentication: *id002
+  Backup_configuration_before_upgrade: false
+  Backup_flash_before_upgrade: false
+  Backup_license_before_upgrade: true
+  MD:
+    CheckList: *id003
+    Pre_image_AP: true
+    image_build: '75979'
+    image_file_name: NA
+    image_version: 8.6.0.5
+    max_ap_image_load: '10'
+  MM:
+    CheckList: *id004
+    image_build: '75979'
+    image_file_name: NA
+    image_version: 8.6.0.5
+  Validate_Image_before_upgrade: true
+  Validate_controller_sync_before_upgrade: true
+  Validate_controller_up_before_upgrade: true

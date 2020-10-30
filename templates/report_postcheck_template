@@ -3,6 +3,7 @@ postcheck_table_data = {{postcheck_table}}
 $(document).ready(function() {
     $('#postcheck_table').DataTable( {
         data: postcheck_table_data,
+        "order": [[ 0, "desc" ]],
         columns: [
             { title: "Device Type" },
             { title: "Hostname" },

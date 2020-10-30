@@ -26,6 +26,7 @@ import pprint
 import wireless_validation
 import pickle
 import reports
+import copy
 
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -281,7 +282,7 @@ class Aruba_Wireless_upgrade():
 				db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING","Finding alternative partition")
 
 				disk = None
-
+				self.logger.debug("Alternative part type"+str(upgrade_disk))
 				if upgrade_disk != "Auto":
 					self.eprint("info","Installation Disk {} provided by user for host {} , Skiping auto detect".format(upgrade_disk,host_ip))
 					single_host.update({"disk":int(upgrade_disk)})
@@ -290,6 +291,7 @@ class Aruba_Wireless_upgrade():
 					_status = "COMPLETED"
 					continue
 				else:
+					self.logger.debug("Finding alt part"+str(host_ip))
 					self.eprint("info","Installation Disk {} not provided for {} , Trying to auto detect".format(upgrade_disk,host_ip))
 
 					self.user_pause_terminate()
@@ -297,6 +299,7 @@ class Aruba_Wireless_upgrade():
 					
 					
 					out = cmd_out.get("show boot")
+					self.logger.debug("Finding alt part"+str(out))
 					out = out.get("_data")[0]
 					out = re.findall(r'PARTITION\s*.*',out)[0][-1]
 					out = int(out)
@@ -306,11 +309,13 @@ class Aruba_Wireless_upgrade():
 						disk = 1
 
 					if disk != None:
+						self.logger.debug("Alt part success")
 						single_host.update({"disk":disk})
 						device_info.update({"validation":"Upgrade disk partition","value":disk ,"status":"Ok"})
 						hosts_find_alternative_partition.append(device_info)
 						_status = "COMPLETED"
 					else:
+						self.logger.debug("Failed to get alt partition")
 						device_info.update({"validation":"Upgrade disk partition","value":"Failed to get alternative partition" ,"status":"Failed"})
 						_status = "FAILED"
 
@@ -390,6 +395,19 @@ class Aruba_Wireless_upgrade():
 					host.pop("disk")
 				except KeyError:
 					pass;
+
+			try:
+
+				conf.get("default_settings").get("MD").update({"image_build":_imb})
+				conf.get("default_settings").get("MD").update({"image_version":_imv})
+				conf.get("default_settings").get("MM").update({"image_build":_imb})
+				conf.get("default_settings").get("MM").update({"image_version":_imv})
+
+				conf.get("default_settings").get("MD").update({"image_file_name":"NA"})
+				conf.get("default_settings").get("MM").update({"image_file_name":"NA"})
+			except Exception:
+				self.logger.exception("resetting rollback image")
+
 
 
 			rollback_config_yaml = yaml.safe_dump(conf,default_flow_style=False)
@@ -770,12 +788,14 @@ class Aruba_Wireless_upgrade():
 
 		msg = "Do you want to install: "
 		self.user_pause_terminate()
-		if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "no":
-			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED: UPLOADING IMAGE","User Aborted")
-		else:
+		if self.get_user_input("{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip),["yes","no"]) == "yes":
 			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"RUNNING: VALIDADING PRESENT IMAGE","")
 			a = "{}Image Version:{}-{} on Disk:{} Host:{}:{}".format(msg,image_version,image_build,upgrade_disk,hostname,host_ip)
 			self.eprint("warning","User aborted to install : "+a)
+		else:
+			db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"FAILED: UPLOADING IMAGE","User Aborted")
+			return False
+			
 			
 		upload_not_required = False
 		while upload_not_required == False:
@@ -1057,7 +1077,7 @@ class Aruba_Wireless_upgrade():
 					print(status)
 					if  status == "yes":
 						self.eprint("warning","USER SKIPPED AP IMAGE PRELOAD FOR {}-{}".format(host_name,host_ip))
-						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED AP Pre-Imaging validation","User skipped AP Pre-Imaging validation")
+						db_management.update_upgrade_status_by_device_host(self.upgrade_db,host_ip,"COMPLETED AP Pre-Imaging validation","AP Pre-Imaging")
 						return True
 
 
@@ -1330,7 +1350,7 @@ class main_model():
 			if type(config) == dict:
 					if config.get("status") == "success":
 						self.gen_config = config.get("config_json")
-						self.rollback_config = self.gen_config.copy()
+						self.rollback_config = copy.deepcopy(self.gen_config)
 						self.insert_hosts_details_to_db()
 						try:
 							open(os.path.join(self.job_path,"gen_configuration.yaml"),"w").write(config.get("config_yaml"))
@@ -1461,7 +1481,7 @@ class main_model():
 
 				# Start the precheck
 				self.user_pause_terminate()
-				res = self.get_user_input("Start the precheck",["yes","no"])
+				res = self.get_user_input("Want to start the precheck ?",["yes","no"])
 				self.logger.info(res)
 				pre_check_valid = False
 				if res == "yes":
@@ -1540,9 +1560,13 @@ class main_model():
 					self.eprint("info","Starting postcheck")
 					self.update_devices_status_in_db("PENDING: POSTCHECK","Waiting...")
 					post_check_valid = ar_upgrade.Pre_Post_check("Postcheck")
+					print("Executing postcheck 1")
 					self.create_report("Upgrade","Postcheck")
-					self.find_alternative_partition("COMPLETED: Postcheck","Finished POA")
+					print("Executing postcheck 2")
+					self.update_devices_status_in_db("COMPLETED: Postcheck","Finished POA")
+					print("Executing postcheck 3")
 					self.get_user_input("_Postcheck",["yes","no"])
+					print("Executing postcheck 4")
 				else:
 					self.eprint("warning","TERMINATED User aborted the postcheck")
 					self.final_status = ["TERMINATED","User aborted the postcheck"]

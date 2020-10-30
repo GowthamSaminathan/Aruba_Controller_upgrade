@@ -2057,3 +2057,53 @@ FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba
 2020-10-30 08:01:20,877 > INFO > 
  ==> Starting WEB server ...
 
+2020-10-30 08:01:39,698 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 08:01:42,389 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 08:08:58,397 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 08:50:09,380 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 08:50:12,250 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 08:52:20,672 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 08:56:55,138 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 09:17:15,775 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 09:17:53,441 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 09:18:17,531 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 09:20:42,014 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 09:21:30,889 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 10:30:56,998 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 10:37:39,206 > ERROR > get_report
+Traceback (most recent call last):
+  File "D:\scripts\GIT\Aruba_Controller_upgrade\web_server.py", line 384, in get_report
+    return open(report).read()
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\scripts\\GIT\\Aruba_Controller_upgrade\\jobs\\1604034323_1477077\\Reports\\Upgrade.html'
+2020-10-30 10:58:45,542 > INFO > 
+ ==> Starting WEB server ...
+
+2020-10-30 10:59:57,099 > INFO > 
+ ==> Starting WEB server ...
+

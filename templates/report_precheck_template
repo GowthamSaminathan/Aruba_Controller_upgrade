@@ -4,6 +4,7 @@ $(document).ready(function() {
     $('#precheck_table').DataTable( {
         data: precheck_table_data,
         paging:         false,
+        "order": [[ 5, "desc" ]],
         columns: [
             { title: "Device Type" },
             { title: "Hostname" },
